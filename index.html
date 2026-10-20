@@ -1,0 +1,742 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<meta name="description" content="肖艺宣 · 2027 届运营 / 产品方向求职作品集：FlowPilot、PawPath、GoNCharge 审计、电商数据仓库、AI 旅行规划。">
+<title>肖艺宣作品集</title>
+<link href="https://fonts.googleapis.com" rel="preconnect"/>
+<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+SC:wght@400;500;700&amp;family=Noto+Serif+SC:wght@600;700;900&amp;display=swap" rel="stylesheet"/>
+<style>
+/* Layout: a watercolor forest you walk through top to bottom — hero meadow, evidence cards,
+   a winding trail of signposts, one project per "clearing", and Digua the red panda as guide. */
+:root{
+  --paper:#f6f0e1;      /* watercolor paper */
+  --paper-hi:#fcf9f0;   /* card paper */
+  --ink:#2b3a27;        /* pine ink */
+  --ink-soft:#5b604a;   /* faded ink */
+  --moss:#4c7743;       /* moss green (primary) */
+  --leaf:#93b87e;       /* young leaf */
+  --mist:#e4ecd3;       /* morning mist */
+  --bark:#8a6340;       /* bark brown */
+  --amber:#bf7438;      /* sunlight amber (accent) */
+  --line:#dccfae;       /* pencil line */
+  --display:"Noto Serif SC","Songti SC","STSong",Georgia,serif;
+  --body:"Noto Sans SC","PingFang SC","Hiragino Sans GB","Microsoft YaHei",system-ui,sans-serif;
+  --r:20px;
+  color-scheme:light;
+}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth;scroll-padding-top:calc(72px + env(safe-area-inset-top,0px))}
+body{margin:0;background:var(--paper);color:var(--ink);font-family:var(--body);font-size:16px;line-height:1.75;-webkit-font-smoothing:antialiased;overflow-x:hidden}
+img{max-width:100%;height:auto;display:block}
+[hidden]{display:none!important}
+a{color:var(--moss)}
+:focus-visible{outline:3px solid var(--amber);outline-offset:3px;border-radius:6px}
+h1,h2,h3{font-family:var(--display);text-wrap:balance;margin:0;color:var(--ink)}
+p{margin:0}
+.wrap{max-width:1180px;margin:0 auto;padding-left:max(16px,env(safe-area-inset-left,0px));padding-right:max(16px,env(safe-area-inset-right,0px))}
+.num{font-variant-numeric:tabular-nums}
+/* language */
+:root[data-lang="en"] .zh{display:none!important}
+:root:not([data-lang="en"]) .en{display:none!important}
+
+/* ---------- nav ---------- */
+body::before{content:"";position:fixed;inset:0 0 auto;height:env(safe-area-inset-top,0px);z-index:60;background:var(--paper)}
+.nav{position:sticky;top:env(safe-area-inset-top,0px);z-index:50;background:color-mix(in srgb,var(--paper) 86%,transparent);backdrop-filter:blur(10px);-webkit-backdrop-filter:blur(10px);border-bottom:1px solid color-mix(in srgb,var(--line) 70%,transparent)}
+.nav .wrap{display:flex;align-items:center;justify-content:space-between;gap:16px;min-height:64px}
+.brand{font-family:var(--display);font-weight:700;font-size:20px;color:var(--ink);text-decoration:none;white-space:nowrap}
+.brand small{font-family:var(--body);font-weight:500;font-size:13px;color:var(--ink-soft);margin-left:6px}
+.links{display:flex;align-items:center;gap:4px;flex-wrap:wrap;justify-content:flex-end}
+.links a{color:var(--ink-soft);text-decoration:none;font-size:15px;padding:6px 10px;border-radius:999px}
+.links a:hover{color:var(--ink);background:var(--mist)}
+.lang{font:600 14px var(--body);border:1.5px solid var(--moss);color:var(--moss);background:transparent;border-radius:999px;padding:5px 14px;cursor:pointer;margin-left:6px}
+.lang:hover{background:var(--moss);color:var(--paper-hi)}
+@media (max-width:720px){.links a{display:none}.brand small{display:none}}
+
+/* ---------- hero ---------- */
+.hero{position:relative;overflow:hidden;background:var(--paper)}
+.hero-scene{position:absolute;inset:0;width:100%;height:100%}
+.hero .wrap{position:relative;z-index:2;padding-block:72px 300px;display:grid;grid-template-columns:minmax(0,1fr) 220px;gap:24px;align-items:end}
+.eyebrow{font-size:14px;letter-spacing:.14em;color:var(--bark);font-weight:500}
+.hero h1{font-size:clamp(34px,5.6vw,64px);line-height:1.18;font-weight:900;margin:14px 0 18px;letter-spacing:.01em}
+.hero h1 em{font-style:normal;color:var(--amber)}
+.hero .sub{font-size:clamp(16px,1.8vw,19px);color:var(--ink-soft);max-width:36em}
+.tags{display:flex;flex-wrap:wrap;gap:8px;margin-top:22px}
+.tag{background:color-mix(in srgb,var(--paper-hi) 85%,transparent);border:1.5px solid color-mix(in srgb,var(--leaf) 70%,var(--line));color:var(--moss);border-radius:999px;padding:5px 14px;font-size:14.5px;font-weight:500}
+.stats{display:flex;flex-wrap:wrap;gap:10px 26px;margin-top:24px;font-size:15px;color:var(--ink-soft)}
+.stats b{font-family:var(--display);font-size:24px;color:var(--ink);margin-right:4px}
+.cta{display:flex;flex-wrap:wrap;gap:12px;margin-top:28px}
+.btn{display:inline-flex;align-items:center;gap:8px;text-decoration:none;font-weight:500;font-size:15.5px;border-radius:999px;padding:11px 22px;border:1.5px solid var(--moss);cursor:pointer;font-family:var(--body)}
+.btn.solid{background:var(--moss);color:var(--paper-hi)}
+.btn.ghost{background:color-mix(in srgb,var(--paper-hi) 80%,transparent);color:var(--moss)}
+.btn:hover{transform:translateY(-1px)}
+.hero-digua{align-self:end;justify-self:center;width:190px;filter:drop-shadow(0 8px 10px rgba(60,50,20,.18));animation:pop .9s cubic-bezier(.2,.9,.3,1.3) .2s both}
+.hero-digua img{transform-origin:60% 90%;animation:sway 3.6s ease-in-out 1.2s infinite}
+@keyframes pop{from{transform:translateY(40px) scale(.9);opacity:.4}to{transform:none;opacity:1}}
+@keyframes sway{0%,100%{transform:rotate(0)}50%{transform:rotate(-3deg)}}
+@media (max-width:820px){.hero .wrap{grid-template-columns:1fr;padding-block:48px 230px}.hero-digua{position:absolute;right:max(16px,env(safe-area-inset-right,0px));bottom:150px;width:120px}}
+
+/* ---------- section scaffolding ---------- */
+section{position:relative}
+.sec{padding-block:88px}
+.sec-head{display:flex;align-items:flex-end;justify-content:space-between;gap:20px;margin-bottom:36px}
+.sec-head h2{font-size:clamp(28px,3.4vw,40px);font-weight:900}
+.sec-head p{color:var(--ink-soft);margin-top:6px}
+.kicker{font-size:13px;letter-spacing:.18em;color:var(--bark);font-weight:700;margin-bottom:6px}
+.sec-head .guide{width:110px;flex:none}
+
+/* ---------- skills ---------- */
+.keynums{display:grid;grid-template-columns:repeat(5,minmax(0,1fr));gap:12px;margin:0 0 44px}
+.keynums div{background:var(--paper-hi);border:1.5px solid var(--line);border-radius:16px;padding:14px 14px 12px;font-size:13.5px;color:var(--ink-soft);line-height:1.5}
+.keynums b{display:block;font-family:var(--display);font-size:clamp(24px,2.6vw,32px);color:var(--amber);line-height:1.2;margin-bottom:4px}
+.sub-h{font-size:clamp(20px,2.2vw,26px);margin:0 0 18px;display:flex;flex-wrap:wrap;align-items:baseline;gap:6px 14px}
+.sub-h small{font:400 14px var(--body);color:var(--ink-soft)}
+.skill .trait{font-family:var(--display);font-weight:700;font-size:18px;color:var(--moss);margin:6px 0 0}
+.me .facts{margin:0;align-self:start;background:var(--paper-hi);border:1.5px solid var(--line);border-radius:18px;padding:14px 18px}
+.me .facts div:last-child{border-bottom:0;padding-bottom:0}
+@media (max-width:900px){.keynums{grid-template-columns:repeat(2,minmax(0,1fr))}}
+
+.skills{background:var(--paper)}
+.skill-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:22px}
+.skill{background:var(--paper-hi);border:1.5px solid var(--line);border-radius:var(--r);padding:26px 26px 22px;box-shadow:0 6px 0 color-mix(in srgb,var(--line) 70%,transparent)}
+.skill h3{font-size:22px;display:flex;gap:10px;align-items:baseline}
+.skill h3 .em{font-size:22px}
+.skill .claim{color:var(--ink-soft);font-size:15px;margin:4px 0 14px}
+.ev{list-style:none;margin:0;padding:0;display:grid;gap:12px}
+.ev li{border-top:1px dashed var(--line);padding-top:12px;font-size:15px;color:var(--ink-soft)}
+.ev li strong{display:block;color:var(--ink);font-size:16px;margin-bottom:2px}
+.ev .src{display:inline-block;font-size:12.5px;color:var(--bark);background:color-mix(in srgb,var(--mist) 70%,var(--paper-hi));border-radius:6px;padding:0 7px;margin-left:4px;white-space:nowrap}
+@media (max-width:820px){.skill-grid{grid-template-columns:1fr}}
+
+/* ---------- journey ---------- */
+.journey{background:linear-gradient(var(--paper),color-mix(in srgb,var(--mist) 55%,var(--paper)) 40%,var(--paper))}
+.trail-box{position:relative}
+.trail{position:relative;z-index:1;list-style:none;margin:0;padding:0;display:grid;gap:30px}
+.trail-path{position:absolute;left:50%;top:0;bottom:0;height:100%;width:160px;transform:translateX(-50%);pointer-events:none}
+.stop{position:relative;width:calc(50% - 70px);display:flex;flex-direction:column}
+.stop:nth-child(odd){justify-self:start}
+.stop:nth-child(even){justify-self:end}
+.post{align-self:flex-start;color:var(--paper-hi);font-weight:700;font-size:13.5px;padding:4px 12px;border-radius:9px 9px 9px 0;transform:rotate(-2deg);margin-bottom:8px}
+.sign{background:var(--paper-hi);border:2px solid var(--line);border-radius:18px;box-shadow:0 7px 0 color-mix(in srgb,var(--line) 75%,transparent)}
+.sign summary{list-style:none;cursor:pointer;padding:16px 20px}
+.sign summary::-webkit-details-marker{display:none}
+.sign h3{font-size:20px}
+.sign .role{font-size:14px;color:var(--bark);margin:2px 0 6px}
+.sign .hl{font-size:15px;color:var(--ink)}
+.sign .more{display:inline-block;margin-top:8px;font-size:13.5px;color:var(--moss);font-weight:500}
+.sign[open] .more .o{display:none}
+.sign:not([open]) .more .c{display:none}
+.sign .body{padding:0 20px 18px;color:var(--ink-soft);font-size:15px}
+.sign .body ul{margin:0;padding-left:18px;display:grid;gap:6px}
+.sign .body .links-row{margin-top:10px;display:flex;gap:14px;flex-wrap:wrap}
+.stop .pal{position:absolute;width:118px;bottom:-6px;filter:drop-shadow(0 6px 6px rgba(60,50,20,.15))}
+.stop:nth-child(odd) .pal{right:-132px}
+.stop:nth-child(even) .pal{left:-132px}
+.stop.next .sign{border-style:dashed;border-color:var(--moss);background:color-mix(in srgb,var(--mist) 60%,var(--paper-hi))}
+@media (max-width:860px){
+  .trail-path{display:none}
+  .trail{padding-left:22px;border-left:3px dotted color-mix(in srgb,var(--bark) 45%,transparent)}
+  .stop{width:100%}
+  .stop:nth-child(odd),.stop:nth-child(even){justify-self:stretch}
+  .stop .pal{display:none}
+}
+
+/* ---------- projects ---------- */
+.projects{background:var(--paper)}
+.tabs{display:flex;gap:8px;flex-wrap:wrap;margin-bottom:22px}
+.tab{font:500 15px var(--body);background:var(--paper-hi);color:var(--ink-soft);border:1.5px solid var(--line);border-radius:999px;padding:8px 16px;cursor:pointer}
+.tab[aria-selected="true"]{background:var(--moss);border-color:var(--moss);color:var(--paper-hi)}
+.panel{background:var(--paper-hi);border:1.5px solid var(--line);border-radius:26px;padding:clamp(14px,2.4vw,28px);display:grid;gap:26px}
+.showcase{display:grid;gap:12px;min-width:0}
+.slides{display:flex;overflow-x:auto;scroll-snap-type:x mandatory;border-radius:16px;border:1px solid var(--line);background:color-mix(in srgb,var(--mist) 70%,var(--paper));scrollbar-width:none;overscroll-behavior-x:contain}
+.slides::-webkit-scrollbar{display:none}
+.slide{flex:0 0 100%;margin:0;scroll-snap-align:center;aspect-ratio:16/9;display:flex;align-items:center;justify-content:center;padding:clamp(8px,1.6vw,20px);min-width:0}
+.slide .shot{all:unset;box-sizing:border-box;cursor:zoom-in;display:flex;align-items:center;justify-content:center;width:100%;height:100%}
+.slide .shot:focus-visible{outline:3px solid var(--amber);outline-offset:2px}
+.slide .shot img{max-width:100%;max-height:100%;width:auto;height:auto;object-fit:contain;border-radius:10px;box-shadow:0 6px 18px rgba(60,50,20,.16)}
+.showcase.single{max-width:780px;width:100%;justify-self:center}
+.single .slides{background:transparent;border:0;overflow:visible}
+.single .slide{aspect-ratio:auto;padding:0}
+.gc-media{display:grid;grid-template-columns:minmax(0,1.1fr) minmax(0,1fr);gap:22px;align-items:start}
+.gc-media .strip button{width:76px}
+@media (max-width:920px){.gc-media{grid-template-columns:1fr}}
+.sc-nav{display:flex;align-items:center;gap:10px}
+.arr{flex:none;width:40px;height:40px;border-radius:50%;border:1.5px solid var(--line);background:var(--paper-hi);color:var(--ink);font:600 17px var(--body);cursor:pointer}
+.arr:hover{border-color:var(--moss);color:var(--moss)}
+.strip{display:flex;gap:10px;flex:1;min-width:0;justify-content:center}
+.strip button{padding:3px;border:2px solid var(--line);border-radius:10px;cursor:pointer;background:var(--paper);width:132px;aspect-ratio:16/10;flex:none}
+.strip img{width:100%;height:100%;object-fit:contain}
+.strip button[aria-current="true"]{border-color:var(--amber)}
+.dots{display:none;flex:1;justify-content:center;align-items:center;gap:7px}
+.dots i{width:8px;height:8px;border-radius:999px;background:var(--line);transition:width .2s}
+.dots i.on{background:var(--amber);width:22px}
+.swipe{display:none}
+.caption{font-size:13px;color:var(--ink-soft);text-align:center}
+.ptext{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:0 44px;align-items:start}
+.col-a,.col-b{min-width:0}
+.col-b > .blk:first-child{margin-top:0}
+@media (max-width:640px){.strip{display:none}.dots{display:flex}.arr{width:34px;height:34px;font-size:15px}.swipe{display:inline}}
+@media (max-width:920px){.ptext{grid-template-columns:1fr}.col-b > .blk:first-child{margin-top:14px}}
+.p-meta{display:flex;flex-wrap:wrap;gap:6px;margin-bottom:10px}
+.chip{font-size:12.5px;border-radius:999px;padding:2px 10px;background:var(--mist);color:var(--moss);font-weight:500}
+.chip.warn{background:color-mix(in srgb,var(--amber) 16%,var(--paper-hi));color:var(--bark)}
+.panel h3{font-size:clamp(22px,2.4vw,28px);font-weight:900;line-height:1.3}
+.oneline{margin:12px 0 16px;padding:12px 16px;border-radius:12px;background:color-mix(in srgb,var(--mist) 65%,var(--paper-hi));font-size:15.5px;color:var(--ink)}
+.kn{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:8px;margin-bottom:18px}
+.kn div{border:1px solid var(--line);border-radius:12px;padding:10px 10px 8px;background:var(--paper)}
+.kn b{display:block;font-family:var(--display);font-size:22px;line-height:1.2;color:var(--ink)}
+.kn span{font-size:12.5px;color:var(--ink-soft);line-height:1.45;display:block;margin-top:2px}
+.blk{margin-top:14px}
+.blk h4{margin:0 0 6px;font-size:14px;letter-spacing:.12em;color:var(--bark)}
+.blk p,.blk li{font-size:15px;color:var(--ink-soft)}
+.blk ul{margin:0;padding-left:18px;display:grid;gap:7px}
+.blk li b{color:var(--ink)}
+.p-links{display:flex;gap:10px;flex-wrap:wrap;margin-top:16px}
+.egg{margin-top:14px;font-size:14.5px;border:1.5px dashed var(--amber);border-radius:12px;padding:10px 14px;color:var(--ink-soft)}
+@media (max-width:920px){.kn{grid-template-columns:repeat(2,minmax(0,1fr))}}
+/* infographics for projects without screenshots */
+.info{border-radius:14px;border:1px solid var(--line);background:var(--paper);padding:20px;display:grid;gap:16px}
+.info .big{font-family:var(--display);font-weight:900;font-size:clamp(34px,5vw,52px);color:var(--amber);line-height:1}
+.bar{display:flex;height:22px;border-radius:999px;overflow:hidden;border:1px solid var(--line)}
+.bar i{display:block;height:100%}
+.legend{display:grid;gap:6px;font-size:13.5px;color:var(--ink-soft)}
+.legend .sw{display:inline-block;width:10px;height:10px;border-radius:3px;margin-right:6px;vertical-align:middle}
+.thr{display:grid;gap:6px;font-size:13.5px;color:var(--ink-soft)}
+.thr .row{display:grid;grid-template-columns:96px 1fr 70px;gap:8px;align-items:center}
+.thr .row i{display:block;height:12px;border-radius:999px}
+.flow{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:8px}
+.flow div{border:1px solid var(--line);border-radius:10px;padding:8px 10px;background:var(--paper-hi);font-size:13.5px;color:var(--ink-soft)}
+.flow b{display:block;font-family:var(--display);font-size:20px;color:var(--ink)}
+.arrow{text-align:center;color:var(--bark);font-size:20px;line-height:1}
+.hub{border:1.5px solid var(--moss);border-radius:12px;padding:10px;text-align:center;background:color-mix(in srgb,var(--mist) 60%,var(--paper-hi));color:var(--moss);font-weight:700}
+.info .digua-peek{width:96px;justify-self:end;margin-top:-10px}
+
+/* ---------- about ---------- */
+.hobby-block{margin-top:44px}
+.hobby-grid{display:grid;grid-template-columns:repeat(6,minmax(0,1fr));gap:12px}
+.hobby{display:flex;flex-direction:column;align-items:center;justify-content:center;gap:6px;text-align:center;background:var(--paper-hi);border:1.5px solid var(--line);border-radius:18px;padding:16px 8px;font-size:15px;color:var(--ink);font-weight:500}
+.hobby .h-ic{font-size:28px;line-height:1}
+@media (max-width:900px){.hobby-grid{grid-template-columns:repeat(3,minmax(0,1fr))}}
+
+.stats.proj{margin-top:10px;padding-top:10px;border-top:1px dashed var(--line)}
+.stats .lbl{font-size:12.5px;letter-spacing:.14em;color:var(--bark);align-self:center}
+.me{display:grid;grid-template-columns:minmax(0,1.15fr) minmax(0,1fr);gap:30px;align-items:start;margin-bottom:46px}
+.me-text p{color:var(--ink-soft);font-size:16px;margin:0 0 12px;max-width:62ch}
+.me-text .me-lead{color:var(--ink);font-size:17px}
+.me-text b{color:var(--moss)}
+.facts{margin:18px 0 0;display:grid;gap:8px}
+.facts div{display:grid;grid-template-columns:5.5em minmax(0,1fr);gap:10px;font-size:14.5px;border-bottom:1px dashed var(--line);padding-bottom:7px}
+.facts dt{color:var(--bark);font-weight:600}
+.facts dd{margin:0;color:var(--ink)}
+.ways{display:grid;gap:12px}
+.way{display:flex;gap:14px;align-items:flex-start;background:var(--paper-hi);border:1.5px solid var(--line);border-radius:18px;padding:14px 16px}
+.way-ic{font-size:24px;line-height:1;flex:none;margin-top:2px}
+.way h4{margin:0 0 4px;font-size:16.5px;color:var(--ink)}
+.way p{margin:0;font-size:14.5px;color:var(--ink-soft)}
+.about h3.beyond{font-size:clamp(22px,2.4vw,28px);margin:0 0 18px}
+@media (max-width:860px){.me{grid-template-columns:1fr}}
+
+.about{background:linear-gradient(var(--paper),color-mix(in srgb,var(--mist) 50%,var(--paper)))}
+.about-grid{display:grid;grid-template-columns:minmax(0,1.2fr) minmax(0,1fr);gap:30px;align-items:center}
+.sheet{background:var(--paper-hi);border:1.5px solid var(--line);border-radius:26px;padding:18px}
+.about h3{font-size:26px}
+.about .lead{margin:10px 0 14px;color:var(--ink-soft)}
+.about ul{margin:0 0 18px;padding-left:18px;color:var(--ink-soft);display:grid;gap:6px}
+.hobbies{display:flex;flex-wrap:wrap;gap:8px}
+@media (max-width:860px){.about-grid{grid-template-columns:1fr}}
+
+/* ---------- contact ---------- */
+.contact{background:var(--moss);color:var(--paper-hi);overflow:hidden}
+.contact .wrap{padding-block:72px 40px;display:grid;grid-template-columns:minmax(0,1fr) 220px;gap:24px;align-items:center}
+.contact h2{color:var(--paper-hi);font-size:clamp(28px,3.4vw,40px)}
+.contact p{color:color-mix(in srgb,var(--paper-hi) 85%,var(--moss));margin-top:10px;max-width:34em}
+.contact-row{display:flex;flex-wrap:wrap;gap:12px;margin-top:22px;align-items:center}
+.mail{font:500 16px var(--body);background:var(--paper-hi);color:var(--ink);border-radius:999px;padding:9px 18px;user-select:all}
+.contact .btn{border-color:var(--paper-hi);color:var(--paper-hi);background:transparent}
+.contact .btn:hover{background:color-mix(in srgb,var(--paper-hi) 14%,transparent)}
+.copied{font-size:14px;min-width:6em}
+.foot{grid-column:1/-1;border-top:1px solid color-mix(in srgb,var(--paper-hi) 25%,transparent);padding-top:18px;margin-top:20px;font-size:13px;color:color-mix(in srgb,var(--paper-hi) 75%,var(--moss))}
+@media (max-width:760px){.contact .wrap{grid-template-columns:1fr}.contact .sleep{width:150px}}
+
+/* edge trees between sections */
+.edge-trees{display:block;width:100%;height:90px}
+
+/* back to top */
+.top-btn{position:fixed;right:calc(18px + env(safe-area-inset-right,0px));bottom:calc(18px + env(safe-area-inset-bottom,0px));z-index:40;width:64px;height:64px;border-radius:50%;border:2px solid var(--line);background:var(--paper-hi);padding:6px;cursor:pointer;box-shadow:0 6px 14px rgba(60,50,20,.18);opacity:0;pointer-events:none;transition:opacity .25s, transform .25s}
+.top-btn.show{opacity:1;pointer-events:auto}
+.top-btn:hover{transform:translateY(-3px)}
+@media (max-width:640px){.top-btn{width:48px;height:48px;padding:4px;opacity:0}.top-btn.show{opacity:.92}}
+
+/* lightbox */
+dialog.lb{border:0;padding:0;background:transparent;max-width:min(1200px,94vw)}
+dialog.lb::backdrop{background:rgba(30,36,24,.78)}
+dialog.lb img{border-radius:12px;max-height:86vh;width:auto;margin:auto}
+@media (max-width:640px){dialog.lb{max-width:100vw;width:100vw;max-height:88vh;overflow:auto}dialog.lb img{max-width:none;max-height:none;height:min(78vh,620px);width:auto;border-radius:0}}
+dialog.lb button{position:sticky;float:right;margin:8px;top:8px;right:8px;border:0;border-radius:999px;background:var(--paper-hi);color:var(--ink);font:600 14px var(--body);padding:6px 12px;cursor:pointer}
+
+@media (prefers-reduced-motion:reduce){*{animation:none!important;transition:none!important;scroll-behavior:auto!important}}
+</style>
+<style>img{max-width:100%}[hidden]{display:none!important}</style>
+</head>
+<body>
+<nav aria-label="主导航" class="nav">
+<div class="wrap">
+<a class="brand" href="#top">肖艺宣<small>Yixuan Xiao</small></a>
+<div class="links">
+<a href="#intro"><span class="zh">自我介绍</span><span class="en">Intro</span></a>
+<a href="#journey"><span class="zh">经历</span><span class="en">Journey</span></a>
+<a href="#projects"><span class="zh">项目</span><span class="en">Projects</span></a>
+<a href="#about"><span class="zh">工作之外</span><span class="en">Beyond work</span></a>
+<a href="#contact"><span class="zh">联系</span><span class="en">Contact</span></a>
+<button aria-label="切换语言 / Switch language" class="lang" id="langBtn" type="button"><span class="zh">EN</span><span class="en">中文</span></button>
+</div>
+</div>
+</nav>
+<!-- ============ HERO ============ -->
+<header class="hero" id="top">
+<svg aria-hidden="true" class="hero-scene" preserveaspectratio="xMidYMax slice" viewbox="0 0 1600 760"><defs>
+<filter height="140%" id="wc" width="140%" x="-20%" y="-20%"><feturbulence basefrequency="0.018" numoctaves="3" result="n" seed="4" type="fractalNoise"></feturbulence><fedisplacementmap in="SourceGraphic" in2="n" result="d" scale="16" xchannelselector="R" ychannelselector="G"></fedisplacementmap><fegaussianblur in="d" stddeviation="1.3"></fegaussianblur></filter>
+<filter id="paper"><feturbulence basefrequency="0.9" numoctaves="2" seed="2" type="fractalNoise"></feturbulence><fecolormatrix values="0 0 0 0 .45  0 0 0 0 .40  0 0 0 0 .30  0 0 0 .07 0"></fecolormatrix></filter>
+<lineargradient id="sky" x1="0" x2="0" y1="0" y2="1"><stop offset="0" stop-color="#fbf4df"></stop><stop offset=".6" stop-color="#f4f0dc"></stop><stop offset="1" stop-color="#e4ecd3"></stop></lineargradient>
+<radialgradient id="sun"><stop offset="0" stop-color="#ffe6a3" stop-opacity=".9"></stop><stop offset="1" stop-color="#ffe6a3" stop-opacity="0"></stop></radialgradient>
+<g id="tr"><rect fill="#7a5a3c" height="46" opacity=".75" width="8" x="-4" y="0"></rect><circle cx="0" cy="-8" fill="currentColor" opacity=".55" r="30"></circle><circle cx="-16" cy="4" fill="currentColor" opacity=".5" r="22"></circle><circle cx="16" cy="2" fill="currentColor" opacity=".5" r="24"></circle><circle cx="4" cy="-26" fill="currentColor" opacity=".45" r="18"></circle></g>
+<g id="pn"><rect fill="#6b4f35" height="34" opacity=".7" width="6" x="-3" y="10"></rect><path d="M0 -60 L26 0 L-26 0Z" fill="currentColor" opacity=".55"></path><path d="M0 -40 L32 18 L-32 18Z" fill="currentColor" opacity=".5"></path></g>
+</defs>
+<rect fill="url(#sky)" height="760" width="1600"></rect><circle cx="1240" cy="170" fill="url(#sun)" r="250"></circle>
+<g filter="url(#wc)"><path d="M0 500 C 220 440, 420 470, 620 445 S 1000 410, 1220 450 S 1500 430, 1600 440 L1600 760 L0 760Z" fill="#c9dbb4" opacity=".7"></path><path d="M0 560 C 260 510, 470 545, 700 520 S 1100 500, 1330 535 S 1540 525, 1600 530 L1600 760 L0 760Z" fill="#a9c792" opacity=".6"></path></g>
+<g filter="url(#wc)"><use href="#tr" style="color:#a7c58f" transform="translate(-6,553) scale(0.81)"></use><use href="#tr" style="color:#9dbf86" transform="translate(38,555) scale(0.95)"></use><use href="#pn" style="color:#a7c58f" transform="translate(104,559) scale(0.79)"></use><use href="#tr" style="color:#a7c58f" transform="translate(146,567) scale(0.84)"></use><use href="#pn" style="color:#9dbf86" transform="translate(216,561) scale(0.78)"></use><use href="#pn" style="color:#a7c58f" transform="translate(259,557) scale(0.81)"></use><use href="#tr" style="color:#a7c58f" transform="translate(308,558) scale(0.95)"></use><use href="#tr" style="color:#a7c58f" transform="translate(380,560) scale(0.94)"></use><use href="#tr" style="color:#8fb57b" transform="translate(424,559) scale(0.86)"></use><use href="#tr" style="color:#8fb57b" transform="translate(470,553) scale(0.82)"></use><use href="#tr" style="color:#9dbf86" transform="translate(534,557) scale(1.04)"></use><use href="#tr" style="color:#8fb57b" transform="translate(572,554) scale(0.90)"></use><use href="#pn" style="color:#8fb57b" transform="translate(637,561) scale(1.07)"></use><use href="#tr" style="color:#9dbf86" transform="translate(687,565) scale(0.88)"></use><use href="#tr" style="color:#9dbf86" transform="translate(758,563) scale(1.06)"></use><use href="#tr" style="color:#8fb57b" transform="translate(808,563) scale(0.86)"></use><use href="#tr" style="color:#8fb57b" transform="translate(845,552) scale(0.89)"></use><use href="#tr" style="color:#8fb57b" transform="translate(901,555) scale(0.96)"></use><use href="#pn" style="color:#9dbf86" transform="translate(946,566) scale(0.84)"></use><use href="#pn" style="color:#8fb57b" transform="translate(1001,554) scale(0.89)"></use><use href="#tr" style="color:#8fb57b" transform="translate(1079,558) scale(0.85)"></use><use href="#pn" style="color:#9dbf86" transform="translate(1136,556) scale(0.81)"></use><use href="#pn" style="color:#9dbf86" transform="translate(1155,557) scale(1.03)"></use><use href="#tr" style="color:#a7c58f" transform="translate(1223,567) scale(0.88)"></use><use href="#tr" style="color:#8fb57b" transform="translate(1292,564) scale(1.06)"></use><use href="#tr" style="color:#8fb57b" transform="translate(1347,565) scale(1.01)"></use><use href="#tr" style="color:#9dbf86" transform="translate(1382,558) scale(0.89)"></use><use href="#pn" style="color:#9dbf86" transform="translate(1424,557) scale(0.83)"></use><use href="#tr" style="color:#a7c58f" transform="translate(1479,567) scale(0.94)"></use><use href="#tr" style="color:#8fb57b" transform="translate(1529,554) scale(1.04)"></use></g>
+<g filter="url(#wc)"><use href="#tr" style="color:#5f8c55" transform="translate(16,626) scale(1.38)"></use><use href="#tr" style="color:#6f9a5e" transform="translate(97,625) scale(1.32)"></use><use href="#tr" style="color:#7aa368" transform="translate(168,635) scale(1.44)"></use><use href="#tr" style="color:#7aa368" transform="translate(222,626) scale(1.54)"></use><use href="#pn" style="color:#6f9a5e" transform="translate(334,634) scale(1.45)"></use><use href="#tr" style="color:#6f9a5e" transform="translate(407,627) scale(1.22)"></use><use href="#pn" style="color:#6f9a5e" transform="translate(481,628) scale(1.46)"></use><use href="#tr" style="color:#7aa368" transform="translate(571,628) scale(1.48)"></use><use href="#tr" style="color:#5f8c55" transform="translate(639,637) scale(1.44)"></use><use href="#tr" style="color:#7aa368" transform="translate(711,631) scale(1.42)"></use><use href="#tr" style="color:#6f9a5e" transform="translate(817,628) scale(1.54)"></use><use href="#tr" style="color:#7aa368" transform="translate(878,640) scale(1.26)"></use><use href="#tr" style="color:#6f9a5e" transform="translate(972,637) scale(1.32)"></use><use href="#tr" style="color:#6f9a5e" transform="translate(1052,635) scale(1.16)"></use><use href="#tr" style="color:#7aa368" transform="translate(1119,629) scale(1.19)"></use><use href="#tr" style="color:#6f9a5e" transform="translate(1196,636) scale(1.29)"></use><use href="#tr" style="color:#7aa368" transform="translate(1297,631) scale(1.12)"></use><use href="#tr" style="color:#5f8c55" transform="translate(1347,635) scale(1.48)"></use><use href="#pn" style="color:#7aa368" transform="translate(1427,637) scale(1.35)"></use><use href="#tr" style="color:#6f9a5e" transform="translate(1525,631) scale(1.34)"></use></g>
+<g filter="url(#wc)"><path d="M0 700 C 330 660, 660 690, 990 668 S 1430 690, 1600 676 L1600 760 L0 760Z" fill="#5d8752" opacity=".72"></path></g>
+<g filter="url(#wc)"><use href="#pn" style="color:#466f43" transform="translate(11,732) scale(1.85)"></use><use href="#tr" style="color:#466f43" transform="translate(154,740) scale(1.93)"></use><use href="#tr" style="color:#527a49" transform="translate(305,736) scale(1.95)"></use><use href="#tr" style="color:#527a49" transform="translate(433,736) scale(2.34)"></use><use href="#tr" style="color:#466f43" transform="translate(582,737) scale(2.31)"></use><use href="#tr" style="color:#3f6a3d" transform="translate(715,736) scale(2.03)"></use><use href="#tr" style="color:#527a49" transform="translate(879,739) scale(2.07)"></use><use href="#pn" style="color:#3f6a3d" transform="translate(1002,729) scale(1.83)"></use><use href="#tr" style="color:#527a49" transform="translate(1165,734) scale(2.23)"></use><use href="#pn" style="color:#527a49" transform="translate(1326,731) scale(2.12)"></use><use href="#tr" style="color:#3f6a3d" transform="translate(1455,738) scale(2.03)"></use></g>
+<g><polygon fill="#fff6d6" opacity=".14" points="1240,150 900,760 975,760"></polygon><polygon fill="#fff6d6" opacity=".14" points="1276,150 995,760 1070,760"></polygon><polygon fill="#fff6d6" opacity=".14" points="1312,150 1090,760 1165,760"></polygon><polygon fill="#fff6d6" opacity=".14" points="1348,150 1185,760 1260,760"></polygon></g>
+<rect filter="url(#paper)" height="760" width="1600"></rect></svg>
+<div class="wrap">
+<div>
+<div class="eyebrow"><span class="zh">2027 届 · 求职方向：运营 / 产品</span><span class="en">CLASS OF 2027 · SEEKING ROLES IN OPERATIONS / PRODUCT</span></div>
+<h1><span class="zh">找出问题，解决问题，<br/><em>用数字证明。</em></span><span class="en">Find the problem. Fix it.<br/><em>Prove it with numbers.</em></span></h1>
+<p class="sub"><span class="zh">对数字敏感，善用 AI，独立搭建并开源了两个业务系统。</span><span class="en">Numbers-minded and fluent with AI. I built and open-sourced two business systems end to end.</span></p>
+<div class="cta">
+<a class="btn solid" href="#projects"><span class="zh">看作品</span><span class="en">See my work</span> →</a>
+<a class="btn ghost" href="https://github.com/xiaoyixuan0308-cyber" rel="noopener" target="_blank">GitHub ↗</a>
+<a class="btn ghost" href="#contact"><span class="zh">邮箱</span><span class="en">Email</span></a>
+</div>
+</div>
+<div class="hero-digua"><img alt="地瓜在挥手打招呼" height="201" src="img/digua-wave.webp" width="206"/></div>
+</div>
+</header>
+<!-- ============ SKILLS ============ -->
+<section class="skills sec" id="intro">
+<div class="wrap">
+<div class="sec-head">
+<div>
+<div class="kicker"><span class="zh">自我介绍</span><span class="en">INTRODUCTION</span></div>
+<h2><span class="zh">把模糊的问题，变成可衡量、能落地的结果</span><span class="en">Turning fuzzy problems into measurable, shipped results</span></h2>
+</div>
+<img alt="" class="guide" height="177" src="img/digua-head-happy.webp" width="202"/>
+</div>
+<div class="me">
+<div class="me-text">
+<p class="me-lead"><span class="zh">我是肖艺宣，2027 届，求职运营 / 产品方向。我在意的不只是把事情做完，而是<b>把事情做成</b>：为什么要做，做到什么程度算成功，以及怎样让它<b>不依赖某个人也能持续运转</b>。</span><span class="en">I'm Xiao Yixuan, class of 2027, looking for operations and product roles. I care less about finishing tasks and more about <b>getting the outcome</b>: why something is worth doing, what success looks like, and how to make it <b>keep running without depending on any one person</b>.</span></p>
+<p><span class="zh">我习惯先定义目标和衡量标准，再拆开流程找到真正的原因；问题解决后，把方法沉淀成规则或工具，让同类问题不再出现。</span><span class="en">I start by defining the goal and how to measure it, then take the process apart to find the real cause. Once a problem is solved, I turn the fix into rules or tools so the same kind of problem doesn't recur.</span></p>
+<p><span class="zh">我也在钻研<b>如何让 AI 产品真正落地到实际业务中</b>。AI 能做的事很多，难的是找到值得解决的场景、说清楚效果怎么衡量，并让它稳定地融入原有流程，而不是停留在演示。日常工作中，我用 AI 快速验证想法、搭原型和处理数据；FlowPilot、PawPath 和 AI 旅行规划，都是我在这个方向上的实践。</span><span class="en">I'm also digging into <b>how AI products actually land in real business</b>. AI can do a lot; the hard part is finding the scenarios worth solving, defining how success is measured, and fitting it reliably into existing workflows instead of leaving it as a demo. Day to day I use AI to test ideas, prototype and handle data, and FlowPilot, PawPath and the AI Travel Planner are my hands-on work in this direction.</span></p>
+</div>
+<dl class="facts">
+<div><dt><span class="zh">学历</span><span class="en">Education</span></dt><dd><span class="zh">昆士兰大学 信息系统硕士<br/>奥塔哥大学 会计学士</span><span class="en">MS Information Systems, University of Queensland<br/>BCom Accounting, University of Otago</span></dd></div>
+<div><dt><span class="zh">毕业</span><span class="en">Graduating</span></dt><dd><span class="zh">2026 年 12 月（2027 届）</span><span class="en">December 2026 (class of 2027)</span></dd></div>
+<div><dt><span class="zh">语言</span><span class="en">Languages</span></dt><dd><span class="zh">中文 · 英语工作语言（TOEFL 106）</span><span class="en">Chinese · English as a working language (TOEFL 106)</span></dd></div>
+<div><dt><span class="zh">工具</span><span class="en">Tools</span></dt><dd>SQL · Power BI · Python · R · Excel · <span class="zh">AI 编程</span><span class="en">AI-assisted coding</span></dd></div>
+<div><dt><span class="zh">意向城市</span><span class="en">Location</span></dt><dd><span class="zh">全国均可</span><span class="en">Open to any city in China</span></dd></div>
+</dl>
+</div>
+<div class="keynums num">
+<div><b>2</b><span class="zh">段实习<br/>安永审计 · 微创中台运营</span><span class="en">internships<br/>EY audit · Wicresoft ops</span></div>
+<div><b>2</b><span class="zh">个开源业务系统<br/>FlowPilot · PawPath</span><span class="en">open-source systems<br/>FlowPilot · PawPath</span></div>
+<div><b><span class="zh">前 3%</span><span class="en">Top 3%</span></b><span class="zh">国际商业竞赛<br/>170+ 支队伍第 5</span><span class="en">global business contest<br/>5th of 170+ teams</span></div>
+<div><b><span class="zh">约 98 万</span><span class="en">US$980K</span></b><span class="zh">美元舞弊资金<br/>用 SQL 查出（课程审计）</span><span class="en">of fraud traced<br/>with SQL (course audit)</span></div>
+<div><b><span class="zh">2.5 万</span><span class="en">25K</span></b><span class="zh">条销售数据<br/>整合成经营看板</span><span class="en">sales records<br/>unified into a dashboard</span></div>
+</div>
+<h3 class="sub-h"><span class="zh">我的做事方式</span><span class="en">How I work</span><small><span class="zh">每一条都附可查证的证据</span><span class="en">each backed by evidence</span></small></h3>
+<div class="skill-grid">
+<article class="skill">
+<h3><span class="em">🌿</span><span><span class="zh">流程梳理</span><span class="en">Process design</span></span></h3>
+<p class="trait"><span class="zh">从解决一次，到解决一类</span><span class="en">Fix the class, not the case</span></p><p class="claim"><span class="zh">把复杂业务拆成规则、清单和验收标准，让流程不依赖个人经验。</span><span class="en">Break complex work into rules, checklists and acceptance criteria so it doesn't depend on one person's experience.</span></p>
+<ul class="ev">
+<li><strong><span class="zh">POC 通过验证，进入正式开发</span><span class="en">POC validated and moved into full development</span></strong><span class="zh">梳理经销商的采购月拆分、周拆分和补货分配流程，转成需求文档、测试方案和演示材料。</span><span class="en">Mapped distributors' monthly and weekly purchase-plan splits and replenishment allocation into requirement docs, test plans and demo materials.</span><span class="src"><span class="zh">微创 · 中台运营</span><span class="en">Wicresoft</span></span></li>
+<li><strong><span class="zh">20+ 项验收标准落地为系统规则，22 项越权检查全部通过</span><span class="en">20+ acceptance criteria became system rules; all 22 access checks passed</span></strong><span class="zh">拆解出 5 类角色的权限矩阵和 5 种状态的流转规则。</span><span class="en">Designed a permission matrix for 5 roles and transition rules for 5 statuses.</span><span class="src">PawPath</span></li>
+</ul>
+</article>
+<article class="skill">
+<h3><span class="em">🍂</span><span><span class="zh">数据核对</span><span class="en">Data reconciliation</span></span></h3>
+<p class="trait"><span class="zh">先对数，再下结论</span><span class="en">Reconcile first, then conclude</span></p><p class="claim"><span class="zh">用数据判断方向对不对，找到数字背后的真正原因。</span><span class="en">Let data say whether the direction is right, and find the real cause behind the numbers.</span></p>
+<ul class="ev">
+<li><strong><span class="zh">预测偏差从 8% 降到 5%</span><span class="en">Forecast gap cut from 8% to 5%</span></strong><span class="zh">发现滚动预测把未来预测值和历史实际值等权处理，推动调整预测基准。</span><span class="en">Found the rolling forecast weighted future forecasts and historical actuals equally, and drove a change to the baseline.</span><span class="src"><span class="zh">微创 · 中台运营</span><span class="en">Wicresoft</span></span></li>
+<li><strong><span class="zh">核对时长缩短 4%</span><span class="en">Reconciliation time down 4%</span></strong><span class="zh">分析 1,200+ 条交易与科目资料的差异，把排查经验沉淀为知识库，在其他客户资料中复用。</span><span class="en">Analysed 1,200+ transaction–ledger mismatches and turned the findings into a reusable troubleshooting guide.</span><span class="src"><span class="zh">安永 · 审计</span><span class="en">EY</span></span></li>
+<li><strong><span class="zh">误判的异常 SKU 从 18 个降到 8 个</span><span class="en">Falsely flagged SKUs down from 18 to 8</span></strong><span class="zh">通过数据核对，定位并修复两处隐藏的口径问题。</span><span class="en">Traced and fixed two hidden data-definition mismatches.</span><span class="src">FlowPilot</span></li>
+<li><strong><span class="zh">追查出约 98 万美元的舞弊资金</span><span class="en">Uncovered about US$980K of fraud</span></strong><span class="zh">编写 16 段 SQL，交叉比对付款、工资和供应商数据。</span><span class="en">Wrote 16 SQL queries cross-checking payments, payroll and vendor data.</span><span class="src"><span class="zh">GoNCharge · 课程项目，数据为模拟</span><span class="en">GoNCharge · course project, simulated data</span></span></li>
+</ul>
+</article>
+<article class="skill">
+<h3><span class="em">🌱</span><span><span class="zh">系统落地</span><span class="en">System delivery</span></span></h3>
+<p class="trait"><span class="zh">用 AI 提效，把想法做出来</span><span class="en">Use AI to ship ideas</span></p><p class="claim"><span class="zh">借助 AI 快速验证、搭原型，把时间留给判断和决策。</span><span class="en">Use AI to validate and prototype fast, saving time for judgement and decisions.</span></p>
+<ul class="ev">
+<li><strong><span class="zh">2 个业务系统独立上线并开源</span><span class="en">2 business systems built and open-sourced</span></strong><span class="zh">借助 AI 编程工具完成 FlowPilot Lab 与 PawPath，附流程图、规则文档和中英双语说明。</span><span class="en">FlowPilot Lab and PawPath, built with AI coding tools, with flow diagrams, rule docs and bilingual READMEs.</span></li>
+<li><strong><span class="zh">改动 212 个文件，2,267 行计算结果零差异</span><span class="en">212 files refactored, 2,267 calculated rows unchanged</span></strong><span class="zh">大规模重构后逐字段回归比对。</span><span class="en">Field-by-field regression check after a large refactor.</span><span class="src">FlowPilot</span></li>
+<li><strong><span class="zh">完成客户 demo 演示</span><span class="en">Client demo delivered</span></strong><span class="zh">用 vibe coding 调优供应链平台 demo 的前端交互，并作为汇报人向客户演示。</span><span class="en">Refined the supply-chain demo's front end with vibe coding and presented it to the client.</span><span class="src"><span class="zh">微创 · 中台运营</span><span class="en">Wicresoft</span></span></li>
+</ul>
+</article>
+<article class="skill">
+<h3><span class="em">🍄</span><span><span class="zh">跨团队推进</span><span class="en">Cross-team execution</span></span></h3>
+<p class="trait"><span class="zh">站在全局推进</span><span class="en">See the whole chain, drive it forward</span></p><p class="claim"><span class="zh">理解各方诉求，把不同角色串起来，按时交付。</span><span class="en">Understand every stakeholder, connect the roles and deliver on time.</span></p>
+<ul class="ev">
+<li><strong><span class="zh">170+ 支队伍中排名第 5（前 3%），获官方推荐信和创业基金</span><span class="en">5th of 170+ teams (top 3%), with a recommendation letter and start-up funding</span></strong><span class="zh">协调 7 国成员，3 周完成商业方案交付。</span><span class="en">Led members from 7 countries to deliver a business plan in 3 weeks.</span><span class="src"><span class="zh">GEE · 团队总负责人</span><span class="en">GEE · Team lead</span></span></li>
+<li><strong><span class="zh">让 7 个人并行开发</span><span class="en">7 people building in parallel</span></strong><span class="zh">采用"先定接口、用模拟数据解耦"的协作方式，跑通 AI 旅行规划 Demo。</span><span class="en">Interface-first collaboration with mock data to decouple modules; shipped the AI Travel Planner demo.</span><span class="src"><span class="zh">AI 旅行规划 · 产品经理</span><span class="en">AI Travel Planner · PM</span></span></li>
+</ul>
+</article>
+</div>
+</div>
+</section>
+<!-- ============ JOURNEY ============ -->
+<section class="journey sec" id="journey">
+<div class="wrap">
+<div class="sec-head">
+<div>
+<div class="kicker"><span class="zh">经历</span><span class="en">JOURNEY</span></div>
+<h2><span class="zh">沿着林间小径，看看我一路做过的事</span><span class="en">Walk the trail through what I've done</span></h2>
+<p><span class="zh">点开路牌查看细节</span><span class="en">Open a signpost for details</span></p>
+</div>
+</div>
+<div class="trail-box">
+<svg aria-hidden="true" class="trail-path" preserveaspectratio="none" viewbox="0 0 160 1000"><defs><filter height="110%" id="wcT" width="160%" x="-30%" y="-5%"><feturbulence basefrequency="0.04" numoctaves="2" result="n" seed="5" type="fractalNoise"></feturbulence><fedisplacementmap in="SourceGraphic" in2="n" scale="10"></fedisplacementmap><fegaussianblur stddeviation="0.8"></fegaussianblur></filter></defs>
+<g filter="url(#wcT)"><path d="M80 0 C 20 80, 140 160, 80 250 S 20 420, 80 500 S 140 670, 80 750 S 20 920, 80 1000" fill="none" opacity=".8" stroke="#e5cf9f" stroke-linecap="round" stroke-width="46" vector-effect="non-scaling-stroke"></path>
+<path d="M80 0 C 20 80, 140 160, 80 250 S 20 420, 80 500 S 140 670, 80 750 S 20 920, 80 1000" fill="none" opacity=".7" stroke="#c9a46a" stroke-dasharray="2 14" stroke-linecap="round" stroke-width="3" vector-effect="non-scaling-stroke"></path></g></svg>
+<ol class="trail">
+<li class="stop">
+<span class="post" style="background:var(--bark)"><span class="zh">2023.02 · 新西兰 但尼丁</span><span class="en">2023.02 · Dunedin, NZ</span></span>
+<details class="sign"><summary><h3><span class="zh">奥塔哥大学 · 会计学学士</span><span class="en">University of Otago · BCom Accounting</span></h3><div class="hl"><span class="zh">打下财务、审计和商业分析的基础。</span><span class="en">Built my foundation in finance, audit and business analysis.</span></div><span class="more"><span class="o"><span class="zh">展开 ↓</span><span class="en">More ↓</span></span><span class="c"><span class="zh">收起 ↑</span><span class="en">Less ↑</span></span></span></summary>
+<div class="body"><ul><li><span class="zh">主修：财务会计、管理会计、审计、公司金融、绩效管理</span><span class="en">Core courses: financial and management accounting, auditing, corporate finance, performance management</span></li></ul></div></details>
+<img alt="" class="pal" height="380" src="img/digua-side.webp" width="442"/>
+</li>
+<li class="stop">
+<span class="post" style="background:var(--amber)"><span class="zh">2024 · 线上 · 7 个国家</span><span class="en">2024 · Online · 7 countries</span></span>
+<details class="sign"><summary><h3><span class="zh">GEE 国际商业竞赛</span><span class="en">GEE International Business Competition</span></h3><div class="role"><span class="zh">团队总负责人</span><span class="en">Team lead</span></div><div class="hl"><span class="zh">带领 7 国团队 3 周交付，170+ 支队伍中排名第 5（前 3%），获推荐信和创业基金。</span><span class="en">Led a 7-country team to deliver in 3 weeks; 5th of 170+ (top 3%), recommendation letter and start-up funding.</span></div><span class="more"><span class="o"><span class="zh">展开 ↓</span><span class="en">More ↓</span></span><span class="c"><span class="zh">收起 ↑</span><span class="en">Less ↑</span></span></span></summary>
+<div class="body"><ul>
+<li><span class="zh"><b>团队推进</b>：重新分工、明确每人的交付节点，通过 Teams、WhatsApp 和邮件持续跟进，按期完成交付。</span><span class="en"><b>Team delivery</b>: reorganised tasks, set clear deliverables per person and tracked progress across Teams, WhatsApp and email.</span></li>
+<li><span class="zh"><b>商业方案</b>：针对赞比亚的农作物保护需求，提出"植物保护无人机"方案，完成市场需求、定价、收入预测和盈利分析。</span><span class="en"><b>Business plan</b>: proposed crop-protection drones for Zambian farmers, with market sizing, pricing, revenue forecast and profitability analysis.</span></li>
+<li><span class="zh"><b>数据模型</b>：设计包含 11 个实体的数据模型，讲清成本、市场和产品的数据关系，并担任最终汇报人。</span><span class="en"><b>Data model</b>: designed an 11-entity model linking cost, market and product data, and presented the final pitch.</span></li>
+</ul></div></details>
+</li>
+<li class="stop">
+<span class="post" style="background:var(--moss)"><span class="zh">2024.06–2024.09 · 上海</span><span class="en">2024.06–2024.09 · Shanghai</span></span>
+<details class="sign"><summary><h3><span class="zh">安永华明会计师事务所</span><span class="en">EY (Ernst &amp; Young Hua Ming)</span></h3><div class="role"><span class="zh">审计实习生</span><span class="en">Audit intern</span></div><div class="hl"><span class="zh">核对 1,200+ 条财务数据，沉淀排查知识库，核对时长缩短 4%。</span><span class="en">Reconciled 1,200+ financial records, built a troubleshooting guide, cut reconciliation time by 4%.</span></div><span class="more"><span class="o"><span class="zh">展开 ↓</span><span class="en">More ↓</span></span><span class="c"><span class="zh">收起 ↑</span><span class="en">Less ↑</span></span></span></summary>
+<div class="body"><ul>
+<li><span class="zh"><b>差异分析</b>：逐条比对交易记录和会计科目资料，找出对不上的原因，反馈给项目负责人。</span><span class="en"><b>Variance analysis</b>: compared transactions against ledger data line by line, found the causes of mismatches and reported them to the engagement lead.</span></li>
+<li><span class="zh"><b>经验沉淀</b>：归纳常见的数据异常原因，整理成排查知识库，供其他客户项目复用。</span><span class="en"><b>Knowledge capture</b>: grouped recurring causes into a troubleshooting guide reused on other clients.</span></li>
+<li><span class="zh"><b>流程规范</b>：统一字段、整理凭证，保证原始数据、账务记录和底稿之间可追溯。</span><span class="en"><b>Documentation</b>: standardised fields and evidence so source data, ledgers and working papers stay traceable.</span></li>
+</ul></div></details>
+</li>
+<li class="stop">
+<span class="post" style="background:#5f8c8a"><span class="zh">2025.06–2026.12 · 布里斯班</span><span class="en">2025.06–2026.12 · Brisbane</span></span>
+<details class="sign"><summary><h3><span class="zh">昆士兰大学 · 信息系统硕士</span><span class="en">University of Queensland · MS Information Systems</span></h3><div class="hl"><span class="zh">在财务背景之上，补齐数据和系统能力。</span><span class="en">Added data and systems skills on top of finance.</span></div><span class="more"><span class="o"><span class="zh">展开 ↓</span><span class="en">More ↓</span></span><span class="c"><span class="zh">收起 ↑</span><span class="en">Less ↑</span></span></span></summary>
+<div class="body"><ul><li><span class="zh">主修：数据库设计、商业分析、数据可视化、IT 治理、信息系统安全</span><span class="en">Core courses: database design, business analytics, data visualisation, IT governance, information security</span></li><li><span class="zh">工具：SQL、Python、Power BI、R</span><span class="en">Tools: SQL, Python, Power BI, R</span></li></ul></div></details>
+<img alt="" class="pal" height="207" src="img/digua-sit-tail.webp" width="181"/>
+</li>
+<li class="stop">
+<span class="post" style="background:#8a6aa8"><span class="zh">2026.04 起 · 课程项目</span><span class="en">From 2026.04 · Coursework</span></span>
+<details class="sign"><summary><h3><span class="zh">用数据解决真实的业务问题</span><span class="en">Solving real business problems with data</span></h3><div class="hl"><span class="zh">电商数据仓库 · GoNCharge 舞弊审计 · AI 旅行规划</span><span class="en">E-commerce data warehouse · GoNCharge fraud audit · AI Travel Planner</span></div><span class="more"><span class="o"><span class="zh">展开 ↓</span><span class="en">More ↓</span></span><span class="c"><span class="zh">收起 ↑</span><span class="en">Less ↑</span></span></span></summary>
+<div class="body"><ul>
+<li><span class="zh">🛒 <b>电商数据仓库</b>：整合 2.5 万条销售、2.1 万名客户、2,199 款商品和 100 家供应商的数据，搭建经营看板（HD 29/30）。</span><span class="en">🛒 <b>E-commerce data warehouse</b>: unified 25K sales, 21K customers, 2,199 products and 100 suppliers into one dashboard (HD, 29/30).</span></li>
+<li><span class="zh">🔍 <b>GoNCharge</b>：用 SQL 追查出约 98 万美元的舞弊链（课程模拟数据）。</span><span class="en">🔍 <b>GoNCharge</b>: traced a ~US$980K fraud scheme with SQL (simulated course data).</span></li>
+<li><span class="zh">🗺️ <b>AI 旅行规划</b>：7 人团队产品经理，跑通完整 Demo。</span><span class="en">🗺️ <b>AI Travel Planner</b>: PM of a 7-person team that shipped a working demo.</span></li>
+</ul><div class="links-row"><a data-open="ecom" href="#projects"><span class="zh">查看案例 →</span><span class="en">See the cases →</span></a></div></div></details>
+</li>
+<li class="stop">
+<span class="post" style="background:var(--moss)"><span class="zh">2026.06–2026.08 · 上海</span><span class="en">2026.06–2026.08 · Shanghai</span></span>
+<details class="sign"><summary><h3><span class="zh">微创网络（Wicresoft）</span><span class="en">Wicresoft</span></h3><div class="role"><span class="zh">中台运营实习生 · 供应链平台 POC</span><span class="en">Middle-office operations intern · supply-chain platform POC</span></div><div class="hl"><span class="zh">推动供应链平台 POC 通过客户验证，进入正式开发。</span><span class="en">Helped a supply-chain platform POC pass client validation and move into development.</span></div><span class="more"><span class="o"><span class="zh">展开 ↓</span><span class="en">More ↓</span></span><span class="c"><span class="zh">收起 ↑</span><span class="en">Less ↑</span></span></span></summary>
+<div class="body"><ul>
+<li><span class="zh"><b>梳理流程</b>：为一家跨国医疗器械企业，把经销商采购计划拆分（月度→周度）、库存与补货分配流程整理成需求文档、测试方案和演示材料。</span><span class="en"><b>Process mapping</b>: for a multinational medical-device client, turned distributor purchase-plan splitting (monthly → weekly), inventory and replenishment allocation into requirement docs, test plans and demos.</span></li>
+<li><span class="zh"><b>设计测试</b>：整理 14 张业务表，构造约 3,000 条测试数据，模拟供应延迟、需求波动、库存积压等 5 类场景，验证系统算得准不准。</span><span class="en"><b>Test design</b>: organised 14 business tables and ~3,000 test records covering 5 scenarios (supply delays, demand swings, overstock) to check calculation accuracy.</span></li>
+<li><span class="zh"><b>改进预测</b>：发现系统把"未来预测"和"历史实际"同等对待，建议改用最新滚动数据，预测与实际供货周期的偏差从 8% 降到 5%。</span><span class="en"><b>Forecast fix</b>: found forecasts and actuals were weighted equally; switching to the latest rolling data cut the gap from 8% to 5%.</span></li>
+<li><span class="zh"><b>客户演示</b>：用 AI 辅助编程优化 demo 的页面交互，并作为汇报人向客户演示。</span><span class="en"><b>Client demo</b>: refined the demo's front end with AI-assisted coding and presented it to the client.</span></li>
+</ul></div></details>
+</li>
+<li class="stop">
+<span class="post" style="background:var(--amber)"><span class="zh">2026.06 起 · 个人开源</span><span class="en">From 2026.06 · Open source</span></span>
+<details class="sign"><summary><h3><span class="zh">借助 AI，独立做出两个完整的业务系统</span><span class="en">Two complete business systems, built with AI</span></h3><div class="hl">FlowPilot Lab · PawPath</div><span class="more"><span class="o"><span class="zh">展开 ↓</span><span class="en">More ↓</span></span><span class="c"><span class="zh">收起 ↑</span><span class="en">Less ↑</span></span></span></summary>
+<div class="body"><ul>
+<li><span class="zh">📦 <b>FlowPilot Lab</b>：串起月度补货到周度发货的完整计算链路，每个数字可追溯；重构 212 个文件后结果零差异。</span><span class="en">📦 <b>FlowPilot Lab</b>: the full chain from monthly replenishment to weekly shipments, every number traceable; 212 files refactored with zero result change.</span></li>
+<li><span class="zh">🐾 <b>PawPath</b>：5 类角色、5 种状态规则，6 位申请人同屏比较，22 项越权检查全部通过。</span><span class="en">🐾 <b>PawPath</b>: 5 roles, 5 status rules, side-by-side ranking of 6 applicants, all 22 access checks passed.</span></li>
+</ul><div class="links-row"><a data-open="flowpilot" href="#projects"><span class="zh">查看案例 →</span><span class="en">See the cases →</span></a><a href="https://github.com/xiaoyixuan0308-cyber" rel="noopener" target="_blank">GitHub ↗</a></div></div></details>
+</li>
+<li class="stop next">
+<span class="post" style="background:var(--moss)"><span class="zh">下一站</span><span class="en">Next stop</span></span>
+<details class="sign" open=""><summary><h3><span class="zh">2027 届 · 运营 / 产品方向</span><span class="en">Class of 2027 · Operations / Product</span></h3><div class="hl"><span class="zh">也许就是你的团队？📮</span><span class="en">Could it be your team? 📮</span></div></summary>
+<div class="body"><div class="links-row"><a href="#contact"><span class="zh">联系我 →</span><span class="en">Get in touch →</span></a></div></div></details>
+<img alt="" class="pal" height="380" src="img/digua-front.webp" width="396"/>
+</li>
+</ol>
+</div>
+</div>
+</section>
+<!-- ============ PROJECTS ============ -->
+<section class="projects sec" id="projects">
+<div class="wrap">
+<div class="sec-head">
+<div>
+<div class="kicker"><span class="zh">项目</span><span class="en">PROJECTS</span></div>
+<h2><span class="zh">五个项目，五片林间空地</span><span class="en">Five projects, five clearings</span></h2>
+<p><span class="zh">每个都写清：要解决什么问题、我做了什么、结果如何</span><span class="en">Each one: the problem, what I did, and what came of it</span></p>
+</div>
+</div>
+<div aria-label="项目" class="tabs" role="tablist">
+<button aria-controls="p-flowpilot" aria-selected="true" class="tab" id="t-flowpilot" role="tab">📦 FlowPilot Lab</button>
+<button aria-controls="p-pawpath" aria-selected="false" class="tab" id="t-pawpath" role="tab">🐾 PawPath</button>
+<button aria-controls="p-goncharge" aria-selected="false" class="tab" id="t-goncharge" role="tab">🔍 GoNCharge</button>
+<button aria-controls="p-ecom" aria-selected="false" class="tab" id="t-ecom" role="tab">🛒 <span class="zh">电商数据仓库</span><span class="en">E-commerce DW</span></button>
+<button aria-controls="p-travel" aria-selected="false" class="tab" id="t-travel" role="tab">🗺️ <span class="zh">AI 旅行规划</span><span class="en">AI Travel Planner</span></button>
+</div>
+<!-- FlowPilot -->
+<article aria-labelledby="t-flowpilot" class="panel" id="p-flowpilot" role="tabpanel">
+<div class="ptext"><div class="col-a"><div class="p-meta"><span class="chip"><span class="zh">个人开源项目</span><span class="en">Open source</span></span><span class="chip num">2026.06–2026.09</span><span class="chip"><span class="zh">产品负责人 / 全栈</span><span class="en">Product owner / full stack</span></span></div><h3><span class="zh">FlowPilot Lab · 供应链计划与决策平台</span><span class="en">FlowPilot Lab · Supply-chain planning platform</span></h3><p class="oneline"><span class="zh">把"月度补货 → 周度发货"这套原本靠表格计算的流程，做成每个数字都能追溯来源的平台。</span><span class="en">I turned a spreadsheet-driven "monthly replenishment → weekly shipment" process into a platform where every number can be traced to its source.</span></p><div class="kn num">
+<div><b>2</b><span class="zh">条计算链路（月度 6 阶段、周度 8 阶段）</span><span class="en">calculation chains (6 monthly, 8 weekly stages)</span></div>
+<div><b>6</b><span class="zh">条异常规则，自动发现风险</span><span class="en">risk rules flag issues automatically</span></div>
+<div><b>31</b><span class="zh">张数据表，覆盖需求、库存、在途、订单</span><span class="en">tables: demand, stock, in-transit, orders</span></div>
+<div><b>0</b><span class="zh">差异：重构 212 个文件后结果逐字段一致</span><span class="en">differences after a 212-file refactor</span></div>
+</div><div class="blk"><h4><span class="zh">项目背景</span><span class="en">CONTEXT</span></h4><p><span class="zh">基于供应链实习中接触的业务，把逻辑沉淀下来。供应链计划常见三个难题：数据分散在多张表格里，计划结果说不清是怎么算的，异常往往事后才发现。</span><span class="en">Built on what I saw in my supply-chain internship. Planning teams face three problems: data scattered across spreadsheets, results nobody can explain, and issues found only after they hurt.</span></p></div><div class="blk"><h4><span class="zh">项目成果</span><span class="en">OUTCOME</span></h4><ul>
+<li><span class="zh">打通需求预测到周度发货的完整闭环</span><span class="en">End-to-end loop from demand forecast to weekly shipments</span></li>
+<li><span class="zh">任意 SKU 可逐步追溯公式、输入和重算结果</span><span class="en">Any SKU can be traced step by step: formula, inputs, recomputed value</span></li>
+<li><span class="zh">开源并附中英双语说明、计算链路图和规则文档</span><span class="en">Open-sourced with bilingual docs, a chain diagram and the calculation rules</span></li>
+</ul></div><div class="p-links"><a class="btn solid" href="https://github.com/xiaoyixuan0308-cyber/flowpilot-lab" rel="noopener" target="_blank">GitHub ↗</a></div></div><div class="col-b"><div class="blk"><h4><span class="zh">我做了什么</span><span class="en">WHAT I DID</span></h4><ul>
+<li><span class="zh"><b>拆业务流程</b>：拆成字段定义、业务规则和页面需求，覆盖风险发现、月度计划、周度履约、查询追溯 4 个环节。</span><span class="en"><b>Process design</b>: broke the workflow into field definitions, business rules and page requirements across risk detection, monthly planning, weekly fulfilment and traceability.</span></li>
+<li><span class="zh"><b>造数据、验系统</b>：演示数据覆盖 5 个渠道、6 个产品分类、18 个 SKU；测试场景参考实习中的设计，模拟缺货、到货延迟、库存积压等情况。</span><span class="en"><b>Data and testing</b>: demo data spans 5 channels, 6 categories and 18 SKUs; scenarios modelled on my internship test design cover stock-outs, late arrivals and overstock.</span></li>
+<li><span class="zh"><b>查问题、修问题</b>：抽样复算修正预测口径、汇率换算和回溯逻辑；核对数据发现两处隐藏口径错误，误判的异常 SKU 从 18 个降到 8 个。</span><span class="en"><b>Finding and fixing</b>: sample recalculations corrected forecast, FX and trace logic; reconciliation exposed two hidden definition errors, cutting falsely flagged SKUs from 18 to 8.</span></li>
+<li><span class="zh"><b>脱敏与重构</b>：内部编码统一换成通用业务术语，改动 212 个文件，31 张表、2,267 行结果逐字段一致。</span><span class="en"><b>Refactor</b>: replaced internal codes with generic business terms across 212 files; all 31 tables and 2,267 rows matched field by field.</span></li>
+</ul></div></div></div>
+<div class="showcase" data-carousel=""><div aria-label="截图，可左右滑动" class="slides" tabindex="0"><figure class="slide"><button aria-label="放大查看 FlowPilot 供应链驾驶舱" class="shot" type="button"><img alt="FlowPilot 供应链驾驶舱" loading="eager" src="img/fp-home-cockpit.webp"/></button></figure><figure class="slide"><button aria-label="放大查看 FlowPilot 数据看板" class="shot" type="button"><img alt="FlowPilot 数据看板" loading="lazy" src="img/fp-bi-kpi-trends.webp"/></button></figure><figure class="slide"><button aria-label="放大查看 单 SKU 计算追溯" class="shot" type="button"><img alt="单 SKU 计算追溯" loading="lazy" src="img/fp-sku-calculation-trace.webp"/></button></figure></div><div class="sc-nav"><button aria-label="上一张" class="arr" data-dir="-1" type="button">←</button><div class="strip"><button aria-current="true" aria-label="第 1 张：FlowPilot 供应链驾驶舱" data-i="0" type="button"><img alt="" src="img/fp-home-cockpit.webp"/></button><button aria-label="第 2 张：FlowPilot 数据看板" data-i="1" type="button"><img alt="" src="img/fp-bi-kpi-trends.webp"/></button><button aria-label="第 3 张：单 SKU 计算追溯" data-i="2" type="button"><img alt="" src="img/fp-sku-calculation-trace.webp"/></button></div><div aria-hidden="true" class="dots"><i class="on"></i><i></i><i></i></div><button aria-label="下一张" class="arr" data-dir="1" type="button">→</button></div><p class="caption"><span class="swipe"><span class="zh">左右滑动 · 点击放大 · </span><span class="en">Swipe · tap to zoom · </span></span><span class="zh">驾驶舱 · 数据看板 · 单 SKU 计算追溯（演示数据）</span><span class="en">Cockpit · dashboard · per-SKU calculation trace (demo data)</span></p></div>
+</article>
+<!-- PawPath -->
+<article aria-labelledby="t-pawpath" class="panel" hidden="" id="p-pawpath" role="tabpanel">
+<div class="ptext"><div class="col-a"><div class="p-meta"><span class="chip"><span class="zh">个人开源项目</span><span class="en">Open source</span></span><span class="chip num"><span class="zh">2026.09 至今</span><span class="en">2026.09 – now</span></span><span class="chip"><span class="zh">产品负责人 / 全栈</span><span class="en">Product owner / full stack</span></span></div><h3><span class="zh">PawPath · 动物收容与领养管理平台</span><span class="en">PawPath · Animal shelter &amp; adoption platform</span></h3><p class="oneline"><span class="zh">把课程 UML 设计做成真正能用的系统，让每次上架、每个领养决定都有规则可依、有记录可查。</span><span class="en">I turned a course UML design into a working system where every listing and adoption decision follows a rule and leaves a record.</span></p><div class="kn num">
+<div><b>5</b><span class="zh">类角色：官员、员工、兽医、领养人、管理员</span><span class="en">roles: officer, staff, vet, adopter, admin</span></div>
+<div><b>5</b><span class="zh">种状态，每次流转都有前置条件</span><span class="en">statuses, each move gated by checks</span></div>
+<div><b>6</b><span class="zh">位申请人同屏比较适配度</span><span class="en">applicants compared side by side</span></div>
+<div><b>22</b><span class="zh">项越权访问检查全部通过</span><span class="en">access checks, all passed</span></div>
+</div><div class="blk"><h4><span class="zh">项目背景</span><span class="en">CONTEXT</span></h4><p><span class="zh">收容所信息散落在纸质和电子表格里，上架与领养决定难以追溯，多人申请同一只动物时也很难公平比较。</span><span class="en">Shelter records live in paper forms and spreadsheets, decisions are hard to trace, and comparing several applicants for one animal is guesswork.</span></p></div><div class="blk"><h4><span class="zh">项目成果</span><span class="en">OUTCOME</span></h4><ul>
+<li><span class="zh">课程方案落地为可运行的网页应用，覆盖入所到回访全流程</span><span class="en">A working web app covering intake through follow-up</span></li>
+<li><span class="zh">每次状态变更自动检查条件并写入审计记录</span><span class="en">Every status change is checked and written to an audit trail</span></li>
+<li><span class="zh">开源并附业务规则文档、权限矩阵和状态图</span><span class="en">Open-sourced with business-rule docs, a permission matrix and state diagrams</span></li>
+</ul></div><div class="p-links"><a class="btn solid" href="https://github.com/xiaoyixuan0308-cyber/pawpath-shelter-management" rel="noopener" target="_blank">GitHub ↗</a></div></div><div class="col-b"><div class="blk"><h4><span class="zh">我做了什么</span><span class="en">WHAT I DID</span></h4><ul>
+<li><span class="zh"><b>需求追溯</b>：对照 UML 设计与新要求，找出状态模型、角色职责、入所流程 3 处冲突并制定方案；拆出权限矩阵、状态流转规则和 20 余项验收标准。</span><span class="en"><b>Requirements tracing</b>: found 3 conflicts between the UML design and new requirements and resolved them; defined a permission matrix, transition rules and 20+ acceptance criteria.</span></li>
+<li><span class="zh"><b>流程设计</b>："上架准备清单"按负责人拆分前置条件，员工和兽医可并行推进；按儿童、现有宠物、独处时长、租房许可等条件给申请人打分；确认领养后自动关闭其他申请并安排回访。</span><span class="en"><b>Workflow design</b>: a readiness checklist split by owner so staff and vets work in parallel; applicant scoring on children, pets, hours alone and landlord permission; finalising closes other applications and books a follow-up.</span></li>
+<li><span class="zh"><b>测试验收</b>：17 只动物、12 个账号、42 个品种的演示数据；自动化测试覆盖 22 项越权检查和完整领养流程；修复 Safari 点击错位、表单选项被重置等问题。</span><span class="en"><b>Testing</b>: demo data with 17 animals, 12 accounts and 42 breeds; automated tests for 22 access checks and the full adoption flow; fixed a Safari row-click bug and form resets.</span></li>
+<li><span class="zh"><b>体验与交付</b>：按角色定制首页看板与待办，代码脱敏，中英双语文档与流程图。</span><span class="en"><b>Delivery</b>: role-specific dashboards, de-identified code, bilingual docs and flow diagrams.</span></li>
+</ul></div></div></div>
+<div class="showcase" data-carousel=""><div aria-label="截图，可左右滑动" class="slides" tabindex="0"><figure class="slide"><button aria-label="放大查看 申请人适配度排名" class="shot" type="button"><img alt="申请人适配度排名" loading="eager" src="img/pp-applicant-ranking.webp"/></button></figure><figure class="slide"><button aria-label="放大查看 上架准备清单" class="shot" type="button"><img alt="上架准备清单" loading="lazy" src="img/pp-listing-readiness.webp"/></button></figure><figure class="slide"><button aria-label="放大查看 员工看板" class="shot" type="button"><img alt="员工看板" loading="lazy" src="img/pp-staff-dashboard.webp"/></button></figure></div><div class="sc-nav"><button aria-label="上一张" class="arr" data-dir="-1" type="button">←</button><div class="strip"><button aria-current="true" aria-label="第 1 张：申请人适配度排名" data-i="0" type="button"><img alt="" src="img/pp-applicant-ranking.webp"/></button><button aria-label="第 2 张：上架准备清单" data-i="1" type="button"><img alt="" src="img/pp-listing-readiness.webp"/></button><button aria-label="第 3 张：员工看板" data-i="2" type="button"><img alt="" src="img/pp-staff-dashboard.webp"/></button></div><div aria-hidden="true" class="dots"><i class="on"></i><i></i><i></i></div><button aria-label="下一张" class="arr" data-dir="1" type="button">→</button></div><p class="caption"><span class="swipe"><span class="zh">左右滑动 · 点击放大 · </span><span class="en">Swipe · tap to zoom · </span></span><span class="zh">申请人排名 · 上架准备清单 · 员工看板（虚构演示数据）</span><span class="en">Applicant ranking · listing readiness · staff dashboard (fictional demo data)</span></p></div>
+</article>
+<!-- GoNCharge -->
+<article aria-labelledby="t-goncharge" class="panel" hidden="" id="p-goncharge" role="tabpanel">
+<div class="ptext"><div class="col-a"><div class="p-meta"><span class="chip"><span class="zh">课程项目 · 昆士兰大学 BISM7221</span><span class="en">Course project · UQ BISM7221</span></span><span class="chip num">2026.05</span><span class="chip"><span class="zh">独立完成</span><span class="en">Solo</span></span><span class="chip warn"><span class="zh">公司与数据均为课程模拟</span><span class="en">Simulated company and data</span></span></div><h3><span class="zh">一个住址，串起约 98 万美元的舞弊链</span><span class="en">One address, a US$980K fraud scheme</span></h3><p class="oneline"><span class="zh">我用 SQL 检查一家公司的付款、工资和客户记录，查出一套持续多年、约 98 万美元的内部舞弊，并给出止损和长期防范方案。</span><span class="en">I used SQL to examine a company's payments, payroll and customer records, uncovered a multi-year internal fraud worth about US$980K, and proposed how to stop it and keep it from happening again.</span></p><div class="kn num">
+<div><b><span class="zh">约 98 万</span><span class="en">~$980K</span></b><span class="zh">美元舞弊资金</span><span class="en">in fraud</span></div>
+<div><b>10</b><span class="zh">家假供应商，收款约 79 万</span><span class="en">fake vendors, ~$790K paid</span></div>
+<div><b>5</b><span class="zh">名假员工，年薪约 16 万</span><span class="en">ghost employees, ~$160K a year</span></div>
+<div><b>1,119</b><span class="zh">笔付款全部低于审批线</span><span class="en">payments, all under the limit</span></div>
+</div><div class="blk"><h4><span class="zh">项目背景</span><span class="en">CONTEXT</span></h4><p><span class="zh">一家从燃油发电转型 EV 充电的企业，委托评估 IT 治理、内部控制和舞弊风险。</span><span class="en">A company moving from fuel generators to EV charging asked for a review of its IT governance, internal controls and fraud risk.</span></p></div></div><div class="col-b"><div class="blk"><h4><span class="zh">体现的能力</span><span class="en">WHAT IT SHOWS</span></h4><ul>
+<li><span class="zh"><b>在大量数据里找到关键线索</b>：假供应商、假员工、假客户都登记在同一个住址，顺着这条线串起三类舞弊。</span><span class="en"><b>Finding the thread</b>: fake vendors, ghost employees and a fake customer shared one home address, which linked three schemes.</span></li>
+<li><span class="zh"><b>从数字规律里发现问题</b>：最高一笔 9,969 美元，全部"刚好"低于审批线，说明有人系统性地拆单绕过审批。</span><span class="en"><b>Reading the pattern</b>: every payment sat just under the limit, a sign of deliberate splitting to avoid approval.</span></li>
+<li><span class="zh"><b>追到根本原因</b>：没有审批权的前台人员批准了 143 笔付款，财务负责人给自己的工资审批了 104 次。</span><span class="en"><b>Root cause</b>: a receptionist with no approval rights approved 143 payments, and the CFO approved her own pay 104 times.</span></li>
+<li><span class="zh"><b>把一次检查变成长期机制</b>：6 条检查规则做成季度自动监控，异常直接报董事会。</span><span class="en"><b>From one-off to ongoing</b>: 6 checks turned into quarterly automated monitoring reported straight to the board.</span></li>
+<li><span class="zh"><b>用数字支撑决策</b>：每条结论附金额和笔数，支撑"冻结权限、外部调查"的建议。</span><span class="en"><b>Numbers that drive decisions</b>: every finding carries amounts and counts to back an immediate access freeze and external investigation.</span></li>
+</ul></div><div class="egg">🗝️ <span class="zh">彩蛋：假供应商记录里藏着一串乱码，用凯撒密码（字母移位加密）解开，写的是 "This fairly obviously is NOT fraud!!!!"</span><span class="en">Easter egg: a scrambled string hidden in the fake vendor records decodes, with a Caesar cipher, to "This fairly obviously is NOT fraud!!!!"</span></div><div class="blk"><h4><span class="zh">报告还包括</span><span class="en">ALSO IN THE REPORT</span></h4><p><span class="zh">IT 治理评估 · 内部控制评估（备份失败率 29.4%，行业标准为 5% 以内）· 客户数据共享的伦理建议 · 工具：SQL（PostgreSQL）、舞弊三角模型、COSO 内控框架</span><span class="en">IT governance review · internal control review (29.4% backup failure rate vs a 5% norm) · ethics advice on sharing customer data · Tools: SQL (PostgreSQL), fraud triangle, COSO</span></p></div></div></div>
+<div class="gc-media"><div class="showcase" data-carousel=""><div aria-label="报告原图，可左右滑动" class="slides" tabindex="0"><figure class="slide"><button aria-label="放大查看 图 6 · 1,119 笔付款全部低于审批线" class="shot" type="button"><img alt="图 6 · 1,119 笔付款全部低于审批线" src="img/gc-structuring.webp"/></button></figure><figure class="slide"><button aria-label="放大查看 图 4 · 10 家可疑供应商的付款总额" class="shot" type="button"><img alt="图 4 · 10 家可疑供应商的付款总额" src="img/gc-vendors.webp"/></button></figure><figure class="slide"><button aria-label="放大查看 图 5 · 5 个假员工账号沉睡多年后集中激活" class="shot" type="button"><img alt="图 5 · 5 个假员工账号沉睡多年后集中激活" src="img/gc-ghost.webp"/></button></figure><figure class="slide"><button aria-label="放大查看 图 2 · 143 笔付款由无审批权限的人批准" class="shot" type="button"><img alt="图 2 · 143 笔付款由无审批权限的人批准" src="img/gc-approvals.webp"/></button></figure><figure class="slide"><button aria-label="放大查看 SQL 脚本 8 · 量化可疑供应商付款" class="shot" type="button"><img alt="SQL 脚本 8 · 量化可疑供应商付款" src="img/gc-sql-vendor.webp"/></button></figure></div><div class="sc-nav"><button aria-label="上一张" class="arr" data-dir="-1" type="button">←</button><div class="strip"><button aria-current="true" aria-label="第 1 张：图 6 · 1,119 笔付款全部低于审批线" data-i="0" type="button"><img alt="" src="img/gc-structuring.webp"/></button><button aria-label="第 2 张：图 4 · 10 家可疑供应商的付款总额" data-i="1" type="button"><img alt="" src="img/gc-vendors.webp"/></button><button aria-label="第 3 张：图 5 · 5 个假员工账号沉睡多年后集中激活" data-i="2" type="button"><img alt="" src="img/gc-ghost.webp"/></button><button aria-label="第 4 张：图 2 · 143 笔付款由无审批权限的人批准" data-i="3" type="button"><img alt="" src="img/gc-approvals.webp"/></button><button aria-label="第 5 张：SQL 脚本 8 · 量化可疑供应商付款" data-i="4" type="button"><img alt="" src="img/gc-sql-vendor.webp"/></button></div><div aria-hidden="true" class="dots"><i class="on"></i><i></i><i></i><i></i><i></i></div><button aria-label="下一张" class="arr" data-dir="1" type="button">→</button></div><p class="caption"><span class="swipe"><span class="zh">左右滑动 · 点击放大 · </span><span class="en">Swipe · tap to zoom · </span></span><span class="zh">报告原图：付款分布 · 可疑供应商 · 假员工 · 越权审批 · SQL 脚本</span><span class="en">From the report: payment spread · suspicious vendors · ghost staff · unauthorised approvals · SQL</span></p></div><div class="showcase single"><div class="slides" tabindex="0"><div class="slide"><div class="info">
+<div>
+<div class="caption"><span class="zh">舞弊资金合计</span><span class="en">Total fraud</span></div>
+<div class="big num">$983,781</div>
+</div>
+<div aria-label="假供应商 79.3 万美元，假员工 16.4 万美元，重复付款 2.3 万美元，其他 0.3 万美元" class="bar" role="img">
+<i style="width:80.7%;background:var(--amber)"></i><i style="width:16.7%;background:var(--moss)"></i><i style="width:2.3%;background:var(--bark)"></i><i style="width:.3%;background:var(--leaf)"></i>
+</div>
+<div class="legend num">
+<div><i class="sw" style="background:var(--amber)"></i><span class="zh">10 家假供应商 · $793,652</span><span class="en">10 fake vendors · $793,652</span></div>
+<div><i class="sw" style="background:var(--moss)"></i><span class="zh">5 名假员工 · $163,822 / 年</span><span class="en">5 ghost employees · $163,822 a year</span></div>
+<div><i class="sw" style="background:var(--bark)"></i><span class="zh">9 笔半额重复付款 · $22,959</span><span class="en">9 half-amount duplicate payments · $22,959</span></div>
+<div><i class="sw" style="background:var(--leaf)"></i><span class="zh">其他违规付款 · 约 $3,300</span><span class="en">Other irregular payments · ~$3,300</span></div>
+</div>
+<div class="thr num">
+<div class="caption"><span class="zh">1,119 笔付款，最高一笔也"刚好"低于审批线</span><span class="en">1,119 payments; even the largest sits just under the approval limit</span></div>
+<div class="row"><span><span class="zh">审批线</span><span class="en">Approval limit</span></span><i style="width:100%;background:var(--line)"></i><span>$10,000</span></div>
+<div class="row"><span><span class="zh">最高单笔</span><span class="en">Largest</span></span><i style="width:99.69%;background:var(--amber)"></i><span>$9,969</span></div>
+</div>
+<img alt="" class="digua-peek" height="180" src="img/digua-head-surprised.webp" width="202"/>
+</div></div></div><p class="caption"><span class="zh">根据报告数据绘制。公司与数据均为课程模拟。</span><span class="en">Drawn from the report's figures. Company and data are simulated for the course.</span></p></div></div>
+</article>
+<!-- E-commerce -->
+<article aria-labelledby="t-ecom" class="panel" hidden="" id="p-ecom" role="tabpanel">
+<div class="ptext"><div class="col-a"><div class="p-meta"><span class="chip"><span class="zh">课程项目 · 昆士兰大学</span><span class="en">Course project · UQ</span></span><span class="chip num">2026.04–2026.06</span><span class="chip"><span class="zh">数据运营</span><span class="en">Data operations</span></span><span class="chip num"><span class="zh">成绩 29/30（HD）</span><span class="en">Grade 29/30 (HD)</span></span></div><h3><span class="zh">电商数据仓库与经营分析看板</span><span class="en">E-commerce data warehouse &amp; dashboard</span></h3><p class="oneline"><span class="zh">把散落在多个系统里的销售、客户、商品和供应商数据统一口径、整合到一起，做成可以随时筛选的经营看板。</span><span class="en">I brought sales, customer, product and supplier data from several systems onto one consistent definition and built a dashboard anyone can filter.</span></p><div class="kn num">
+<div><b><span class="zh">2.5 万</span><span class="en">25K</span></b><span class="zh">条销售记录</span><span class="en">sales records</span></div>
+<div><b><span class="zh">2.1 万</span><span class="en">21K</span></b><span class="zh">名客户</span><span class="en">customers</span></div>
+<div><b>2,199</b><span class="zh">款商品，另有 100 家供应商</span><span class="en">products, plus 100 suppliers</span></div>
+<div><b>29/30</b><span class="zh">课程成绩（HD，最高等级）</span><span class="en">grade (HD, top band)</span></div>
+</div><div class="blk"><h4><span class="zh">项目背景</span><span class="en">CONTEXT</span></h4><p><span class="zh">模拟一家电商企业：数据分散在不同地方，统计口径不统一，想跨表看一个问题都很费劲。</span><span class="en">A simulated online retailer: data in different places, inconsistent definitions, and slow cross-table questions.</span></p></div><div class="blk"><h4><span class="zh">项目成果</span><span class="en">OUTCOME</span></h4><ul>
+<li><span class="zh">一份统一口径的经营数据集，不同部门不再各算各的</span><span class="en">One consistent dataset so teams stop working from different numbers</span></li>
+<li><span class="zh">一个看得懂的看板，支持商品复盘和供应商评估</span><span class="en">A readable dashboard for product reviews and supplier assessment</span></li>
+<li><span class="zh">课程成绩 29/30（HD）</span><span class="en">Grade 29/30 (HD)</span></li>
+</ul></div></div><div class="col-b"><div class="blk"><h4><span class="zh">我做了什么</span><span class="en">WHAT I DID</span></h4><ul>
+<li><span class="zh"><b>梳理分析需求</b>：从运营视角明确 4 类问题：销售趋势、商品表现、客户结构、供应商管理。</span><span class="en"><b>Analysis needs</b>: framed four operating questions: sales trends, product performance, customer mix, supplier management.</span></li>
+<li><span class="zh"><b>数据治理</b>：用 SQL Server 和 SSIS 完成清洗、匹配与关联，统一商品、客户、供应商等关键字段的口径。</span><span class="en"><b>Data governance</b>: cleaned, matched and joined the data with SQL Server and SSIS, aligning key fields for products, customers and suppliers.</span></li>
+<li><span class="zh"><b>搭建看板</b>：用 Power BI 做 4 个模块，支持按时间、商品、供应商筛选，并用 R 做补充分析。</span><span class="en"><b>Dashboard</b>: four Power BI modules filterable by time, product and supplier, with supporting analysis in R.</span></li>
+</ul></div></div></div>
+<div class="showcase single"><div class="slides" tabindex="0"><div class="slide"><div class="info">
+<div class="caption"><span class="zh">从分散的数据，到一个经营看板</span><span class="en">From scattered data to one dashboard</span></div>
+<div class="flow num">
+<div><b>25K</b><span class="zh">条销售记录</span><span class="en">sales records</span></div>
+<div><b>21K</b><span class="zh">名客户</span><span class="en">customers</span></div>
+<div><b>2,199</b><span class="zh">款商品</span><span class="en">products</span></div>
+<div><b>100</b><span class="zh">家供应商</span><span class="en">suppliers</span></div>
+</div>
+<div class="arrow">↓</div>
+<div class="hub"><span class="zh">统一口径的经营数据集（SQL Server · SSIS）</span><span class="en">One consistent dataset (SQL Server · SSIS)</span></div>
+<div class="arrow">↓</div>
+<div class="flow">
+<div><span class="zh">销售概览</span><span class="en">Sales overview</span></div>
+<div><span class="zh">商品表现</span><span class="en">Product performance</span></div>
+<div><span class="zh">客户分析</span><span class="en">Customer analysis</span></div>
+<div><span class="zh">供应商结构</span><span class="en">Supplier mix</span></div>
+</div>
+<div class="caption"><span class="zh">Power BI 看板，可按时间、商品、供应商筛选</span><span class="en">Power BI dashboard, filterable by time, product and supplier</span></div>
+</div></div></div><p class="caption"><span class="zh">项目结构示意图</span><span class="en">Project structure</span></p></div>
+</article>
+<!-- Travel planner -->
+<article aria-labelledby="t-travel" class="panel" hidden="" id="p-travel" role="tabpanel">
+<div class="ptext"><div class="col-a"><div class="p-meta"><span class="chip"><span class="zh">团队项目 · 7 人</span><span class="en">Team project · 7 people</span></span><span class="chip num">2026.06–2026.08</span><span class="chip"><span class="zh">产品经理</span><span class="en">Product manager</span></span><span class="chip"><span class="zh">代码为团队私有仓库</span><span class="en">Private team repo</span></span></div><h3><span class="zh">AI 旅行规划师</span><span class="en">AI Travel Planner</span></h3><p class="oneline"><span class="zh">输入目的地和日期，自动生成按天可执行的行程（天气、景点、酒店和最优游览路线），并在地图上联动展示。</span><span class="en">Enter a destination and dates to get a day-by-day plan with weather, sights, hotels and optimised routes, shown on a linked map.</span></p><div class="kn num">
+<div><b>7</b><span class="zh">人并行开发，接口先行</span><span class="en">people building in parallel</span></div>
+<div><b>1–14</b><span class="zh">天，支持的行程长度</span><span class="en">days per trip</span></div>
+<div><b>2</b><span class="zh">种算法：K-Means 分天 · TSP 排路线</span><span class="en">algorithms: K-Means days · TSP routes</span></div>
+<div><b><span class="zh">秒级</span><span class="en">Seconds</span></b><span class="zh">简单需求即刻生成，复杂行程约 5 分钟</span><span class="en">for simple trips; ~5 min for complex ones</span></div>
+</div><div class="blk"><h4><span class="zh">项目背景</span><span class="en">CONTEXT</span></h4><p><span class="zh">做攻略要在天气、地图、攻略和酒店平台之间来回切换；直接问大模型又常出现地点错误、路线绕路、信息过时。我们验证"大模型生成 + 真实数据 + 确定性算法"的做法。</span><span class="en">Planning a trip means hopping between weather, maps, guides and hotel sites, and asking a chatbot often gives wrong places and zig-zag routes. We tested combining an LLM with real data and deterministic algorithms.</span></p></div><div class="blk"><h4><span class="zh">项目成果</span><span class="en">OUTCOME</span></h4><ul>
+<li><span class="zh">跑通"输入需求 → 获取数据 → 算法规划 → 地图展示"完整 Demo</span><span class="en">A working demo from request to data, planning and map</span></li>
+<li><span class="zh">无需任何 API Key 即可完整体验</span><span class="en">Fully usable with no API keys</span></li>
+</ul></div></div><div class="col-b"><div class="blk"><h4><span class="zh">我负责的部分</span><span class="en">MY PART</span></h4><ul>
+<li><span class="zh"><b>立项与分工</b>：组织需求分析和技术选型，把产品拆成地图、路线、后端、规划等模块，完成 7 人分工。</span><span class="en"><b>Scoping</b>: ran requirements and tech selection, split the product into map, routing, backend and planner modules, and assigned 7 people.</span></li>
+<li><span class="zh"><b>让 7 个人并行开发</b>：搭建代码库和工程骨架，"先定接口、用模拟数据解耦"，持续协调地图、路线、后端模块的数据格式。</span><span class="en"><b>Parallel delivery</b>: set up the repo and skeleton, agreed interfaces first with mock data, and kept map, routing and backend formats aligned.</span></li>
+<li><span class="zh"><b>借助 AI 开发前端</b>：用 Next.js 串联天气、高德地图和规划算法，行程列表与地图联动，适配手机。</span><span class="en"><b>Front end with AI</b>: built the Next.js app linking weather, AMap and the planner, with list–map sync and mobile support.</span></li>
+<li><span class="zh"><b>为"出错"做设计</b>：外部数据不可用时切换演示数据，并在页面上明确标注，不把模拟信息当真实信息展示。</span><span class="en"><b>Designing for failure</b>: when a data source is down the app switches to clearly labelled demo data instead of passing it off as real.</span></li>
+</ul></div><div class="blk"><h4><span class="zh">团队共同实现</span><span class="en">BUILT BY THE TEAM</span></h4><p><span class="zh">高德地理编码与景点、酒店检索 · K-Means 分天与 TSP 路线优化 · Python 后端与实验性的大模型规划流程</span><span class="en">AMap geocoding and POI search · K-Means day clustering and TSP routing · Python backend and an experimental LLM planner</span></p></div></div></div>
+<div class="showcase" data-carousel=""><div aria-label="截图，可左右滑动" class="slides" tabindex="0"><figure class="slide"><button aria-label="放大查看 杭州 3 日路线全景" class="shot" type="button"><img alt="杭州 3 日路线全景" loading="eager" src="img/atp-result-3.webp"/></button></figure><figure class="slide"><button aria-label="放大查看 第 1 天路线" class="shot" type="button"><img alt="第 1 天路线" loading="lazy" src="img/atp-result-2.webp"/></button></figure><figure class="slide"><button aria-label="放大查看 首页" class="shot" type="button"><img alt="首页" loading="lazy" src="img/atp-home.webp"/></button></figure></div><div class="sc-nav"><button aria-label="上一张" class="arr" data-dir="-1" type="button">←</button><div class="strip"><button aria-current="true" aria-label="第 1 张：杭州 3 日路线全景" data-i="0" type="button"><img alt="" src="img/atp-result-3.webp"/></button><button aria-label="第 2 张：第 1 天路线" data-i="1" type="button"><img alt="" src="img/atp-result-2.webp"/></button><button aria-label="第 3 张：首页" data-i="2" type="button"><img alt="" src="img/atp-home.webp"/></button></div><div aria-hidden="true" class="dots"><i class="on"></i><i></i><i></i></div><button aria-label="下一张" class="arr" data-dir="1" type="button">→</button></div><p class="caption"><span class="swipe"><span class="zh">左右滑动 · 点击放大 · </span><span class="en">Swipe · tap to zoom · </span></span><span class="zh">三日路线全景 · 第 1 天路线 · 首页（页面会标注演示数据）</span><span class="en">Three-day routes · day 1 · home (demo data is labelled in the app)</span></p></div>
+</article>
+</div>
+</section>
+<!-- ============ ABOUT ============ -->
+<section class="about sec" id="about">
+<div class="wrap">
+<div class="sec-head"><div><div class="kicker"><span class="zh">兴趣与原创 IP</span><span class="en">INTERESTS &amp; ORIGINAL IP</span></div><h2><span class="zh">工作之外的我</span><span class="en">Outside of work</span></h2></div></div>
+<div class="about-grid">
+<div class="sheet"><img alt="地瓜角色设定图：三视图、表情、动作与配色" height="933" src="img/digua-sheet.webp" width="1400"/></div>
+<div>
+<h3>🍠 <span class="zh">地瓜 · 我的原创 IP</span><span class="en">Digua · my original character</span></h3>
+<p class="lead"><span class="zh">一只穿着森林绿卫衣的小熊猫。我提出角色设定和设计理念，借助 AI 完成绘制与迭代，并用它尝试独立 IP 电商。目前已上线<b>微信表情包</b>，在微信里搜「<b>地瓜的一天</b>」就能找到。</span><span class="en">A red panda in a forest-green hoodie. I came up with the concept and design direction, illustrated and iterated it with AI, and used it to explore independent IP e-commerce. Digua is live as a <b>WeChat sticker pack</b>: search “地瓜的一天” in WeChat.</span></p>
+<ul>
+<li><span class="zh">完整的角色设定：三视图、7 种表情、6 种动作、专属配色</span><span class="en">Full character sheet: three views, 7 expressions, 6 poses, a signature palette</span></li>
+<li><span class="zh">内容运营尝试：运营过地瓜 IP 账号和游戏攻略账号</span><span class="en">Content operations: ran the Digua account and a game-guide account</span></li>
+</ul>
+
+</div>
+</div>
+<div class="hobby-block">
+<h3 class="sub-h"><span class="zh">兴趣爱好</span><span class="en">Interests</span></h3>
+<div class="hobby-grid">
+<div class="hobby"><span class="h-ic" aria-hidden="true">🎹</span><span class="zh">英皇钢琴（ABRSM）</span><span class="en">Piano (ABRSM)</span></div>
+<div class="hobby"><span class="h-ic" aria-hidden="true">🗣️</span><span class="zh">辩论</span><span class="en">Debate</span></div>
+<div class="hobby"><span class="h-ic" aria-hidden="true">🥋</span><span class="zh">巴西柔术</span><span class="en">Brazilian jiu-jitsu</span></div>
+<div class="hobby"><span class="h-ic" aria-hidden="true">🏋️</span><span class="zh">健身</span><span class="en">Fitness</span></div>
+<div class="hobby"><span class="h-ic" aria-hidden="true">⚽</span><span class="zh">足球</span><span class="en">Football</span></div>
+<div class="hobby"><span class="h-ic" aria-hidden="true">🕵️</span><span class="zh">剧本杀</span><span class="en">Murder-mystery games</span></div>
+</div>
+</div>
+</div>
+</section>
+<svg aria-hidden="true" class="edge-trees" preserveaspectratio="xMidYMax slice" viewbox="0 0 1600 120"><defs>
+<filter height="140%" id="wc2" width="140%" x="-20%" y="-20%"><feturbulence basefrequency="0.018" numoctaves="3" result="n" seed="4" type="fractalNoise"></feturbulence><fedisplacementmap in="SourceGraphic" in2="n" result="d" scale="16" xchannelselector="R" ychannelselector="G"></fedisplacementmap><fegaussianblur in="d" stddeviation="1.3"></fegaussianblur></filter>
+<filter id="paper2"><feturbulence basefrequency="0.9" numoctaves="2" seed="2" type="fractalNoise"></feturbulence><fecolormatrix values="0 0 0 0 .45  0 0 0 0 .40  0 0 0 0 .30  0 0 0 .07 0"></fecolormatrix></filter>
+<lineargradient id="sky2" x1="0" x2="0" y1="0" y2="1"><stop offset="0" stop-color="#fbf4df"></stop><stop offset=".6" stop-color="#f4f0dc"></stop><stop offset="1" stop-color="#e4ecd3"></stop></lineargradient>
+<radialgradient id="sun2"><stop offset="0" stop-color="#ffe6a3" stop-opacity=".9"></stop><stop offset="1" stop-color="#ffe6a3" stop-opacity="0"></stop></radialgradient>
+<g id="tr2"><rect fill="#7a5a3c" height="46" opacity=".75" width="8" x="-4" y="0"></rect><circle cx="0" cy="-8" fill="currentColor" opacity=".55" r="30"></circle><circle cx="-16" cy="4" fill="currentColor" opacity=".5" r="22"></circle><circle cx="16" cy="2" fill="currentColor" opacity=".5" r="24"></circle><circle cx="4" cy="-26" fill="currentColor" opacity=".45" r="18"></circle></g>
+<g id="pn2"><rect fill="#6b4f35" height="34" opacity=".7" width="6" x="-3" y="10"></rect><path d="M0 -60 L26 0 L-26 0Z" fill="currentColor" opacity=".55"></path><path d="M0 -40 L32 18 L-32 18Z" fill="currentColor" opacity=".5"></path></g>
+</defs>
+<g filter="url(#wc2)"><use href="#pn2" style="color:#b5cf98" transform="translate(-9,112) scale(0.83)"></use><use href="#tr2" style="color:#b5cf98" transform="translate(64,110) scale(0.85)"></use><use href="#tr2" style="color:#8fb57b" transform="translate(113,115) scale(0.96)"></use><use href="#pn2" style="color:#b5cf98" transform="translate(180,104) scale(0.92)"></use><use href="#tr2" style="color:#b5cf98" transform="translate(242,105) scale(0.68)"></use><use href="#tr2" style="color:#b5cf98" transform="translate(291,106) scale(0.90)"></use><use href="#tr2" style="color:#8fb57b" transform="translate(377,117) scale(0.93)"></use><use href="#tr2" style="color:#8fb57b" transform="translate(438,104) scale(0.84)"></use><use href="#pn2" style="color:#8fb57b" transform="translate(477,117) scale(0.72)"></use><use href="#pn2" style="color:#b5cf98" transform="translate(563,115) scale(0.92)"></use><use href="#tr2" style="color:#b5cf98" transform="translate(610,116) scale(0.84)"></use><use href="#pn2" style="color:#b5cf98" transform="translate(691,112) scale(0.69)"></use><use href="#tr2" style="color:#b5cf98" transform="translate(726,116) scale(0.92)"></use><use href="#tr2" style="color:#8fb57b" transform="translate(785,118) scale(0.86)"></use><use href="#tr2" style="color:#9dbf86" transform="translate(853,118) scale(0.70)"></use><use href="#tr2" style="color:#8fb57b" transform="translate(917,102) scale(0.70)"></use><use href="#pn2" style="color:#9dbf86" transform="translate(994,112) scale(0.92)"></use><use href="#tr2" style="color:#8fb57b" transform="translate(1041,117) scale(0.84)"></use><use href="#pn2" style="color:#b5cf98" transform="translate(1107,103) scale(0.96)"></use><use href="#tr2" style="color:#8fb57b" transform="translate(1170,107) scale(0.95)"></use><use href="#tr2" style="color:#9dbf86" transform="translate(1218,107) scale(0.69)"></use><use href="#tr2" style="color:#b5cf98" transform="translate(1306,110) scale(0.79)"></use><use href="#pn2" style="color:#b5cf98" transform="translate(1367,118) scale(0.87)"></use><use href="#tr2" style="color:#8fb57b" transform="translate(1407,117) scale(0.86)"></use><use href="#tr2" style="color:#8fb57b" transform="translate(1494,102) scale(0.83)"></use><use href="#pn2" style="color:#9dbf86" transform="translate(1556,111) scale(0.77)"></use></g></svg>
+<!-- ============ CONTACT ============ -->
+<footer class="contact" id="contact">
+<div class="wrap">
+<div>
+<h2><span class="zh">谢谢你看到这里。</span><span class="en">Thanks for reading this far.</span></h2>
+<p><span class="zh">如果你的团队正需要一个会找问题、能解决问题的人，欢迎联系我。</span><span class="en">If your team needs someone who finds problems and fixes them, I'd love to hear from you.</span></p>
+<div class="contact-row">
+<span class="mail" id="mail">xiaoyixuan0308@163.com</span>
+<button class="btn" id="copyBtn" type="button"><span class="zh">复制邮箱</span><span class="en">Copy email</span></button>
+<a class="btn" href="https://github.com/xiaoyixuan0308-cyber" rel="noopener" target="_blank">GitHub ↗</a>
+<span aria-live="polite" class="copied" id="copied"></span>
+</div>
+</div>
+<img alt="地瓜蜷成一团睡着了" class="sleep" height="186" src="img/digua-sleep.webp" width="248"/>
+<div class="foot"><span class="zh">© 2026 肖艺宣 · 地瓜由我提出设定、借助 AI 绘制 · 页面中的公司与业务数据均已脱敏或为演示数据</span><span class="en">© 2026 Yixuan Xiao · Digua was conceived by me and illustrated with AI · Company and business data on this page are anonymised or demo data</span></div>
+</div>
+</footer>
+<button aria-label="回到顶部 / Back to top" class="top-btn" id="topBtn" type="button"><img alt="" height="179" src="img/digua-head-calm.webp" width="199"/></button>
+<dialog class="lb" id="lb"><img alt="" id="lbImg" src=""/><button id="lbClose" type="button"><span class="zh">关闭</span><span class="en">Close</span></button></dialog>
+<script>
+(function(){
+  var root=document.documentElement;
+  function setLang(l){root.setAttribute('data-lang',l);root.lang=l==='en'?'en':'zh-CN';try{localStorage.setItem('yx-lang',l)}catch(e){}}
+  var saved=null;try{saved=localStorage.getItem('yx-lang')}catch(e){}
+  var h=(location.hash||'').slice(1);
+  setLang(h==='en'?'en':h==='zh'?'zh':(saved||'zh'));
+  document.getElementById('langBtn').addEventListener('click',function(){setLang(root.getAttribute('data-lang')==='en'?'zh':'en')});
+
+  // project tabs
+  var tabs=[].slice.call(document.querySelectorAll('.tab'));
+  function openTab(id,scroll){
+    tabs.forEach(function(t){var on=t.id==='t-'+id;t.setAttribute('aria-selected',on);t.tabIndex=on?0:-1;document.getElementById(t.getAttribute('aria-controls')).hidden=!on});
+    if(scroll)document.getElementById('projects').scrollIntoView();
+  }
+  tabs.forEach(function(t,i){
+    t.addEventListener('click',function(){openTab(t.id.slice(2))});
+    t.addEventListener('keydown',function(e){var d=e.key==='ArrowRight'?1:e.key==='ArrowLeft'?-1:0;if(!d)return;var n=tabs[(i+d+tabs.length)%tabs.length];n.focus();n.click()});
+  });
+  document.querySelectorAll('[data-open]').forEach(function(a){a.addEventListener('click',function(e){e.preventDefault();openTab(a.getAttribute('data-open'),true)})});
+  if(['flowpilot','pawpath','goncharge','ecom','travel'].indexOf(h)>-1){openTab(h,false);setTimeout(function(){document.getElementById('projects').scrollIntoView()},50)}
+
+  // carousels + lightbox
+  var lb=document.getElementById('lb'),lbImg=document.getElementById('lbImg');
+  var smooth=!matchMedia('(prefers-reduced-motion: reduce)').matches;
+  document.querySelectorAll('[data-carousel]').forEach(function(sc){
+    var tr=sc.querySelector('.slides'),n=tr.children.length,cur=0;
+    var thumbs=[].slice.call(sc.querySelectorAll('.strip button')),dots=[].slice.call(sc.querySelectorAll('.dots i'));
+    function mark(i){cur=i;thumbs.forEach(function(t,k){if(k===i)t.setAttribute('aria-current','true');else t.removeAttribute('aria-current')});dots.forEach(function(d,k){d.className=k===i?'on':''})}
+    function go(i){i=(i+n)%n;tr.scrollTo({left:i*tr.clientWidth,behavior:smooth?'smooth':'auto'});mark(i)}
+    var t;tr.addEventListener('scroll',function(){clearTimeout(t);t=setTimeout(function(){if(tr.clientWidth)mark(Math.round(tr.scrollLeft/tr.clientWidth))},60)},{passive:true});
+    sc.querySelectorAll('.arr').forEach(function(a){a.addEventListener('click',function(){go(cur+(+a.getAttribute('data-dir')))})});
+    thumbs.forEach(function(b,i){b.addEventListener('click',function(){go(i)})});
+    tr.addEventListener('keydown',function(e){if(e.key==='ArrowRight'){e.preventDefault();go(cur+1)}if(e.key==='ArrowLeft'){e.preventDefault();go(cur-1)}});
+    sc.querySelectorAll('.shot').forEach(function(b){b.addEventListener('click',function(){var im=b.querySelector('img');lbImg.src=im.src;lbImg.alt=im.alt;if(lb.showModal)lb.showModal()})});
+  });
+  document.getElementById('lbClose').addEventListener('click',function(){lb.close()});
+  lb.addEventListener('click',function(e){if(e.target===lb)lb.close()});
+
+  // copy email
+  var copied=document.getElementById('copied');
+  document.getElementById('copyBtn').addEventListener('click',function(){
+    var t=document.getElementById('mail').textContent;
+    function done(){copied.textContent=root.getAttribute('data-lang')==='en'?'Copied':'已复制'}
+    function fallback(){var r=document.createRange();r.selectNodeContents(document.getElementById('mail'));var s=getSelection();s.removeAllRanges();s.addRange(r);copied.textContent=root.getAttribute('data-lang')==='en'?'Selected — press Ctrl/⌘+C':'已选中，按 Ctrl/⌘+C 复制'}
+    try{navigator.clipboard.writeText(t).then(done,fallback)}catch(e){fallback()}
+  });
+
+  // back to top
+  var tb=document.getElementById('topBtn');
+  addEventListener('scroll',function(){tb.classList.toggle('show',scrollY>700)},{passive:true});
+  tb.addEventListener('click',function(){scrollTo({top:0,behavior:matchMedia('(prefers-reduced-motion: reduce)').matches?'auto':'smooth'})});
+})();
+</script>
+
+</body>
+</html>
