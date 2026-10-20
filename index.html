@@ -145,9 +145,22 @@ section{position:relative}
 
 /* ---------- projects ---------- */
 .projects{background:var(--paper)}
-.tabs{display:flex;gap:8px;flex-wrap:wrap;margin-bottom:22px}
-.tab{font:500 15px var(--body);background:var(--paper-hi);color:var(--ink-soft);border:1.5px solid var(--line);border-radius:999px;padding:8px 16px;cursor:pointer}
-.tab[aria-selected="true"]{background:var(--moss);border-color:var(--moss);color:var(--paper-hi)}
+.proj-layout{display:grid;grid-template-columns:236px minmax(0,1fr);gap:26px;align-items:start}
+.proj-panels{min-width:0}
+.tabs{display:flex;flex-direction:column;gap:12px;position:sticky;top:calc(84px + env(safe-area-inset-top,0px))}
+.tab{position:relative;display:flex;gap:12px;align-items:center;text-align:left;width:100%;font:inherit;background:var(--paper-hi);color:var(--ink);border:1.5px solid var(--line);border-radius:16px;padding:14px 16px;cursor:pointer;box-shadow:0 4px 0 color-mix(in srgb,var(--bark) 28%,var(--line));transition:transform .15s,background .15s,border-color .15s}
+.tab:hover{border-color:var(--moss)}
+.tab:focus-visible{outline:3px solid var(--amber);outline-offset:2px}
+.tab .t-ic{font-size:26px;line-height:1;flex:none}
+.tab .t-tx{min-width:0}
+.tab b{display:block;font-family:var(--display);font-size:17px;line-height:1.35;color:var(--ink)}
+.tab small{display:block;font-size:12.5px;line-height:1.45;color:var(--ink-soft);margin-top:2px}
+.tab[aria-selected="true"]{background:var(--moss);border-color:var(--moss);transform:translateX(8px);box-shadow:0 4px 0 color-mix(in srgb,var(--ink) 55%,var(--moss))}
+.tab[aria-selected="true"] b,.tab[aria-selected="true"] small{color:var(--paper-hi)}
+.tab[aria-selected="true"]::after{content:"";position:absolute;right:-9px;top:50%;width:16px;height:16px;background:var(--moss);transform:translateY(-50%) rotate(45deg);border-radius:3px}
+@media (max-width:1400px){.proj-layout .kn{grid-template-columns:repeat(2,minmax(0,1fr))}.proj-layout .gc-media{grid-template-columns:1fr}}
+@media (max-width:1180px){.proj-layout .ptext{grid-template-columns:1fr}.proj-layout .col-b > .blk:first-child{margin-top:14px}}
+@media (max-width:860px){.proj-layout{grid-template-columns:1fr;gap:18px}.tabs{position:static;display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:10px}.tab{padding:12px}.tab b{font-size:15.5px}.tab[aria-selected="true"]{transform:none}.tab[aria-selected="true"]::after{display:none}.tab:last-child:nth-child(odd){grid-column:1 / -1}}
 .panel{background:var(--paper-hi);border:1.5px solid var(--line);border-radius:26px;padding:clamp(14px,2.4vw,28px);display:grid;gap:26px}
 .showcase{display:grid;gap:12px;min-width:0}
 .slides{display:flex;overflow-x:auto;scroll-snap-type:x mandatory;border-radius:16px;border:1px solid var(--line);background:color-mix(in srgb,var(--mist) 70%,var(--paper));scrollbar-width:none;overscroll-behavior-x:contain}
@@ -486,16 +499,17 @@ dialog.lb button{position:sticky;float:right;margin:8px;top:8px;right:8px;border
 <div>
 <div class="kicker"><span class="zh">项目</span><span class="en">PROJECTS</span></div>
 <h2><span class="zh">五个项目，五片林间空地</span><span class="en">Five projects, five clearings</span></h2>
-<p><span class="zh">每个都写清：要解决什么问题、我做了什么、结果如何</span><span class="en">Each one: the problem, what I did, and what came of it</span></p>
 </div>
 </div>
-<div aria-label="项目" class="tabs" role="tablist">
-<button aria-controls="p-flowpilot" aria-selected="true" class="tab" id="t-flowpilot" role="tab">📦 FlowPilot Lab</button>
-<button aria-controls="p-pawpath" aria-selected="false" class="tab" id="t-pawpath" role="tab">🐾 PawPath</button>
-<button aria-controls="p-goncharge" aria-selected="false" class="tab" id="t-goncharge" role="tab">🔍 GoNCharge</button>
-<button aria-controls="p-ecom" aria-selected="false" class="tab" id="t-ecom" role="tab">🛒 <span class="zh">电商数据仓库</span><span class="en">E-commerce DW</span></button>
-<button aria-controls="p-travel" aria-selected="false" class="tab" id="t-travel" role="tab">🗺️ <span class="zh">AI 旅行规划</span><span class="en">AI Travel Planner</span></button>
+<div class="proj-layout">
+<div aria-label="项目" aria-orientation="vertical" class="tabs" role="tablist">
+<button aria-controls="p-flowpilot" aria-selected="true" class="tab" id="t-flowpilot" role="tab"><span aria-hidden="true" class="t-ic">📦</span><span class="t-tx"><b>FlowPilot Lab</b><small><span class="zh">个人开源 · 供应链计划平台</span><span class="en">Open source · supply-chain planning</span></small></span></button>
+<button aria-controls="p-pawpath" aria-selected="false" class="tab" id="t-pawpath" role="tab"><span aria-hidden="true" class="t-ic">🐾</span><span class="t-tx"><b>PawPath</b><small><span class="zh">个人开源 · 领养管理平台</span><span class="en">Open source · adoption platform</span></small></span></button>
+<button aria-controls="p-goncharge" aria-selected="false" class="tab" id="t-goncharge" role="tab"><span aria-hidden="true" class="t-ic">🔍</span><span class="t-tx"><b>GoNCharge</b><small><span class="zh">课程项目 · SQL 舞弊审计</span><span class="en">Course · SQL fraud audit</span></small></span></button>
+<button aria-controls="p-ecom" aria-selected="false" class="tab" id="t-ecom" role="tab"><span aria-hidden="true" class="t-ic">🛒</span><span class="t-tx"><b><span class="zh">电商数据仓库</span><span class="en">E-commerce DW</span></b><small><span class="zh">课程项目 · 数仓与经营看板</span><span class="en">Course · warehouse &amp; dashboard</span></small></span></button>
+<button aria-controls="p-travel" aria-selected="false" class="tab" id="t-travel" role="tab"><span aria-hidden="true" class="t-ic">🗺️</span><span class="t-tx"><b><span class="zh">AI 旅行规划</span><span class="en">AI Travel Planner</span></b><small><span class="zh">7 人团队 · 产品经理</span><span class="en">Team of 7 · product manager</span></small></span></button>
 </div>
+<div class="proj-panels">
 <!-- FlowPilot -->
 <article aria-labelledby="t-flowpilot" class="panel" id="p-flowpilot" role="tabpanel">
 <div class="ptext"><div class="col-a"><div class="p-meta"><span class="chip"><span class="zh">个人开源项目</span><span class="en">Open source</span></span><span class="chip num">2026.06–2026.09</span><span class="chip"><span class="zh">产品负责人 / 全栈</span><span class="en">Product owner / full stack</span></span></div><h3><span class="zh">FlowPilot Lab · 供应链计划与决策平台</span><span class="en">FlowPilot Lab · Supply-chain planning platform</span></h3><p class="oneline"><span class="zh">把"月度补货 → 周度发货"这套原本靠表格计算的流程，做成每个数字都能追溯来源的平台。</span><span class="en">I turned a spreadsheet-driven "monthly replenishment → weekly shipment" process into a platform where every number can be traced to its source.</span></p><div class="kn num">
@@ -625,6 +639,8 @@ dialog.lb button{position:sticky;float:right;margin:8px;top:8px;right:8px;border
 <div class="showcase" data-carousel=""><div aria-label="截图，可左右滑动" class="slides" tabindex="0"><figure class="slide"><button aria-label="放大查看 杭州 3 日路线全景" class="shot" type="button"><img alt="杭州 3 日路线全景" loading="eager" src="img/atp-result-3.webp"/></button></figure><figure class="slide"><button aria-label="放大查看 第 1 天路线" class="shot" type="button"><img alt="第 1 天路线" loading="lazy" src="img/atp-result-2.webp"/></button></figure><figure class="slide"><button aria-label="放大查看 首页" class="shot" type="button"><img alt="首页" loading="lazy" src="img/atp-home.webp"/></button></figure></div><div class="sc-nav"><button aria-label="上一张" class="arr" data-dir="-1" type="button">←</button><div class="strip"><button aria-current="true" aria-label="第 1 张：杭州 3 日路线全景" data-i="0" type="button"><img alt="" src="img/atp-result-3.webp"/></button><button aria-label="第 2 张：第 1 天路线" data-i="1" type="button"><img alt="" src="img/atp-result-2.webp"/></button><button aria-label="第 3 张：首页" data-i="2" type="button"><img alt="" src="img/atp-home.webp"/></button></div><div aria-hidden="true" class="dots"><i class="on"></i><i></i><i></i></div><button aria-label="下一张" class="arr" data-dir="1" type="button">→</button></div><p class="caption"><span class="swipe"><span class="zh">左右滑动 · 点击放大 · </span><span class="en">Swipe · tap to zoom · </span></span><span class="zh">三日路线全景 · 第 1 天路线 · 首页（页面会标注演示数据）</span><span class="en">Three-day routes · day 1 · home (demo data is labelled in the app)</span></p></div>
 </article>
 </div>
+</div>
+</div>
 </section>
 <!-- ============ ABOUT ============ -->
 <section class="about sec" id="about">
@@ -700,7 +716,7 @@ dialog.lb button{position:sticky;float:right;margin:8px;top:8px;right:8px;border
   }
   tabs.forEach(function(t,i){
     t.addEventListener('click',function(){openTab(t.id.slice(2))});
-    t.addEventListener('keydown',function(e){var d=e.key==='ArrowRight'?1:e.key==='ArrowLeft'?-1:0;if(!d)return;var n=tabs[(i+d+tabs.length)%tabs.length];n.focus();n.click()});
+    t.addEventListener('keydown',function(e){var d=(e.key==='ArrowRight'||e.key==='ArrowDown')?1:(e.key==='ArrowLeft'||e.key==='ArrowUp')?-1:0;if(d)e.preventDefault();if(!d)return;var n=tabs[(i+d+tabs.length)%tabs.length];n.focus();n.click()});
   });
   document.querySelectorAll('[data-open]').forEach(function(a){a.addEventListener('click',function(e){e.preventDefault();openTab(a.getAttribute('data-open'),true)})});
   if(['flowpilot','pawpath','goncharge','ecom','travel'].indexOf(h)>-1){openTab(h,false);setTimeout(function(){document.getElementById('projects').scrollIntoView()},50)}
