@@ -210,6 +210,32 @@ section{position:relative}
 .egg{margin-top:14px;font-size:14.5px;border:1.5px dashed var(--amber);border-radius:12px;padding:10px 14px;color:var(--ink-soft)}
 @media (max-width:920px){.kn{grid-template-columns:repeat(2,minmax(0,1fr))}}
 /* infographics for projects without screenshots */
+.ecom-media{display:grid;gap:18px}
+.ecom-media .showcase.single{max-width:none}
+.ecom-media .info{padding:22px 24px;width:100%}
+.ecom-media .info .flow{grid-template-columns:repeat(4,minmax(0,1fr))}
+.ecom-media .info .flow:has(> div:nth-child(2):last-child){grid-template-columns:repeat(2,minmax(0,1fr))}
+.ecom-media .hub{padding:12px 16px}
+@media (max-width:640px){.ecom-media .info{padding:16px}.ecom-media .info .flow{grid-template-columns:repeat(2,minmax(0,1fr))}}
+.ecom-media .info .arrow{line-height:1}
+.flow b.sm{font-size:16px}
+.dash-pair{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:16px}
+.dash{margin:0;border:1px solid var(--line);border-radius:14px;background:var(--paper);padding:14px;display:grid;gap:10px;min-width:0}
+.d-head{display:flex;flex-wrap:wrap;align-items:center;justify-content:space-between;gap:8px}
+.d-head b{font-family:var(--display);font-size:16px;color:var(--ink)}
+.d-chips{display:flex;gap:5px;flex-wrap:wrap}
+.d-chips span span{font-size:11.5px}
+.d-chips > span{border:1px solid var(--line);background:var(--paper-hi);border-radius:999px;padding:1px 9px;color:var(--ink-soft);font-size:11.5px}
+.d-kpis{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:8px}
+.d-kpis div{background:var(--paper-hi);border:1px solid var(--line);border-radius:10px;padding:7px 9px;font-size:12px;color:var(--ink-soft);display:grid;gap:6px}
+.d-kpis i{display:block;height:8px;width:70%;border-radius:4px;background:color-mix(in srgb,var(--moss) 30%,var(--paper-hi))}
+.d-big,.d-row > div{background:var(--paper-hi);border:1px solid var(--line);border-radius:10px;padding:8px 10px}
+.d-row{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:8px}
+.d-lab{font-size:12px;color:var(--ink-soft);margin-bottom:4px}
+.d-svg{display:block;width:100%;height:auto}
+.d-donut{max-width:86px;margin:0 auto}
+.dash figcaption{font-size:13px;color:var(--ink-soft);line-height:1.55}
+@media (max-width:640px){.dash-pair{grid-template-columns:1fr}}
 .info{border-radius:14px;border:1px solid var(--line);background:var(--paper);padding:20px;display:grid;gap:16px}
 .info .big{font-family:var(--display);font-weight:900;font-size:clamp(34px,5vw,52px);color:var(--amber);line-height:1}
 .bar{display:flex;height:22px;border-radius:999px;overflow:hidden;border:1px solid var(--line)}
@@ -253,6 +279,8 @@ section{position:relative}
 
 .about{background:linear-gradient(var(--paper),color-mix(in srgb,var(--mist) 50%,var(--paper)))}
 .about-grid{display:grid;grid-template-columns:minmax(0,1.2fr) minmax(0,1fr);gap:30px;align-items:center}
+.sheet.digua-solo{display:flex;align-items:center;justify-content:center;padding:clamp(20px,4vw,40px);background:radial-gradient(circle at 50% 55%,var(--mist) 0 42%,var(--paper-hi) 43%)}
+.digua-solo img{width:min(300px,70%);height:auto}
 .sheet{background:var(--paper-hi);border:1.5px solid var(--line);border-radius:26px;padding:18px}
 .about h3{font-size:26px}
 .about .lead{margin:10px 0 14px;color:var(--ink-soft)}
@@ -591,7 +619,7 @@ dialog.lb button{position:sticky;float:right;margin:8px;top:8px;right:8px;border
 <div><b><span class="zh">2.1 万</span><span class="en">21K</span></b><span class="zh">名客户</span><span class="en">customers</span></div>
 <div><b>2,199</b><span class="zh">款商品，另有 100 家供应商</span><span class="en">products, plus 100 suppliers</span></div>
 <div><b>29/30</b><span class="zh">课程成绩（HD，最高等级）</span><span class="en">grade (HD, top band)</span></div>
-</div><div class="blk"><h4><span class="zh">项目背景</span><span class="en">CONTEXT</span></h4><p><span class="zh">模拟一家电商企业：数据分散在不同地方，统计口径不统一，想跨表看一个问题都很费劲。</span><span class="en">A simulated online retailer: data in different places, inconsistent definitions, and slow cross-table questions.</span></p></div><div class="blk"><h4><span class="zh">项目成果</span><span class="en">OUTCOME</span></h4><ul>
+</div><div class="blk"><h4><span class="zh">项目背景</span><span class="en">CONTEXT</span></h4><p><span class="zh">一家电商企业的销售、客户、商品和供应商数据分散在不同系统里，统计口径不统一，想跨表看一个问题都很费劲。</span><span class="en">An online retailer kept sales, customer, product and supplier data in separate systems with inconsistent definitions, so any cross-table question was slow.</span></p></div><div class="blk"><h4><span class="zh">项目成果</span><span class="en">OUTCOME</span></h4><ul>
 <li><span class="zh">一份统一口径的经营数据集，不同部门不再各算各的</span><span class="en">One consistent dataset so teams stop working from different numbers</span></li>
 <li><span class="zh">一个看得懂的看板，支持商品复盘和供应商评估</span><span class="en">A readable dashboard for product reviews and supplier assessment</span></li>
 <li><span class="zh">课程成绩 29/30（HD）</span><span class="en">Grade 29/30 (HD)</span></li>
@@ -600,6 +628,7 @@ dialog.lb button{position:sticky;float:right;margin:8px;top:8px;right:8px;border
 <li><span class="zh"><b>数据治理</b>：用 SQL Server 和 SSIS 完成清洗、匹配与关联，统一商品、客户、供应商等关键字段的口径。</span><span class="en"><b>Data governance</b>: cleaned, matched and joined the data with SQL Server and SSIS, aligning key fields for products, customers and suppliers.</span></li>
 <li><span class="zh"><b>搭建看板</b>：用 Power BI 做 4 个模块，支持按时间、商品、供应商筛选，并用 R 做补充分析。</span><span class="en"><b>Dashboard</b>: four Power BI modules filterable by time, product and supplier, with supporting analysis in R.</span></li>
 </ul></div></div></div>
+<div class="ecom-media">
 <div class="showcase single"><div class="slides" tabindex="0"><div class="slide"><div class="info">
 <div class="caption"><span class="zh">从分散的数据，到一个经营看板</span><span class="en">From scattered data to one dashboard</span></div>
 <div class="flow num">
@@ -609,16 +638,28 @@ dialog.lb button{position:sticky;float:right;margin:8px;top:8px;right:8px;border
 <div><b>100</b><span class="zh">家供应商</span><span class="en">suppliers</span></div>
 </div>
 <div class="arrow">↓</div>
-<div class="hub"><span class="zh">统一口径的经营数据集（SQL Server · SSIS）</span><span class="en">One consistent dataset (SQL Server · SSIS)</span></div>
+<div class="hub"><span class="zh">SSIS 清洗匹配 → SQL Server 统一口径数据集</span><span class="en">SSIS cleaning → one consistent SQL Server dataset</span></div>
 <div class="arrow">↓</div>
 <div class="flow">
-<div><span class="zh">销售概览</span><span class="en">Sales overview</span></div>
-<div><span class="zh">商品表现</span><span class="en">Product performance</span></div>
-<div><span class="zh">客户分析</span><span class="en">Customer analysis</span></div>
-<div><span class="zh">供应商结构</span><span class="en">Supplier mix</span></div>
+<div><b class="sm"><span class="zh">商家视角看板</span><span class="en">Merchant view</span></b><span class="zh">销售 · 商品 · 供应商</span><span class="en">Sales · products · suppliers</span></div>
+<div><b class="sm"><span class="zh">客户视角看板</span><span class="en">Customer view</span></b><span class="zh">客户结构 · 购买偏好</span><span class="en">Customer mix · preferences</span></div>
 </div>
-<div class="caption"><span class="zh">Power BI 看板，可按时间、商品、供应商筛选</span><span class="en">Power BI dashboard, filterable by time, product and supplier</span></div>
+<div class="caption"><span class="zh">用 Power BI 搭建，支持多维度筛选，R 做补充分析</span><span class="en">Built in Power BI with multi-dimension filters; R for supporting analysis</span></div>
 </div></div></div><p class="caption"><span class="zh">项目结构示意图</span><span class="en">Project structure</span></p></div>
+<div class="dash-pair">
+<figure class="dash"><div class="d-head"><b><span class="zh">商家视角看板</span><span class="en">Merchant view</span></b><div class="d-chips"><span><span class="zh">时间</span><span class="en">Time</span></span><span><span class="zh">商品</span><span class="en">Product</span></span><span><span class="zh">供应商</span><span class="en">Supplier</span></span></div></div>
+<div class="d-kpis"><div><span class="zh">销售额</span><span class="en">Revenue</span><i></i></div><div><span class="zh">订单数</span><span class="en">Orders</span><i></i></div><div><span class="zh">客单价</span><span class="en">Avg. order</span><i></i></div></div>
+<div class="d-big"><div class="d-lab"><span class="zh">销售趋势</span><span class="en">Sales trend</span></div><svg viewBox="0 0 300 90" aria-hidden="true" class="d-svg"><polyline points="0,72 30,64 60,68 90,50 120,56 150,40 180,46 210,30 240,36 270,20 300,26" fill="none" stroke="var(--moss)" stroke-width="3" stroke-linejoin="round" stroke-linecap="round"/><polyline points="0,80 30,76 60,78 90,70 120,72 150,62 180,66 210,58 240,60 270,52 300,54" fill="none" stroke="var(--amber)" stroke-width="2" stroke-dasharray="5 5"/><line x1="0" y1="89" x2="300" y2="89" stroke="var(--line)" stroke-width="2"/></svg></div>
+<div class="d-row"><div><div class="d-lab"><span class="zh">商品表现 Top</span><span class="en">Top products</span></div><svg viewBox="0 0 140 90" aria-hidden="true" class="d-svg"><rect x="0" y="4" width="130" height="10" rx="3" fill="var(--moss)"/><rect x="0" y="21" width="108" height="10" rx="3" fill="var(--moss)"/><rect x="0" y="38" width="86" height="10" rx="3" fill="var(--leaf)"/><rect x="0" y="55" width="64" height="10" rx="3" fill="var(--leaf)"/><rect x="0" y="72" width="44" height="10" rx="3" fill="var(--leaf)"/></svg></div><div><div class="d-lab"><span class="zh">供应商结构</span><span class="en">Supplier mix</span></div><svg viewBox="0 0 90 90" aria-hidden="true" class="d-svg d-donut"><path d="M45.0 10.0 A35 35 0 0 1 62.9 75.1" fill="none" stroke="var(--moss)" stroke-width="14"/><path d="M61.9 75.7 A35 35 0 0 1 12.1 57.0" fill="none" stroke="var(--amber)" stroke-width="14"/><path d="M11.7 55.8 A35 35 0 0 1 20.2 20.3" fill="none" stroke="var(--leaf)" stroke-width="14"/><path d="M21.0 19.5 A35 35 0 0 1 43.8 10.0" fill="none" stroke="var(--bark)" stroke-width="14"/></svg></div></div>
+<figcaption><span class="zh">卖得怎么样、哪些商品该补该清、哪些供应商值得长期合作</span><span class="en">How sales are going, which products to restock or clear, which suppliers to keep</span></figcaption></figure>
+<figure class="dash"><div class="d-head"><b><span class="zh">客户视角看板</span><span class="en">Customer view</span></b><div class="d-chips"><span><span class="zh">时间</span><span class="en">Time</span></span><span><span class="zh">地区</span><span class="en">Region</span></span><span><span class="zh">客户类型</span><span class="en">Segment</span></span></div></div>
+<div class="d-kpis"><div><span class="zh">客户数</span><span class="en">Customers</span><i></i></div><div><span class="zh">人均消费</span><span class="en">Spend / customer</span><i></i></div><div><span class="zh">购买频次</span><span class="en">Purchase frequency</span><i></i></div></div>
+<div class="d-big"><div class="d-lab"><span class="zh">消费水平分布</span><span class="en">Spend distribution</span></div><svg viewBox="0 0 300 90" aria-hidden="true" class="d-svg"><rect x="8" y="54" width="24" height="34" rx="3" fill="var(--leaf)"/><rect x="44" y="36" width="24" height="52" rx="3" fill="var(--leaf)"/><rect x="80" y="22" width="24" height="66" rx="3" fill="var(--leaf)"/><rect x="116" y="8" width="24" height="80" rx="3" fill="var(--amber)"/><rect x="152" y="28" width="24" height="60" rx="3" fill="var(--leaf)"/><rect x="188" y="44" width="24" height="44" rx="3" fill="var(--leaf)"/><rect x="224" y="58" width="24" height="30" rx="3" fill="var(--leaf)"/><rect x="260" y="68" width="24" height="20" rx="3" fill="var(--leaf)"/><line x1="0" y1="89" x2="300" y2="89" stroke="var(--line)" stroke-width="2"/></svg></div>
+<div class="d-row"><div><div class="d-lab"><span class="zh">客户结构</span><span class="en">Customer mix</span></div><svg viewBox="0 0 140 90" aria-hidden="true" class="d-svg"><rect x="6" y="48" width="18" height="40" rx="3" fill="var(--leaf)"/><rect x="33" y="12" width="18" height="76" rx="3" fill="var(--moss)"/><rect x="60" y="30" width="18" height="58" rx="3" fill="var(--leaf)"/><rect x="87" y="58" width="18" height="30" rx="3" fill="var(--leaf)"/><rect x="114" y="70" width="18" height="18" rx="3" fill="var(--leaf)"/><line x1="0" y1="89" x2="140" y2="89" stroke="var(--line)" stroke-width="2"/></svg></div><div><div class="d-lab"><span class="zh">购买偏好</span><span class="en">Category preference</span></div><svg viewBox="0 0 90 90" aria-hidden="true" class="d-svg d-donut"><path d="M45.0 10.0 A35 35 0 0 1 62.9 75.1" fill="none" stroke="var(--amber)" stroke-width="14"/><path d="M61.9 75.7 A35 35 0 0 1 12.1 57.0" fill="none" stroke="var(--moss)" stroke-width="14"/><path d="M11.7 55.8 A35 35 0 0 1 20.2 20.3" fill="none" stroke="var(--bark)" stroke-width="14"/><path d="M21.0 19.5 A35 35 0 0 1 43.8 10.0" fill="none" stroke="var(--leaf)" stroke-width="14"/></svg></div></div>
+<figcaption><span class="zh">客户是谁、喜欢买什么、消费水平如何</span><span class="en">Who the customers are, what they buy, how much they spend</span></figcaption></figure>
+</div>
+<p class="caption"><span class="zh">项目使用真实商户数据，出于数据保密要求，原始看板不便公开展示。以上为根据看板结构绘制的示意图。</span><span class="en">This project used real merchant data, so the original dashboards can't be shown publicly for confidentiality reasons. The sketches above follow the dashboards' structure.</span></p>
+</div>
 </article>
 <!-- Travel planner -->
 <article aria-labelledby="t-travel" class="panel" hidden="" id="p-travel" role="tabpanel">
@@ -647,10 +688,10 @@ dialog.lb button{position:sticky;float:right;margin:8px;top:8px;right:8px;border
 <div class="wrap">
 <div class="sec-head"><div><div class="kicker"><span class="zh">兴趣与原创 IP</span><span class="en">INTERESTS &amp; ORIGINAL IP</span></div><h2><span class="zh">工作之外的我</span><span class="en">Outside of work</span></h2></div></div>
 <div class="about-grid">
-<div class="sheet"><img alt="地瓜角色设定图：三视图、表情、动作与配色" height="933" src="img/digua-sheet.webp" width="1400"/></div>
+<div class="sheet digua-solo"><img alt="地瓜：穿森林绿卫衣的小熊猫" height="425" src="img/digua-front.webp" width="443"/></div>
 <div>
 <h3>🍠 <span class="zh">地瓜 · 我的原创 IP</span><span class="en">Digua · my original character</span></h3>
-<p class="lead"><span class="zh">一只穿着森林绿卫衣的小熊猫。我提出角色设定和设计理念，借助 AI 完成绘制与迭代，并用它尝试独立 IP 电商。目前已上线<b>微信表情包</b>，在微信里搜「<b>地瓜的一天</b>」就能找到。</span><span class="en">A red panda in a forest-green hoodie. I came up with the concept and design direction, illustrated and iterated it with AI, and used it to explore independent IP e-commerce. Digua is live as a <b>WeChat sticker pack</b>: search “地瓜的一天” in WeChat.</span></p>
+<p class="lead"><span class="zh">一路陪你看完这份作品集的小向导，就是<b>地瓜</b>——我的原创 IP，一只穿着森林绿卫衣的小熊猫。我提出角色设定和设计理念，借助 AI 完成绘制与迭代，并用它尝试独立 IP 电商。目前已上线<b>微信表情包</b>，在微信里搜「<b>地瓜的一天</b>」就能找到。</span><span class="en">The little guide who has walked you through this portfolio is <b>Digua</b>, my original character: a red panda in a forest-green hoodie. I came up with the concept and design direction, illustrated and iterated it with AI, and used it to explore independent IP e-commerce. Digua is live as a <b>WeChat sticker pack</b>: search “地瓜的一天” in WeChat.</span></p>
 <ul>
 <li><span class="zh">完整的角色设定：三视图、7 种表情、6 种动作、专属配色</span><span class="en">Full character sheet: three views, 7 expressions, 6 poses, a signature palette</span></li>
 <li><span class="zh">内容运营尝试：运营过地瓜 IP 账号和游戏攻略账号</span><span class="en">Content operations: ran the Digua account and a game-guide account</span></li>
