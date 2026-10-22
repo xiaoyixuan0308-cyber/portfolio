@@ -347,6 +347,8 @@ a.src:hover{background:var(--mist);color:var(--moss)}
 @media (max-width:820px){.reflect{grid-template-columns:1fr}}
 .sec-chips{display:flex;flex-wrap:wrap;gap:8px;margin-top:12px}
 .sec-chips > span{white-space:nowrap;font-size:14px;color:var(--moss);background:var(--paper-hi);border:1.5px solid color-mix(in srgb,var(--leaf) 70%,var(--line));border-radius:999px;padding:4px 12px;font-weight:500}
+.sign .sum .case-link{display:inline-block;margin-top:8px;font-size:13.5px;color:var(--moss);font-weight:500;text-decoration:none}
+.sign .sum .case-link:hover{text-decoration:underline}
 </style>
 <style>img{max-width:100%}[hidden]{display:none!important}</style>
 </head>
@@ -652,8 +654,8 @@ a.src:hover{background:var(--mist);color:var(--moss)}
 <div class="sec-head">
 <div>
 <div class="kicker"><span class="zh">经历</span><span class="en">JOURNEY</span></div>
-<h2><span class="zh">沿着林间小径，看看我一路做过的事</span><span class="en">Walk the trail through what I've done</span></h2>
-<p><span class="zh">2 段学历 · 2 段实习 · 1 次国际竞赛 · 点开路牌看细节</span><span class="en">2 degrees · 2 internships · 1 global contest · open a signpost for details</span></p>
+<h2><span class="zh">我的学习工作经历</span><span class="en">My education &amp; work journey</span></h2>
+<div class="sec-chips"><span>🎓 <span class="zh">2 段学历</span><span class="en">2 degrees</span></span><span>💼 <span class="zh">2 段实习</span><span class="en">2 internships</span></span><span>🏆 <span class="zh">1 次国际竞赛</span><span class="en">1 global contest</span></span><span>📁 <span class="zh">5 个项目</span><span class="en">5 projects</span></span></div>
 </div>
 </div>
 <div class="trail-box">
@@ -692,8 +694,12 @@ a.src:hover{background:var(--mist);color:var(--moss)}
 <img alt="" class="pal" height="207" src="img/digua-sit-tail.webp" width="181"/>
 </li>
 <li class="stop">
-<span class="post" style="background:#8a6aa8"><span class="zh">2026.04 起 · 课程项目</span><span class="en">From 2026.04 · Coursework</span></span>
-<div class="sign"><div class="sum"><h3><span class="zh">用数据解决真实的业务问题</span><span class="en">Solving real business problems with data</span></h3><div class="hl case-links"><a data-open="ecom" href="#projects"><span class="zh">电商数据仓库</span><span class="en">E-commerce DW</span></a> · <a data-open="goncharge" href="#projects"><span class="zh">GoNCharge 舞弊审计</span><span class="en">GoNCharge fraud audit</span></a> · <a data-open="travel" href="#projects"><span class="zh">AI 旅行规划</span><span class="en">AI Travel Planner</span></a></div><span class="more"><span class="zh">点击项目名查看案例 →</span><span class="en">Tap a project to see the case →</span></span></div></div>
+<span class="post" style="background:#8a6aa8"><span class="zh">2026.04–2026.06 · 课程项目</span><span class="en">2026.04–2026.06 · Coursework</span></span>
+<div class="sign"><div class="sum"><h3><span class="zh">电商数据仓库</span><span class="en">E-commerce data warehouse</span></h3><div class="role"><span class="zh">数据运营</span><span class="en">Data operations</span></div><div class="hl"><span class="zh">把多个系统里的销售、客户、商品和供应商数据统一口径，搭成可筛选的经营看板。</span><span class="en">Unified sales, customer, product and supplier data into one consistent, filterable dashboard.</span></div><a class="more case-link" data-open="ecom" href="#projects"><span class="zh">查看案例 →</span><span class="en">See the case →</span></a></div></div>
+</li>
+<li class="stop">
+<span class="post" style="background:#8a6aa8"><span class="zh">2026.05 · 课程项目</span><span class="en">2026.05 · Coursework</span></span>
+<div class="sign"><div class="sum"><h3><span class="zh">GoNCharge 舞弊审计</span><span class="en">GoNCharge fraud audit</span></h3><div class="role"><span class="zh">独立完成 · 课程模拟数据</span><span class="en">Solo · simulated course data</span></div><div class="hl"><span class="zh">用 SQL 交叉比对付款、工资和客户记录，查出一套持续多年的内部舞弊。</span><span class="en">Cross-checked payments, payroll and customer records with SQL to uncover a multi-year internal fraud.</span></div><a class="more case-link" data-open="goncharge" href="#projects"><span class="zh">查看案例 →</span><span class="en">See the case →</span></a></div></div>
 </li>
 <li class="stop">
 <span class="post" style="background:var(--moss)"><span class="zh">2026.06–2026.08 · 上海</span><span class="en">2026.06–2026.08 · Shanghai</span></span>
@@ -706,8 +712,16 @@ a.src:hover{background:var(--mist);color:var(--moss)}
 </ul></div></details>
 </li>
 <li class="stop">
-<span class="post" style="background:var(--amber)"><span class="zh">2026.06 起 · 个人开源</span><span class="en">From 2026.06 · Open source</span></span>
-<div class="sign"><div class="sum"><h3><span class="zh">借助 AI，独立做出两个完整的业务系统</span><span class="en">Two complete business systems, built with AI</span></h3><div class="hl case-links"><a data-open="flowpilot" href="#projects"><span class="zh">FlowPilot Lab</span><span class="en">FlowPilot Lab</span></a> · <a data-open="pawpath" href="#projects"><span class="zh">PawPath</span><span class="en">PawPath</span></a></div><span class="more"><span class="zh">点击项目名查看案例 →</span><span class="en">Tap a project to see the case →</span></span></div></div>
+<span class="post" style="background:#4f8a8b"><span class="zh">2026.06–2026.08 · 团队项目</span><span class="en">2026.06–2026.08 · Team project</span></span>
+<div class="sign"><div class="sum"><h3><span class="zh">AI 旅行规划</span><span class="en">AI Travel Planner</span></h3><div class="role"><span class="zh">7 人团队 · 产品经理</span><span class="en">Team of 7 · product manager</span></div><div class="hl"><span class="zh">输入目的地和日期，自动生成按天可执行的行程，并在地图上联动展示。</span><span class="en">Enter a destination and dates to get a day-by-day plan shown on a linked map.</span></div><a class="more case-link" data-open="travel" href="#projects"><span class="zh">查看案例 →</span><span class="en">See the case →</span></a></div></div>
+</li>
+<li class="stop">
+<span class="post" style="background:var(--amber)"><span class="zh">2026.06–2026.09 · 个人开源</span><span class="en">2026.06–2026.09 · Open source</span></span>
+<div class="sign"><div class="sum"><h3>FlowPilot Lab</h3><div class="role"><span class="zh">产品负责人 / 全栈</span><span class="en">Product owner / full stack</span></div><div class="hl"><span class="zh">把“月度补货 → 周度发货”做成每个数字都能追溯来源的平台。</span><span class="en">A platform for monthly replenishment to weekly shipments where every number is traceable.</span></div><a class="more case-link" data-open="flowpilot" href="#projects"><span class="zh">查看案例 →</span><span class="en">See the case →</span></a></div></div>
+</li>
+<li class="stop">
+<span class="post" style="background:var(--amber)"><span class="zh">2026.09 至今 · 个人开源</span><span class="en">2026.09 – now · Open source</span></span>
+<div class="sign"><div class="sum"><h3>PawPath</h3><div class="role"><span class="zh">产品负责人 / 全栈</span><span class="en">Product owner / full stack</span></div><div class="hl"><span class="zh">让每次上架、每个领养决定都有规则可依、有记录可查。</span><span class="en">Every listing and adoption decision follows a rule and leaves a record.</span></div><a class="more case-link" data-open="pawpath" href="#projects"><span class="zh">查看案例 →</span><span class="en">See the case →</span></a></div></div>
 </li>
 <li class="stop next">
 <span class="post" style="background:var(--moss)"><span class="zh">下一站</span><span class="en">Next stop</span></span>
