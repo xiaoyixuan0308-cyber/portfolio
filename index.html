@@ -431,6 +431,11 @@ a.src:hover{background:var(--mist);color:var(--moss)}
 .proj-layout.is-filtering .tab.f-hit:not([aria-selected="true"]){transform:translateY(-2px)}
 .trail-box.is-filtering .stop.f-hit .sign{border-color:var(--amber);box-shadow:0 0 0 3px color-mix(in srgb,var(--amber) 35%,transparent),0 7px 0 color-mix(in srgb,var(--line) 75%,transparent);transform:translateY(-3px)}
 @media (prefers-reduced-motion: reduce){.is-filtering .f-dim,.is-filtering .f-hit,.trail-box.is-filtering .stop.f-hit .sign{transition:none;transform:none}}
+.fchip .fx{display:none;margin-left:6px;font-size:11px;opacity:.85}
+.fchip[aria-pressed="true"] .fx{display:inline}
+.fclear{font:500 13.5px var(--body);background:none;border:0;color:var(--ink-soft);text-decoration:underline;text-underline-offset:3px;cursor:pointer;padding:4px 6px}
+.fclear:hover{color:var(--moss)}
+.fclear:focus-visible{outline:3px solid var(--amber);outline-offset:2px;border-radius:6px}
 </style>
 <style>img{max-width:100%}[hidden]{display:none!important}</style>
 </head>
@@ -564,7 +569,7 @@ a.src:hover{background:var(--mist);color:var(--moss)}
 <div>
 <div class="kicker"><span class="zh">项目</span><span class="en">PROJECTS</span></div>
 <h2><span class="zh">我做过的项目，解决过的问题</span><span class="en">Projects I&#39;ve built, problems I&#39;ve solved</span></h2>
-<div class="sec-chips" data-scope="proj"><button aria-pressed="false" class="fchip" data-f="oss" type="button">🌱 <span class="zh">2 个个人开源</span><span class="en">2 open-source</span></button><button aria-pressed="false" class="fchip" data-f="course" type="button">📚 <span class="zh">2 个课程项目</span><span class="en">2 coursework</span></button><button aria-pressed="false" class="fchip" data-f="team" type="button">🤝 <span class="zh">1 个团队项目 · 产品经理</span><span class="en">1 team project · PM</span></button><button aria-pressed="false" class="fchip" data-f="contest" type="button">🏆 <span class="zh">1 个国际竞赛</span><span class="en">1 global contest</span></button></div>
+<div class="sec-chips" data-scope="proj"><button aria-pressed="false" class="fchip" data-f="oss" type="button">🌱 <span class="zh">2 个个人开源</span><span class="en">2 open-source</span><span aria-hidden="true" class="fx">✕</span></button><button aria-pressed="false" class="fchip" data-f="course" type="button">📚 <span class="zh">2 个课程项目</span><span class="en">2 coursework</span><span aria-hidden="true" class="fx">✕</span></button><button aria-pressed="false" class="fchip" data-f="team" type="button">🤝 <span class="zh">1 个团队项目 · 产品经理</span><span class="en">1 team project · PM</span><span aria-hidden="true" class="fx">✕</span></button><button aria-pressed="false" class="fchip" data-f="contest" type="button">🏆 <span class="zh">1 个国际竞赛</span><span class="en">1 global contest</span><span aria-hidden="true" class="fx">✕</span></button><button class="fclear" hidden="" type="button"><span class="zh">显示全部</span><span class="en">Show all</span></button></div>
 </div>
 </div>
 <div class="proj-layout">
@@ -761,7 +766,7 @@ a.src:hover{background:var(--mist);color:var(--moss)}
 <div>
 <div class="kicker"><span class="zh">经历</span><span class="en">JOURNEY</span></div>
 <h2><span class="zh">我的学习工作经历</span><span class="en">My education &amp; work journey</span></h2>
-<div class="sec-chips" data-scope="journey"><button aria-pressed="false" class="fchip" data-f="edu" type="button">🎓 <span class="zh">2 段学历</span><span class="en">2 degrees</span></button><button aria-pressed="false" class="fchip" data-f="intern" type="button">💼 <span class="zh">2 段实习</span><span class="en">2 internships</span></button><button aria-pressed="false" class="fchip" data-f="contest" type="button">🏆 <span class="zh">1 次国际竞赛</span><span class="en">1 global contest</span></button><button aria-pressed="false" class="fchip" data-f="proj" type="button">📁 <span class="zh">5 个项目</span><span class="en">5 projects</span></button></div>
+<div class="sec-chips" data-scope="journey"><button aria-pressed="false" class="fchip" data-f="edu" type="button">🎓 <span class="zh">2 段学历</span><span class="en">2 degrees</span><span aria-hidden="true" class="fx">✕</span></button><button aria-pressed="false" class="fchip" data-f="intern" type="button">💼 <span class="zh">2 段实习</span><span class="en">2 internships</span><span aria-hidden="true" class="fx">✕</span></button><button aria-pressed="false" class="fchip" data-f="contest" type="button">🏆 <span class="zh">1 次国际竞赛</span><span class="en">1 global contest</span><span aria-hidden="true" class="fx">✕</span></button><button aria-pressed="false" class="fchip" data-f="proj" type="button">📁 <span class="zh">5 个项目</span><span class="en">5 projects</span><span aria-hidden="true" class="fx">✕</span></button><button class="fclear" hidden="" type="button"><span class="zh">显示全部</span><span class="en">Show all</span></button></div>
 </div>
 </div>
 <div class="trail-box">
@@ -1002,6 +1007,7 @@ a.src:hover{background:var(--mist);color:var(--moss)}
       var btns=[].slice.call(bar.querySelectorAll('.fchip')),cur=null;
       function apply(k){cur=k;
         btns.forEach(function(b){b.setAttribute('aria-pressed',b.getAttribute('data-f')===k?'true':'false')});
+        var clr=bar.querySelector('.fclear');if(clr)clr.hidden=!k;
         box.classList.toggle('is-filtering',!!k);
         var first=null;
         items().forEach(function(el){var hit=k&&el.getAttribute('data-grp')===k;el.classList.toggle('f-hit',!!hit);el.classList.toggle('f-dim',!!k&&!hit);if(hit&&!first)first=el});
@@ -1009,6 +1015,8 @@ a.src:hover{background:var(--mist);color:var(--moss)}
         if(k&&scroll&&first){var r=first.getBoundingClientRect(),off=(document.querySelector('.nav').offsetHeight||64)+16;if(r.top<off||r.top>innerHeight*0.6){scrollTo({top:scrollY+r.top-off-40,behavior:matchMedia('(prefers-reduced-motion: reduce)').matches?'auto':'smooth'})}}
       }
       btns.forEach(function(b){b.addEventListener('click',function(){var k=b.getAttribute('data-f');apply(cur===k?null:k)})});
+      var clr=bar.querySelector('.fclear');if(clr)clr.addEventListener('click',function(){apply(null)});
+      addEventListener('keydown',function(e){if(e.key==='Escape'&&cur)apply(null)});
     }
     setup('proj',document.querySelector('.proj-layout'),function(){return [].slice.call(document.querySelectorAll('.proj-layout .tab[data-grp]'))},false);
     setup('journey',document.querySelector('.trail-box'),function(){return [].slice.call(document.querySelectorAll('.trail .stop'))},true);
