@@ -421,6 +421,16 @@ a.src:hover{background:var(--mist);color:var(--moss)}
 .proj-layout .gc-media .info{width:100%}
 #p-gee .slide{aspect-ratio:4/3}
 @media (max-width:640px){#p-gee .slide{aspect-ratio:3/4}}
+.sec-chips .fchip{font:500 14px var(--body);color:var(--moss);background:var(--paper-hi);border:1.5px solid color-mix(in srgb,var(--leaf) 70%,var(--line));border-radius:999px;padding:4px 12px;white-space:nowrap;cursor:pointer;transition:background .15s,color .15s,border-color .15s}
+.sec-chips .fchip:hover{border-color:var(--moss)}
+.sec-chips .fchip:focus-visible{outline:3px solid var(--amber);outline-offset:2px}
+.sec-chips .fchip[aria-pressed="true"]{background:var(--moss);border-color:var(--moss);color:var(--paper-hi)}
+.is-filtering .f-dim{opacity:.32;filter:saturate(.6);transition:opacity .25s,filter .25s}
+.is-filtering .f-hit{transition:transform .25s,box-shadow .25s}
+.proj-layout.is-filtering .tab.f-hit{border-color:var(--amber);box-shadow:0 0 0 3px color-mix(in srgb,var(--amber) 35%,transparent),0 4px 0 color-mix(in srgb,var(--bark) 28%,var(--line))}
+.proj-layout.is-filtering .tab.f-hit:not([aria-selected="true"]){transform:translateY(-2px)}
+.trail-box.is-filtering .stop.f-hit .sign{border-color:var(--amber);box-shadow:0 0 0 3px color-mix(in srgb,var(--amber) 35%,transparent),0 7px 0 color-mix(in srgb,var(--line) 75%,transparent);transform:translateY(-3px)}
+@media (prefers-reduced-motion: reduce){.is-filtering .f-dim,.is-filtering .f-hit,.trail-box.is-filtering .stop.f-hit .sign{transition:none;transform:none}}
 </style>
 <style>img{max-width:100%}[hidden]{display:none!important}</style>
 </head>
@@ -554,17 +564,17 @@ a.src:hover{background:var(--mist);color:var(--moss)}
 <div>
 <div class="kicker"><span class="zh">项目</span><span class="en">PROJECTS</span></div>
 <h2><span class="zh">我做过的项目，解决过的问题</span><span class="en">Projects I&#39;ve built, problems I&#39;ve solved</span></h2>
-<div class="sec-chips"><span>🌱 <span class="zh">2 个个人开源</span><span class="en">2 open-source</span></span><span>📚 <span class="zh">2 个课程项目</span><span class="en">2 coursework</span></span><span>🤝 <span class="zh">1 个团队项目 · 产品经理</span><span class="en">1 team project · PM</span></span><span>🏆 <span class="zh">1 个国际竞赛</span><span class="en">1 global contest</span></span></div>
+<div class="sec-chips" data-scope="proj"><button aria-pressed="false" class="fchip" data-f="oss" type="button">🌱 <span class="zh">2 个个人开源</span><span class="en">2 open-source</span></button><button aria-pressed="false" class="fchip" data-f="course" type="button">📚 <span class="zh">2 个课程项目</span><span class="en">2 coursework</span></button><button aria-pressed="false" class="fchip" data-f="team" type="button">🤝 <span class="zh">1 个团队项目 · 产品经理</span><span class="en">1 team project · PM</span></button><button aria-pressed="false" class="fchip" data-f="contest" type="button">🏆 <span class="zh">1 个国际竞赛</span><span class="en">1 global contest</span></button></div>
 </div>
 </div>
 <div class="proj-layout">
 <div aria-label="项目" aria-orientation="vertical" class="tabs" role="tablist">
-<button aria-controls="p-flowpilot" aria-selected="true" class="tab" id="t-flowpilot" role="tab"><span aria-hidden="true" class="t-ic">📦</span><span class="t-tx"><b>FlowPilot Lab</b><small><span class="zh">个人开源 · 供应链计划平台</span><span class="en">Open source · supply-chain planning</span></small></span></button>
-<button aria-controls="p-pawpath" aria-selected="false" class="tab" id="t-pawpath" role="tab"><span aria-hidden="true" class="t-ic">🐾</span><span class="t-tx"><b>PawPath</b><small><span class="zh">个人开源 · 领养管理平台</span><span class="en">Open source · adoption platform</span></small></span></button>
-<button aria-controls="p-goncharge" aria-selected="false" class="tab" id="t-goncharge" role="tab"><span aria-hidden="true" class="t-ic">🔍</span><span class="t-tx"><b>GoNCharge</b><small><span class="zh">课程项目 · SQL 舞弊审计</span><span class="en">Course · SQL fraud audit</span></small></span></button>
-<button aria-controls="p-ecom" aria-selected="false" class="tab" id="t-ecom" role="tab"><span aria-hidden="true" class="t-ic">🛒</span><span class="t-tx"><b><span class="zh">电商数据仓库</span><span class="en">E-commerce DW</span></b><small><span class="zh">课程项目 · 数仓与经营看板</span><span class="en">Course · warehouse &amp; dashboard</span></small></span></button>
-<button aria-controls="p-travel" aria-selected="false" class="tab" id="t-travel" role="tab"><span aria-hidden="true" class="t-ic">🗺️</span><span class="t-tx"><b><span class="zh">AI 旅行规划</span><span class="en">AI Travel Planner</span></b><small><span class="zh">7 人团队 · 产品经理</span><span class="en">Team of 7 · product manager</span></small></span></button>
-<button aria-controls="p-gee" aria-selected="false" class="tab" id="t-gee" role="tab"><span aria-hidden="true" class="t-ic">🏆</span><span class="t-tx"><b><span class="zh">GEE 国际竞赛</span><span class="en">GEE competition</span></b><small><span class="zh">7 国团队 · 总负责人</span><span class="en">7-country team · team lead</span></small></span></button>
+<button aria-controls="p-flowpilot" aria-selected="true" class="tab" id="t-flowpilot" role="tab" data-grp="oss"><span aria-hidden="true" class="t-ic">📦</span><span class="t-tx"><b>FlowPilot Lab</b><small><span class="zh">个人开源 · 供应链计划平台</span><span class="en">Open source · supply-chain planning</span></small></span></button>
+<button aria-controls="p-pawpath" aria-selected="false" class="tab" id="t-pawpath" role="tab" data-grp="oss"><span aria-hidden="true" class="t-ic">🐾</span><span class="t-tx"><b>PawPath</b><small><span class="zh">个人开源 · 领养管理平台</span><span class="en">Open source · adoption platform</span></small></span></button>
+<button aria-controls="p-goncharge" aria-selected="false" class="tab" id="t-goncharge" role="tab" data-grp="course"><span aria-hidden="true" class="t-ic">🔍</span><span class="t-tx"><b>GoNCharge</b><small><span class="zh">课程项目 · SQL 舞弊审计</span><span class="en">Course · SQL fraud audit</span></small></span></button>
+<button aria-controls="p-ecom" aria-selected="false" class="tab" id="t-ecom" role="tab" data-grp="course"><span aria-hidden="true" class="t-ic">🛒</span><span class="t-tx"><b><span class="zh">电商数据仓库</span><span class="en">E-commerce DW</span></b><small><span class="zh">课程项目 · 数仓与经营看板</span><span class="en">Course · warehouse &amp; dashboard</span></small></span></button>
+<button aria-controls="p-travel" aria-selected="false" class="tab" id="t-travel" role="tab" data-grp="team"><span aria-hidden="true" class="t-ic">🗺️</span><span class="t-tx"><b><span class="zh">AI 旅行规划</span><span class="en">AI Travel Planner</span></b><small><span class="zh">7 人团队 · 产品经理</span><span class="en">Team of 7 · product manager</span></small></span></button>
+<button aria-controls="p-gee" aria-selected="false" class="tab" id="t-gee" role="tab" data-grp="contest"><span aria-hidden="true" class="t-ic">🏆</span><span class="t-tx"><b><span class="zh">GEE 国际竞赛</span><span class="en">GEE competition</span></b><small><span class="zh">7 国团队 · 总负责人</span><span class="en">7-country team · team lead</span></small></span></button>
 </div>
 <div class="proj-panels">
 <!-- FlowPilot -->
@@ -751,19 +761,19 @@ a.src:hover{background:var(--mist);color:var(--moss)}
 <div>
 <div class="kicker"><span class="zh">经历</span><span class="en">JOURNEY</span></div>
 <h2><span class="zh">我的学习工作经历</span><span class="en">My education &amp; work journey</span></h2>
-<div class="sec-chips"><span>🎓 <span class="zh">2 段学历</span><span class="en">2 degrees</span></span><span>💼 <span class="zh">2 段实习</span><span class="en">2 internships</span></span><span>🏆 <span class="zh">1 次国际竞赛</span><span class="en">1 global contest</span></span><span>📁 <span class="zh">5 个项目</span><span class="en">5 projects</span></span></div>
+<div class="sec-chips" data-scope="journey"><button aria-pressed="false" class="fchip" data-f="edu" type="button">🎓 <span class="zh">2 段学历</span><span class="en">2 degrees</span></button><button aria-pressed="false" class="fchip" data-f="intern" type="button">💼 <span class="zh">2 段实习</span><span class="en">2 internships</span></button><button aria-pressed="false" class="fchip" data-f="contest" type="button">🏆 <span class="zh">1 次国际竞赛</span><span class="en">1 global contest</span></button><button aria-pressed="false" class="fchip" data-f="proj" type="button">📁 <span class="zh">5 个项目</span><span class="en">5 projects</span></button></div>
 </div>
 </div>
 <div class="trail-box">
 <div aria-hidden="true" class="trail-path"></div>
 <ol class="trail">
-<li class="stop">
+<li class="stop" data-grp="edu">
 <span class="post" style="background:var(--bark)"><span class="zh">2023.02 · 新西兰 但尼丁</span><span class="en">2023.02 · Dunedin, NZ</span></span>
 <details class="sign"><summary><h3><span class="zh">奥塔哥大学 · 会计学学士</span><span class="en">University of Otago · BCom Accounting</span></h3><div class="hl"><span class="zh">打下财务、审计和商业分析的基础。</span><span class="en">Built my foundation in finance, audit and business analysis.</span></div><span class="more"><span class="o"><span class="zh">展开 ↓</span><span class="en">More ↓</span></span><span class="c"><span class="zh">收起 ↑</span><span class="en">Less ↑</span></span></span></summary>
 <div class="body"><ul><li><span class="zh">主修：财务会计、管理会计、审计、公司金融、绩效管理</span><span class="en">Core courses: financial and management accounting, auditing, corporate finance, performance management</span></li></ul></div></details>
 <img alt="" class="pal" height="380" src="img/digua-side.webp" width="442"/>
 </li>
-<li class="stop">
+<li class="stop" data-grp="contest">
 <span class="post" style="background:var(--amber)"><span class="zh">2024 · 线上 · 7 个国家</span><span class="en">2024 · Online · 7 countries</span></span>
 <details class="sign"><summary><h3><span class="zh">GEE 国际商业竞赛</span><span class="en">GEE International Business Competition</span></h3><div class="role"><span class="zh">团队总负责人</span><span class="en">Team lead</span></div><div class="hl"><span class="zh">带领 7 国团队 3 周交付，170+ 支队伍中排名第 5（前 3%），获推荐信和创业基金。</span><span class="en">Led a 7-country team to deliver in 3 weeks; 5th of 170+ (top 3%), recommendation letter and start-up funding.</span></div><span class="more"><span class="o"><span class="zh">展开 ↓</span><span class="en">More ↓</span></span><span class="c"><span class="zh">收起 ↑</span><span class="en">Less ↑</span></span></span></summary>
 <div class="body"><ul>
@@ -772,7 +782,7 @@ a.src:hover{background:var(--mist);color:var(--moss)}
 <li><span class="zh"><b>数据模型</b>：设计包含 11 个实体的数据模型，讲清成本、市场和产品的数据关系，并担任最终汇报人。</span><span class="en"><b>Data model</b>: designed an 11-entity model linking cost, market and product data, and presented the final pitch.</span></li>
 </ul><div class="links-row"><a data-open="gee" href="#projects"><span class="zh">查看案例 →</span><span class="en">See the case →</span></a></div></div></details>
 </li>
-<li class="stop">
+<li class="stop" data-grp="intern">
 <span class="post" style="background:var(--moss)"><span class="zh">2024.06–2024.09 · 上海</span><span class="en">2024.06–2024.09 · Shanghai</span></span>
 <details class="sign"><summary><h3><span class="zh">安永华明会计师事务所</span><span class="en">EY (Ernst &amp; Young Hua Ming)</span></h3><div class="role"><span class="zh">审计实习生</span><span class="en">Audit intern</span></div><div class="hl"><span class="zh">核对 1,200+ 条财务数据，沉淀排查知识库，核对时长缩短 4%。</span><span class="en">Reconciled 1,200+ financial records, built a troubleshooting guide, cut reconciliation time by 4%.</span></div><span class="more"><span class="o"><span class="zh">展开 ↓</span><span class="en">More ↓</span></span><span class="c"><span class="zh">收起 ↑</span><span class="en">Less ↑</span></span></span></summary>
 <div class="body"><ul>
@@ -781,21 +791,21 @@ a.src:hover{background:var(--mist);color:var(--moss)}
 <li><span class="zh"><b>流程规范</b>：统一字段、整理凭证，保证原始数据、账务记录和底稿之间可追溯。</span><span class="en"><b>Documentation</b>: standardised fields and evidence so source data, ledgers and working papers stay traceable.</span></li>
 </ul></div></details>
 </li>
-<li class="stop">
+<li class="stop" data-grp="edu">
 <span class="post" style="background:#5f8c8a"><span class="zh">2025.06–2026.12 · 布里斯班</span><span class="en">2025.06–2026.12 · Brisbane</span></span>
 <details class="sign"><summary><h3><span class="zh">昆士兰大学 · 信息系统硕士</span><span class="en">University of Queensland · MS Information Systems</span></h3><div class="hl"><span class="zh">在财务背景之上，补齐数据和系统能力。</span><span class="en">Added data and systems skills on top of finance.</span></div><span class="more"><span class="o"><span class="zh">展开 ↓</span><span class="en">More ↓</span></span><span class="c"><span class="zh">收起 ↑</span><span class="en">Less ↑</span></span></span></summary>
 <div class="body"><ul><li><span class="zh">主修：数据库设计、商业分析、数据可视化、IT 治理、信息系统安全</span><span class="en">Core courses: database design, business analytics, data visualisation, IT governance, information security</span></li><li><span class="zh">工具：SQL、Python、Power BI、R</span><span class="en">Tools: SQL, Python, Power BI, R</span></li></ul></div></details>
 <img alt="" class="pal" height="207" src="img/digua-sit-tail.webp" width="181"/>
 </li>
-<li class="stop">
+<li class="stop" data-grp="proj">
 <span class="post" style="background:#8a6aa8"><span class="zh">2026.04–2026.06 · 课程项目</span><span class="en">2026.04–2026.06 · Coursework</span></span>
 <div class="sign"><div class="sum"><h3><span class="zh">电商数据仓库</span><span class="en">E-commerce data warehouse</span></h3><div class="role"><span class="zh">数据运营</span><span class="en">Data operations</span></div><div class="hl"><span class="zh">把多个系统里的销售、客户、商品和供应商数据统一口径，搭成可筛选的经营看板。</span><span class="en">Unified sales, customer, product and supplier data into one consistent, filterable dashboard.</span></div><a class="more case-link" data-open="ecom" href="#projects"><span class="zh">查看案例 →</span><span class="en">See the case →</span></a></div></div>
 </li>
-<li class="stop">
+<li class="stop" data-grp="proj">
 <span class="post" style="background:#8a6aa8"><span class="zh">2026.05 · 课程项目</span><span class="en">2026.05 · Coursework</span></span>
 <div class="sign"><div class="sum"><h3><span class="zh">GoNCharge 舞弊审计</span><span class="en">GoNCharge fraud audit</span></h3><div class="role"><span class="zh">独立完成 · 课程模拟数据</span><span class="en">Solo · simulated course data</span></div><div class="hl"><span class="zh">用 SQL 交叉比对付款、工资和客户记录，查出一套持续多年的内部舞弊。</span><span class="en">Cross-checked payments, payroll and customer records with SQL to uncover a multi-year internal fraud.</span></div><a class="more case-link" data-open="goncharge" href="#projects"><span class="zh">查看案例 →</span><span class="en">See the case →</span></a></div></div>
 </li>
-<li class="stop">
+<li class="stop" data-grp="intern">
 <span class="post" style="background:var(--moss)"><span class="zh">2026.06–2026.08 · 上海</span><span class="en">2026.06–2026.08 · Shanghai</span></span>
 <details class="sign"><summary><h3><span class="zh">微创网络（Wicresoft）</span><span class="en">Wicresoft</span></h3><div class="role"><span class="zh">中台运营实习生 · 供应链平台 POC</span><span class="en">Middle-office operations intern · supply-chain platform POC</span></div><div class="hl"><span class="zh">推动供应链平台 POC 通过客户验证，进入正式开发。</span><span class="en">Helped a supply-chain platform POC pass client validation and move into development.</span></div><span class="more"><span class="o"><span class="zh">展开 ↓</span><span class="en">More ↓</span></span><span class="c"><span class="zh">收起 ↑</span><span class="en">Less ↑</span></span></span></summary>
 <div class="body"><ul>
@@ -805,15 +815,15 @@ a.src:hover{background:var(--mist);color:var(--moss)}
 <li><span class="zh"><b>客户演示</b>：用 AI 辅助编程优化 demo 的页面交互，并作为汇报人向客户演示。</span><span class="en"><b>Client demo</b>: refined the demo's front end with AI-assisted coding and presented it to the client.</span></li>
 </ul></div></details>
 </li>
-<li class="stop">
+<li class="stop" data-grp="proj">
 <span class="post" style="background:#4f8a8b"><span class="zh">2026.06–2026.08 · 团队项目</span><span class="en">2026.06–2026.08 · Team project</span></span>
 <div class="sign"><div class="sum"><h3><span class="zh">AI 旅行规划</span><span class="en">AI Travel Planner</span></h3><div class="role"><span class="zh">7 人团队 · 产品经理</span><span class="en">Team of 7 · product manager</span></div><div class="hl"><span class="zh">输入目的地和日期，自动生成按天可执行的行程，并在地图上联动展示。</span><span class="en">Enter a destination and dates to get a day-by-day plan shown on a linked map.</span></div><a class="more case-link" data-open="travel" href="#projects"><span class="zh">查看案例 →</span><span class="en">See the case →</span></a></div></div>
 </li>
-<li class="stop">
+<li class="stop" data-grp="proj">
 <span class="post" style="background:var(--amber)"><span class="zh">2026.06–2026.09 · 个人开源</span><span class="en">2026.06–2026.09 · Open source</span></span>
 <div class="sign"><div class="sum"><h3>FlowPilot Lab</h3><div class="role"><span class="zh">产品负责人 / 全栈</span><span class="en">Product owner / full stack</span></div><div class="hl"><span class="zh">把“月度补货 → 周度发货”做成每个数字都能追溯来源的平台。</span><span class="en">A platform for monthly replenishment to weekly shipments where every number is traceable.</span></div><a class="more case-link" data-open="flowpilot" href="#projects"><span class="zh">查看案例 →</span><span class="en">See the case →</span></a></div></div>
 </li>
-<li class="stop">
+<li class="stop" data-grp="proj">
 <span class="post" style="background:var(--amber)"><span class="zh">2026.09 至今 · 个人开源</span><span class="en">2026.09 – now · Open source</span></span>
 <div class="sign"><div class="sum"><h3>PawPath</h3><div class="role"><span class="zh">产品负责人 / 全栈</span><span class="en">Product owner / full stack</span></div><div class="hl"><span class="zh">让每次上架、每个领养决定都有规则可依、有记录可查。</span><span class="en">Every listing and adoption decision follows a rule and leaves a record.</span></div><a class="more case-link" data-open="pawpath" href="#projects"><span class="zh">查看案例 →</span><span class="en">See the case →</span></a></div></div>
 </li>
@@ -984,6 +994,25 @@ a.src:hover{background:var(--mist);color:var(--moss)}
     addEventListener('resize',update);update();
   })();
 
+
+  // chip filters
+  (function(){
+    function setup(scope,box,items,scroll){
+      var bar=document.querySelector('.sec-chips[data-scope="'+scope+'"]');if(!bar||!box)return;
+      var btns=[].slice.call(bar.querySelectorAll('.fchip')),cur=null;
+      function apply(k){cur=k;
+        btns.forEach(function(b){b.setAttribute('aria-pressed',b.getAttribute('data-f')===k?'true':'false')});
+        box.classList.toggle('is-filtering',!!k);
+        var first=null;
+        items().forEach(function(el){var hit=k&&el.getAttribute('data-grp')===k;el.classList.toggle('f-hit',!!hit);el.classList.toggle('f-dim',!!k&&!hit);if(hit&&!first)first=el});
+        if(k&&first){var row=first.parentNode;if(row.scrollWidth>row.clientWidth+4){row.scrollTo({left:Math.max(0,first.offsetLeft-row.offsetLeft-8),behavior:'smooth'})}}
+        if(k&&scroll&&first){var r=first.getBoundingClientRect(),off=(document.querySelector('.nav').offsetHeight||64)+16;if(r.top<off||r.top>innerHeight*0.6){scrollTo({top:scrollY+r.top-off-40,behavior:matchMedia('(prefers-reduced-motion: reduce)').matches?'auto':'smooth'})}}
+      }
+      btns.forEach(function(b){b.addEventListener('click',function(){var k=b.getAttribute('data-f');apply(cur===k?null:k)})});
+    }
+    setup('proj',document.querySelector('.proj-layout'),function(){return [].slice.call(document.querySelectorAll('.proj-layout .tab[data-grp]'))},false);
+    setup('journey',document.querySelector('.trail-box'),function(){return [].slice.call(document.querySelectorAll('.trail .stop'))},true);
+  })();
 })();
 </script>
 
