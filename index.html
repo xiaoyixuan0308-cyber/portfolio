@@ -349,6 +349,18 @@ a.src:hover{background:var(--mist);color:var(--moss)}
 .sec-chips > span{white-space:nowrap;font-size:14px;color:var(--moss);background:var(--paper-hi);border:1.5px solid color-mix(in srgb,var(--leaf) 70%,var(--line));border-radius:999px;padding:4px 12px;font-weight:500}
 .sign .sum .case-link{display:inline-block;margin-top:8px;font-size:13.5px;color:var(--moss);font-weight:500;text-decoration:none}
 .sign .sum .case-link:hover{text-decoration:underline}
+.sign.nx{border-style:dashed;border-color:var(--moss);background:color-mix(in srgb,var(--mist) 60%,var(--paper-hi))}
+.nx h3{margin-bottom:12px}
+.nx-row{display:grid;grid-template-columns:6.5em minmax(0,1fr);gap:10px;align-items:start;padding:9px 0;border-top:1px dashed color-mix(in srgb,var(--moss) 30%,var(--line));font-size:14.5px;color:var(--ink)}
+.nx-row > b{color:var(--bark);font-weight:700;white-space:nowrap}
+.nx-roles{display:grid;gap:8px}
+.nx-grp{display:flex;flex-wrap:wrap;gap:5px;align-items:center}
+.nx-g{font-size:12.5px;font-weight:700;color:var(--paper-hi);background:var(--moss);border-radius:6px;padding:1px 8px;margin-right:2px}
+.nx-c{font-size:12.5px;background:var(--paper-hi);border:1px solid var(--line);border-radius:999px;padding:1px 9px;color:var(--ink-soft);white-space:nowrap}
+.nx-act{display:flex;flex-wrap:wrap;gap:10px;align-items:center;margin-top:14px}
+.nx-act .btn{padding:8px 18px;font-size:14.5px}
+.nx-copied{font-size:13px;color:var(--moss)}
+@media (max-width:520px){.nx-row{grid-template-columns:1fr;gap:6px}}
 </style>
 <style>img{max-width:100%}[hidden]{display:none!important}</style>
 </head>
@@ -725,8 +737,17 @@ a.src:hover{background:var(--mist);color:var(--moss)}
 </li>
 <li class="stop next">
 <span class="post" style="background:var(--moss)"><span class="zh">下一站</span><span class="en">Next stop</span></span>
-<details class="sign" open=""><summary><h3><span class="zh">2027 届 · 运营 / 产品方向</span><span class="en">Class of 2027 · Operations / Product</span></h3><div class="hl"><span class="zh">也许就是你的团队？📮</span><span class="en">Could it be your team? 📮</span></div></summary>
-<div class="body"><div class="links-row"><a href="#contact"><span class="zh">联系我 →</span><span class="en">Get in touch →</span></a></div></div></details>
+<div class="sign nx"><div class="sum">
+<h3><span class="zh">期待加入你的团队</span><span class="en">Hoping to join your team</span></h3>
+<div class="nx-row"><b>🎯 <span class="zh">目标岗位</span><span class="en">Target roles</span></b><div class="nx-roles">
+<div class="nx-grp"><span class="nx-g"><span class="zh">运营</span><span class="en">Operations</span></span><span class="nx-c"><span class="zh">中台</span><span class="en">Middle-office</span></span><span class="nx-c"><span class="zh">平台</span><span class="en">Platform</span></span><span class="nx-c"><span class="zh">业务</span><span class="en">Business</span></span><span class="nx-c"><span class="zh">销售</span><span class="en">Sales</span></span><span class="nx-c"><span class="zh">策略</span><span class="en">Strategy</span></span><span class="nx-c"><span class="zh">产品</span><span class="en">Product</span></span><span class="nx-c"><span class="zh">体验服务</span><span class="en">Service experience</span></span><span class="nx-c"><span class="zh">电商</span><span class="en">E-commerce</span></span><span class="nx-c"><span class="zh">行业</span><span class="en">Industry</span></span><span class="nx-c"><span class="zh">用户</span><span class="en">User</span></span><span class="nx-c"><span class="zh">渠道</span><span class="en">Channel</span></span></div>
+<div class="nx-grp"><span class="nx-g"><span class="zh">产品</span><span class="en">Product</span></span><span class="nx-c"><span class="zh">产品经理</span><span class="en">Product manager</span></span><span class="nx-c"><span class="zh">产品助理</span><span class="en">Product assistant</span></span></div>
+<div class="nx-grp"><span class="nx-g"><span class="zh">商务</span><span class="en">Business</span></span><span class="nx-c"><span class="zh">商务</span><span class="en">Business development</span></span><span class="nx-c"><span class="zh">销售支持</span><span class="en">Sales support</span></span></div>
+</div></div>
+<div class="nx-row"><b>🎓 <span class="zh">毕业时间</span><span class="en">Graduating</span></b><span><span class="zh">2026 年 12 月（2027 届）</span><span class="en">December 2026 (class of 2027)</span></span></div>
+<div class="nx-row"><b>📍 <span class="zh">工作城市</span><span class="en">Location</span></b><span><span class="zh">全国均可</span><span class="en">Open to any city in China</span></span></div>
+<div class="nx-act"><button class="btn solid" data-copy-mail="" type="button"><span class="zh">复制邮箱</span><span class="en">Copy email</span></button><a class="btn ghost" href="https://github.com/xiaoyixuan0308-cyber" rel="noopener" target="_blank">GitHub ↗</a><span aria-live="polite" class="nx-copied"></span></div>
+</div></div>
 <img alt="" class="pal" height="380" src="img/digua-front.webp" width="396"/>
 </li>
 </ol>
@@ -831,12 +852,14 @@ a.src:hover{background:var(--mist);color:var(--moss)}
 
   // copy email
   var copied=document.getElementById('copied');
-  document.getElementById('copyBtn').addEventListener('click',function(){
+  document.querySelectorAll('#copyBtn,[data-copy-mail]').forEach(function(btn){btn.addEventListener('click',function(){
     var t=document.getElementById('mail').textContent;
-    function done(){copied.textContent=root.getAttribute('data-lang')==='en'?'Copied':'已复制'}
-    function fallback(){var r=document.createRange();r.selectNodeContents(document.getElementById('mail'));var s=getSelection();s.removeAllRanges();s.addRange(r);copied.textContent=root.getAttribute('data-lang')==='en'?'Selected — press Ctrl/⌘+C':'已选中，按 Ctrl/⌘+C 复制'}
+    var out=btn.hasAttribute('data-copy-mail')?btn.parentNode.querySelector('.nx-copied'):copied;
+    var en=root.getAttribute('data-lang')==='en';
+    function done(){out.textContent=en?'Copied: '+t:'已复制：'+t}
+    function fallback(){if(btn.hasAttribute('data-copy-mail')){out.textContent=t;var r=document.createRange();r.selectNodeContents(out);var s=getSelection();s.removeAllRanges();s.addRange(r)}else{var r2=document.createRange();r2.selectNodeContents(document.getElementById('mail'));var s2=getSelection();s2.removeAllRanges();s2.addRange(r2);out.textContent=en?'Selected — press Ctrl/⌘+C':'已选中，按 Ctrl/⌘+C 复制'}}
     try{navigator.clipboard.writeText(t).then(done,fallback)}catch(e){fallback()}
-  });
+  })});
 
   // back to top
   var tb=document.getElementById('topBtn');
