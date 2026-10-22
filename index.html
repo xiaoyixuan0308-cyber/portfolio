@@ -330,9 +330,9 @@ dialog.lb button{position:sticky;float:right;margin:8px;top:8px;right:8px;border
 .hero-stats{margin-top:20px}
 .hero .wrap{padding-block:56px 200px}
 @media (max-width:820px){.hero .wrap{padding-block:40px 150px}.hero-digua{position:static;justify-self:end;width:112px;margin-top:-6px}}
-.skill-grid{display:block;columns:2;column-gap:22px}
-.skill-grid .skill{break-inside:avoid;margin-bottom:22px;display:block}
-@media (max-width:820px){.skill-grid{columns:1}}
+.skill-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:22px;align-items:start}
+.sk-col{display:grid;gap:22px;min-width:0}
+@media (max-width:820px){.skill-grid{grid-template-columns:1fr}}
 a.src{text-decoration:none;cursor:pointer}
 a.src:hover{background:var(--mist);color:var(--moss)}
 .sign .sum{padding:16px 20px}
@@ -499,6 +499,7 @@ a.src:hover{background:var(--mist);color:var(--moss)}
 </div>
 <h3 class="sub-h"><span class="zh">我的工作习惯</span><span class="en">My working habits</span></h3>
 <div class="skill-grid">
+<div class="sk-col">
 <article class="skill">
 <h3><span class="em">🌿</span><span><span class="zh">流程梳理</span><span class="en">Process design</span></span></h3>
 <p class="trait"><span class="zh">从解决一次，到解决一类</span><span class="en">Fix the class, not the case</span></p><p class="claim"><span class="zh">把复杂业务拆成规则、清单和验收标准，让流程不依赖个人经验。</span><span class="en">Break complex work into rules, checklists and acceptance criteria so it doesn't depend on one person's experience.</span></p>
@@ -518,6 +519,8 @@ a.src:hover{background:var(--mist);color:var(--moss)}
 <li><strong><span class="zh">追查出约 98 万美元的舞弊资金</span><span class="en">Uncovered about US$980K of fraud</span></strong><span class="zh">编写 16 段 SQL，交叉比对付款、工资和供应商数据。</span><span class="en">Wrote 16 SQL queries cross-checking payments, payroll and vendor data.</span><a class="src" data-open="goncharge" href="#projects"><span class="zh">GoNCharge · 课程项目，数据为模拟</span><span class="en">GoNCharge · course project, simulated data</span> →</a></li>
 </ul>
 </article>
+</div>
+<div class="sk-col">
 <article class="skill">
 <h3><span class="em">🌱</span><span><span class="zh">系统落地</span><span class="en">System delivery</span></span></h3>
 <p class="trait"><span class="zh">用 AI 提效，把想法做出来</span><span class="en">Use AI to ship ideas</span></p><p class="claim"><span class="zh">借助 AI 快速验证、搭原型，把时间留给判断和决策。</span><span class="en">Use AI to validate and prototype fast, saving time for judgement and decisions.</span></p>
@@ -535,6 +538,7 @@ a.src:hover{background:var(--mist);color:var(--moss)}
 <li><strong><span class="zh">让 7 个人并行开发</span><span class="en">7 people building in parallel</span></strong><span class="zh">采用"先定接口、用模拟数据解耦"的协作方式，跑通 AI 旅行规划 Demo。</span><span class="en">Interface-first collaboration with mock data to decouple modules; shipped the AI Travel Planner demo.</span><a class="src" data-open="travel" href="#projects"><span class="zh">AI 旅行规划 · 产品经理</span><span class="en">AI Travel Planner · PM</span> →</a></li>
 </ul>
 </article>
+</div>
 </div>
 </div>
 </section>
