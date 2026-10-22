@@ -280,8 +280,13 @@ section{position:relative}
 
 .about{background:linear-gradient(var(--paper),color-mix(in srgb,var(--mist) 50%,var(--paper)))}
 .about-grid{display:grid;grid-template-columns:minmax(0,1.2fr) minmax(0,1fr);gap:30px;align-items:center}
-.sheet.digua-solo{display:flex;align-items:center;justify-content:center;padding:clamp(20px,4vw,40px);background:radial-gradient(circle at 50% 55%,var(--mist) 0 42%,var(--paper-hi) 43%)}
-.digua-solo img{width:min(300px,70%);height:auto}
+.sheet.digua-solo{display:flex;flex-direction:column;align-items:center;gap:14px;padding:clamp(18px,3vw,32px);background:var(--paper-hi)}
+.dg-main{position:relative;width:min(280px,72%);aspect-ratio:1;display:flex;align-items:center;justify-content:center}
+.dg-main::before{content:"";position:absolute;inset:4%;border-radius:50%;background:var(--mist)}
+.dg-main img{position:relative;width:92%;height:auto}
+.dg-faces{display:flex;gap:clamp(8px,2vw,16px);justify-content:center;align-items:flex-end;flex-wrap:wrap}
+.dg-faces img{height:clamp(48px,7vw,64px);width:auto}
+@media (max-width:860px){.dg-main{width:min(220px,60%)}}
 .sheet{background:var(--paper-hi);border:1.5px solid var(--line);border-radius:26px;padding:18px}
 .about h3{font-size:26px}
 .about .lead{margin:10px 0 14px;color:var(--ink-soft)}
@@ -761,14 +766,11 @@ a.src:hover{background:var(--mist);color:var(--moss)}
 <div class="wrap">
 <div class="sec-head"><div><div class="kicker"><span class="zh">兴趣与原创 IP</span><span class="en">INTERESTS &amp; ORIGINAL IP</span></div><h2><span class="zh">工作之外的我</span><span class="en">Outside of work</span></h2></div></div>
 <div class="about-grid">
-<div class="sheet digua-solo"><img alt="地瓜：穿森林绿卫衣的小熊猫" height="425" src="img/digua-front.webp" width="443"/></div>
+<div class="sheet digua-solo"><div class="dg-main"><img alt="地瓜：穿森林绿卫衣的小熊猫" height="425" src="img/digua-front.webp" width="443"/></div>
+<div aria-hidden="true" class="dg-faces"><img alt="" src="img/digua-head-happy.webp"/><img alt="" src="img/digua-head-calm.webp"/><img alt="" src="img/digua-head-surprised.webp"/><img alt="" src="img/digua-pillow.webp"/></div></div>
 <div>
 <h3>🍠 <span class="zh">地瓜 · 我的原创 IP</span><span class="en">Digua · my original character</span></h3>
-<p class="lead"><span class="zh">一路陪你看完这份作品集的小向导，就是<b>地瓜</b>——我的原创 IP，一只穿着森林绿卫衣的小熊猫。我提出角色设定和设计理念，借助 AI 完成绘制与迭代，并用它尝试独立 IP 电商。目前已上线<b>微信表情包</b>，在微信里搜「<b>地瓜的一天</b>」就能找到。</span><span class="en">The little guide who has walked you through this portfolio is <b>Digua</b>, my original character: a red panda in a forest-green hoodie. I came up with the concept and design direction, illustrated and iterated it with AI, and used it to explore independent IP e-commerce. Digua is live as a <b>WeChat sticker pack</b>: search “地瓜的一天” in WeChat.</span></p>
-<ul>
-<li><span class="zh">完整的角色设定：三视图、7 种表情、6 种动作、专属配色</span><span class="en">Full character sheet: three views, 7 expressions, 6 poses, a signature palette</span></li>
-<li><span class="zh">内容运营尝试：运营过地瓜 IP 账号和游戏攻略账号</span><span class="en">Content operations: ran the Digua account and a game-guide account</span></li>
-</ul>
+<p class="lead"><span class="zh">一路陪你看完这份作品集的小向导，就是<b>地瓜</b>——我的原创 IP，一只穿着森林绿卫衣的小熊猫。从角色定位、视觉设定到<b>上线微信表情包</b>，我独立完成了一个 IP 从 0 到 1 的全过程，并以地瓜为核心尝试了内容运营和周边电商。在微信里搜「<b>地瓜的一天</b>」就能找到它。</span><span class="en">The little guide who has walked you through this portfolio is <b>Digua</b>, my original character: a red panda in a forest-green hoodie. From positioning and visual design to <b>launching a WeChat sticker pack</b>, I took an IP from zero to one on my own, and used Digua to try content operations and merchandise e-commerce. Search “地瓜的一天” in WeChat to find it.</span></p>
 
 </div>
 </div>
