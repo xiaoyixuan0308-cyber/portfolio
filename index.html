@@ -392,6 +392,11 @@ a.src:hover{background:var(--mist);color:var(--moss)}
 @media (prefers-reduced-motion: reduce){.rot-dots{display:none}}
 .hero-name{font-size:clamp(18px,1.8vw,21px)}
 .hero-name span{letter-spacing:.04em}
+.scroll-cue{display:inline-flex;align-items:center;gap:6px;margin-top:4px;font-size:15px;color:var(--ink-soft);text-decoration:none;border-bottom:1px dashed color-mix(in srgb,var(--moss) 45%,transparent);padding-bottom:2px}
+.scroll-cue:hover{color:var(--moss);border-bottom-color:var(--moss)}
+.sc-arrow{display:inline-block;color:var(--amber);font-weight:700}
+@media (prefers-reduced-motion: no-preference){.sc-arrow{animation:bob 1.6s ease-in-out infinite}}
+@keyframes bob{0%,100%{transform:translateY(0)}50%{transform:translateY(4px)}}
 </style>
 <style>img{max-width:100%}[hidden]{display:none!important}</style>
 </head>
@@ -433,7 +438,7 @@ a.src:hover{background:var(--mist);color:var(--moss)}
 <p class="hero-name">肖艺宣<span>· Yixuan Xiao</span></p>
 <h1 class="rot"><span class="rot-line is-on"><span class="zh">把模糊的问题，<br/><em>变成能落地的结果</em></span><span class="en">Turn fuzzy problems<br/><em>into results that ship</em></span></span><span class="rot-line"><span class="zh">把零散的数据，<br/><em>变成看得懂的决策</em></span><span class="en">Turn scattered data<br/><em>into decisions people understand</em></span></span><span class="rot-line"><span class="zh">把复杂的流程，<br/><em>变成可复用的规则</em></span><span class="en">Turn complex processes<br/><em>into reusable rules</em></span></span><span class="rot-line"><span class="zh">把灵光一现的想法，<br/><em>变成能跑起来的产品</em></span><span class="en">Turn sparks of inspiration<br/><em>into products that run</em></span></span></h1>
 <div aria-hidden="true" class="rot-dots"><i class="on"></i><i></i><i></i><i></i></div>
-<p class="sub"><span class="zh">对数字敏感，善用 AI，独立搭建并开源了两个业务系统。</span><span class="en">Numbers-minded and fluent with AI. I built and open-sourced two business systems end to end.</span></p>
+<a class="scroll-cue" href="#intro"><span class="zh">下滑，更了解我</span><span class="en">Scroll to get to know me</span><span aria-hidden="true" class="sc-arrow">↓</span></a>
 <div class="stats num hero-stats">
 <span><b>2</b><span class="zh">段实习</span><span class="en">internships</span></span>
 <span><b>2</b><span class="zh">个开源业务系统</span><span class="en">open-source business systems</span></span>
