@@ -416,6 +416,7 @@ a.src:hover{background:var(--mist);color:var(--moss)}
   .mnav a.nl-c{color:var(--moss);font-weight:600}
   html{scroll-padding-top:calc(118px + env(safe-area-inset-top,0px))}
 }
+.trail-svg{display:block;width:100%;height:100%}
 </style>
 <style>img{max-width:100%}[hidden]{display:none!important}</style>
 </head>
@@ -732,9 +733,9 @@ a.src:hover{background:var(--mist);color:var(--moss)}
 </div>
 </div>
 <div class="trail-box">
-<svg aria-hidden="true" class="trail-path" preserveaspectratio="none" viewbox="0 0 160 1000"><defs><filter height="110%" id="wcT" width="160%" x="-30%" y="-5%"><feturbulence basefrequency="0.04" numoctaves="2" result="n" seed="5" type="fractalNoise"></feturbulence><fedisplacementmap in="SourceGraphic" in2="n" scale="10"></fedisplacementmap><fegaussianblur stddeviation="0.8"></fegaussianblur></filter></defs>
+<div aria-hidden="true" class="trail-path"><svg aria-hidden="true" class="trail-svg" width="160" height="1000" preserveaspectratio="none" viewbox="0 0 160 1000"><defs><filter height="110%" id="wcT" width="160%" x="-30%" y="-5%"><feturbulence basefrequency="0.04" numoctaves="2" result="n" seed="5" type="fractalNoise"></feturbulence><fedisplacementmap in="SourceGraphic" in2="n" scale="10"></fedisplacementmap><fegaussianblur stddeviation="0.8"></fegaussianblur></filter></defs>
 <g filter="url(#wcT)"><path d="M80 0 C 20 80, 140 160, 80 250 S 20 420, 80 500 S 140 670, 80 750 S 20 920, 80 1000" fill="none" opacity=".8" stroke="#e5cf9f" stroke-linecap="round" stroke-width="46" vector-effect="non-scaling-stroke"></path>
-<path d="M80 0 C 20 80, 140 160, 80 250 S 20 420, 80 500 S 140 670, 80 750 S 20 920, 80 1000" fill="none" opacity=".7" stroke="#c9a46a" stroke-dasharray="2 14" stroke-linecap="round" stroke-width="3" vector-effect="non-scaling-stroke"></path></g></svg>
+<path d="M80 0 C 20 80, 140 160, 80 250 S 20 420, 80 500 S 140 670, 80 750 S 20 920, 80 1000" fill="none" opacity=".7" stroke="#c9a46a" stroke-dasharray="2 14" stroke-linecap="round" stroke-width="3" vector-effect="non-scaling-stroke"></path></g></svg></div>
 <ol class="trail">
 <li class="stop">
 <span class="post" style="background:var(--bark)"><span class="zh">2023.02 · 新西兰 但尼丁</span><span class="en">2023.02 · Dunedin, NZ</span></span>
@@ -961,6 +962,12 @@ a.src:hover{background:var(--mist);color:var(--moss)}
     }
     addEventListener('scroll',function(){if(!tick){tick=true;requestAnimationFrame(update)}},{passive:true});
     addEventListener('resize',update);update();
+  })();
+
+  // keep trail path full height (Safari)
+  (function(){var box=document.querySelector('.trail-box'),w=document.querySelector('.trail-path'),sv=document.querySelector('.trail-svg');if(!box||!sv)return;
+    function fit(){var h=box.offsetHeight;w.style.height=h+'px';sv.setAttribute('height',h);sv.style.height=h+'px'}
+    fit();addEventListener('resize',fit);addEventListener('load',fit);if(window.ResizeObserver)new ResizeObserver(fit).observe(box);
   })();
 })();
 </script>
