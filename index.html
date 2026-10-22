@@ -419,6 +419,8 @@ a.src:hover{background:var(--mist);color:var(--moss)}
 .proj-layout .gc-media{grid-template-columns:1fr!important}
 .proj-layout .gc-media .showcase.single{max-width:none;width:100%}
 .proj-layout .gc-media .info{width:100%}
+#p-gee .slide{aspect-ratio:4/3}
+@media (max-width:640px){#p-gee .slide{aspect-ratio:3/4}}
 </style>
 <style>img{max-width:100%}[hidden]{display:none!important}</style>
 </head>
@@ -552,7 +554,7 @@ a.src:hover{background:var(--mist);color:var(--moss)}
 <div>
 <div class="kicker"><span class="zh">项目</span><span class="en">PROJECTS</span></div>
 <h2><span class="zh">我做过的项目，解决过的问题</span><span class="en">Projects I&#39;ve built, problems I&#39;ve solved</span></h2>
-<div class="sec-chips"><span>🌱 <span class="zh">2 个个人开源</span><span class="en">2 open-source</span></span><span>📚 <span class="zh">2 个课程项目</span><span class="en">2 coursework</span></span><span>🤝 <span class="zh">1 个团队项目 · 产品经理</span><span class="en">1 team project · PM</span></span></div>
+<div class="sec-chips"><span>🌱 <span class="zh">2 个个人开源</span><span class="en">2 open-source</span></span><span>📚 <span class="zh">2 个课程项目</span><span class="en">2 coursework</span></span><span>🤝 <span class="zh">1 个团队项目 · 产品经理</span><span class="en">1 team project · PM</span></span><span>🏆 <span class="zh">1 个国际竞赛</span><span class="en">1 global contest</span></span></div>
 </div>
 </div>
 <div class="proj-layout">
@@ -562,6 +564,7 @@ a.src:hover{background:var(--mist);color:var(--moss)}
 <button aria-controls="p-goncharge" aria-selected="false" class="tab" id="t-goncharge" role="tab"><span aria-hidden="true" class="t-ic">🔍</span><span class="t-tx"><b>GoNCharge</b><small><span class="zh">课程项目 · SQL 舞弊审计</span><span class="en">Course · SQL fraud audit</span></small></span></button>
 <button aria-controls="p-ecom" aria-selected="false" class="tab" id="t-ecom" role="tab"><span aria-hidden="true" class="t-ic">🛒</span><span class="t-tx"><b><span class="zh">电商数据仓库</span><span class="en">E-commerce DW</span></b><small><span class="zh">课程项目 · 数仓与经营看板</span><span class="en">Course · warehouse &amp; dashboard</span></small></span></button>
 <button aria-controls="p-travel" aria-selected="false" class="tab" id="t-travel" role="tab"><span aria-hidden="true" class="t-ic">🗺️</span><span class="t-tx"><b><span class="zh">AI 旅行规划</span><span class="en">AI Travel Planner</span></b><small><span class="zh">7 人团队 · 产品经理</span><span class="en">Team of 7 · product manager</span></small></span></button>
+<button aria-controls="p-gee" aria-selected="false" class="tab" id="t-gee" role="tab"><span aria-hidden="true" class="t-ic">🏆</span><span class="t-tx"><b><span class="zh">GEE 国际竞赛</span><span class="en">GEE competition</span></b><small><span class="zh">7 国团队 · 总负责人</span><span class="en">7-country team · team lead</span></small></span></button>
 </div>
 <div class="proj-panels">
 <!-- FlowPilot -->
@@ -720,6 +723,23 @@ a.src:hover{background:var(--mist);color:var(--moss)}
 </ul></div><div class="blk"><h4><span class="zh">团队共同实现</span><span class="en">BUILT BY THE TEAM</span></h4><p><span class="zh">高德地理编码与景点、酒店检索 · K-Means 分天与 TSP 路线优化 · Python 后端与实验性的大模型规划流程</span><span class="en">AMap geocoding and POI search · K-Means day clustering and TSP routing · Python backend and an experimental LLM planner</span></p></div></div></div>
 <div class="showcase" data-carousel=""><div aria-label="截图，可左右滑动" class="slides" tabindex="0"><figure class="slide"><button aria-label="放大查看 杭州 3 日路线全景" class="shot" type="button"><img alt="杭州 3 日路线全景" loading="eager" src="img/atp-result-3.webp"/></button></figure><figure class="slide"><button aria-label="放大查看 第 1 天路线" class="shot" type="button"><img alt="第 1 天路线" loading="lazy" src="img/atp-result-2.webp"/></button></figure><figure class="slide"><button aria-label="放大查看 首页" class="shot" type="button"><img alt="首页" loading="lazy" src="img/atp-home.webp"/></button></figure></div><div class="sc-nav"><button aria-label="上一张" class="arr" data-dir="-1" type="button">←</button><div class="strip"><button aria-current="true" aria-label="第 1 张：杭州 3 日路线全景" data-i="0" type="button"><img alt="" src="img/atp-result-3.webp"/></button><button aria-label="第 2 张：第 1 天路线" data-i="1" type="button"><img alt="" src="img/atp-result-2.webp"/></button><button aria-label="第 3 张：首页" data-i="2" type="button"><img alt="" src="img/atp-home.webp"/></button></div><div aria-hidden="true" class="dots"><i class="on"></i><i></i><i></i></div><button aria-label="下一张" class="arr" data-dir="1" type="button">→</button></div><p class="caption"><span class="swipe"><span class="zh">左右滑动 · 点击放大 · </span><span class="en">Swipe · tap to zoom · </span></span><span class="zh">三日路线全景 · 第 1 天路线 · 首页（页面会标注演示数据）</span><span class="en">Three-day routes · day 1 · home (demo data is labelled in the app)</span></p></div>
 </article>
+<article aria-labelledby="t-gee" class="panel" hidden="" id="p-gee" role="tabpanel">
+<div class="ptext"><div class="col-a"><div class="p-meta"><span class="chip"><span class="zh">国际竞赛&nbsp;· 线上</span><span class="en">Global contest&nbsp;· online</span></span><span class="chip num">2024.06</span><span class="chip"><span class="zh">团队总负责人</span><span class="en">Team lead</span></span><span class="chip"><span class="zh">7 国成员</span><span class="en">7 countries</span></span></div><h3><span class="zh">GEE 全球企业体验大赛&nbsp;· 植物保护无人机</span><span class="en">Global Enterprise Experience&nbsp;· Plant Protection Drone</span></h3><p class="oneline"><span class="zh">3 周内带领来自 7 个国家的线上团队，从零做出一份完整的商业方案，在 170 余支队伍中排名第 5。</span><span class="en">In three weeks I led an online team from seven countries to build a complete business proposal from scratch, placing 5th of 170+ teams.</span></p><div class="kn num">
+<div><b><span class="zh">第 5</span><span class="en">5th</span></b><span class="zh">170+ 支队伍中（前 3%）</span><span class="en">of 170+ teams (top 3%)</span></div>
+<div><b>7</b><span class="zh">个国家的团队成员</span><span class="en">countries on the team</span></div>
+<div><b><span class="zh">3 周</span><span class="en">3 wks</span></b><span class="zh">从组队到交付</span><span class="en">from kick-off to delivery</span></div>
+<div><b>11</b><span class="zh">个实体的数据模型</span><span class="en">entities in the data model</span></div>
+</div><div class="blk"><h4><span class="zh">项目背景</span><span class="en">CONTEXT</span></h4><p><span class="zh">GEE（Global Enterprise Experience，全球企业体验大赛）是新西兰发起的国际线上商业创业竞赛，由 Windeaters 与惠灵顿维多利亚大学合办。赛题是：用有限的资本，做一个能推动联合国可持续发展目标的盈利项目。每支队伍 8 人，来自不同国家和时区，全程线上协作。</span><span class="en">GEE is an international online business competition founded in New Zealand and run by Windeaters with Victoria University of Wellington. The brief: a profitable venture that advances a UN Sustainable Development Goal with limited capital. Each team of eight spans countries and time zones and works entirely online.</span></p></div><div class="blk"><h4><span class="zh">项目成果</span><span class="en">OUTCOME</span></h4><ul>
+<li><span class="zh">“植物保护无人机”方案在 170 余支队伍中排名第 5（前 3%）</span><span class="en">“Plant Protection Drone” placed 5th of 170+ teams (top 3%)</span></li>
+<li><span class="zh">获赛事官方推荐信和创业基金</span><span class="en">Official letter of commendation and start-up funding</span></li>
+</ul></div></div><div class="col-b"><div class="blk"><h4><span class="zh">我做了什么</span><span class="en">WHAT I DID</span></h4><ul>
+<li><span class="zh"><b>跨国团队协作</b>：负责团队的任务重组，梳理成员分工、交付节点和具体交付物，并通过 Teams、WhatsApp 和邮件跟进进度，3 周内推动团队按计划完成方案设计和最终交付。</span><span class="en"><b>Cross-border teamwork</b>: reorganised tasks, set owners, milestones and deliverables, and tracked progress over Teams, WhatsApp and email to deliver on plan within three weeks.</span></li>
+<li><span class="zh"><b>商业方案设计</b>：围绕赞比亚的农作物保护场景，带领团队完成市场需求、产品定位、收入预测和基础盈利能力分析，形成“植物保护无人机”商业方案。</span><span class="en"><b>Business plan</b>: for crop protection in Zambia, led market sizing, positioning, revenue forecasting and profitability analysis into the “Plant Protection Drone” proposal.</span></li>
+<li><span class="zh"><b>数据模型搭建</b>：用 ERD 设计包含 11 个实体的数据模型，分为成本、市场和无人机三个模块，以一对多关系串联，作为支撑文档提交评审，并作为汇报人参与最终汇报。</span><span class="en"><b>Data model</b>: designed an 11-entity ERD in three modules (cost, market, drone) linked one-to-many, submitted as supporting evidence; presented the final pitch.</span></li>
+<li><span class="zh"><b>竞赛方案交付</b>：搭建成本结构和定价模型，完成收入预测和基础盈利能力评估。</span><span class="en"><b>Financials</b>: built the cost structure and pricing model for the revenue forecast and profitability assessment.</span></li>
+</ul></div></div></div>
+<div class="showcase" data-carousel=""><div aria-label="证书，可左右滑动" class="slides" tabindex="0"><figure class="slide"><button aria-label="放大查看 参赛证书" class="shot" type="button"><img alt="GEE 2024 参赛证书" src="img/gee-certificate.webp"/></button></figure><figure class="slide"><button aria-label="放大查看 官方推荐信" class="shot" type="button"><img alt="GEE 2024 官方推荐信" src="img/gee-letter.webp"/></button></figure></div><div class="sc-nav"><button aria-label="上一张" class="arr" data-dir="-1" type="button">←</button><div class="strip"><button aria-current="true" aria-label="第 1 张：参赛证书" data-i="0" type="button"><img alt="" src="img/gee-certificate.webp"/></button><button aria-label="第 2 张：官方推荐信" data-i="1" type="button"><img alt="" src="img/gee-letter.webp"/></button></div><div aria-hidden="true" class="dots"><i class="on"></i><i></i></div><button aria-label="下一张" class="arr" data-dir="1" type="button">→</button></div><p class="caption"><span class="swipe"><span class="zh">左右滑动 · 点击放大 · </span><span class="en">Swipe · tap to zoom · </span></span><span class="zh">参赛证书 · 官方推荐信（GEE 2024）</span><span class="en">Certificate · letter of commendation (GEE 2024)</span></p></div>
+</article>
 </div>
 </div>
 </div>
@@ -750,7 +770,7 @@ a.src:hover{background:var(--mist);color:var(--moss)}
 <li><span class="zh"><b>团队推进</b>：重新分工、明确每人的交付节点，通过 Teams、WhatsApp 和邮件持续跟进，按期完成交付。</span><span class="en"><b>Team delivery</b>: reorganised tasks, set clear deliverables per person and tracked progress across Teams, WhatsApp and email.</span></li>
 <li><span class="zh"><b>商业方案</b>：针对赞比亚的农作物保护需求，提出"植物保护无人机"方案，完成市场需求、定价、收入预测和盈利分析。</span><span class="en"><b>Business plan</b>: proposed crop-protection drones for Zambian farmers, with market sizing, pricing, revenue forecast and profitability analysis.</span></li>
 <li><span class="zh"><b>数据模型</b>：设计包含 11 个实体的数据模型，讲清成本、市场和产品的数据关系，并担任最终汇报人。</span><span class="en"><b>Data model</b>: designed an 11-entity model linking cost, market and product data, and presented the final pitch.</span></li>
-</ul></div></details>
+</ul><div class="links-row"><a data-open="gee" href="#projects"><span class="zh">查看案例 →</span><span class="en">See the case →</span></a></div></div></details>
 </li>
 <li class="stop">
 <span class="post" style="background:var(--moss)"><span class="zh">2024.06–2024.09 · 上海</span><span class="en">2024.06–2024.09 · Shanghai</span></span>
@@ -900,7 +920,7 @@ a.src:hover{background:var(--mist);color:var(--moss)}
     t.addEventListener('keydown',function(e){var d=(e.key==='ArrowRight'||e.key==='ArrowDown')?1:(e.key==='ArrowLeft'||e.key==='ArrowUp')?-1:0;if(d)e.preventDefault();if(!d)return;var n=tabs[(i+d+tabs.length)%tabs.length];n.focus();n.click()});
   });
   document.querySelectorAll('[data-open]').forEach(function(a){a.addEventListener('click',function(e){e.preventDefault();openTab(a.getAttribute('data-open'),true)})});
-  if(['flowpilot','pawpath','goncharge','ecom','travel'].indexOf(h)>-1){openTab(h,false);setTimeout(function(){document.getElementById('projects').scrollIntoView()},50)}
+  if(['flowpilot','pawpath','goncharge','ecom','travel','gee'].indexOf(h)>-1){openTab(h,false);setTimeout(function(){document.getElementById('projects').scrollIntoView()},50)}
 
   // carousels + lightbox
   var lb=document.getElementById('lb'),lbImg=document.getElementById('lbImg');
