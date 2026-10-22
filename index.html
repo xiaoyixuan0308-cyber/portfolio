@@ -114,7 +114,7 @@ section{position:relative}
 .journey{background:linear-gradient(var(--paper),color-mix(in srgb,var(--mist) 55%,var(--paper)) 40%,var(--paper))}
 .trail-box{position:relative}
 .trail{position:relative;z-index:1;list-style:none;margin:0;padding:0;display:grid;gap:30px}
-.trail-path{position:absolute;left:50%;top:0;bottom:0;height:100%;width:160px;transform:translateX(-50%);pointer-events:none}
+.trail-path{position:absolute;left:50%;top:0;bottom:0;width:160px;transform:translateX(-50%);pointer-events:none;background:url("data:image/svg+xml,%3Csvg%20xmlns%3D%27http%3A//www.w3.org/2000/svg%27%20width%3D%27160%27%20height%3D%27500%27%20viewBox%3D%270%200%20160%20500%27%3E%3Cpath%20d%3D%27M80%20-2%20L80%200%20C%20140%2080%2C%2020%20170%2C%2080%20250%20C%20140%20330%2C%2020%20420%2C%2080%20500%20L80%20502%27%20fill%3D%27none%27%20stroke%3D%27%23e5cf9f%27%20stroke-opacity%3D%27.85%27%20stroke-width%3D%2746%27%20stroke-linecap%3D%27butt%27/%3E%3Cpath%20d%3D%27M80%20-2%20L80%200%20C%20140%2080%2C%2020%20170%2C%2080%20250%20C%20140%20330%2C%2020%20420%2C%2080%20500%20L80%20502%27%20fill%3D%27none%27%20stroke%3D%27%23c9a46a%27%20stroke-opacity%3D%27.7%27%20stroke-width%3D%273%27%20stroke-dasharray%3D%272%2014%27%20stroke-dashoffset%3D%270%27/%3E%3C/svg%3E") center top/160px 500px repeat-y}
 .stop{position:relative;width:calc(50% - 70px);display:flex;flex-direction:column}
 .stop:nth-child(odd){justify-self:start}
 .stop:nth-child(even){justify-self:end}
@@ -416,7 +416,6 @@ a.src:hover{background:var(--mist);color:var(--moss)}
   .mnav a.nl-c{color:var(--moss);font-weight:600}
   html{scroll-padding-top:calc(118px + env(safe-area-inset-top,0px))}
 }
-.trail-svg{display:block;width:100%;height:100%}
 </style>
 <style>img{max-width:100%}[hidden]{display:none!important}</style>
 </head>
@@ -733,9 +732,7 @@ a.src:hover{background:var(--mist);color:var(--moss)}
 </div>
 </div>
 <div class="trail-box">
-<div aria-hidden="true" class="trail-path"><svg aria-hidden="true" class="trail-svg" width="160" height="1000" preserveaspectratio="none" viewbox="0 0 160 1000"><defs><filter height="110%" id="wcT" width="160%" x="-30%" y="-5%"><feturbulence basefrequency="0.04" numoctaves="2" result="n" seed="5" type="fractalNoise"></feturbulence><fedisplacementmap in="SourceGraphic" in2="n" scale="10"></fedisplacementmap><fegaussianblur stddeviation="0.8"></fegaussianblur></filter></defs>
-<g filter="url(#wcT)"><path d="M80 0 C 20 80, 140 160, 80 250 S 20 420, 80 500 S 140 670, 80 750 S 20 920, 80 1000" fill="none" opacity=".8" stroke="#e5cf9f" stroke-linecap="round" stroke-width="46" vector-effect="non-scaling-stroke"></path>
-<path d="M80 0 C 20 80, 140 160, 80 250 S 20 420, 80 500 S 140 670, 80 750 S 20 920, 80 1000" fill="none" opacity=".7" stroke="#c9a46a" stroke-dasharray="2 14" stroke-linecap="round" stroke-width="3" vector-effect="non-scaling-stroke"></path></g></svg></div>
+<div aria-hidden="true" class="trail-path"></div>
 <ol class="trail">
 <li class="stop">
 <span class="post" style="background:var(--bark)"><span class="zh">2023.02 · 新西兰 但尼丁</span><span class="en">2023.02 · Dunedin, NZ</span></span>
@@ -964,11 +961,6 @@ a.src:hover{background:var(--mist);color:var(--moss)}
     addEventListener('resize',update);update();
   })();
 
-  // keep trail path full height (Safari)
-  (function(){var box=document.querySelector('.trail-box'),w=document.querySelector('.trail-path'),sv=document.querySelector('.trail-svg');if(!box||!sv)return;
-    function fit(){var h=box.offsetHeight;w.style.height=h+'px';sv.setAttribute('height',h);sv.style.height=h+'px'}
-    fit();addEventListener('resize',fit);addEventListener('load',fit);if(window.ResizeObserver)new ResizeObserver(fit).observe(box);
-  })();
 })();
 </script>
 
