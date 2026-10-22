@@ -397,6 +397,25 @@ a.src:hover{background:var(--mist);color:var(--moss)}
 .sc-arrow{display:inline-block;color:var(--amber);font-weight:700}
 @media (prefers-reduced-motion: no-preference){.sc-arrow{animation:bob 1.6s ease-in-out infinite}}
 @keyframes bob{0%,100%{transform:translateY(0)}50%{transform:translateY(4px)}}
+.links a.nl{position:relative}
+.nl{position:relative}
+.nl::after{content:"";position:absolute;left:50%;bottom:-10px;width:12px;height:12px;background:var(--amber);-webkit-mask:url("data:image/svg+xml,%3Csvg%20xmlns%3D%27http%3A//www.w3.org/2000/svg%27%20viewBox%3D%270%200%2024%2024%27%3E%3Cellipse%20cx%3D%2712%27%20cy%3D%2716%27%20rx%3D%275.2%27%20ry%3D%274.4%27/%3E%3Cellipse%20cx%3D%275.2%27%20cy%3D%2710.2%27%20rx%3D%272.2%27%20ry%3D%272.7%27/%3E%3Cellipse%20cx%3D%279.4%27%20cy%3D%276.4%27%20rx%3D%272.2%27%20ry%3D%272.8%27/%3E%3Cellipse%20cx%3D%2714.6%27%20cy%3D%276.4%27%20rx%3D%272.2%27%20ry%3D%272.8%27/%3E%3Cellipse%20cx%3D%2718.8%27%20cy%3D%2710.2%27%20rx%3D%272.2%27%20ry%3D%272.7%27/%3E%3C/svg%3E") center/contain no-repeat;mask:url("data:image/svg+xml,%3Csvg%20xmlns%3D%27http%3A//www.w3.org/2000/svg%27%20viewBox%3D%270%200%2024%2024%27%3E%3Cellipse%20cx%3D%2712%27%20cy%3D%2716%27%20rx%3D%275.2%27%20ry%3D%274.4%27/%3E%3Cellipse%20cx%3D%275.2%27%20cy%3D%2710.2%27%20rx%3D%272.2%27%20ry%3D%272.7%27/%3E%3Cellipse%20cx%3D%279.4%27%20cy%3D%276.4%27%20rx%3D%272.2%27%20ry%3D%272.8%27/%3E%3Cellipse%20cx%3D%2714.6%27%20cy%3D%276.4%27%20rx%3D%272.2%27%20ry%3D%272.8%27/%3E%3Cellipse%20cx%3D%2718.8%27%20cy%3D%2710.2%27%20rx%3D%272.2%27%20ry%3D%272.7%27/%3E%3C/svg%3E") center/contain no-repeat;transform:translate(-50%,-3px) scale(.7);opacity:0;transition:opacity .2s,transform .2s;pointer-events:none}
+.links a.nl:hover{background:transparent;color:var(--moss)}
+@media (hover:hover){.nl:hover::after{opacity:.45;transform:translate(-50%,0) scale(.8)}}
+.nl[aria-current="true"]{color:var(--moss)!important;font-weight:600}
+.nl[aria-current="true"]::after{opacity:1;transform:translate(-50%,0) scale(.9)}
+.links a.nl-cta{background:var(--moss);color:var(--paper-hi);padding:6px 16px;margin-left:6px;font-weight:500}
+.links a.nl-cta:hover{background:var(--ink);color:var(--paper-hi)}
+.mnav{display:none}
+@media (max-width:720px){
+  .links a.nl,.links a.nl-cta{display:none}
+  .mnav{display:flex;gap:2px;overflow-x:auto;scrollbar-width:none;padding:0 max(10px,env(safe-area-inset-right,0px)) 12px max(10px,env(safe-area-inset-left,0px));border-top:1px solid color-mix(in srgb,var(--line) 50%,transparent)}
+  .mnav::-webkit-scrollbar{display:none}
+  .mnav a{flex:none;color:var(--ink-soft);text-decoration:none;font-size:14px;padding:9px 12px 6px;white-space:nowrap}
+  .mnav .nl::after{bottom:-5px}
+  .mnav a.nl-c{color:var(--moss);font-weight:600}
+  html{scroll-padding-top:calc(118px + env(safe-area-inset-top,0px))}
+}
 </style>
 <style>img{max-width:100%}[hidden]{display:none!important}</style>
 </head>
@@ -405,14 +424,15 @@ a.src:hover{background:var(--mist);color:var(--moss)}
 <div class="wrap">
 <a class="brand" href="#top">肖艺宣<small>Yixuan Xiao</small></a>
 <div class="links">
-<a href="#intro"><span class="zh">自我介绍</span><span class="en">Intro</span></a>
-<a href="#projects"><span class="zh">项目</span><span class="en">Projects</span></a>
-<a href="#journey"><span class="zh">经历</span><span class="en">Journey</span></a>
-<a href="#about"><span class="zh">工作之外</span><span class="en">Beyond work</span></a>
-<a href="#contact"><span class="zh">联系</span><span class="en">Contact</span></a>
+<a class="nl" href="#intro"><span class="zh">自我介绍</span><span class="en">Intro</span></a>
+<a class="nl" href="#projects"><span class="zh">项目</span><span class="en">Projects</span></a>
+<a class="nl" href="#journey"><span class="zh">经历</span><span class="en">Journey</span></a>
+<a class="nl" href="#about"><span class="zh">工作之外</span><span class="en">Beyond work</span></a>
+<a class="nl-cta" href="#contact"><span class="zh">联系</span><span class="en">Contact</span></a>
 <button aria-label="切换语言 / Switch language" class="lang" id="langBtn" type="button"><span class="zh">EN</span><span class="en">中文</span></button>
 </div>
 </div>
+<div aria-label="板块导航" class="mnav"><a class="nl" href="#intro"><span class="zh">自我介绍</span><span class="en">Intro</span></a><a class="nl" href="#projects"><span class="zh">项目</span><span class="en">Projects</span></a><a class="nl" href="#journey"><span class="zh">经历</span><span class="en">Journey</span></a><a class="nl" href="#about"><span class="zh">工作之外</span><span class="en">Beyond work</span></a><a class="nl nl-c" href="#contact"><span class="zh">联系</span><span class="en">Contact</span></a></div>
 </nav>
 <!-- ============ HERO ============ -->
 <header class="hero" id="top">
@@ -922,6 +942,21 @@ a.src:hover{background:var(--mist);color:var(--moss)}
     if(matchMedia('(prefers-reduced-motion: reduce)').matches||ls.length<2)return;
     document.querySelector('.rot').classList.add('anim');
     setInterval(function(){ls[i].classList.remove('is-on');ds[i].classList.remove('on');i=(i+1)%ls.length;ls[i].classList.add('is-on');ds[i].classList.add('on')},3200);
+  })();
+
+  // scrollspy with paw marker
+  (function(){
+    var ids=['intro','projects','journey','about','contact'],secs=ids.map(function(i){return document.getElementById(i)}),links=[].slice.call(document.querySelectorAll('a.nl')),mnav=document.querySelector('.mnav'),cur=null,tick=false;
+    function update(){
+      tick=false;var off=(document.querySelector('.nav').offsetHeight||64)+40,act=null;
+      secs.forEach(function(el,k){if(el&&el.getBoundingClientRect().top<=off)act=ids[k]});
+      if(innerHeight+scrollY>=document.documentElement.scrollHeight-4)act='contact';
+      if(act===cur)return;cur=act;
+      links.forEach(function(a){var on=a.getAttribute('href')==='#'+act;if(on)a.setAttribute('aria-current','true');else a.removeAttribute('aria-current');
+        if(on&&mnav&&mnav.contains(a)&&mnav.scrollWidth>mnav.clientWidth){mnav.scrollTo({left:Math.max(0,a.offsetLeft-mnav.offsetLeft-24),behavior:'smooth'})}});
+    }
+    addEventListener('scroll',function(){if(!tick){tick=true;requestAnimationFrame(update)}},{passive:true});
+    addEventListener('resize',update);update();
   })();
 })();
 </script>
