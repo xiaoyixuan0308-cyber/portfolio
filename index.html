@@ -318,6 +318,23 @@ dialog.lb img{border-radius:12px;max-height:86vh;width:auto;margin:auto}
 dialog.lb button{position:sticky;float:right;margin:8px;top:8px;right:8px;border:0;border-radius:999px;background:var(--paper-hi);color:var(--ink);font:600 14px var(--body);padding:6px 12px;cursor:pointer}
 
 @media (prefers-reduced-motion:reduce){*{animation:none!important;transition:none!important;scroll-behavior:auto!important}}
+.hero-name{font-family:var(--display);font-weight:900;font-size:clamp(22px,2.6vw,30px);color:var(--ink);margin:12px 0 0;display:flex;align-items:baseline;gap:10px;flex-wrap:wrap}
+.hero-name span{font:500 15px var(--body);color:var(--ink-soft);letter-spacing:.06em}
+.hero h1{margin-top:6px}
+.hero-stats{margin-top:20px}
+.hero .wrap{padding-block:56px 200px}
+@media (max-width:820px){.hero .wrap{padding-block:40px 150px}.hero-digua{position:static;justify-self:end;width:112px;margin-top:-6px}}
+.skill-grid{display:block;columns:2;column-gap:22px}
+.skill-grid .skill{break-inside:avoid;margin-bottom:22px;display:block}
+@media (max-width:820px){.skill-grid{columns:1}}
+a.src{text-decoration:none;cursor:pointer}
+a.src:hover{background:var(--mist);color:var(--moss)}
+.sign .sum{padding:16px 20px}
+.case-links a{color:var(--moss);font-weight:600;text-decoration:underline;text-underline-offset:3px}
+.sign .sum .more{color:var(--ink-soft);font-weight:400}
+@media (min-width:861px){.trail{gap:0}.stop:not(:first-child){margin-top:-48px}}
+.panel h3{word-break:keep-all;overflow-wrap:anywhere}
+.kn b span{display:inline;font-size:inherit;color:inherit;margin:0;line-height:inherit}
 </style>
 <style>img{max-width:100%}[hidden]{display:none!important}</style>
 </head>
@@ -327,8 +344,8 @@ dialog.lb button{position:sticky;float:right;margin:8px;top:8px;right:8px;border
 <a class="brand" href="#top">肖艺宣<small>Yixuan Xiao</small></a>
 <div class="links">
 <a href="#intro"><span class="zh">自我介绍</span><span class="en">Intro</span></a>
-<a href="#journey"><span class="zh">经历</span><span class="en">Journey</span></a>
 <a href="#projects"><span class="zh">项目</span><span class="en">Projects</span></a>
+<a href="#journey"><span class="zh">经历</span><span class="en">Journey</span></a>
 <a href="#about"><span class="zh">工作之外</span><span class="en">Beyond work</span></a>
 <a href="#contact"><span class="zh">联系</span><span class="en">Contact</span></a>
 <button aria-label="切换语言 / Switch language" class="lang" id="langBtn" type="button"><span class="zh">EN</span><span class="en">中文</span></button>
@@ -356,8 +373,14 @@ dialog.lb button{position:sticky;float:right;margin:8px;top:8px;right:8px;border
 <div class="wrap">
 <div>
 <div class="eyebrow"><span class="zh">2027 届 · 求职方向：运营 / 产品</span><span class="en">CLASS OF 2027 · SEEKING ROLES IN OPERATIONS / PRODUCT</span></div>
+<p class="hero-name">肖艺宣<span>Yixuan Xiao</span></p>
 <h1><span class="zh">找出问题，解决问题，<br/><em>用数字证明。</em></span><span class="en">Find the problem. Fix it.<br/><em>Prove it with numbers.</em></span></h1>
 <p class="sub"><span class="zh">对数字敏感，善用 AI，独立搭建并开源了两个业务系统。</span><span class="en">Numbers-minded and fluent with AI. I built and open-sourced two business systems end to end.</span></p>
+<div class="stats num hero-stats">
+<span><b>2</b><span class="zh">段实习</span><span class="en">internships</span></span>
+<span><b>2</b><span class="zh">个开源业务系统</span><span class="en">open-source business systems</span></span>
+<span><b><span class="zh">前 3%</span><span class="en">Top 3%</span></b><span class="zh">国际商业竞赛</span><span class="en">global business contest</span></span>
+</div>
 <div class="cta">
 <a class="btn solid" href="#projects"><span class="zh">看作品</span><span class="en">See my work</span> →</a>
 <a class="btn ghost" href="https://github.com/xiaoyixuan0308-cyber" rel="noopener" target="_blank">GitHub ↗</a>
@@ -391,13 +414,6 @@ dialog.lb button{position:sticky;float:right;margin:8px;top:8px;right:8px;border
 <div><dt><span class="zh">意向城市</span><span class="en">Location</span></dt><dd><span class="zh">全国均可</span><span class="en">Open to any city in China</span></dd></div>
 </dl>
 </div>
-<div class="keynums num">
-<div><b>2</b><span class="zh">段实习<br/>安永审计 · 微创中台运营</span><span class="en">internships<br/>EY audit · Wicresoft ops</span></div>
-<div><b>2</b><span class="zh">个开源业务系统<br/>FlowPilot · PawPath</span><span class="en">open-source systems<br/>FlowPilot · PawPath</span></div>
-<div><b><span class="zh">前 3%</span><span class="en">Top 3%</span></b><span class="zh">国际商业竞赛<br/>170+ 支队伍第 5</span><span class="en">global business contest<br/>5th of 170+ teams</span></div>
-<div><b><span class="zh">约 98 万</span><span class="en">US$980K</span></b><span class="zh">美元舞弊资金<br/>用 SQL 查出（课程审计）</span><span class="en">of fraud traced<br/>with SQL (course audit)</span></div>
-<div><b><span class="zh">2.5 万</span><span class="en">25K</span></b><span class="zh">条销售数据<br/>整合成经营看板</span><span class="en">sales records<br/>unified into a dashboard</span></div>
-</div>
 <h3 class="sub-h"><span class="zh">我的做事方式</span><span class="en">How I work</span><small><span class="zh">每一条都附可查证的证据</span><span class="en">each backed by evidence</span></small></h3>
 <div class="skill-grid">
 <article class="skill">
@@ -405,7 +421,8 @@ dialog.lb button{position:sticky;float:right;margin:8px;top:8px;right:8px;border
 <p class="trait"><span class="zh">从解决一次，到解决一类</span><span class="en">Fix the class, not the case</span></p><p class="claim"><span class="zh">把复杂业务拆成规则、清单和验收标准，让流程不依赖个人经验。</span><span class="en">Break complex work into rules, checklists and acceptance criteria so it doesn't depend on one person's experience.</span></p>
 <ul class="ev">
 <li><strong><span class="zh">POC 通过验证，进入正式开发</span><span class="en">POC validated and moved into full development</span></strong><span class="zh">梳理经销商的采购月拆分、周拆分和补货分配流程，转成需求文档、测试方案和演示材料。</span><span class="en">Mapped distributors' monthly and weekly purchase-plan splits and replenishment allocation into requirement docs, test plans and demo materials.</span><span class="src"><span class="zh">微创 · 中台运营</span><span class="en">Wicresoft</span></span></li>
-<li><strong><span class="zh">20+ 项验收标准落地为系统规则，22 项越权检查全部通过</span><span class="en">20+ acceptance criteria became system rules; all 22 access checks passed</span></strong><span class="zh">拆解出 5 类角色的权限矩阵和 5 种状态的流转规则。</span><span class="en">Designed a permission matrix for 5 roles and transition rules for 5 statuses.</span><span class="src">PawPath</span></li>
+<li><strong><span class="zh">测试方案覆盖 5 类业务场景</span><span class="en">Test plan covering 5 business scenarios</span></strong><span class="zh">整理 14 张业务表、构造约 3,000 条测试数据，验证系统在供应延迟、需求波动、库存积压等情况下算得准不准。</span><span class="en">Organised 14 business tables and ~3,000 test records to check calculations under supply delays, demand swings and overstock.</span><span class="src"><span class="zh">微创 · 中台运营</span><span class="en">Wicresoft</span></span></li>
+<li><strong><span class="zh">20+ 项验收标准落地为系统规则，22 项越权检查全部通过</span><span class="en">20+ acceptance criteria became system rules; all 22 access checks passed</span></strong><span class="zh">拆解出 5 类角色的权限矩阵和 5 种状态的流转规则。</span><span class="en">Designed a permission matrix for 5 roles and transition rules for 5 statuses.</span><a class="src" data-open="pawpath" href="#projects">PawPath →</a></li>
 </ul>
 </article>
 <article class="skill">
@@ -414,8 +431,8 @@ dialog.lb button{position:sticky;float:right;margin:8px;top:8px;right:8px;border
 <ul class="ev">
 <li><strong><span class="zh">预测偏差从 8% 降到 5%</span><span class="en">Forecast gap cut from 8% to 5%</span></strong><span class="zh">发现滚动预测把未来预测值和历史实际值等权处理，推动调整预测基准。</span><span class="en">Found the rolling forecast weighted future forecasts and historical actuals equally, and drove a change to the baseline.</span><span class="src"><span class="zh">微创 · 中台运营</span><span class="en">Wicresoft</span></span></li>
 <li><strong><span class="zh">核对时长缩短 4%</span><span class="en">Reconciliation time down 4%</span></strong><span class="zh">分析 1,200+ 条交易与科目资料的差异，把排查经验沉淀为知识库，在其他客户资料中复用。</span><span class="en">Analysed 1,200+ transaction–ledger mismatches and turned the findings into a reusable troubleshooting guide.</span><span class="src"><span class="zh">安永 · 审计</span><span class="en">EY</span></span></li>
-<li><strong><span class="zh">误判的异常 SKU 从 18 个降到 8 个</span><span class="en">Falsely flagged SKUs down from 18 to 8</span></strong><span class="zh">通过数据核对，定位并修复两处隐藏的口径问题。</span><span class="en">Traced and fixed two hidden data-definition mismatches.</span><span class="src">FlowPilot</span></li>
-<li><strong><span class="zh">追查出约 98 万美元的舞弊资金</span><span class="en">Uncovered about US$980K of fraud</span></strong><span class="zh">编写 16 段 SQL，交叉比对付款、工资和供应商数据。</span><span class="en">Wrote 16 SQL queries cross-checking payments, payroll and vendor data.</span><span class="src"><span class="zh">GoNCharge · 课程项目，数据为模拟</span><span class="en">GoNCharge · course project, simulated data</span></span></li>
+<li><strong><span class="zh">误判的异常 SKU 从 18 个降到 8 个</span><span class="en">Falsely flagged SKUs down from 18 to 8</span></strong><span class="zh">通过数据核对，定位并修复两处隐藏的口径问题。</span><span class="en">Traced and fixed two hidden data-definition mismatches.</span><a class="src" data-open="flowpilot" href="#projects">FlowPilot →</a></li>
+<li><strong><span class="zh">追查出约 98 万美元的舞弊资金</span><span class="en">Uncovered about US$980K of fraud</span></strong><span class="zh">编写 16 段 SQL，交叉比对付款、工资和供应商数据。</span><span class="en">Wrote 16 SQL queries cross-checking payments, payroll and vendor data.</span><a class="src" data-open="goncharge" href="#projects"><span class="zh">GoNCharge · 课程项目，数据为模拟</span><span class="en">GoNCharge · course project, simulated data</span> →</a></li>
 </ul>
 </article>
 <article class="skill">
@@ -423,7 +440,7 @@ dialog.lb button{position:sticky;float:right;margin:8px;top:8px;right:8px;border
 <p class="trait"><span class="zh">用 AI 提效，把想法做出来</span><span class="en">Use AI to ship ideas</span></p><p class="claim"><span class="zh">借助 AI 快速验证、搭原型，把时间留给判断和决策。</span><span class="en">Use AI to validate and prototype fast, saving time for judgement and decisions.</span></p>
 <ul class="ev">
 <li><strong><span class="zh">2 个业务系统独立上线并开源</span><span class="en">2 business systems built and open-sourced</span></strong><span class="zh">借助 AI 编程工具完成 FlowPilot Lab 与 PawPath，附流程图、规则文档和中英双语说明。</span><span class="en">FlowPilot Lab and PawPath, built with AI coding tools, with flow diagrams, rule docs and bilingual READMEs.</span></li>
-<li><strong><span class="zh">改动 212 个文件，2,267 行计算结果零差异</span><span class="en">212 files refactored, 2,267 calculated rows unchanged</span></strong><span class="zh">大规模重构后逐字段回归比对。</span><span class="en">Field-by-field regression check after a large refactor.</span><span class="src">FlowPilot</span></li>
+<li><strong><span class="zh">改动 212 个文件，2,267 行计算结果零差异</span><span class="en">212 files refactored, 2,267 calculated rows unchanged</span></strong><span class="zh">大规模重构后逐字段回归比对。</span><span class="en">Field-by-field regression check after a large refactor.</span><a class="src" data-open="flowpilot" href="#projects">FlowPilot →</a></li>
 <li><strong><span class="zh">完成客户 demo 演示</span><span class="en">Client demo delivered</span></strong><span class="zh">用 vibe coding 调优供应链平台 demo 的前端交互，并作为汇报人向客户演示。</span><span class="en">Refined the supply-chain demo's front end with vibe coding and presented it to the client.</span><span class="src"><span class="zh">微创 · 中台运营</span><span class="en">Wicresoft</span></span></li>
 </ul>
 </article>
@@ -432,91 +449,9 @@ dialog.lb button{position:sticky;float:right;margin:8px;top:8px;right:8px;border
 <p class="trait"><span class="zh">站在全局推进</span><span class="en">See the whole chain, drive it forward</span></p><p class="claim"><span class="zh">理解各方诉求，把不同角色串起来，按时交付。</span><span class="en">Understand every stakeholder, connect the roles and deliver on time.</span></p>
 <ul class="ev">
 <li><strong><span class="zh">170+ 支队伍中排名第 5（前 3%），获官方推荐信和创业基金</span><span class="en">5th of 170+ teams (top 3%), with a recommendation letter and start-up funding</span></strong><span class="zh">协调 7 国成员，3 周完成商业方案交付。</span><span class="en">Led members from 7 countries to deliver a business plan in 3 weeks.</span><span class="src"><span class="zh">GEE · 团队总负责人</span><span class="en">GEE · Team lead</span></span></li>
-<li><strong><span class="zh">让 7 个人并行开发</span><span class="en">7 people building in parallel</span></strong><span class="zh">采用"先定接口、用模拟数据解耦"的协作方式，跑通 AI 旅行规划 Demo。</span><span class="en">Interface-first collaboration with mock data to decouple modules; shipped the AI Travel Planner demo.</span><span class="src"><span class="zh">AI 旅行规划 · 产品经理</span><span class="en">AI Travel Planner · PM</span></span></li>
+<li><strong><span class="zh">让 7 个人并行开发</span><span class="en">7 people building in parallel</span></strong><span class="zh">采用"先定接口、用模拟数据解耦"的协作方式，跑通 AI 旅行规划 Demo。</span><span class="en">Interface-first collaboration with mock data to decouple modules; shipped the AI Travel Planner demo.</span><a class="src" data-open="travel" href="#projects"><span class="zh">AI 旅行规划 · 产品经理</span><span class="en">AI Travel Planner · PM</span> →</a></li>
 </ul>
 </article>
-</div>
-</div>
-</section>
-<!-- ============ JOURNEY ============ -->
-<section class="journey sec" id="journey">
-<div class="wrap">
-<div class="sec-head">
-<div>
-<div class="kicker"><span class="zh">经历</span><span class="en">JOURNEY</span></div>
-<h2><span class="zh">沿着林间小径，看看我一路做过的事</span><span class="en">Walk the trail through what I've done</span></h2>
-<p><span class="zh">点开路牌查看细节</span><span class="en">Open a signpost for details</span></p>
-</div>
-</div>
-<div class="trail-box">
-<svg aria-hidden="true" class="trail-path" preserveaspectratio="none" viewbox="0 0 160 1000"><defs><filter height="110%" id="wcT" width="160%" x="-30%" y="-5%"><feturbulence basefrequency="0.04" numoctaves="2" result="n" seed="5" type="fractalNoise"></feturbulence><fedisplacementmap in="SourceGraphic" in2="n" scale="10"></fedisplacementmap><fegaussianblur stddeviation="0.8"></fegaussianblur></filter></defs>
-<g filter="url(#wcT)"><path d="M80 0 C 20 80, 140 160, 80 250 S 20 420, 80 500 S 140 670, 80 750 S 20 920, 80 1000" fill="none" opacity=".8" stroke="#e5cf9f" stroke-linecap="round" stroke-width="46" vector-effect="non-scaling-stroke"></path>
-<path d="M80 0 C 20 80, 140 160, 80 250 S 20 420, 80 500 S 140 670, 80 750 S 20 920, 80 1000" fill="none" opacity=".7" stroke="#c9a46a" stroke-dasharray="2 14" stroke-linecap="round" stroke-width="3" vector-effect="non-scaling-stroke"></path></g></svg>
-<ol class="trail">
-<li class="stop">
-<span class="post" style="background:var(--bark)"><span class="zh">2023.02 · 新西兰 但尼丁</span><span class="en">2023.02 · Dunedin, NZ</span></span>
-<details class="sign"><summary><h3><span class="zh">奥塔哥大学 · 会计学学士</span><span class="en">University of Otago · BCom Accounting</span></h3><div class="hl"><span class="zh">打下财务、审计和商业分析的基础。</span><span class="en">Built my foundation in finance, audit and business analysis.</span></div><span class="more"><span class="o"><span class="zh">展开 ↓</span><span class="en">More ↓</span></span><span class="c"><span class="zh">收起 ↑</span><span class="en">Less ↑</span></span></span></summary>
-<div class="body"><ul><li><span class="zh">主修：财务会计、管理会计、审计、公司金融、绩效管理</span><span class="en">Core courses: financial and management accounting, auditing, corporate finance, performance management</span></li></ul></div></details>
-<img alt="" class="pal" height="380" src="img/digua-side.webp" width="442"/>
-</li>
-<li class="stop">
-<span class="post" style="background:var(--amber)"><span class="zh">2024 · 线上 · 7 个国家</span><span class="en">2024 · Online · 7 countries</span></span>
-<details class="sign"><summary><h3><span class="zh">GEE 国际商业竞赛</span><span class="en">GEE International Business Competition</span></h3><div class="role"><span class="zh">团队总负责人</span><span class="en">Team lead</span></div><div class="hl"><span class="zh">带领 7 国团队 3 周交付，170+ 支队伍中排名第 5（前 3%），获推荐信和创业基金。</span><span class="en">Led a 7-country team to deliver in 3 weeks; 5th of 170+ (top 3%), recommendation letter and start-up funding.</span></div><span class="more"><span class="o"><span class="zh">展开 ↓</span><span class="en">More ↓</span></span><span class="c"><span class="zh">收起 ↑</span><span class="en">Less ↑</span></span></span></summary>
-<div class="body"><ul>
-<li><span class="zh"><b>团队推进</b>：重新分工、明确每人的交付节点，通过 Teams、WhatsApp 和邮件持续跟进，按期完成交付。</span><span class="en"><b>Team delivery</b>: reorganised tasks, set clear deliverables per person and tracked progress across Teams, WhatsApp and email.</span></li>
-<li><span class="zh"><b>商业方案</b>：针对赞比亚的农作物保护需求，提出"植物保护无人机"方案，完成市场需求、定价、收入预测和盈利分析。</span><span class="en"><b>Business plan</b>: proposed crop-protection drones for Zambian farmers, with market sizing, pricing, revenue forecast and profitability analysis.</span></li>
-<li><span class="zh"><b>数据模型</b>：设计包含 11 个实体的数据模型，讲清成本、市场和产品的数据关系，并担任最终汇报人。</span><span class="en"><b>Data model</b>: designed an 11-entity model linking cost, market and product data, and presented the final pitch.</span></li>
-</ul></div></details>
-</li>
-<li class="stop">
-<span class="post" style="background:var(--moss)"><span class="zh">2024.06–2024.09 · 上海</span><span class="en">2024.06–2024.09 · Shanghai</span></span>
-<details class="sign"><summary><h3><span class="zh">安永华明会计师事务所</span><span class="en">EY (Ernst &amp; Young Hua Ming)</span></h3><div class="role"><span class="zh">审计实习生</span><span class="en">Audit intern</span></div><div class="hl"><span class="zh">核对 1,200+ 条财务数据，沉淀排查知识库，核对时长缩短 4%。</span><span class="en">Reconciled 1,200+ financial records, built a troubleshooting guide, cut reconciliation time by 4%.</span></div><span class="more"><span class="o"><span class="zh">展开 ↓</span><span class="en">More ↓</span></span><span class="c"><span class="zh">收起 ↑</span><span class="en">Less ↑</span></span></span></summary>
-<div class="body"><ul>
-<li><span class="zh"><b>差异分析</b>：逐条比对交易记录和会计科目资料，找出对不上的原因，反馈给项目负责人。</span><span class="en"><b>Variance analysis</b>: compared transactions against ledger data line by line, found the causes of mismatches and reported them to the engagement lead.</span></li>
-<li><span class="zh"><b>经验沉淀</b>：归纳常见的数据异常原因，整理成排查知识库，供其他客户项目复用。</span><span class="en"><b>Knowledge capture</b>: grouped recurring causes into a troubleshooting guide reused on other clients.</span></li>
-<li><span class="zh"><b>流程规范</b>：统一字段、整理凭证，保证原始数据、账务记录和底稿之间可追溯。</span><span class="en"><b>Documentation</b>: standardised fields and evidence so source data, ledgers and working papers stay traceable.</span></li>
-</ul></div></details>
-</li>
-<li class="stop">
-<span class="post" style="background:#5f8c8a"><span class="zh">2025.06–2026.12 · 布里斯班</span><span class="en">2025.06–2026.12 · Brisbane</span></span>
-<details class="sign"><summary><h3><span class="zh">昆士兰大学 · 信息系统硕士</span><span class="en">University of Queensland · MS Information Systems</span></h3><div class="hl"><span class="zh">在财务背景之上，补齐数据和系统能力。</span><span class="en">Added data and systems skills on top of finance.</span></div><span class="more"><span class="o"><span class="zh">展开 ↓</span><span class="en">More ↓</span></span><span class="c"><span class="zh">收起 ↑</span><span class="en">Less ↑</span></span></span></summary>
-<div class="body"><ul><li><span class="zh">主修：数据库设计、商业分析、数据可视化、IT 治理、信息系统安全</span><span class="en">Core courses: database design, business analytics, data visualisation, IT governance, information security</span></li><li><span class="zh">工具：SQL、Python、Power BI、R</span><span class="en">Tools: SQL, Python, Power BI, R</span></li></ul></div></details>
-<img alt="" class="pal" height="207" src="img/digua-sit-tail.webp" width="181"/>
-</li>
-<li class="stop">
-<span class="post" style="background:#8a6aa8"><span class="zh">2026.04 起 · 课程项目</span><span class="en">From 2026.04 · Coursework</span></span>
-<details class="sign"><summary><h3><span class="zh">用数据解决真实的业务问题</span><span class="en">Solving real business problems with data</span></h3><div class="hl"><span class="zh">电商数据仓库 · GoNCharge 舞弊审计 · AI 旅行规划</span><span class="en">E-commerce data warehouse · GoNCharge fraud audit · AI Travel Planner</span></div><span class="more"><span class="o"><span class="zh">展开 ↓</span><span class="en">More ↓</span></span><span class="c"><span class="zh">收起 ↑</span><span class="en">Less ↑</span></span></span></summary>
-<div class="body"><ul>
-<li><span class="zh">🛒 <b>电商数据仓库</b>：整合 2.5 万条销售、2.1 万名客户、2,199 款商品和 100 家供应商的数据，搭建经营看板（HD 29/30）。</span><span class="en">🛒 <b>E-commerce data warehouse</b>: unified 25K sales, 21K customers, 2,199 products and 100 suppliers into one dashboard (HD, 29/30).</span></li>
-<li><span class="zh">🔍 <b>GoNCharge</b>：用 SQL 追查出约 98 万美元的舞弊链（课程模拟数据）。</span><span class="en">🔍 <b>GoNCharge</b>: traced a ~US$980K fraud scheme with SQL (simulated course data).</span></li>
-<li><span class="zh">🗺️ <b>AI 旅行规划</b>：7 人团队产品经理，跑通完整 Demo。</span><span class="en">🗺️ <b>AI Travel Planner</b>: PM of a 7-person team that shipped a working demo.</span></li>
-</ul><div class="links-row"><a data-open="ecom" href="#projects"><span class="zh">查看案例 →</span><span class="en">See the cases →</span></a></div></div></details>
-</li>
-<li class="stop">
-<span class="post" style="background:var(--moss)"><span class="zh">2026.06–2026.08 · 上海</span><span class="en">2026.06–2026.08 · Shanghai</span></span>
-<details class="sign"><summary><h3><span class="zh">微创网络（Wicresoft）</span><span class="en">Wicresoft</span></h3><div class="role"><span class="zh">中台运营实习生 · 供应链平台 POC</span><span class="en">Middle-office operations intern · supply-chain platform POC</span></div><div class="hl"><span class="zh">推动供应链平台 POC 通过客户验证，进入正式开发。</span><span class="en">Helped a supply-chain platform POC pass client validation and move into development.</span></div><span class="more"><span class="o"><span class="zh">展开 ↓</span><span class="en">More ↓</span></span><span class="c"><span class="zh">收起 ↑</span><span class="en">Less ↑</span></span></span></summary>
-<div class="body"><ul>
-<li><span class="zh"><b>梳理流程</b>：为一家跨国医疗器械企业，把经销商采购计划拆分（月度→周度）、库存与补货分配流程整理成需求文档、测试方案和演示材料。</span><span class="en"><b>Process mapping</b>: for a multinational medical-device client, turned distributor purchase-plan splitting (monthly → weekly), inventory and replenishment allocation into requirement docs, test plans and demos.</span></li>
-<li><span class="zh"><b>设计测试</b>：整理 14 张业务表，构造约 3,000 条测试数据，模拟供应延迟、需求波动、库存积压等 5 类场景，验证系统算得准不准。</span><span class="en"><b>Test design</b>: organised 14 business tables and ~3,000 test records covering 5 scenarios (supply delays, demand swings, overstock) to check calculation accuracy.</span></li>
-<li><span class="zh"><b>改进预测</b>：发现系统把"未来预测"和"历史实际"同等对待，建议改用最新滚动数据，预测与实际供货周期的偏差从 8% 降到 5%。</span><span class="en"><b>Forecast fix</b>: found forecasts and actuals were weighted equally; switching to the latest rolling data cut the gap from 8% to 5%.</span></li>
-<li><span class="zh"><b>客户演示</b>：用 AI 辅助编程优化 demo 的页面交互，并作为汇报人向客户演示。</span><span class="en"><b>Client demo</b>: refined the demo's front end with AI-assisted coding and presented it to the client.</span></li>
-</ul></div></details>
-</li>
-<li class="stop">
-<span class="post" style="background:var(--amber)"><span class="zh">2026.06 起 · 个人开源</span><span class="en">From 2026.06 · Open source</span></span>
-<details class="sign"><summary><h3><span class="zh">借助 AI，独立做出两个完整的业务系统</span><span class="en">Two complete business systems, built with AI</span></h3><div class="hl">FlowPilot Lab · PawPath</div><span class="more"><span class="o"><span class="zh">展开 ↓</span><span class="en">More ↓</span></span><span class="c"><span class="zh">收起 ↑</span><span class="en">Less ↑</span></span></span></summary>
-<div class="body"><ul>
-<li><span class="zh">📦 <b>FlowPilot Lab</b>：串起月度补货到周度发货的完整计算链路，每个数字可追溯；重构 212 个文件后结果零差异。</span><span class="en">📦 <b>FlowPilot Lab</b>: the full chain from monthly replenishment to weekly shipments, every number traceable; 212 files refactored with zero result change.</span></li>
-<li><span class="zh">🐾 <b>PawPath</b>：5 类角色、5 种状态规则，6 位申请人同屏比较，22 项越权检查全部通过。</span><span class="en">🐾 <b>PawPath</b>: 5 roles, 5 status rules, side-by-side ranking of 6 applicants, all 22 access checks passed.</span></li>
-</ul><div class="links-row"><a data-open="flowpilot" href="#projects"><span class="zh">查看案例 →</span><span class="en">See the cases →</span></a><a href="https://github.com/xiaoyixuan0308-cyber" rel="noopener" target="_blank">GitHub ↗</a></div></div></details>
-</li>
-<li class="stop next">
-<span class="post" style="background:var(--moss)"><span class="zh">下一站</span><span class="en">Next stop</span></span>
-<details class="sign" open=""><summary><h3><span class="zh">2027 届 · 运营 / 产品方向</span><span class="en">Class of 2027 · Operations / Product</span></h3><div class="hl"><span class="zh">也许就是你的团队？📮</span><span class="en">Could it be your team? 📮</span></div></summary>
-<div class="body"><div class="links-row"><a href="#contact"><span class="zh">联系我 →</span><span class="en">Get in touch →</span></a></div></div></details>
-<img alt="" class="pal" height="380" src="img/digua-front.webp" width="396"/>
-</li>
-</ol>
 </div>
 </div>
 </section>
@@ -527,6 +462,7 @@ dialog.lb button{position:sticky;float:right;margin:8px;top:8px;right:8px;border
 <div>
 <div class="kicker"><span class="zh">项目</span><span class="en">PROJECTS</span></div>
 <h2><span class="zh">五个项目，五片林间空地</span><span class="en">Five projects, five clearings</span></h2>
+<p><span class="zh">2 个个人开源 · 2 个课程项目 · 1 个团队项目（产品经理）</span><span class="en">2 open-source · 2 coursework · 1 team project as PM</span></p>
 </div>
 </div>
 <div class="proj-layout">
@@ -540,7 +476,7 @@ dialog.lb button{position:sticky;float:right;margin:8px;top:8px;right:8px;border
 <div class="proj-panels">
 <!-- FlowPilot -->
 <article aria-labelledby="t-flowpilot" class="panel" id="p-flowpilot" role="tabpanel">
-<div class="ptext"><div class="col-a"><div class="p-meta"><span class="chip"><span class="zh">个人开源项目</span><span class="en">Open source</span></span><span class="chip num">2026.06–2026.09</span><span class="chip"><span class="zh">产品负责人 / 全栈</span><span class="en">Product owner / full stack</span></span></div><h3><span class="zh">FlowPilot Lab · 供应链计划与决策平台</span><span class="en">FlowPilot Lab · Supply-chain planning platform</span></h3><p class="oneline"><span class="zh">把"月度补货 → 周度发货"这套原本靠表格计算的流程，做成每个数字都能追溯来源的平台。</span><span class="en">I turned a spreadsheet-driven "monthly replenishment → weekly shipment" process into a platform where every number can be traced to its source.</span></p><div class="kn num">
+<div class="ptext"><div class="col-a"><div class="p-meta"><span class="chip"><span class="zh">个人开源项目</span><span class="en">Open source</span></span><span class="chip num">2026.06–2026.09</span><span class="chip"><span class="zh">产品负责人 / 全栈</span><span class="en">Product owner / full stack</span></span></div><h3><span class="zh">FlowPilot Lab&nbsp;· 供应链计划与决策平台</span><span class="en">FlowPilot Lab&nbsp;· Supply-chain planning platform</span></h3><p class="oneline"><span class="zh">把"月度补货 → 周度发货"这套原本靠表格计算的流程，做成每个数字都能追溯来源的平台。</span><span class="en">I turned a spreadsheet-driven "monthly replenishment → weekly shipment" process into a platform where every number can be traced to its source.</span></p><div class="kn num">
 <div><b>2</b><span class="zh">条计算链路（月度 6 阶段、周度 8 阶段）</span><span class="en">calculation chains (6 monthly, 8 weekly stages)</span></div>
 <div><b>6</b><span class="zh">条异常规则，自动发现风险</span><span class="en">risk rules flag issues automatically</span></div>
 <div><b>31</b><span class="zh">张数据表，覆盖需求、库存、在途、订单</span><span class="en">tables: demand, stock, in-transit, orders</span></div>
@@ -559,7 +495,7 @@ dialog.lb button{position:sticky;float:right;margin:8px;top:8px;right:8px;border
 </article>
 <!-- PawPath -->
 <article aria-labelledby="t-pawpath" class="panel" hidden="" id="p-pawpath" role="tabpanel">
-<div class="ptext"><div class="col-a"><div class="p-meta"><span class="chip"><span class="zh">个人开源项目</span><span class="en">Open source</span></span><span class="chip num"><span class="zh">2026.09 至今</span><span class="en">2026.09 – now</span></span><span class="chip"><span class="zh">产品负责人 / 全栈</span><span class="en">Product owner / full stack</span></span></div><h3><span class="zh">PawPath · 动物收容与领养管理平台</span><span class="en">PawPath · Animal shelter &amp; adoption platform</span></h3><p class="oneline"><span class="zh">把课程 UML 设计做成真正能用的系统，让每次上架、每个领养决定都有规则可依、有记录可查。</span><span class="en">I turned a course UML design into a working system where every listing and adoption decision follows a rule and leaves a record.</span></p><div class="kn num">
+<div class="ptext"><div class="col-a"><div class="p-meta"><span class="chip"><span class="zh">个人开源项目</span><span class="en">Open source</span></span><span class="chip num"><span class="zh">2026.09 至今</span><span class="en">2026.09 – now</span></span><span class="chip"><span class="zh">产品负责人 / 全栈</span><span class="en">Product owner / full stack</span></span></div><h3><span class="zh">PawPath&nbsp;· 动物收容与领养管理平台</span><span class="en">PawPath&nbsp;· Animal shelter &amp; adoption platform</span></h3><p class="oneline"><span class="zh">把课程 UML 设计做成真正能用的系统，让每次上架、每个领养决定都有规则可依、有记录可查。</span><span class="en">I turned a course UML design into a working system where every listing and adoption decision follows a rule and leaves a record.</span></p><div class="kn num">
 <div><b>5</b><span class="zh">类角色：官员、员工、兽医、领养人、管理员</span><span class="en">roles: officer, staff, vet, adopter, admin</span></div>
 <div><b>5</b><span class="zh">种状态，每次流转都有前置条件</span><span class="en">statuses, each move gated by checks</span></div>
 <div><b>6</b><span class="zh">位申请人同屏比较适配度</span><span class="en">applicants compared side by side</span></div>
@@ -578,7 +514,7 @@ dialog.lb button{position:sticky;float:right;margin:8px;top:8px;right:8px;border
 </article>
 <!-- GoNCharge -->
 <article aria-labelledby="t-goncharge" class="panel" hidden="" id="p-goncharge" role="tabpanel">
-<div class="ptext"><div class="col-a"><div class="p-meta"><span class="chip"><span class="zh">课程项目 · 昆士兰大学 BISM7221</span><span class="en">Course project · UQ BISM7221</span></span><span class="chip num">2026.05</span><span class="chip"><span class="zh">独立完成</span><span class="en">Solo</span></span><span class="chip warn"><span class="zh">公司与数据均为课程模拟</span><span class="en">Simulated company and data</span></span></div><h3><span class="zh">一个住址，串起约 98 万美元的舞弊链</span><span class="en">One address, a US$980K fraud scheme</span></h3><p class="oneline"><span class="zh">我用 SQL 检查一家公司的付款、工资和客户记录，查出一套持续多年、约 98 万美元的内部舞弊，并给出止损和长期防范方案。</span><span class="en">I used SQL to examine a company's payments, payroll and customer records, uncovered a multi-year internal fraud worth about US$980K, and proposed how to stop it and keep it from happening again.</span></p><div class="kn num">
+<div class="ptext"><div class="col-a"><div class="p-meta"><span class="chip"><span class="zh">课程项目&nbsp;· 昆士兰大学 BISM7221</span><span class="en">Course project&nbsp;· UQ BISM7221</span></span><span class="chip num">2026.05</span><span class="chip"><span class="zh">独立完成</span><span class="en">Solo</span></span><span class="chip warn"><span class="zh">公司与数据均为课程模拟</span><span class="en">Simulated company and data</span></span></div><h3><span class="zh">一个住址，串起约 98 万美元的舞弊链</span><span class="en">One address, a US$980K fraud scheme</span></h3><p class="oneline"><span class="zh">我用 SQL 检查一家公司的付款、工资和客户记录，查出一套持续多年、约 98 万美元的内部舞弊，并给出止损和长期防范方案。</span><span class="en">I used SQL to examine a company's payments, payroll and customer records, uncovered a multi-year internal fraud worth about US$980K, and proposed how to stop it and keep it from happening again.</span></p><div class="kn num">
 <div><b><span class="zh">约 98 万</span><span class="en">~$980K</span></b><span class="zh">美元舞弊资金</span><span class="en">in fraud</span></div>
 <div><b>10</b><span class="zh">家假供应商，收款约 79 万</span><span class="en">fake vendors, ~$790K paid</span></div>
 <div><b>5</b><span class="zh">名假员工，年薪约 16 万</span><span class="en">ghost employees, ~$160K a year</span></div>
@@ -614,7 +550,7 @@ dialog.lb button{position:sticky;float:right;margin:8px;top:8px;right:8px;border
 </article>
 <!-- E-commerce -->
 <article aria-labelledby="t-ecom" class="panel" hidden="" id="p-ecom" role="tabpanel">
-<div class="ptext"><div class="col-a"><div class="p-meta"><span class="chip"><span class="zh">课程项目 · 昆士兰大学</span><span class="en">Course project · UQ</span></span><span class="chip num">2026.04–2026.06</span><span class="chip"><span class="zh">数据运营</span><span class="en">Data operations</span></span><span class="chip num"><span class="zh">成绩 29/30（HD）</span><span class="en">Grade 29/30 (HD)</span></span></div><h3><span class="zh">电商数据仓库与经营分析看板</span><span class="en">E-commerce data warehouse &amp; dashboard</span></h3><p class="oneline"><span class="zh">把散落在多个系统里的销售、客户、商品和供应商数据统一口径、整合到一起，做成可以随时筛选的经营看板。</span><span class="en">I brought sales, customer, product and supplier data from several systems onto one consistent definition and built a dashboard anyone can filter.</span></p><div class="kn num">
+<div class="ptext"><div class="col-a"><div class="p-meta"><span class="chip"><span class="zh">课程项目&nbsp;· 昆士兰大学</span><span class="en">Course project&nbsp;· UQ</span></span><span class="chip num">2026.04–2026.06</span><span class="chip"><span class="zh">数据运营</span><span class="en">Data operations</span></span><span class="chip num"><span class="zh">成绩 29/30（HD）</span><span class="en">Grade 29/30 (HD)</span></span></div><h3><span class="zh">电商数据仓库与经营分析看板</span><span class="en">E-commerce data warehouse &amp; dashboard</span></h3><p class="oneline"><span class="zh">把散落在多个系统里的销售、客户、商品和供应商数据统一口径、整合到一起，做成可以随时筛选的经营看板。</span><span class="en">I brought sales, customer, product and supplier data from several systems onto one consistent definition and built a dashboard anyone can filter.</span></p><div class="kn num">
 <div><b><span class="zh">2.5 万</span><span class="en">25K</span></b><span class="zh">条销售记录</span><span class="en">sales records</span></div>
 <div><b><span class="zh">2.1 万</span><span class="en">21K</span></b><span class="zh">名客户</span><span class="en">customers</span></div>
 <div><b>2,199</b><span class="zh">款商品，另有 100 家供应商</span><span class="en">products, plus 100 suppliers</span></div>
@@ -663,7 +599,7 @@ dialog.lb button{position:sticky;float:right;margin:8px;top:8px;right:8px;border
 </article>
 <!-- Travel planner -->
 <article aria-labelledby="t-travel" class="panel" hidden="" id="p-travel" role="tabpanel">
-<div class="ptext"><div class="col-a"><div class="p-meta"><span class="chip"><span class="zh">团队项目 · 7 人</span><span class="en">Team project · 7 people</span></span><span class="chip num">2026.06–2026.08</span><span class="chip"><span class="zh">产品经理</span><span class="en">Product manager</span></span><span class="chip"><span class="zh">代码为团队私有仓库</span><span class="en">Private team repo</span></span></div><h3><span class="zh">AI 旅行规划师</span><span class="en">AI Travel Planner</span></h3><p class="oneline"><span class="zh">输入目的地和日期，自动生成按天可执行的行程（天气、景点、酒店和最优游览路线），并在地图上联动展示。</span><span class="en">Enter a destination and dates to get a day-by-day plan with weather, sights, hotels and optimised routes, shown on a linked map.</span></p><div class="kn num">
+<div class="ptext"><div class="col-a"><div class="p-meta"><span class="chip"><span class="zh">团队项目&nbsp;· 7 人</span><span class="en">Team project&nbsp;· 7 people</span></span><span class="chip num">2026.06–2026.08</span><span class="chip"><span class="zh">产品经理</span><span class="en">Product manager</span></span><span class="chip"><span class="zh">代码为团队私有仓库</span><span class="en">Private team repo</span></span></div><h3><span class="zh">AI 旅行规划师</span><span class="en">AI Travel Planner</span></h3><p class="oneline"><span class="zh">输入目的地和日期，自动生成按天可执行的行程（天气、景点、酒店和最优游览路线），并在地图上联动展示。</span><span class="en">Enter a destination and dates to get a day-by-day plan with weather, sights, hotels and optimised routes, shown on a linked map.</span></p><div class="kn num">
 <div><b>7</b><span class="zh">人并行开发，接口先行</span><span class="en">people building in parallel</span></div>
 <div><b>1–14</b><span class="zh">天，支持的行程长度</span><span class="en">days per trip</span></div>
 <div><b>2</b><span class="zh">种算法：K-Means 分天 · TSP 排路线</span><span class="en">algorithms: K-Means days · TSP routes</span></div>
@@ -680,6 +616,79 @@ dialog.lb button{position:sticky;float:right;margin:8px;top:8px;right:8px;border
 <div class="showcase" data-carousel=""><div aria-label="截图，可左右滑动" class="slides" tabindex="0"><figure class="slide"><button aria-label="放大查看 杭州 3 日路线全景" class="shot" type="button"><img alt="杭州 3 日路线全景" loading="eager" src="img/atp-result-3.webp"/></button></figure><figure class="slide"><button aria-label="放大查看 第 1 天路线" class="shot" type="button"><img alt="第 1 天路线" loading="lazy" src="img/atp-result-2.webp"/></button></figure><figure class="slide"><button aria-label="放大查看 首页" class="shot" type="button"><img alt="首页" loading="lazy" src="img/atp-home.webp"/></button></figure></div><div class="sc-nav"><button aria-label="上一张" class="arr" data-dir="-1" type="button">←</button><div class="strip"><button aria-current="true" aria-label="第 1 张：杭州 3 日路线全景" data-i="0" type="button"><img alt="" src="img/atp-result-3.webp"/></button><button aria-label="第 2 张：第 1 天路线" data-i="1" type="button"><img alt="" src="img/atp-result-2.webp"/></button><button aria-label="第 3 张：首页" data-i="2" type="button"><img alt="" src="img/atp-home.webp"/></button></div><div aria-hidden="true" class="dots"><i class="on"></i><i></i><i></i></div><button aria-label="下一张" class="arr" data-dir="1" type="button">→</button></div><p class="caption"><span class="swipe"><span class="zh">左右滑动 · 点击放大 · </span><span class="en">Swipe · tap to zoom · </span></span><span class="zh">三日路线全景 · 第 1 天路线 · 首页（页面会标注演示数据）</span><span class="en">Three-day routes · day 1 · home (demo data is labelled in the app)</span></p></div>
 </article>
 </div>
+</div>
+</div>
+</section>
+<!-- ============ JOURNEY ============ -->
+<section class="journey sec" id="journey">
+<div class="wrap">
+<div class="sec-head">
+<div>
+<div class="kicker"><span class="zh">经历</span><span class="en">JOURNEY</span></div>
+<h2><span class="zh">沿着林间小径，看看我一路做过的事</span><span class="en">Walk the trail through what I've done</span></h2>
+<p><span class="zh">2 段学历 · 2 段实习 · 1 次国际竞赛 · 点开路牌看细节</span><span class="en">2 degrees · 2 internships · 1 global contest · open a signpost for details</span></p>
+</div>
+</div>
+<div class="trail-box">
+<svg aria-hidden="true" class="trail-path" preserveaspectratio="none" viewbox="0 0 160 1000"><defs><filter height="110%" id="wcT" width="160%" x="-30%" y="-5%"><feturbulence basefrequency="0.04" numoctaves="2" result="n" seed="5" type="fractalNoise"></feturbulence><fedisplacementmap in="SourceGraphic" in2="n" scale="10"></fedisplacementmap><fegaussianblur stddeviation="0.8"></fegaussianblur></filter></defs>
+<g filter="url(#wcT)"><path d="M80 0 C 20 80, 140 160, 80 250 S 20 420, 80 500 S 140 670, 80 750 S 20 920, 80 1000" fill="none" opacity=".8" stroke="#e5cf9f" stroke-linecap="round" stroke-width="46" vector-effect="non-scaling-stroke"></path>
+<path d="M80 0 C 20 80, 140 160, 80 250 S 20 420, 80 500 S 140 670, 80 750 S 20 920, 80 1000" fill="none" opacity=".7" stroke="#c9a46a" stroke-dasharray="2 14" stroke-linecap="round" stroke-width="3" vector-effect="non-scaling-stroke"></path></g></svg>
+<ol class="trail">
+<li class="stop">
+<span class="post" style="background:var(--bark)"><span class="zh">2023.02 · 新西兰 但尼丁</span><span class="en">2023.02 · Dunedin, NZ</span></span>
+<details class="sign"><summary><h3><span class="zh">奥塔哥大学 · 会计学学士</span><span class="en">University of Otago · BCom Accounting</span></h3><div class="hl"><span class="zh">打下财务、审计和商业分析的基础。</span><span class="en">Built my foundation in finance, audit and business analysis.</span></div><span class="more"><span class="o"><span class="zh">展开 ↓</span><span class="en">More ↓</span></span><span class="c"><span class="zh">收起 ↑</span><span class="en">Less ↑</span></span></span></summary>
+<div class="body"><ul><li><span class="zh">主修：财务会计、管理会计、审计、公司金融、绩效管理</span><span class="en">Core courses: financial and management accounting, auditing, corporate finance, performance management</span></li></ul></div></details>
+<img alt="" class="pal" height="380" src="img/digua-side.webp" width="442"/>
+</li>
+<li class="stop">
+<span class="post" style="background:var(--amber)"><span class="zh">2024 · 线上 · 7 个国家</span><span class="en">2024 · Online · 7 countries</span></span>
+<details class="sign"><summary><h3><span class="zh">GEE 国际商业竞赛</span><span class="en">GEE International Business Competition</span></h3><div class="role"><span class="zh">团队总负责人</span><span class="en">Team lead</span></div><div class="hl"><span class="zh">带领 7 国团队 3 周交付，170+ 支队伍中排名第 5（前 3%），获推荐信和创业基金。</span><span class="en">Led a 7-country team to deliver in 3 weeks; 5th of 170+ (top 3%), recommendation letter and start-up funding.</span></div><span class="more"><span class="o"><span class="zh">展开 ↓</span><span class="en">More ↓</span></span><span class="c"><span class="zh">收起 ↑</span><span class="en">Less ↑</span></span></span></summary>
+<div class="body"><ul>
+<li><span class="zh"><b>团队推进</b>：重新分工、明确每人的交付节点，通过 Teams、WhatsApp 和邮件持续跟进，按期完成交付。</span><span class="en"><b>Team delivery</b>: reorganised tasks, set clear deliverables per person and tracked progress across Teams, WhatsApp and email.</span></li>
+<li><span class="zh"><b>商业方案</b>：针对赞比亚的农作物保护需求，提出"植物保护无人机"方案，完成市场需求、定价、收入预测和盈利分析。</span><span class="en"><b>Business plan</b>: proposed crop-protection drones for Zambian farmers, with market sizing, pricing, revenue forecast and profitability analysis.</span></li>
+<li><span class="zh"><b>数据模型</b>：设计包含 11 个实体的数据模型，讲清成本、市场和产品的数据关系，并担任最终汇报人。</span><span class="en"><b>Data model</b>: designed an 11-entity model linking cost, market and product data, and presented the final pitch.</span></li>
+</ul></div></details>
+</li>
+<li class="stop">
+<span class="post" style="background:var(--moss)"><span class="zh">2024.06–2024.09 · 上海</span><span class="en">2024.06–2024.09 · Shanghai</span></span>
+<details class="sign"><summary><h3><span class="zh">安永华明会计师事务所</span><span class="en">EY (Ernst &amp; Young Hua Ming)</span></h3><div class="role"><span class="zh">审计实习生</span><span class="en">Audit intern</span></div><div class="hl"><span class="zh">核对 1,200+ 条财务数据，沉淀排查知识库，核对时长缩短 4%。</span><span class="en">Reconciled 1,200+ financial records, built a troubleshooting guide, cut reconciliation time by 4%.</span></div><span class="more"><span class="o"><span class="zh">展开 ↓</span><span class="en">More ↓</span></span><span class="c"><span class="zh">收起 ↑</span><span class="en">Less ↑</span></span></span></summary>
+<div class="body"><ul>
+<li><span class="zh"><b>差异分析</b>：逐条比对交易记录和会计科目资料，找出对不上的原因，反馈给项目负责人。</span><span class="en"><b>Variance analysis</b>: compared transactions against ledger data line by line, found the causes of mismatches and reported them to the engagement lead.</span></li>
+<li><span class="zh"><b>经验沉淀</b>：归纳常见的数据异常原因，整理成排查知识库，供其他客户项目复用。</span><span class="en"><b>Knowledge capture</b>: grouped recurring causes into a troubleshooting guide reused on other clients.</span></li>
+<li><span class="zh"><b>流程规范</b>：统一字段、整理凭证，保证原始数据、账务记录和底稿之间可追溯。</span><span class="en"><b>Documentation</b>: standardised fields and evidence so source data, ledgers and working papers stay traceable.</span></li>
+</ul></div></details>
+</li>
+<li class="stop">
+<span class="post" style="background:#5f8c8a"><span class="zh">2025.06–2026.12 · 布里斯班</span><span class="en">2025.06–2026.12 · Brisbane</span></span>
+<details class="sign"><summary><h3><span class="zh">昆士兰大学 · 信息系统硕士</span><span class="en">University of Queensland · MS Information Systems</span></h3><div class="hl"><span class="zh">在财务背景之上，补齐数据和系统能力。</span><span class="en">Added data and systems skills on top of finance.</span></div><span class="more"><span class="o"><span class="zh">展开 ↓</span><span class="en">More ↓</span></span><span class="c"><span class="zh">收起 ↑</span><span class="en">Less ↑</span></span></span></summary>
+<div class="body"><ul><li><span class="zh">主修：数据库设计、商业分析、数据可视化、IT 治理、信息系统安全</span><span class="en">Core courses: database design, business analytics, data visualisation, IT governance, information security</span></li><li><span class="zh">工具：SQL、Python、Power BI、R</span><span class="en">Tools: SQL, Python, Power BI, R</span></li></ul></div></details>
+<img alt="" class="pal" height="207" src="img/digua-sit-tail.webp" width="181"/>
+</li>
+<li class="stop">
+<span class="post" style="background:#8a6aa8"><span class="zh">2026.04 起 · 课程项目</span><span class="en">From 2026.04 · Coursework</span></span>
+<div class="sign"><div class="sum"><h3><span class="zh">用数据解决真实的业务问题</span><span class="en">Solving real business problems with data</span></h3><div class="hl case-links"><a data-open="ecom" href="#projects"><span class="zh">电商数据仓库</span><span class="en">E-commerce DW</span></a> · <a data-open="goncharge" href="#projects"><span class="zh">GoNCharge 舞弊审计</span><span class="en">GoNCharge fraud audit</span></a> · <a data-open="travel" href="#projects"><span class="zh">AI 旅行规划</span><span class="en">AI Travel Planner</span></a></div><span class="more"><span class="zh">点击项目名查看案例 →</span><span class="en">Tap a project to see the case →</span></span></div></div>
+</li>
+<li class="stop">
+<span class="post" style="background:var(--moss)"><span class="zh">2026.06–2026.08 · 上海</span><span class="en">2026.06–2026.08 · Shanghai</span></span>
+<details class="sign"><summary><h3><span class="zh">微创网络（Wicresoft）</span><span class="en">Wicresoft</span></h3><div class="role"><span class="zh">中台运营实习生 · 供应链平台 POC</span><span class="en">Middle-office operations intern · supply-chain platform POC</span></div><div class="hl"><span class="zh">推动供应链平台 POC 通过客户验证，进入正式开发。</span><span class="en">Helped a supply-chain platform POC pass client validation and move into development.</span></div><span class="more"><span class="o"><span class="zh">展开 ↓</span><span class="en">More ↓</span></span><span class="c"><span class="zh">收起 ↑</span><span class="en">Less ↑</span></span></span></summary>
+<div class="body"><ul>
+<li><span class="zh"><b>梳理流程</b>：为一家跨国医疗器械企业，把经销商采购计划拆分（月度→周度）、库存与补货分配流程整理成需求文档、测试方案和演示材料。</span><span class="en"><b>Process mapping</b>: for a multinational medical-device client, turned distributor purchase-plan splitting (monthly → weekly), inventory and replenishment allocation into requirement docs, test plans and demos.</span></li>
+<li><span class="zh"><b>设计测试</b>：整理 14 张业务表，构造约 3,000 条测试数据，模拟供应延迟、需求波动、库存积压等 5 类场景，验证系统算得准不准。</span><span class="en"><b>Test design</b>: organised 14 business tables and ~3,000 test records covering 5 scenarios (supply delays, demand swings, overstock) to check calculation accuracy.</span></li>
+<li><span class="zh"><b>改进预测</b>：发现系统把"未来预测"和"历史实际"同等对待，建议改用最新滚动数据，预测与实际供货周期的偏差从 8% 降到 5%。</span><span class="en"><b>Forecast fix</b>: found forecasts and actuals were weighted equally; switching to the latest rolling data cut the gap from 8% to 5%.</span></li>
+<li><span class="zh"><b>客户演示</b>：用 AI 辅助编程优化 demo 的页面交互，并作为汇报人向客户演示。</span><span class="en"><b>Client demo</b>: refined the demo's front end with AI-assisted coding and presented it to the client.</span></li>
+</ul></div></details>
+</li>
+<li class="stop">
+<span class="post" style="background:var(--amber)"><span class="zh">2026.06 起 · 个人开源</span><span class="en">From 2026.06 · Open source</span></span>
+<div class="sign"><div class="sum"><h3><span class="zh">借助 AI，独立做出两个完整的业务系统</span><span class="en">Two complete business systems, built with AI</span></h3><div class="hl case-links"><a data-open="flowpilot" href="#projects"><span class="zh">FlowPilot Lab</span><span class="en">FlowPilot Lab</span></a> · <a data-open="pawpath" href="#projects"><span class="zh">PawPath</span><span class="en">PawPath</span></a></div><span class="more"><span class="zh">点击项目名查看案例 →</span><span class="en">Tap a project to see the case →</span></span></div></div>
+</li>
+<li class="stop next">
+<span class="post" style="background:var(--moss)"><span class="zh">下一站</span><span class="en">Next stop</span></span>
+<details class="sign" open=""><summary><h3><span class="zh">2027 届 · 运营 / 产品方向</span><span class="en">Class of 2027 · Operations / Product</span></h3><div class="hl"><span class="zh">也许就是你的团队？📮</span><span class="en">Could it be your team? 📮</span></div></summary>
+<div class="body"><div class="links-row"><a href="#contact"><span class="zh">联系我 →</span><span class="en">Get in touch →</span></a></div></div></details>
+<img alt="" class="pal" height="380" src="img/digua-front.webp" width="396"/>
+</li>
+</ol>
 </div>
 </div>
 </section>
@@ -735,7 +744,7 @@ dialog.lb button{position:sticky;float:right;margin:8px;top:8px;right:8px;border
 </div>
 </div>
 <img alt="地瓜蜷成一团睡着了" class="sleep" height="186" src="img/digua-sleep.webp" width="248"/>
-<div class="foot"><span class="zh">© 2026 肖艺宣 · 地瓜由我提出设定、借助 AI 绘制 · 页面中的公司与业务数据均已脱敏或为演示数据</span><span class="en">© 2026 Yixuan Xiao · Digua was conceived by me and illustrated with AI · Company and business data on this page are anonymised or demo data</span></div>
+<div class="foot"><span class="zh">© 2026 肖艺宣 · 地瓜由我提出设定、借助 AI 绘制 · 项目截图使用演示数据；涉及真实或敏感信息的内容已脱敏或以示意图展示</span><span class="en">© 2026 Yixuan Xiao · Digua was conceived by me and illustrated with AI · Screenshots use demo data; anything real or sensitive is anonymised or shown as a sketch</span></div>
 </div>
 </footer>
 <button aria-label="回到顶部 / Back to top" class="top-btn" id="topBtn" type="button"><img alt="" height="179" src="img/digua-head-calm.webp" width="199"/></button>
