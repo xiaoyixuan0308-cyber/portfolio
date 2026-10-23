@@ -436,6 +436,22 @@ a.src:hover{background:var(--mist);color:var(--moss)}
 .fclear{font:500 13.5px var(--body);background:none;border:0;color:var(--ink-soft);text-decoration:underline;text-underline-offset:3px;cursor:pointer;padding:4px 6px}
 .fclear:hover{color:var(--moss)}
 .fclear:focus-visible{outline:3px solid var(--amber);outline-offset:2px;border-radius:6px}
+.habit-block{margin-top:44px}
+.habit-grid{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:14px}
+.habit{display:flex;flex-direction:column;align-items:flex-start;gap:6px;background:var(--paper-hi);border:1.5px solid var(--line);border-radius:18px;padding:18px 18px 16px;min-width:0}
+.h-em{font-size:26px;line-height:1}
+.habit b{font-family:var(--display);font-size:18px;color:var(--ink)}
+.h-tr{font-size:14.5px;color:var(--moss);font-weight:500;line-height:1.5}
+@media (max-width:900px){.habit-grid{grid-template-columns:repeat(2,minmax(0,1fr))}}
+.habit-list{list-style:none;margin:0;padding:0;display:grid;grid-template-columns:repeat(2,minmax(0,1fr));column-gap:40px}
+.hb{display:flex;gap:16px;align-items:flex-start;padding:20px 0;border-bottom:1px dashed color-mix(in srgb,var(--bark) 30%,var(--line))}
+.hb-ic{flex:none;width:30px;height:30px;color:var(--moss);margin-top:2px}
+.hb-tx{min-width:0}
+.hb h4{margin:0 0 6px;font-family:var(--display);font-size:18px;color:var(--ink);line-height:1.4}
+.hb-n{color:var(--amber);font-family:var(--body);font-weight:700;margin-right:2px}
+.hb p{margin:0;font-size:15px;color:var(--ink-soft);line-height:1.65}
+.hb p.hb-case{margin-top:6px;font-size:13px;color:color-mix(in srgb,var(--ink-soft) 80%,var(--paper))}
+@media (max-width:860px){.habit-list{grid-template-columns:1fr}}
 </style>
 <style>img{max-width:100%}[hidden]{display:none!important}</style>
 </head>
@@ -517,49 +533,7 @@ a.src:hover{background:var(--mist);color:var(--moss)}
 <div><dt><span class="zh">意向城市</span><span class="en">Location</span></dt><dd><span class="zh">全国均可</span><span class="en">Open to any city in China</span></dd></div>
 </dl>
 </div>
-<h3 class="sub-h"><span class="zh">我的工作习惯</span><span class="en">My working habits</span></h3>
-<div class="skill-grid">
-<div class="sk-col">
-<article class="skill">
-<h3><span class="em">🌿</span><span><span class="zh">流程梳理</span><span class="en">Process design</span></span></h3>
-<p class="trait"><span class="zh">从解决一次，到解决一类</span><span class="en">Fix the class, not the case</span></p><p class="claim"><span class="zh">把复杂业务拆成规则、清单和验收标准，让流程不依赖个人经验。</span><span class="en">Break complex work into rules, checklists and acceptance criteria so it doesn't depend on one person's experience.</span></p>
-<ul class="ev">
-<li><strong><span class="zh">POC 通过验证，进入正式开发</span><span class="en">POC validated and moved into full development</span></strong><span class="zh">梳理经销商的采购月拆分、周拆分和补货分配流程，转成需求文档、测试方案和演示材料。</span><span class="en">Mapped distributors' monthly and weekly purchase-plan splits and replenishment allocation into requirement docs, test plans and demo materials.</span><span class="src"><span class="zh">微创 · 中台运营</span><span class="en">Wicresoft</span></span></li>
-<li><strong><span class="zh">测试方案覆盖 5 类业务场景</span><span class="en">Test plan covering 5 business scenarios</span></strong><span class="zh">整理 14 张业务表、构造约 3,000 条测试数据，验证系统在供应延迟、需求波动、库存积压等情况下算得准不准。</span><span class="en">Organised 14 business tables and ~3,000 test records to check calculations under supply delays, demand swings and overstock.</span><span class="src"><span class="zh">微创 · 中台运营</span><span class="en">Wicresoft</span></span></li>
-<li><strong><span class="zh">20+ 项验收标准落地为系统规则，22 项越权检查全部通过</span><span class="en">20+ acceptance criteria became system rules; all 22 access checks passed</span></strong><span class="zh">拆解出 5 类角色的权限矩阵和 5 种状态的流转规则。</span><span class="en">Designed a permission matrix for 5 roles and transition rules for 5 statuses.</span><a class="src" data-open="pawpath" href="#projects">PawPath →</a></li>
-</ul>
-</article>
-<article class="skill">
-<h3><span class="em">🍂</span><span><span class="zh">数据核对</span><span class="en">Data reconciliation</span></span></h3>
-<p class="trait"><span class="zh">先对数，再下结论</span><span class="en">Reconcile first, then conclude</span></p><p class="claim"><span class="zh">用数据判断方向对不对，找到数字背后的真正原因。</span><span class="en">Let data say whether the direction is right, and find the real cause behind the numbers.</span></p>
-<ul class="ev">
-<li><strong><span class="zh">预测偏差从 8% 降到 5%</span><span class="en">Forecast gap cut from 8% to 5%</span></strong><span class="zh">发现滚动预测把未来预测值和历史实际值等权处理，推动调整预测基准。</span><span class="en">Found the rolling forecast weighted future forecasts and historical actuals equally, and drove a change to the baseline.</span><span class="src"><span class="zh">微创 · 中台运营</span><span class="en">Wicresoft</span></span></li>
-<li><strong><span class="zh">核对时长缩短 4%</span><span class="en">Reconciliation time down 4%</span></strong><span class="zh">分析 1,200+ 条交易与科目资料的差异，把排查经验沉淀为知识库，在其他客户资料中复用。</span><span class="en">Analysed 1,200+ transaction–ledger mismatches and turned the findings into a reusable troubleshooting guide.</span><span class="src"><span class="zh">安永 · 审计</span><span class="en">EY</span></span></li>
-<li><strong><span class="zh">误判的异常 SKU 从 18 个降到 8 个</span><span class="en">Falsely flagged SKUs down from 18 to 8</span></strong><span class="zh">通过数据核对，定位并修复两处隐藏的口径问题。</span><span class="en">Traced and fixed two hidden data-definition mismatches.</span><a class="src" data-open="flowpilot" href="#projects">FlowPilot →</a></li>
-<li><strong><span class="zh">追查出约 98 万美元的舞弊资金</span><span class="en">Uncovered about US$980K of fraud</span></strong><span class="zh">编写 16 段 SQL，交叉比对付款、工资和供应商数据。</span><span class="en">Wrote 16 SQL queries cross-checking payments, payroll and vendor data.</span><a class="src" data-open="goncharge" href="#projects"><span class="zh">GoNCharge · 课程项目，数据为模拟</span><span class="en">GoNCharge · course project, simulated data</span> →</a></li>
-</ul>
-</article>
-</div>
-<div class="sk-col">
-<article class="skill">
-<h3><span class="em">🌱</span><span><span class="zh">系统落地</span><span class="en">System delivery</span></span></h3>
-<p class="trait"><span class="zh">用 AI 提效，把想法做出来</span><span class="en">Use AI to ship ideas</span></p><p class="claim"><span class="zh">借助 AI 快速验证、搭原型，把时间留给判断和决策。</span><span class="en">Use AI to validate and prototype fast, saving time for judgement and decisions.</span></p>
-<ul class="ev">
-<li><strong><span class="zh">2 个业务系统独立上线并开源</span><span class="en">2 business systems built and open-sourced</span></strong><span class="zh">借助 AI 编程工具完成 FlowPilot Lab 与 PawPath，附流程图、规则文档和中英双语说明。</span><span class="en">FlowPilot Lab and PawPath, built with AI coding tools, with flow diagrams, rule docs and bilingual READMEs.</span></li>
-<li><strong><span class="zh">改动 212 个文件，2,267 行计算结果零差异</span><span class="en">212 files refactored, 2,267 calculated rows unchanged</span></strong><span class="zh">大规模重构后逐字段回归比对。</span><span class="en">Field-by-field regression check after a large refactor.</span><a class="src" data-open="flowpilot" href="#projects">FlowPilot →</a></li>
-<li><strong><span class="zh">完成客户 demo 演示</span><span class="en">Client demo delivered</span></strong><span class="zh">用 vibe coding 调优供应链平台 demo 的前端交互，并作为汇报人向客户演示。</span><span class="en">Refined the supply-chain demo's front end with vibe coding and presented it to the client.</span><span class="src"><span class="zh">微创 · 中台运营</span><span class="en">Wicresoft</span></span></li>
-</ul>
-</article>
-<article class="skill">
-<h3><span class="em">🍄</span><span><span class="zh">跨团队推进</span><span class="en">Cross-team execution</span></span></h3>
-<p class="trait"><span class="zh">站在全局推进</span><span class="en">See the whole chain, drive it forward</span></p><p class="claim"><span class="zh">理解各方诉求，把不同角色串起来，按时交付。</span><span class="en">Understand every stakeholder, connect the roles and deliver on time.</span></p>
-<ul class="ev">
-<li><strong><span class="zh">170+ 支队伍中排名第 5（前 3%），获官方推荐信和创业基金</span><span class="en">5th of 170+ teams (top 3%), with a recommendation letter and start-up funding</span></strong><span class="zh">协调 7 国成员，3 周完成商业方案交付。</span><span class="en">Led members from 7 countries to deliver a business plan in 3 weeks.</span><span class="src"><span class="zh">GEE · 团队总负责人</span><span class="en">GEE · Team lead</span></span></li>
-<li><strong><span class="zh">让 7 个人并行开发</span><span class="en">7 people building in parallel</span></strong><span class="zh">采用"先定接口、用模拟数据解耦"的协作方式，跑通 AI 旅行规划 Demo。</span><span class="en">Interface-first collaboration with mock data to decouple modules; shipped the AI Travel Planner demo.</span><a class="src" data-open="travel" href="#projects"><span class="zh">AI 旅行规划 · 产品经理</span><span class="en">AI Travel Planner · PM</span> →</a></li>
-</ul>
-</article>
-</div>
-</div>
+
 </div>
 </section>
 <!-- ============ PROJECTS ============ -->
@@ -885,6 +859,11 @@ a.src:hover{background:var(--mist);color:var(--moss)}
 <div class="hobby"><span class="h-ic" aria-hidden="true">🕵️</span><span class="zh">剧本杀</span><span class="en">Murder-mystery games</span></div>
 </div>
 </div>
+<div class="habit-block">
+<h3 class="sub-h"><span class="zh">我的工作习惯</span><span class="en">My working habits</span></h3>
+<ol class="habit-list"><li class="hb"><svg aria-hidden="true" class="hb-ic" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.7" viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><circle cx="12" cy="12" r="5"/><circle cx="12" cy="12" r="1.5"/></svg><div class="hb-tx"><h4><span class="hb-n">01.</span> <span class="zh">先理解问题，再开始行动</span><span class="en">Problem first</span></h4><p><span class="zh">遇到新任务，我习惯先了解业务背景、实际需求和限制条件，再决定使用什么工具和方法。</span><span class="en">When I take on something new, I first learn the business context, real needs and constraints, then choose the tools and methods.</span></p><p class="hb-case"><span class="zh">案例：微创供应链 POC 需求梳理</span><span class="en">Example: Requirements for the Wicresoft supply-chain POC</span></p></div></li><li class="hb"><svg aria-hidden="true" class="hb-ic" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.7" viewBox="0 0 24 24"><path d="M3 6l1.5 1.5L7 5"/><path d="M3 12l1.5 1.5L7 11"/><path d="M3 18l1.5 1.5L7 17"/><path d="M11 6h10M11 12h10M11 18h10"/></svg><div class="hb-tx"><h4><span class="hb-n">02.</span> <span class="zh">把复杂任务拆成可执行的步骤</span><span class="en">Structured execution</span></h4><p><span class="zh">对复杂任务先明确优先级、关键节点和交付标准，避免陷入不重要的细节。</span><span class="en">For complex work I set priorities, milestones and a definition of done first, so I don’t get lost in details that don’t matter.</span></p><p class="hb-case"><span class="zh">案例：FlowPilot Lab：拆成风险发现、月度计划、周度履约、查询追溯 4 个环节</span><span class="en">Example: FlowPilot Lab, split into risk detection, monthly planning, weekly fulfilment and traceability</span></p></div></li><li class="hb"><svg aria-hidden="true" class="hb-ic" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.7" viewBox="0 0 24 24"><path d="M12 3l7 3v5c0 4.5-3 8-7 10-4-2-7-5.5-7-10V6z"/><path d="M9 12l2 2 4-4"/></svg><div class="hb-tx"><h4><span class="hb-n">03.</span> <span class="zh">不只追求完成，还要验证结果</span><span class="en">Validate before trusting</span></h4><p><span class="zh">不轻易接受第一次得到的结果，尤其关注数据准确性、边界情况和异常场景。</span><span class="en">I don’t accept the first result at face value, and look hardest at data accuracy, edge cases and exceptions.</span></p><p class="hb-case"><span class="zh">案例：PawPath 的 22 项越权访问检查</span><span class="en">Example: PawPath’s 22 access-control checks</span></p></div></li><li class="hb"><svg aria-hidden="true" class="hb-ic" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.7" viewBox="0 0 24 24"><circle cx="9" cy="8" r="3"/><circle cx="17" cy="9" r="2.5"/><path d="M3 20c0-3.3 2.7-6 6-6s6 2.7 6 6"/><path d="M15.5 14.2c3 .2 5.5 2.6 5.5 5.8"/></svg><div class="hb-tx"><h4><span class="hb-n">04.</span> <span class="zh">主动沟通，尊重不同观点</span><span class="en">Communicate with clarity</span></h4><p><span class="zh">在团队合作中重视目标一致和信息透明。面对不同意见，先理解对方的依据，再讨论解决方案。</span><span class="en">In a team I care about shared goals and open information. When views differ, I understand the other side’s reasoning before we discuss solutions.</span></p><p class="hb-case"><span class="zh">案例：GEE 国际商业竞赛跨国团队协作</span><span class="en">Example: Cross-border teamwork in the GEE competition</span></p></div></li><li class="hb"><svg aria-hidden="true" class="hb-ic" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.7" viewBox="0 0 24 24"><path d="M20 11a8 8 0 0 0-14.5-4.5L4 8"/><path d="M4 4v4h4"/><path d="M4 13a8 8 0 0 0 14.5 4.5L20 16"/><path d="M20 20v-4h-4"/></svg><div class="hb-tx"><h4><span class="hb-n">05.</span> <span class="zh">接受反馈，持续迭代</span><span class="en">Iterate and improve</span></h4><p><span class="zh">不把第一版方案当作最终答案，而是通过测试和反馈不断调整，让成果逐步接近实际需求。</span><span class="en">The first version is never the final answer; testing and feedback keep moving the result closer to what people actually need.</span></p><p class="hb-case"><span class="zh">案例：供应链预测逻辑优化、PawPath 原型迭代</span><span class="en">Example: Supply-chain forecast logic fix, PawPath prototype iterations</span></p></div></li><li class="hb"><svg aria-hidden="true" class="hb-ic" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.7" viewBox="0 0 24 24"><path d="M3 5c3-1 6-1 9 1v14c-3-2-6-2-9-1z"/><path d="M12 6c3-2 6-2 9-1v8"/><path d="M15 18l2 2 4-4"/></svg><div class="hb-tx"><h4><span class="hb-n">06.</span> <span class="zh">保持学习，并将知识用于实践</span><span class="en">Learn by building</span></h4><p><span class="zh">面对陌生领域，习惯通过文档、实践和测试建立理解，再将学到的知识转化为具体成果。</span><span class="en">In an unfamiliar field I build understanding through docs, hands-on work and testing, then turn it into something concrete.</span></p><p class="hb-case"><span class="zh">案例：从会计背景转向信息系统与 AI 应用开发</span><span class="en">Example: From accounting to information systems and AI application development</span></p></div></li></ol>
+</div>
+
 </div>
 </section>
 <svg aria-hidden="true" class="edge-trees" preserveaspectratio="xMidYMax slice" viewbox="0 0 1600 120"><defs>
