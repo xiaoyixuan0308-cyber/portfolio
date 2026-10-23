@@ -453,6 +453,116 @@ a.src:hover{background:var(--mist);color:var(--moss)}
 .hb p{margin:0;font-size:15px;color:var(--ink-soft);line-height:1.65}
 .hb p.hb-case{margin-top:6px;font-size:13px;color:color-mix(in srgb,var(--ink-soft) 80%,var(--paper))}
 @media (max-width:860px){.habit-list{grid-template-columns:1fr}}
+/* ---------- hero scene ---------- */
+.hero-v2{padding-top:0;background:var(--paper)}
+.scene{position:relative;width:100%;max-width:min(1680px,calc((100vh - 64px) * 1672 / 941));margin:0 auto;aspect-ratio:1672/941;overflow:hidden;background:var(--paper)}
+.scene img{display:block;user-select:none;-webkit-user-drag:none;pointer-events:none}
+.scene-base{width:100%;height:100%;object-fit:cover}
+.scene-layer{position:absolute;opacity:0;transition:opacity .38s ease;will-change:opacity}
+.scene[data-active="resume"] .scene-layer[data-k="resume"],.scene[data-active="skills"] .scene-layer[data-k="skills"],.scene[data-active="projects"] .scene-layer[data-k="projects"],.scene[data-active="demo"] .scene-layer[data-k="demo"],.scene[data-active="about"] .scene-layer[data-k="about"]{opacity:1}
+.hot{position:absolute;background:transparent;border:0;padding:0;cursor:pointer;border-radius:18px;-webkit-tap-highlight-color:transparent}
+.hot:focus-visible{outline:3px dashed var(--amber);outline-offset:4px}
+.hot-tip{position:absolute;left:50%;bottom:calc(100% + 6px);transform:translate(-50%,6px);opacity:0;pointer-events:none;white-space:nowrap;background:var(--ink);color:var(--paper-hi);font:700 14px var(--body);padding:6px 12px 6px 14px;border-radius:999px;box-shadow:0 6px 14px rgba(40,40,20,.22);transition:opacity .2s,transform .2s;display:flex;gap:8px;align-items:baseline}
+.hot-tip small{font:500 12px var(--body);opacity:.72;letter-spacing:.04em}
+.hot-tip::after{content:"";position:absolute;left:50%;top:100%;border:6px solid transparent;border-top-color:var(--ink);transform:translateX(-50%)}
+.hot[data-k="resume"] .hot-tip,.hot[data-k="skills"] .hot-tip,.hot[data-k="projects"] .hot-tip{bottom:auto;top:calc(100% + 6px)}
+.hot[data-k="resume"] .hot-tip::after,.hot[data-k="skills"] .hot-tip::after,.hot[data-k="projects"] .hot-tip::after{top:auto;bottom:100%;border-top-color:transparent;border-bottom-color:var(--ink)}
+.hot[data-k="projects"] .hot-tip,.hot[data-k="about"] .hot-tip{left:auto;right:0;transform:translate(0,6px)}
+.hot[data-k="projects"] .hot-tip::after,.hot[data-k="about"] .hot-tip::after{left:auto;right:28px;transform:none}
+.scene[data-active="resume"] .hot[data-k="resume"] .hot-tip,.scene[data-active="skills"] .hot[data-k="skills"] .hot-tip,.scene[data-active="projects"] .hot[data-k="projects"] .hot-tip,.scene[data-active="demo"] .hot[data-k="demo"] .hot-tip,.scene[data-active="about"] .hot[data-k="about"] .hot-tip{opacity:1;transform:translate(-50%,0)}
+.scene[data-active="projects"] .hot[data-k="projects"] .hot-tip,.scene[data-active="about"] .hot[data-k="about"] .hot-tip{transform:none}
+.scene-hint{position:absolute;left:50%;bottom:2.2%;transform:translateX(-50%);margin:0;font-size:13px;color:var(--ink-soft);background:color-mix(in srgb,var(--paper-hi) 82%,transparent);border-radius:999px;padding:4px 12px;transition:opacity .3s;white-space:nowrap}
+.scene[data-active]:not([data-active=""]) .scene-hint{opacity:0}
+.scene-nav{display:none}
+.hero-v2 .hero-txt{position:relative;z-index:2;padding-block:26px 34px;display:grid;grid-template-columns:minmax(0,1.25fr) minmax(0,1fr);gap:28px;align-items:end}
+.hero-v2 h1{font-size:clamp(26px,3.4vw,42px);margin:10px 0 12px}
+.hero-v2 h1 em{display:inline}
+.hero-v2 .hero-side{display:grid;gap:16px;justify-items:start}
+.hero-v2 .scroll-cue{display:block;text-align:center;padding-bottom:22px}
+@media (hover:none){.scene-hint .zh,.scene-hint .en{font-size:0}.scene-hint .zh::after{content:"🐾 点一下物件看看，再点一次打开";font-size:12px}.scene-hint .en::after{content:"🐾 Tap an object, tap again to open";font-size:12px}}
+@media (max-width:760px){
+  .scene-hint{display:none}
+  .hot-tip{display:none}
+  .scene-nav{display:flex;gap:8px;overflow-x:auto;padding:12px 16px 2px;scrollbar-width:none}
+  .scene-nav::-webkit-scrollbar{display:none}
+  .scene-nav button{flex:0 0 auto;font:600 14px var(--body);color:var(--moss);background:var(--paper-hi);border:1.5px solid color-mix(in srgb,var(--leaf) 70%,var(--line));border-radius:999px;padding:7px 14px;cursor:pointer}
+  .scene-nav button[aria-pressed="true"]{background:var(--moss);color:var(--paper-hi);border-color:var(--moss)}
+  .hero-v2 .hero-txt{grid-template-columns:1fr;gap:14px;padding-block:16px 20px}
+}
+@media (prefers-reduced-motion:reduce){.scene-layer,.hot-tip{transition:none}}
+
+/* ---------- scene popups ---------- */
+dialog.pop{border:0;padding:0;background:transparent;width:min(1120px,94vw);max-width:none;max-height:92vh;overflow:visible}
+dialog.pop::backdrop{background:rgba(34,42,28,.62);backdrop-filter:blur(2px)}
+dialog.pop[open]{animation:popIn .28s cubic-bezier(.2,.9,.3,1.15)}
+@keyframes popIn{from{opacity:0;transform:translateY(14px) scale(.98)}to{opacity:1;transform:none}}
+.pop-in{position:relative;background:var(--paper-hi);border:2px solid var(--ink);border-radius:26px;padding:24px 26px 26px;max-height:88vh;overflow:auto;box-shadow:10px 12px 0 var(--moss)}
+.pop-head{display:flex;justify-content:space-between;align-items:flex-start;gap:16px;margin-bottom:14px}
+.pop-kick{margin:0;font:700 12px var(--body);letter-spacing:.16em;color:var(--amber)}
+.pop-head h2{margin:4px 0 0;font-size:clamp(20px,2.4vw,26px)}
+.pop-x{flex:0 0 auto;width:40px;height:40px;border-radius:50%;border:2px solid var(--ink);background:#f3d27a;color:var(--ink);font:800 16px var(--body);cursor:pointer;box-shadow:2px 3px 0 var(--ink)}
+.pop-x:hover{transform:translateY(-1px)}
+.pop-rail{list-style:none;display:flex;justify-content:space-between;margin:4px 6% 16px;padding:0;position:relative;font:600 13px var(--body);color:var(--ink-soft)}
+.pop-rail::before{content:"";position:absolute;left:0;right:0;top:28px;border-top:2px dashed color-mix(in srgb,var(--bark) 45%,transparent)}
+.pop-rail li{position:relative;padding-bottom:18px}
+.pop-rail li::after{content:"";position:absolute;left:50%;top:22px;width:12px;height:12px;margin-left:-6px;border-radius:50%;background:var(--paper-hi);border:2px solid var(--bark)}
+.pop-rail li.on{color:var(--moss)}.pop-rail li.on::after{background:var(--moss);border-color:var(--moss)}
+.pcards{display:grid;gap:14px}
+.pcards.c4{grid-template-columns:repeat(4,minmax(0,1fr))}
+.pcards.c5{grid-template-columns:repeat(5,minmax(0,1fr))}
+.pcard{display:flex;flex-direction:column;background:var(--paper);border:1.5px dashed color-mix(in srgb,var(--ink) 55%,transparent);border-radius:18px;padding:12px 12px 14px;transition:transform .2s,box-shadow .2s}
+.pcard:hover{transform:translateY(-3px);box-shadow:0 8px 0 color-mix(in srgb,var(--leaf) 60%,var(--line))}
+.pcard.is-next{border-color:var(--moss);background:color-mix(in srgb,var(--mist) 60%,var(--paper-hi))}
+.pc-art{aspect-ratio:4/3;border-radius:12px;background:color-mix(in srgb,var(--mist) 55%,var(--paper-hi));display:grid;place-items:center;overflow:hidden;margin-bottom:10px}
+.pc-art img{max-height:86%;width:auto;object-fit:contain}
+.pc-art.shot img{width:100%;height:100%;max-height:none;object-fit:cover;object-position:top left}
+.pc-date{margin:0;font-size:12px;color:var(--bark);font-weight:600}
+.pcard h3{margin:3px 0 4px;font-size:16px;line-height:1.3}
+.pc-sub{margin:0 0 10px;font-size:13px;line-height:1.55;color:var(--ink-soft);flex:1}
+.pc-num{margin:0;display:flex;align-items:baseline;gap:6px;flex-wrap:wrap;background:color-mix(in srgb,#f3d27a 45%,var(--paper-hi));border-radius:10px;padding:6px 10px;font-size:12.5px;color:var(--ink-soft)}
+.pc-num b{font:800 18px var(--display);color:var(--amber)}
+.pc-go{margin-top:10px;align-self:flex-start;font:600 13px var(--body);color:var(--moss);background:transparent;border:1.5px solid var(--moss);border-radius:999px;padding:4px 12px;cursor:pointer}
+.pc-go:hover{background:var(--moss);color:var(--paper-hi)}
+.pop-chain{display:flex;flex-wrap:wrap;align-items:center;justify-content:center;gap:8px;margin-top:18px;padding:12px;border-radius:16px;background:color-mix(in srgb,var(--mist) 55%,var(--paper-hi))}
+.pop-chain>span{font:600 13.5px var(--body);background:var(--paper-hi);border:1.5px solid var(--ink);border-radius:999px;padding:5px 12px}
+.pop-chain>span.hl{background:#f3d27a}
+.pop-chain i{font-style:normal;color:var(--bark)}
+.pop-foot{display:flex;justify-content:center;gap:10px;margin-top:18px;flex-wrap:wrap}
+.pop-foot.left{justify-content:flex-start}
+.pop-note{text-align:center;font-size:12.5px;color:var(--ink-soft);margin:12px 0 0}
+.demo-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:14px}
+.demo-shot{border:1.5px solid var(--line);border-radius:14px;background:var(--paper);padding:0;overflow:hidden;cursor:zoom-in;text-align:left;font:500 13px var(--body);color:var(--ink)}
+.demo-shot img{display:block;width:100%;aspect-ratio:16/10;object-fit:cover;object-position:top left}
+.demo-shot>span{display:block;padding:8px 12px}
+.demo-shot:hover{box-shadow:0 6px 0 color-mix(in srgb,var(--leaf) 60%,var(--line))}
+.tool-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:16px}
+.tool{position:relative;display:flex;flex-direction:column;align-items:flex-start;text-align:left;text-decoration:none;color:var(--ink);border:2px solid var(--ink);border-radius:20px;padding:16px 18px 18px;box-shadow:5px 6px 0 var(--ink);font-family:var(--body);cursor:pointer;transition:transform .15s,box-shadow .15s}
+div.tool{cursor:default}
+a.tool:hover,button.tool:hover{transform:translate(-2px,-2px);box-shadow:7px 8px 0 var(--ink)}
+.t-moss{background:#cfe0b8}.t-amber{background:#f3d27a}.t-mist{background:#cfe3e2}.t-bark{background:#e9cfb0}
+.tool-no{font:600 12px var(--body)}
+.tool-tag{position:absolute;right:16px;top:14px;font:700 10.5px var(--body);letter-spacing:.08em;border:1.5px solid var(--ink);border-radius:999px;padding:2px 8px;background:var(--paper-hi)}
+.tool h3{margin:8px 0 2px;font-size:19px}
+.tool code{font-size:12px;color:var(--ink-soft)}
+.tool p{margin:8px 0 14px;font-size:13.5px;line-height:1.55}
+.tool-btn{margin-top:auto;font:600 13px var(--body);background:var(--paper-hi);border:1.5px solid var(--ink);border-radius:999px;padding:5px 12px;box-shadow:2px 2px 0 var(--ink)}
+.tool-msg{font-size:12.5px;margin-top:8px;color:var(--moss)}
+.about-pop{display:grid;grid-template-columns:120px minmax(0,1fr);gap:20px;align-items:start}
+.ab-digua{width:120px;height:auto}
+.about-pop p{margin:0 0 12px;line-height:1.75}
+.ab-facts{margin:0;display:grid;gap:6px}
+.ab-facts div{display:grid;grid-template-columns:6.5em minmax(0,1fr);gap:8px;padding:7px 0;border-top:1px dashed var(--line);font-size:14px}
+.ab-facts dt{font-weight:700;color:var(--bark)}.ab-facts dd{margin:0}
+@media (max-width:980px){.pcards.c5{grid-template-columns:repeat(3,minmax(0,1fr))}.pcards.c4{grid-template-columns:repeat(2,minmax(0,1fr))}}
+@media (max-width:640px){
+  dialog.pop{width:100vw;max-height:100vh;margin:auto 0 0}
+  .pop-in{border-radius:22px 22px 0 0;padding:18px 16px 22px;max-height:90vh;box-shadow:none;border-width:2px 0 0}
+  .pcards.c4,.pcards.c5{grid-template-columns:repeat(2,minmax(0,1fr));gap:10px}
+  .pop-rail{display:none}
+  .demo-grid,.tool-grid{grid-template-columns:1fr}
+  .about-pop{grid-template-columns:1fr}.ab-digua{width:84px}
+  .pop-chain>span{font-size:12.5px}
+}
 </style>
 <style>img{max-width:100%}[hidden]{display:none!important}</style>
 </head>
@@ -471,31 +581,37 @@ a.src:hover{background:var(--mist);color:var(--moss)}
 </div>
 <div aria-label="板块导航" class="mnav"><a class="nl" href="#intro"><span class="zh">自我介绍</span><span class="en">Intro</span></a><a class="nl" href="#projects"><span class="zh">项目</span><span class="en">Projects</span></a><a class="nl" href="#journey"><span class="zh">经历</span><span class="en">Journey</span></a><a class="nl" href="#about"><span class="zh">工作之外</span><span class="en">Beyond work</span></a><a class="nl nl-c" href="#contact"><span class="zh">联系</span><span class="en">Contact</span></a></div>
 </nav>
-<!-- ============ HERO ============ -->
-<header class="hero" id="top">
-<svg aria-hidden="true" class="hero-scene" preserveaspectratio="xMidYMax slice" viewbox="0 0 1600 760"><defs>
-<filter height="140%" id="wc" width="140%" x="-20%" y="-20%"><feturbulence basefrequency="0.018" numoctaves="3" result="n" seed="4" type="fractalNoise"></feturbulence><fedisplacementmap in="SourceGraphic" in2="n" result="d" scale="16" xchannelselector="R" ychannelselector="G"></fedisplacementmap><fegaussianblur in="d" stddeviation="1.3"></fegaussianblur></filter>
-<filter id="paper"><feturbulence basefrequency="0.9" numoctaves="2" seed="2" type="fractalNoise"></feturbulence><fecolormatrix values="0 0 0 0 .45  0 0 0 0 .40  0 0 0 0 .30  0 0 0 .07 0"></fecolormatrix></filter>
-<lineargradient id="sky" x1="0" x2="0" y1="0" y2="1"><stop offset="0" stop-color="#fbf4df"></stop><stop offset=".6" stop-color="#f4f0dc"></stop><stop offset="1" stop-color="#e4ecd3"></stop></lineargradient>
-<radialgradient id="sun"><stop offset="0" stop-color="#ffe6a3" stop-opacity=".9"></stop><stop offset="1" stop-color="#ffe6a3" stop-opacity="0"></stop></radialgradient>
-<g id="tr"><rect fill="#7a5a3c" height="46" opacity=".75" width="8" x="-4" y="0"></rect><circle cx="0" cy="-8" fill="currentColor" opacity=".55" r="30"></circle><circle cx="-16" cy="4" fill="currentColor" opacity=".5" r="22"></circle><circle cx="16" cy="2" fill="currentColor" opacity=".5" r="24"></circle><circle cx="4" cy="-26" fill="currentColor" opacity=".45" r="18"></circle></g>
-<g id="pn"><rect fill="#6b4f35" height="34" opacity=".7" width="6" x="-3" y="10"></rect><path d="M0 -60 L26 0 L-26 0Z" fill="currentColor" opacity=".55"></path><path d="M0 -40 L32 18 L-32 18Z" fill="currentColor" opacity=".5"></path></g>
-</defs>
-<rect fill="url(#sky)" height="760" width="1600"></rect><circle cx="1240" cy="170" fill="url(#sun)" r="250"></circle>
-<g filter="url(#wc)"><path d="M0 500 C 220 440, 420 470, 620 445 S 1000 410, 1220 450 S 1500 430, 1600 440 L1600 760 L0 760Z" fill="#c9dbb4" opacity=".7"></path><path d="M0 560 C 260 510, 470 545, 700 520 S 1100 500, 1330 535 S 1540 525, 1600 530 L1600 760 L0 760Z" fill="#a9c792" opacity=".6"></path></g>
-<g filter="url(#wc)"><use href="#tr" style="color:#a7c58f" transform="translate(-6,553) scale(0.81)"></use><use href="#tr" style="color:#9dbf86" transform="translate(38,555) scale(0.95)"></use><use href="#pn" style="color:#a7c58f" transform="translate(104,559) scale(0.79)"></use><use href="#tr" style="color:#a7c58f" transform="translate(146,567) scale(0.84)"></use><use href="#pn" style="color:#9dbf86" transform="translate(216,561) scale(0.78)"></use><use href="#pn" style="color:#a7c58f" transform="translate(259,557) scale(0.81)"></use><use href="#tr" style="color:#a7c58f" transform="translate(308,558) scale(0.95)"></use><use href="#tr" style="color:#a7c58f" transform="translate(380,560) scale(0.94)"></use><use href="#tr" style="color:#8fb57b" transform="translate(424,559) scale(0.86)"></use><use href="#tr" style="color:#8fb57b" transform="translate(470,553) scale(0.82)"></use><use href="#tr" style="color:#9dbf86" transform="translate(534,557) scale(1.04)"></use><use href="#tr" style="color:#8fb57b" transform="translate(572,554) scale(0.90)"></use><use href="#pn" style="color:#8fb57b" transform="translate(637,561) scale(1.07)"></use><use href="#tr" style="color:#9dbf86" transform="translate(687,565) scale(0.88)"></use><use href="#tr" style="color:#9dbf86" transform="translate(758,563) scale(1.06)"></use><use href="#tr" style="color:#8fb57b" transform="translate(808,563) scale(0.86)"></use><use href="#tr" style="color:#8fb57b" transform="translate(845,552) scale(0.89)"></use><use href="#tr" style="color:#8fb57b" transform="translate(901,555) scale(0.96)"></use><use href="#pn" style="color:#9dbf86" transform="translate(946,566) scale(0.84)"></use><use href="#pn" style="color:#8fb57b" transform="translate(1001,554) scale(0.89)"></use><use href="#tr" style="color:#8fb57b" transform="translate(1079,558) scale(0.85)"></use><use href="#pn" style="color:#9dbf86" transform="translate(1136,556) scale(0.81)"></use><use href="#pn" style="color:#9dbf86" transform="translate(1155,557) scale(1.03)"></use><use href="#tr" style="color:#a7c58f" transform="translate(1223,567) scale(0.88)"></use><use href="#tr" style="color:#8fb57b" transform="translate(1292,564) scale(1.06)"></use><use href="#tr" style="color:#8fb57b" transform="translate(1347,565) scale(1.01)"></use><use href="#tr" style="color:#9dbf86" transform="translate(1382,558) scale(0.89)"></use><use href="#pn" style="color:#9dbf86" transform="translate(1424,557) scale(0.83)"></use><use href="#tr" style="color:#a7c58f" transform="translate(1479,567) scale(0.94)"></use><use href="#tr" style="color:#8fb57b" transform="translate(1529,554) scale(1.04)"></use></g>
-<g filter="url(#wc)"><use href="#tr" style="color:#5f8c55" transform="translate(16,626) scale(1.38)"></use><use href="#tr" style="color:#6f9a5e" transform="translate(97,625) scale(1.32)"></use><use href="#tr" style="color:#7aa368" transform="translate(168,635) scale(1.44)"></use><use href="#tr" style="color:#7aa368" transform="translate(222,626) scale(1.54)"></use><use href="#pn" style="color:#6f9a5e" transform="translate(334,634) scale(1.45)"></use><use href="#tr" style="color:#6f9a5e" transform="translate(407,627) scale(1.22)"></use><use href="#pn" style="color:#6f9a5e" transform="translate(481,628) scale(1.46)"></use><use href="#tr" style="color:#7aa368" transform="translate(571,628) scale(1.48)"></use><use href="#tr" style="color:#5f8c55" transform="translate(639,637) scale(1.44)"></use><use href="#tr" style="color:#7aa368" transform="translate(711,631) scale(1.42)"></use><use href="#tr" style="color:#6f9a5e" transform="translate(817,628) scale(1.54)"></use><use href="#tr" style="color:#7aa368" transform="translate(878,640) scale(1.26)"></use><use href="#tr" style="color:#6f9a5e" transform="translate(972,637) scale(1.32)"></use><use href="#tr" style="color:#6f9a5e" transform="translate(1052,635) scale(1.16)"></use><use href="#tr" style="color:#7aa368" transform="translate(1119,629) scale(1.19)"></use><use href="#tr" style="color:#6f9a5e" transform="translate(1196,636) scale(1.29)"></use><use href="#tr" style="color:#7aa368" transform="translate(1297,631) scale(1.12)"></use><use href="#tr" style="color:#5f8c55" transform="translate(1347,635) scale(1.48)"></use><use href="#pn" style="color:#7aa368" transform="translate(1427,637) scale(1.35)"></use><use href="#tr" style="color:#6f9a5e" transform="translate(1525,631) scale(1.34)"></use></g>
-<g filter="url(#wc)"><path d="M0 700 C 330 660, 660 690, 990 668 S 1430 690, 1600 676 L1600 760 L0 760Z" fill="#5d8752" opacity=".72"></path></g>
-<g filter="url(#wc)"><use href="#pn" style="color:#466f43" transform="translate(11,732) scale(1.85)"></use><use href="#tr" style="color:#466f43" transform="translate(154,740) scale(1.93)"></use><use href="#tr" style="color:#527a49" transform="translate(305,736) scale(1.95)"></use><use href="#tr" style="color:#527a49" transform="translate(433,736) scale(2.34)"></use><use href="#tr" style="color:#466f43" transform="translate(582,737) scale(2.31)"></use><use href="#tr" style="color:#3f6a3d" transform="translate(715,736) scale(2.03)"></use><use href="#tr" style="color:#527a49" transform="translate(879,739) scale(2.07)"></use><use href="#pn" style="color:#3f6a3d" transform="translate(1002,729) scale(1.83)"></use><use href="#tr" style="color:#527a49" transform="translate(1165,734) scale(2.23)"></use><use href="#pn" style="color:#527a49" transform="translate(1326,731) scale(2.12)"></use><use href="#tr" style="color:#3f6a3d" transform="translate(1455,738) scale(2.03)"></use></g>
-<g><polygon fill="#fff6d6" opacity=".14" points="1240,150 900,760 975,760"></polygon><polygon fill="#fff6d6" opacity=".14" points="1276,150 995,760 1070,760"></polygon><polygon fill="#fff6d6" opacity=".14" points="1312,150 1090,760 1165,760"></polygon><polygon fill="#fff6d6" opacity=".14" points="1348,150 1185,760 1260,760"></polygon></g>
-<rect filter="url(#paper)" height="760" width="1600"></rect></svg>
-<div class="wrap">
+<!-- ============ HERO (scene) ============ -->
+<header class="hero hero-v2" id="top">
+<div class="scene" id="scene" data-active="">
+<img alt="地瓜坐在森林书桌前敲电脑，周围是简历、技能、项目、演示和关于我五个入口" class="scene-base" height="941" src="img/scene-cover.webp" width="1672" fetchpriority="high"/>
+<img alt="" aria-hidden="true" class="scene-layer" data-k="resume" src="img/scene-resume.webp" style="left:28.11%;top:2.55%;width:52.691%;height:79.171%"/>
+<img alt="" aria-hidden="true" class="scene-layer" data-k="skills" src="img/scene-skills.webp" style="left:34.988%;top:0.744%;width:44.797%;height:80.871%"/>
+<img alt="" aria-hidden="true" class="scene-layer" data-k="projects" src="img/scene-projects.webp" style="left:39.593%;top:9.033%;width:60.407%;height:76.302%"/>
+<img alt="" aria-hidden="true" class="scene-layer" data-k="demo" src="img/scene-demo.webp" style="left:2.751%;top:5.632%;width:77.333%;height:80.234%"/>
+<img alt="" aria-hidden="true" class="scene-layer" data-k="about" src="img/scene-about.webp" style="left:38.696%;top:14.028%;width:61.304%;height:71.201%"/>
+<button class="hot" data-k="resume" type="button" style="left:33%;top:9.6%;width:14.3%;height:28.5%"><span class="hot-tip"><span class="zh">经历</span><span class="en">Journey</span><small>Resume</small></span></button>
+<button class="hot" data-k="skills" type="button" style="left:53.6%;top:6.4%;width:21.4%;height:26.9%"><span class="hot-tip"><span class="zh">工具箱</span><span class="en">Toolbox</span><small>Skills</small></span></button>
+<button class="hot" data-k="projects" type="button" style="left:77.7%;top:14.2%;width:19.6%;height:28.6%"><span class="hot-tip"><span class="zh">项目</span><span class="en">Projects</span><small>Projects</small></span></button>
+<button class="hot" data-k="demo" type="button" style="left:8%;top:39.6%;width:20.6%;height:31.8%"><span class="hot-tip"><span class="zh">作品演示</span><span class="en">Demos</span><small>Demo</small></span></button>
+<button class="hot" data-k="about" type="button" style="left:78.6%;top:46%;width:18.7%;height:28.6%"><span class="hot-tip"><span class="zh">关于我</span><span class="en">About me</span><small>About Me</small></span></button>
+<p class="scene-hint" aria-hidden="true"><span class="zh">🐾 移动鼠标到物件上，地瓜会转头看哦</span><span class="en">🐾 Hover an object and Digua will look</span></p>
+</div>
+<nav class="scene-nav" aria-label="首屏入口">
+<button data-k="resume" type="button">📜 <span class="zh">经历</span><span class="en">Journey</span></button>
+<button data-k="projects" type="button">🗺️ <span class="zh">项目</span><span class="en">Projects</span></button>
+<button data-k="demo" type="button">💻 <span class="zh">演示</span><span class="en">Demos</span></button>
+<button data-k="skills" type="button">💡 <span class="zh">工具箱</span><span class="en">Toolbox</span></button>
+<button data-k="about" type="button">🏡 <span class="zh">关于我</span><span class="en">About</span></button>
+</nav>
+<div class="wrap hero-txt">
 <div>
 <div class="eyebrow"><span class="zh">2027 届 · 求职方向：运营 / 产品</span><span class="en">CLASS OF 2027 · SEEKING ROLES IN OPERATIONS / PRODUCT</span></div>
 <p class="hero-name">肖艺宣<span>· Yixuan Xiao</span></p>
-<h1 class="rot"><span class="rot-line is-on"><span class="zh">把模糊的问题，<br/><em>变成能落地的结果</em></span><span class="en">Turn fuzzy problems<br/><em>into results that ship</em></span></span><span class="rot-line"><span class="zh">把零散的数据，<br/><em>变成看得懂的决策</em></span><span class="en">Turn scattered data<br/><em>into decisions people understand</em></span></span><span class="rot-line"><span class="zh">把复杂的流程，<br/><em>变成可复用的规则</em></span><span class="en">Turn complex processes<br/><em>into reusable rules</em></span></span><span class="rot-line"><span class="zh">把灵光一现的想法，<br/><em>变成能跑起来的产品</em></span><span class="en">Turn sparks of inspiration<br/><em>into products that run</em></span></span></h1>
+<h1 class="rot"><span class="rot-line is-on"><span class="zh">把模糊的问题，<em>变成能落地的结果</em></span><span class="en">Turn fuzzy problems <em>into results that ship</em></span></span><span class="rot-line"><span class="zh">把零散的数据，<em>变成看得懂的决策</em></span><span class="en">Turn scattered data <em>into decisions people understand</em></span></span><span class="rot-line"><span class="zh">把复杂的流程，<em>变成可复用的规则</em></span><span class="en">Turn complex processes <em>into reusable rules</em></span></span><span class="rot-line"><span class="zh">把灵光一现的想法，<em>变成能跑起来的产品</em></span><span class="en">Turn sparks of inspiration <em>into products that run</em></span></span></h1>
 <div aria-hidden="true" class="rot-dots"><i class="on"></i><i></i><i></i><i></i></div>
-<a class="scroll-cue" href="#intro"><span class="zh">下滑，更了解我</span><span class="en">Scroll to get to know me</span><span aria-hidden="true" class="sc-arrow">↓</span></a>
+</div>
+<div class="hero-side">
 <div class="stats num hero-stats">
 <span><b>2</b><span class="zh">段实习</span><span class="en">internships</span></span>
 <span><b>2</b><span class="zh">个开源业务系统</span><span class="en">open-source business systems</span></span>
@@ -507,8 +623,8 @@ a.src:hover{background:var(--mist);color:var(--moss)}
 <a class="btn ghost" href="#contact"><span class="zh">邮箱</span><span class="en">Email</span></a>
 </div>
 </div>
-<div class="hero-digua"><img alt="地瓜在挥手打招呼" height="201" src="img/digua-wave.webp" width="206"/></div>
 </div>
+<a class="scroll-cue" href="#intro"><span class="zh">下滑，更了解我</span><span class="en">Scroll to get to know me</span><span aria-hidden="true" class="sc-arrow">↓</span></a>
 </header>
 <!-- ============ SKILLS ============ -->
 <section class="skills sec" id="intro">
@@ -875,6 +991,81 @@ a.src:hover{background:var(--mist);color:var(--moss)}
 </div>
 </footer>
 <button aria-label="回到顶部 / Back to top" class="top-btn" id="topBtn" type="button"><img alt="" height="179" src="img/digua-head-calm.webp" width="199"/></button>
+<!-- ============ SCENE POPUPS ============ -->
+<dialog class="pop" id="pop-resume" aria-labelledby="pop-resume-h">
+<div class="pop-in">
+<header class="pop-head"><div><p class="pop-kick">DIGUA · JOURNEY</p><h2 id="pop-resume-h"><span class="zh">经历 · 一路走来</span><span class="en">Journey so far</span></h2></div><button class="pop-x" data-close type="button" aria-label="关闭 / Close">✕</button></header>
+<ol class="pop-rail" aria-hidden="true"><li>2024.06</li><li>2024</li><li>2026.06</li><li class="on"><span class="zh">下一站</span><span class="en">Next</span></li></ol>
+<div class="pcards c4">
+<article class="pcard"><div class="pc-art"><img alt="" src="img/digua-side.webp" loading="lazy"/></div><p class="pc-date"><span class="zh">2024.06–09 · 上海</span><span class="en">2024.06–09 · Shanghai</span></p><h3><span class="zh">安永华明 · 审计实习</span><span class="en">EY · Audit intern</span></h3><p class="pc-sub"><span class="zh">逐条比对交易和科目，沉淀排查知识库。</span><span class="en">Line-by-line reconciliation; built a reusable troubleshooting guide.</span></p><p class="pc-num"><b>1,200+</b><span class="zh">条财务数据核对</span><span class="en">records reconciled</span></p></article>
+<article class="pcard"><div class="pc-art"><img alt="" src="img/digua-front.webp" loading="lazy"/></div><p class="pc-date"><span class="zh">2024 · 线上 · 7 国</span><span class="en">2024 · Online · 7 countries</span></p><h3><span class="zh">GEE 国际商业竞赛</span><span class="en">GEE competition</span></h3><p class="pc-sub"><span class="zh">团队总负责人，3 周交付植保无人机方案。</span><span class="en">Team lead; crop-drone business plan in 3 weeks.</span></p><p class="pc-num"><b><span class="zh">前 3%</span><span class="en">Top 3%</span></b><span class="zh">170+ 队中第 5</span><span class="en">5th of 170+ teams</span></p></article>
+<article class="pcard"><div class="pc-art"><img alt="" src="img/digua-sit-tail.webp" loading="lazy"/></div><p class="pc-date"><span class="zh">2026.06–08 · 上海</span><span class="en">2026.06–08 · Shanghai</span></p><h3><span class="zh">微创网络 · 中台运营</span><span class="en">Wicresoft · Ops intern</span></h3><p class="pc-sub"><span class="zh">供应链平台 POC 通过客户验证，进入正式开发。</span><span class="en">Supply-chain POC passed client validation.</span></p><p class="pc-num"><b>8%→5%</b><span class="zh">预测偏差</span><span class="en">forecast gap</span></p></article>
+<article class="pcard is-next"><div class="pc-art"><img alt="" src="img/digua-wave.webp" loading="lazy"/></div><p class="pc-date"><span class="zh">下一站</span><span class="en">Next stop</span></p><h3><span class="zh">期待加入你的团队</span><span class="en">Hoping to join your team</span></h3><p class="pc-sub"><span class="zh">产品 / 运营 / 商务方向，全国均可。</span><span class="en">Product, operations or business roles, any city in China.</span></p><p class="pc-num"><b>2027.01</b><span class="zh">起可全职到岗</span><span class="en">full-time start</span></p></article>
+</div>
+<div class="pop-chain"><span>📊 <span class="zh">数据核对</span><span class="en">Data checks</span></span><i>→</i><span>🌏 <span class="zh">跨国协作</span><span class="en">Cross-border teams</span></span><i>→</i><span>🧩 <span class="zh">需求梳理</span><span class="en">Requirements</span></span><i>→</i><span>🧪 <span class="zh">测试验证</span><span class="en">Testing</span></span><i>→</i><span class="hl">🎤 <span class="zh">客户汇报</span><span class="en">Client demos</span></span></div>
+<div class="pop-foot"><a class="btn solid" data-goto="journey" href="#journey"><span class="zh">查看完整经历</span><span class="en">See full journey</span> →</a></div>
+</div>
+</dialog>
+
+<dialog class="pop" id="pop-projects" aria-labelledby="pop-projects-h">
+<div class="pop-in">
+<header class="pop-head"><div><p class="pop-kick">DIGUA · PROJECTS</p><h2 id="pop-projects-h"><span class="zh">项目 · 解决过的问题</span><span class="en">Projects &amp; problems solved</span></h2></div><button class="pop-x" data-close type="button" aria-label="关闭 / Close">✕</button></header>
+<div class="pcards c5">
+<article class="pcard"><div class="pc-art shot"><img alt="" src="img/fp-home-cockpit.webp" loading="lazy"/></div><p class="pc-date"><span class="zh">个人开源 · 供应链</span><span class="en">Open source · supply chain</span></p><h3>FlowPilot Lab</h3><p class="pc-sub"><span class="zh">每个补货数字都能追溯来源。</span><span class="en">Every replenishment number is traceable.</span></p><p class="pc-num"><b>18→8</b><span class="zh">误判异常 SKU</span><span class="en">false risk flags</span></p><button class="pc-go" data-case="flowpilot" type="button"><span class="zh">完整案例</span><span class="en">Full case</span> →</button></article>
+<article class="pcard"><div class="pc-art shot"><img alt="" src="img/pp-staff-dashboard.webp" loading="lazy"/></div><p class="pc-date"><span class="zh">个人开源 · 领养管理</span><span class="en">Open source · adoption</span></p><h3>PawPath</h3><p class="pc-sub"><span class="zh">每个领养决定都有规则可依。</span><span class="en">Every adoption decision follows a rule.</span></p><p class="pc-num"><b>22</b><span class="zh">项越权检查通过</span><span class="en">access checks passed</span></p><button class="pc-go" data-case="pawpath" type="button"><span class="zh">完整案例</span><span class="en">Full case</span> →</button></article>
+<article class="pcard"><div class="pc-art shot"><img alt="" src="img/atp-home.webp" loading="lazy"/></div><p class="pc-date"><span class="zh">7 人团队 · 产品经理</span><span class="en">Team of 7 · PM</span></p><h3><span class="zh">AI 旅行规划</span><span class="en">AI Travel Planner</span></h3><p class="pc-sub"><span class="zh">按天生成可执行行程，地图联动。</span><span class="en">Day-by-day plans on a linked map.</span></p><p class="pc-num"><b>1–14</b><span class="zh">天行程</span><span class="en">day trips</span></p><button class="pc-go" data-case="travel" type="button"><span class="zh">完整案例</span><span class="en">Full case</span> →</button></article>
+<article class="pcard"><div class="pc-art shot"><img alt="" src="img/gc-sql-vendor.webp" loading="lazy"/></div><p class="pc-date"><span class="zh">课程项目 · SQL 审计</span><span class="en">Course · SQL audit</span></p><h3>GoNCharge</h3><p class="pc-sub"><span class="zh">交叉比对，查出多年内部舞弊。</span><span class="en">Cross-checks uncovered a multi-year fraud.</span></p><p class="pc-num"><b>10</b><span class="zh">家假供应商</span><span class="en">fake vendors</span></p><button class="pc-go" data-case="goncharge" type="button"><span class="zh">完整案例</span><span class="en">Full case</span> →</button></article>
+<article class="pcard"><div class="pc-art"><img alt="" src="img/digua-pillow.webp" loading="lazy"/></div><p class="pc-date"><span class="zh">课程项目 · 数仓</span><span class="en">Course · warehouse</span></p><h3><span class="zh">电商数据仓库</span><span class="en">E-commerce DW</span></h3><p class="pc-sub"><span class="zh">多系统数据统一口径，搭成看板。</span><span class="en">One consistent, filterable dashboard.</span></p><p class="pc-num"><b>25K</b><span class="zh">条销售记录</span><span class="en">sales records</span></p><button class="pc-go" data-case="ecom" type="button"><span class="zh">完整案例</span><span class="en">Full case</span> →</button></article>
+</div>
+<div class="pop-chain"><span>🎯 <span class="zh">定义目标</span><span class="en">Set goals</span></span><i>→</i><span>🧩 <span class="zh">拆解流程</span><span class="en">Map process</span></span><i>→</i><span>🧪 <span class="zh">造数据验证</span><span class="en">Test with data</span></span><i>→</i><span>🔍 <span class="zh">查出真因</span><span class="en">Find root cause</span></span><i>→</i><span>📐 <span class="zh">沉淀规则</span><span class="en">Codify rules</span></span><i>→</i><span class="hl">🤖 <span class="zh">AI 落地</span><span class="en">Ship with AI</span></span></div>
+</div>
+</dialog>
+
+<dialog class="pop" id="pop-demo" aria-labelledby="pop-demo-h">
+<div class="pop-in">
+<header class="pop-head"><div><p class="pop-kick">DIGUA · DEMOS</p><h2 id="pop-demo-h"><span class="zh">作品演示 · 真实界面</span><span class="en">Demos · real screens</span></h2></div><button class="pop-x" data-close type="button" aria-label="关闭 / Close">✕</button></header>
+<div class="demo-grid">
+<button class="demo-shot" type="button"><img alt="FlowPilot 供应链驾驶舱" src="img/fp-home-cockpit.webp" loading="lazy"/><span><b>FlowPilot</b> · <span class="zh">供应链驾驶舱</span><span class="en">Cockpit</span></span></button>
+<button class="demo-shot" type="button"><img alt="FlowPilot 单 SKU 计算追溯" src="img/fp-sku-calculation-trace.webp" loading="lazy"/><span><b>FlowPilot</b> · <span class="zh">单 SKU 计算追溯</span><span class="en">Per-SKU trace</span></span></button>
+<button class="demo-shot" type="button"><img alt="PawPath 员工看板" src="img/pp-staff-dashboard.webp" loading="lazy"/><span><b>PawPath</b> · <span class="zh">员工看板</span><span class="en">Staff dashboard</span></span></button>
+<button class="demo-shot" type="button"><img alt="PawPath 申请人比较" src="img/pp-applicant-ranking.webp" loading="lazy"/><span><b>PawPath</b> · <span class="zh">申请人同屏比较</span><span class="en">Applicant ranking</span></span></button>
+<button class="demo-shot" type="button"><img alt="AI 旅行规划首页" src="img/atp-home.webp" loading="lazy"/><span><b><span class="zh">AI 旅行规划</span><span class="en">AI Travel Planner</span></b> · <span class="zh">首页</span><span class="en">Home</span></span></button>
+<button class="demo-shot" type="button"><img alt="GoNCharge SQL 供应商排查" src="img/gc-sql-vendor.webp" loading="lazy"/><span><b>GoNCharge</b> · <span class="zh">SQL 排查</span><span class="en">SQL checks</span></span></button>
+</div>
+<p class="pop-note"><span class="zh">点击图片放大 · 截图均为演示数据</span><span class="en">Tap to zoom · all screenshots use demo data</span></p>
+</div>
+</dialog>
+
+<dialog class="pop" id="pop-skills" aria-labelledby="pop-skills-h">
+<div class="pop-in">
+<header class="pop-head"><div><p class="pop-kick">DIGUA · TOOLBOX</p><h2 id="pop-skills-h"><span class="zh">地瓜的工具箱</span><span class="en">Digua's toolbox</span></h2></div><button class="pop-x" data-close type="button" aria-label="关闭 / Close">✕</button></header>
+<div class="tool-grid">
+<a class="tool t-moss" href="https://github.com/xiaoyixuan0308-cyber/flowpilot-lab" rel="noopener" target="_blank"><span class="tool-no">01</span><span class="tool-tag">PUBLIC</span><h3><span class="zh">供应链计划平台</span><span class="en">Supply-chain planner</span></h3><code>flowpilot-lab</code><p><span class="zh">月度补货 → 周度发货，每个数字可追溯。</span><span class="en">Monthly replenishment to weekly shipments, fully traceable.</span></p><span class="tool-btn"><span class="zh">查看 GitHub</span><span class="en">View on GitHub</span> ↗</span></a>
+<a class="tool t-amber" href="https://github.com/xiaoyixuan0308-cyber/pawpath-shelter-management" rel="noopener" target="_blank"><span class="tool-no">02</span><span class="tool-tag">PUBLIC</span><h3><span class="zh">领养管理平台</span><span class="en">Adoption platform</span></h3><code>pawpath-shelter-management</code><p><span class="zh">上架、申请、审批全流程，规则与记录齐全。</span><span class="en">Listing to approval, with rules and an audit trail.</span></p><span class="tool-btn"><span class="zh">查看 GitHub</span><span class="en">View on GitHub</span> ↗</span></a>
+<button class="tool t-mist" data-sticker type="button"><span class="tool-no">03</span><span class="tool-tag">WECHAT</span><h3><span class="zh">地瓜表情包</span><span class="en">Digua sticker pack</span></h3><code>地瓜的一天</code><p><span class="zh">从角色设定到上线微信表情，独立完成。</span><span class="en">From character design to a live WeChat sticker pack.</span></p><span class="tool-btn"><span class="zh">复制搜索词</span><span class="en">Copy search term</span> ⧉</span><span class="tool-msg" aria-live="polite"></span></button>
+<div class="tool t-bark"><span class="tool-no">04</span><span class="tool-tag">DAILY</span><h3><span class="zh">日常工具</span><span class="en">Everyday tools</span></h3><code>SQL · Power BI · Python · R</code><p><span class="zh">用 AI 编程快速验证想法、搭原型、处理数据。</span><span class="en">AI-assisted coding to test ideas, prototype and handle data.</span></p></div>
+</div>
+</div>
+</dialog>
+
+<dialog class="pop" id="pop-about" aria-labelledby="pop-about-h">
+<div class="pop-in">
+<header class="pop-head"><div><p class="pop-kick">DIGUA · ABOUT</p><h2 id="pop-about-h"><span class="zh">你好，我是肖艺宣</span><span class="en">Hi, I'm Yixuan Xiao</span></h2></div><button class="pop-x" data-close type="button" aria-label="关闭 / Close">✕</button></header>
+<div class="about-pop">
+<img alt="" class="ab-digua" src="img/digua-head-happy.webp"/>
+<div>
+<p><span class="zh">2027 届，求职运营 / 产品方向。我在意的不只是把事情做完，而是<b>把事情做成</b>：先定义目标和衡量标准，再拆开流程找到真正的原因，最后把方法沉淀成规则或工具。</span><span class="en">Class of 2027, looking for operations and product roles. I care about <b>getting the outcome</b>: define the goal and how to measure it, find the real cause, then turn the fix into rules or tools.</span></p>
+<dl class="ab-facts">
+<div><dt>🎓 <span class="zh">学历</span><span class="en">Education</span></dt><dd><span class="zh">昆士兰大学 信息系统硕士 · 奥塔哥大学 会计学士</span><span class="en">MS Information Systems, UQ · BCom Accounting, Otago</span></dd></div>
+<div><dt>📅 <span class="zh">到岗</span><span class="en">Start</span></dt><dd><span class="zh">2027 年 1 月起可全职</span><span class="en">Full-time from January 2027</span></dd></div>
+<div><dt>📍 <span class="zh">城市</span><span class="en">Location</span></dt><dd><span class="zh">全国均可</span><span class="en">Any city in China</span></dd></div>
+<div><dt>✨ <span class="zh">爱好</span><span class="en">Interests</span></dt><dd>🎹 🗣️ 🥋 🏋️ ⚽ 🕵️</dd></div>
+</dl>
+<div class="pop-foot left"><a class="btn solid" data-goto="intro" href="#intro"><span class="zh">了解更多</span><span class="en">Read more</span> →</a><a class="btn ghost" data-goto="contact" href="#contact"><span class="zh">联系我</span><span class="en">Contact</span></a></div>
+</div>
+</div>
+</div>
+</dialog>
 <dialog class="lb" id="lb"><img alt="" id="lbImg" src=""/><button id="lbClose" type="button"><span class="zh">关闭</span><span class="en">Close</span></button></dialog>
 <script>
 (function(){
@@ -981,6 +1172,42 @@ a.src:hover{background:var(--mist);color:var(--moss)}
     }
     setup('proj',document.querySelector('.proj-layout'),function(){return [].slice.call(document.querySelectorAll('.proj-layout .tab[data-grp]'))},false);
     setup('journey',document.querySelector('.trail-box'),function(){return [].slice.call(document.querySelectorAll('.trail .stop'))},true);
+  })();
+
+  // hero scene: hover = glow + Digua looks; click = popup
+  (function(){
+    var scene=document.getElementById('scene');if(!scene)return;
+    var hots=[].slice.call(scene.querySelectorAll('.hot')),navBtns=[].slice.call(document.querySelectorAll('.scene-nav button'));
+    var touch=matchMedia('(hover: none)').matches,cur='',resetT;
+    function show(k){cur=k||'';scene.setAttribute('data-active',cur);navBtns.forEach(function(b){b.setAttribute('aria-pressed',b.getAttribute('data-k')===cur?'true':'false')})}
+    function open(k){var d=document.getElementById('pop-'+k);if(!d)return;show(k);if(d.showModal)d.showModal();else d.setAttribute('open','')}
+    hots.forEach(function(h){
+      var k=h.getAttribute('data-k');
+      h.setAttribute('aria-haspopup','dialog');
+      h.addEventListener('mouseenter',function(){if(!touch)show(k)});
+      h.addEventListener('focus',function(){show(k)});
+      h.addEventListener('click',function(){
+        if(touch&&cur!==k){show(k);clearTimeout(resetT);resetT=setTimeout(function(){show('')},4000);return}
+        open(k);
+      });
+    });
+    scene.addEventListener('mouseleave',function(){if(!touch)show('')});
+    navBtns.forEach(function(b){b.addEventListener('click',function(){open(b.getAttribute('data-k'))})});
+    // popups
+    var pops=[].slice.call(document.querySelectorAll('dialog.pop'));
+    pops.forEach(function(d){
+      d.addEventListener('click',function(e){if(e.target===d)d.close()});
+      d.querySelectorAll('[data-close]').forEach(function(b){b.addEventListener('click',function(){d.close()})});
+      d.addEventListener('close',function(){show('')});
+      d.querySelectorAll('[data-goto]').forEach(function(a){a.addEventListener('click',function(e){e.preventDefault();d.close();var t=document.getElementById(a.getAttribute('data-goto'));if(t)t.scrollIntoView({behavior:matchMedia('(prefers-reduced-motion: reduce)').matches?'auto':'smooth'})})});
+      d.querySelectorAll('[data-case]').forEach(function(b){b.addEventListener('click',function(){d.close();openTab(b.getAttribute('data-case'),true)})});
+      d.querySelectorAll('.demo-shot').forEach(function(b){b.addEventListener('click',function(){var im=b.querySelector('img');lbImg.src=im.src;lbImg.alt=im.alt;d.close();if(lb.showModal)lb.showModal()})});
+    });
+    var st=document.querySelector('[data-sticker]');
+    if(st)st.addEventListener('click',function(){var m=st.querySelector('.tool-msg'),en=root.getAttribute('data-lang')==='en';
+      try{navigator.clipboard.writeText('地瓜的一天').then(function(){m.textContent=en?'Copied! Search it in WeChat stickers.':'已复制，去微信表情里搜索 🍠'},function(){m.textContent='地瓜的一天'})}catch(e){m.textContent='地瓜的一天'}});
+    // warm the hover layers once the page is idle
+    addEventListener('load',function(){scene.querySelectorAll('.scene-layer').forEach(function(i){if(i.decode)i.decode().catch(function(){})})});
   })();
 })();
 </script>
