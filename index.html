@@ -3,11 +3,11 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
-<meta name="description" content="肖艺宣 · 2027 届运营 / 产品方向求职作品集：FlowPilot、PawPath、GoNCharge 审计、电商数据仓库、AI 旅行规划。">
+<meta name="description" content="肖艺宣 · 2027 届运营 / 产品方向求职作品集：FlowPilot、PawPath、PM/BA Panda、GoNCharge 审计、电商数据仓库、AI 旅行规划。">
 <title>肖艺宣作品集</title>
-<link href="https://fonts.googleapis.com" rel="preconnect"/>
-<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
-<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+SC:wght@400;500;700&amp;family=Noto+Serif+SC:wght@600;700;900&amp;display=swap" rel="stylesheet"/>
+
+
+<link href="fonts/noto-sans-sc.css" rel="stylesheet"/>
 <style>
 /* Layout: a watercolor forest you walk through top to bottom — hero meadow, evidence cards,
    a winding trail of signposts, one project per "clearing", and Digua the red panda as guide. */
@@ -22,7 +22,7 @@
   --bark:#8a6340;       /* bark brown */
   --amber:#bf7438;      /* sunlight amber (accent) */
   --line:#dccfae;       /* pencil line */
-  --display:"Noto Serif SC","Songti SC","STSong",Georgia,serif;
+  --display:var(--body);
   --body:"Noto Sans SC","PingFang SC","Hiragino Sans GB","Microsoft YaHei",system-ui,sans-serif;
   --r:20px;
   color-scheme:light;
@@ -512,7 +512,7 @@ a.src:hover{background:var(--mist);color:var(--moss)}
 .ld-cap{text-align:center;margin-top:8px}
 .ld-grid{margin-top:18px}
 @media (max-width:860px){.ld-hero{grid-template-columns:1fr}}
-</style>
+.tab-grp{font-size:12.5px;letter-spacing:.16em;color:var(--bark);font-weight:700;margin:10px 4px -4px}.tab-grp:first-child{margin-top:0}@media (max-width:860px){.tab-grp{flex:none;align-self:center;white-space:nowrap;margin:0 2px 0 6px;scroll-snap-align:start}.tab-grp:first-child{margin-left:0}}</style>
 <style>img{max-width:100%}[hidden]{display:none!important}</style>
 </head>
 <body>
@@ -603,17 +603,20 @@ a.src:hover{background:var(--mist);color:var(--moss)}
 <div>
 <div class="kicker"><span class="zh">项目</span><span class="en">PROJECTS</span></div>
 <h2><span class="zh">我做过的项目，解决过的问题</span><span class="en">Projects I&#39;ve built, problems I&#39;ve solved</span></h2>
-<div class="sec-chips" data-scope="proj"><button aria-pressed="false" class="fchip" data-f="oss" type="button">🌱 <span class="zh">2 个个人开源</span><span class="en">2 open-source</span><span aria-hidden="true" class="fx">✕</span></button><button aria-pressed="false" class="fchip" data-f="course" type="button">📚 <span class="zh">3 个课程项目</span><span class="en">3 coursework</span><span aria-hidden="true" class="fx">✕</span></button><button aria-pressed="false" class="fchip" data-f="team" type="button">🤝 <span class="zh">1 个团队项目 · 产品经理</span><span class="en">1 team project · PM</span><span aria-hidden="true" class="fx">✕</span></button><button aria-pressed="false" class="fchip" data-f="contest" type="button">🏆 <span class="zh">1 个国际竞赛</span><span class="en">1 global contest</span><span aria-hidden="true" class="fx">✕</span></button><button class="fclear" hidden="" type="button"><span class="zh">显示全部</span><span class="en">Show all</span></button></div>
+<div class="sec-chips" data-scope="proj"><button aria-pressed="false" class="fchip" data-f="oss" type="button">🌱 <span class="zh">3 个个人开源</span><span class="en">3 open-source</span><span aria-hidden="true" class="fx">✕</span></button><button aria-pressed="false" class="fchip" data-f="course" type="button">📚 <span class="zh">3 个课程项目</span><span class="en">3 coursework</span><span aria-hidden="true" class="fx">✕</span></button><button aria-pressed="false" class="fchip" data-f="team" type="button">🤝 <span class="zh">1 个团队项目 · 产品经理</span><span class="en">1 team project · PM</span><span aria-hidden="true" class="fx">✕</span></button><button aria-pressed="false" class="fchip" data-f="contest" type="button">🏆 <span class="zh">1 个国际竞赛</span><span class="en">1 global contest</span><span aria-hidden="true" class="fx">✕</span></button><button class="fclear" hidden="" type="button"><span class="zh">显示全部</span><span class="en">Show all</span></button></div>
 </div>
 </div>
 <div class="proj-layout">
 <div aria-label="项目" aria-orientation="vertical" class="tabs" role="tablist">
+<div aria-hidden="true" class="tab-grp"><span class="zh">个人项目</span><span class="en">PERSONAL</span></div>
 <button aria-controls="p-flowpilot" aria-selected="true" class="tab" id="t-flowpilot" role="tab" data-grp="oss"><span aria-hidden="true" class="t-ic">📦</span><span class="t-tx"><b>FlowPilot Lab</b><small><span class="zh">个人开源 · 供应链计划平台</span><span class="en">Open source · supply-chain planning</span></small></span></button>
 <button aria-controls="p-pawpath" aria-selected="false" class="tab" id="t-pawpath" role="tab" data-grp="oss"><span aria-hidden="true" class="t-ic">🐾</span><span class="t-tx"><b>PawPath</b><small><span class="zh">个人开源 · 领养管理平台</span><span class="en">Open source · adoption platform</span></small></span></button>
+<button aria-controls="p-pmba" aria-selected="false" class="tab" id="t-pmba" role="tab" data-grp="oss"><span aria-hidden="true" class="t-ic">🐼</span><span class="t-tx"><b>PM/BA Panda</b><small><span class="zh">个人开源 · Claude Skill</span><span class="en">Open source · Claude Skill</span></small></span></button>
+<button aria-controls="p-travel" aria-selected="false" class="tab" id="t-travel" role="tab" data-grp="team"><span aria-hidden="true" class="t-ic">🗺️</span><span class="t-tx"><b><span class="zh">AI 旅行规划</span><span class="en">AI Travel Planner</span></b><small><span class="zh">7 人团队 · 产品经理</span><span class="en">Team of 7 · product manager</span></small></span></button>
+<div aria-hidden="true" class="tab-grp"><span class="zh">校园项目</span><span class="en">ON CAMPUS</span></div>
 <button aria-controls="p-loan" aria-selected="false" class="tab" id="t-loan" role="tab" data-grp="course"><span aria-hidden="true" class="t-ic">📉</span><span class="t-tx"><b><span class="zh">贷款违约风险分析</span><span class="en">Loan default risk</span></b><small><span class="zh">课程项目 · 风控建模</span><span class="en">Course · credit risk model</span></small></span></button>
 <button aria-controls="p-goncharge" aria-selected="false" class="tab" id="t-goncharge" role="tab" data-grp="course"><span aria-hidden="true" class="t-ic">🔍</span><span class="t-tx"><b>GoNCharge</b><small><span class="zh">课程项目 · SQL 舞弊审计</span><span class="en">Course · SQL fraud audit</span></small></span></button>
 <button aria-controls="p-ecom" aria-selected="false" class="tab" id="t-ecom" role="tab" data-grp="course"><span aria-hidden="true" class="t-ic">🛒</span><span class="t-tx"><b><span class="zh">电商数据仓库</span><span class="en">E-commerce DW</span></b><small><span class="zh">课程项目 · 数仓与经营看板</span><span class="en">Course · warehouse &amp; dashboard</span></small></span></button>
-<button aria-controls="p-travel" aria-selected="false" class="tab" id="t-travel" role="tab" data-grp="team"><span aria-hidden="true" class="t-ic">🗺️</span><span class="t-tx"><b><span class="zh">AI 旅行规划</span><span class="en">AI Travel Planner</span></b><small><span class="zh">7 人团队 · 产品经理</span><span class="en">Team of 7 · product manager</span></small></span></button>
 <button aria-controls="p-gee" aria-selected="false" class="tab" id="t-gee" role="tab" data-grp="contest"><span aria-hidden="true" class="t-ic">🏆</span><span class="t-tx"><b><span class="zh">GEE 国际竞赛</span><span class="en">GEE competition</span></b><small><span class="zh">7 国团队 · 总负责人</span><span class="en">7-country team · team lead</span></small></span></button>
 </div>
 <div class="proj-panels">
@@ -669,6 +672,30 @@ a.src:hover{background:var(--mist);color:var(--moss)}
 <li><span class="zh"><b>体验与交付</b>：按角色定制首页看板与待办，代码脱敏，中英双语文档与流程图。</span><span class="en"><b>Delivery</b>: role-specific dashboards, de-identified code, bilingual docs and flow diagrams.</span></li>
 </ul></div></div></div>
 <div class="showcase" data-carousel=""><div aria-label="截图，可左右滑动" class="slides" tabindex="0"><figure class="slide"><button aria-label="放大查看 申请人适配度排名" class="shot" type="button"><img alt="申请人适配度排名" loading="eager" src="img/pp-applicant-ranking.webp"/></button></figure><figure class="slide"><button aria-label="放大查看 上架准备清单" class="shot" type="button"><img alt="上架准备清单" loading="lazy" src="img/pp-listing-readiness.webp"/></button></figure><figure class="slide"><button aria-label="放大查看 员工看板" class="shot" type="button"><img alt="员工看板" loading="lazy" src="img/pp-staff-dashboard.webp"/></button></figure></div><div class="sc-nav"><button aria-label="上一张" class="arr" data-dir="-1" type="button">←</button><div class="strip"><button aria-current="true" aria-label="第 1 张：申请人适配度排名" data-i="0" type="button"><img alt="" src="img/pp-applicant-ranking.webp"/></button><button aria-label="第 2 张：上架准备清单" data-i="1" type="button"><img alt="" src="img/pp-listing-readiness.webp"/></button><button aria-label="第 3 张：员工看板" data-i="2" type="button"><img alt="" src="img/pp-staff-dashboard.webp"/></button></div><div aria-hidden="true" class="dots"><i class="on"></i><i></i><i></i></div><button aria-label="下一张" class="arr" data-dir="1" type="button">→</button></div><p class="caption"><span class="swipe"><span class="zh">左右滑动 · 点击放大 · </span><span class="en">Swipe · tap to zoom · </span></span><span class="zh">申请人排名 · 上架准备清单 · 员工看板（虚构演示数据）</span><span class="en">Applicant ranking · listing readiness · staff dashboard (fictional demo data)</span></p></div>
+</article>
+<!-- PM/BA Panda -->
+<article aria-labelledby="t-pmba" class="panel" hidden="" id="p-pmba" role="tabpanel">
+<div class="ptext"><div class="col-a"><div class="p-meta"><span class="chip"><span class="zh">个人开源项目</span><span class="en">Open source</span></span><span class="chip">Claude Skill</span><span class="chip num">2026.10</span><span class="chip"><span class="zh">设计与开发</span><span class="en">Design &amp; build</span></span></div><h3><span class="zh">PM/BA Panda&nbsp;· 从需求到原型的 Claude Skill</span><span class="en">PM/BA Panda&nbsp;· A Claude Skill from requirements to prototype</span></h3><p class="oneline"><span class="zh">给产品经理和业务分析师用的 Claude Skill：交给它业务描述和手头的台账、表单、制度，它会像业务分析师一样挖出规则，画出 5 种 UML 图，再做成按规则运行、经过验证的原型。</span><span class="en">A Claude Skill for product managers and business analysts: give it a business description plus your ledgers, forms and policies, and it mines the rules like a BA, draws 5 UML models and builds a rule-driven, verified prototype.</span></p><div class="kn num">
+<div><b>7</b><span class="zh">个阶段，每段都有评审关卡</span><span class="en">stages, each with a review gate</span></div>
+<div><b>5</b><span class="zh">种 UML 图都写成代码</span><span class="en">UML models, each mapped to code</span></div>
+<div><b>4</b><span class="zh">个自动检查脚本</span><span class="en">automated check scripts</span></div>
+<div><b>21</b><span class="zh">个埋入的错误全被测试发现</span><span class="en">planted bugs, all caught</span></div>
+</div><div class="blk"><h4><span class="zh">什么是 Skill</span><span class="en">WHAT IS A SKILL</span></h4><p><span class="zh">Skill 是给 Claude 用的工作手册：一个文件夹，里面有工作流程、方法文档和脚本。加载后，Claude 会按里面规定的方法一步步做事，而不是凭感觉发挥。</span><span class="en">A Skill is a playbook for Claude: a folder of workflow instructions, method guides and scripts. Once loaded, Claude follows its method step by step instead of improvising.</span></p></div><div class="blk"><h4><span class="zh">Skill 的能力</span><span class="en">CAPABILITIES</span></h4><ul>
+<li><span class="zh"><b>需求挖掘</b>：逐行核对台账和表单，找出隐藏规则和"执行与规定不一致"，交给用户裁决；33 项业务例外逐项确认</span><span class="en"><b>Requirements discovery</b>: audits ledgers and forms row by row, surfaces hidden rules and practice–policy mismatches for the user to rule on, and checks 33 business exceptions</span></li>
+<li><span class="zh"><b>UML 建模</b>：用例图、活动图、序列图、状态机图、类图，每张配大白话说明卡，并自动检查跨图一致性</span><span class="en"><b>UML modelling</b>: use case, activity, sequence, state machine and class diagrams, each with a plain-language explainer, plus automatic cross-diagram consistency checks</span></li>
+<li><span class="zh"><b>原型搭建</b>：按映射规则把图变成代码：状态机控制状态流转，决策表变成查表逻辑，权限矩阵变成服务端权限</span><span class="en"><b>Prototype build</b>: turns diagrams into code by fixed rules: the state machine drives status changes, decision tables become lookups, the permission matrix becomes server-side access control</span></li>
+<li><span class="zh"><b>验证交付</b>：真实案例端到端测试、故意埋错的反向检查、演示脚本自动排练，附开发交接说明</span><span class="en"><b>Verification and handover</b>: end-to-end tests of real cases, mutation checks with planted bugs, an automatically rehearsed demo script, and developer handover notes</span></li>
+</ul></div><div class="p-links"><a class="btn solid" href="https://github.com/xiaoyixuan0308-cyber/pmba-panda" rel="noopener" target="_blank">GitHub ↗</a><a class="btn ghost zh" href="https://github.com/xiaoyixuan0308-cyber/pmba-panda/blob/main/docs/validation.md" rel="noopener" target="_blank">验证报告 ↗</a><a class="btn ghost en" href="https://github.com/xiaoyixuan0308-cyber/pmba-panda/blob/main/docs/validation.en.md" rel="noopener" target="_blank">Verification report ↗</a></div></div><div class="col-b"><div class="blk"><h4><span class="zh">怎么用</span><span class="en">HOW IT WORKS</span></h4><ul>
+<li><span class="zh">把 Skill 文件夹加到 Claude，描述需求，提供手头的材料（先脱敏）</span><span class="en">Add the Skill folder to Claude, describe the need, and share your material (de-identified)</span></li>
+<li><span class="zh">Claude 按 7 个阶段推进：启动、需求挖掘、用户故事、UML 建模、构建计划、分阶段构建、验证交付</span><span class="en">Claude works through 7 stages: kick-off, discovery, user stories, UML modelling, build plan, incremental build, verification</span></li>
+<li><span class="zh">每个阶段结束都停下来评审，只问 3–5 个关键问题，用业务语言，不需要读代码</span><span class="en">Each stage ends with a review of 3–5 key questions in business language, with no code to read</span></li>
+<li><span class="zh">最终交付规格文档、5 种 UML 图、可运行的原型、测试、演示脚本和交接说明</span><span class="en">You receive a specification, 5 UML models, a working prototype, tests, a demo script and handover notes</span></li>
+</ul></div><div class="blk"><h4><span class="zh">我做了什么</span><span class="en">WHAT I DID</span></h4><ul>
+<li><span class="zh"><b>方法设计</b>：设计 7 阶段流程、评审关卡和一页评审摘要；每条规则标明出处，推测的一律请用户确认；设计逐行核对台账的方法，在示例 9 行台账中找出 3 处"执行与规定不一致"。</span><span class="en"><b>Method design</b>: the 7-stage workflow, review gates and one-page summaries; source tags on every rule, with inferences confirmed by the user; a row-by-row ledger audit that found 3 practice–policy mismatches in a 9-row ledger.</span></li>
+<li><span class="zh"><b>验证体系</b>：制定 UML 到代码的映射规则，编写 4 个脚本：本地渲染 UML、跨图一致性检查、追溯矩阵、反向检查。</span><span class="en"><b>Verification</b>: UML-to-code mapping rules and 4 scripts: local UML rendering, cross-diagram consistency, traceability matrix, mutation check.</span></li>
+<li><span class="zh"><b>测试与迭代</b>：与直接生成做对比测试；用 Skill 把一个示例从 9 行台账做到验收原型（150 项单元和集成测试、8 项端到端测试全部通过），发现并修复 23 个问题，写成中英双语验证报告。</span><span class="en"><b>Testing and iteration</b>: compared against direct generation; took a worked example from a 9-row ledger to an accepted prototype (150 unit and integration tests, 8 end-to-end tests, all passing), found and fixed 23 problems, and wrote a bilingual verification report.</span></li>
+</ul></div></div></div>
+<div class="showcase" data-carousel=""><div aria-label="截图，可左右滑动" class="slides" tabindex="0"><figure class="slide"><button aria-label="放大查看 借用单状态机图" class="shot" type="button"><img alt="借用单状态机图" loading="lazy" src="img/pmba-state-machine.webp"/></button></figure><figure class="slide"><button aria-label="放大查看 按图生成的审核页" class="shot" type="button"><img alt="按图生成的审核页" loading="lazy" src="img/pmba-manager-review.webp"/></button></figure><figure class="slide"><button aria-label="放大查看 逾期归还收费" class="shot" type="button"><img alt="逾期归还收费" loading="lazy" src="img/pmba-return-fee.webp"/></button></figure></div><div class="sc-nav"><button aria-label="上一张" class="arr" data-dir="-1" type="button">←</button><div class="strip"><button aria-current="true" aria-label="第 1 张：借用单状态机图" data-i="0" type="button"><img alt="" src="img/pmba-state-machine.webp"/></button><button aria-label="第 2 张：按图生成的审核页" data-i="1" type="button"><img alt="" src="img/pmba-manager-review.webp"/></button><button aria-label="第 3 张：逾期归还收费" data-i="2" type="button"><img alt="" src="img/pmba-return-fee.webp"/></button></div><div aria-hidden="true" class="dots"><i class="on"></i><i></i><i></i></div><button aria-label="下一张" class="arr" data-dir="1" type="button">→</button></div><p class="caption"><span class="swipe"><span class="zh">左右滑动 · 点击放大 · </span><span class="en">Swipe · tap to zoom · </span></span><span class="zh">状态机图 · 按图生成的审核页 · 逾期归还收费（示例项目，虚构演示数据）</span><span class="en">State machine · the review page built from it · overdue return fee (worked example, fictional demo data)</span></p></div>
 </article>
 <!-- GoNCharge -->
 <article aria-labelledby="t-loan" class="panel" hidden="" id="p-loan" role="tabpanel">
@@ -991,7 +1018,7 @@ a.src:hover{background:var(--mist);color:var(--moss)}
     t.addEventListener('keydown',function(e){var d=(e.key==='ArrowRight'||e.key==='ArrowDown')?1:(e.key==='ArrowLeft'||e.key==='ArrowUp')?-1:0;if(d)e.preventDefault();if(!d)return;var n=tabs[(i+d+tabs.length)%tabs.length];n.focus();n.click()});
   });
   document.querySelectorAll('[data-open]').forEach(function(a){a.addEventListener('click',function(e){e.preventDefault();openTab(a.getAttribute('data-open'),true)})});
-  if(['flowpilot','pawpath','loan','goncharge','ecom','travel','gee'].indexOf(h)>-1){openTab(h,false);setTimeout(function(){jumpTo(document.getElementById('projects'))},50)}
+  if(['flowpilot','pawpath','pmba','loan','goncharge','ecom','travel','gee'].indexOf(h)>-1){openTab(h,false);setTimeout(function(){jumpTo(document.getElementById('projects'))},50)}
 
   // carousels + lightbox
   var lb=document.getElementById('lb'),lbImg=document.getElementById('lbImg');
