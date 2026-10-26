@@ -512,7 +512,131 @@ a.src:hover{background:var(--mist);color:var(--moss)}
 .ld-cap{text-align:center;margin-top:8px}
 .ld-grid{margin-top:18px}
 @media (max-width:860px){.ld-hero{grid-template-columns:1fr}}
-.tab-grp{font-size:12.5px;letter-spacing:.16em;color:var(--bark);font-weight:700;margin:10px 4px -4px}.tab-grp:first-child{margin-top:0}@media (max-width:860px){.tab-grp{flex:none;align-self:center;white-space:nowrap;margin:0 2px 0 6px;scroll-snap-align:start}.tab-grp:first-child{margin-left:0}}</style>
+.tab-grp{font-size:12.5px;letter-spacing:.16em;color:var(--bark);font-weight:700;margin:10px 4px -4px}.tab-grp:first-child{margin-top:0}@media (max-width:860px){.tab-grp{flex:none;align-self:center;white-space:nowrap;margin:0 2px 0 6px;scroll-snap-align:start}.tab-grp:first-child{margin-left:0}}/* ---------- projects: filter + cards + modal ---------- */
+.projects .sec-head{align-items:flex-end}
+.pf-bar{display:flex;flex-wrap:wrap;gap:8px;margin-top:16px}
+.pf{font:500 15px var(--body);color:var(--ink);background:transparent;border:1.5px solid var(--line);border-radius:999px;padding:6px 14px;display:inline-flex;align-items:baseline;gap:6px;cursor:pointer;transition:background .18s,color .18s,border-color .18s,transform .18s}
+.pf:hover{border-color:var(--moss);transform:translateY(-1px)}
+.pf:focus-visible{outline:3px solid var(--amber);outline-offset:2px}
+.pf[aria-pressed="true"]{background:var(--moss);border-color:var(--moss);color:var(--paper-hi)}
+.pf-n{font-size:13px;font-weight:500;color:var(--ink-soft)}
+.pf[aria-pressed="true"] .pf-n{color:color-mix(in srgb,var(--paper-hi) 80%,var(--moss))}
+
+.pf-guide{flex:none;display:flex;align-items:center;gap:12px}
+.pf-head{width:96px;height:96px;object-fit:contain;filter:drop-shadow(0 6px 10px rgba(60,50,20,.18))}
+.pf-say{grid-column:1;grid-row:1;position:relative;background:var(--paper-hi);border:1.5px solid var(--line);border-radius:16px 16px 4px 16px;padding:9px 13px;font-size:14px;line-height:1.5;color:var(--ink);min-height:44px;max-width:220px;box-shadow:0 3px 0 color-mix(in srgb,var(--bark) 18%,var(--line))}
+.pf-dice{font:600 13.5px var(--body);color:var(--bark);background:transparent;border:1.5px dashed color-mix(in srgb,var(--bark) 55%,var(--line));border-radius:999px;padding:5px 12px;cursor:pointer;white-space:nowrap}
+.pf-dice:hover{background:color-mix(in srgb,var(--amber) 10%,var(--paper-hi));border-style:solid}
+.pf-dice:focus-visible{outline:3px solid var(--amber);outline-offset:2px}
+.pf-dice span{display:inline-block}
+.pf-dice.roll span[aria-hidden]{animation:pf-roll .6s cubic-bezier(.3,1.4,.5,1)}
+@keyframes pf-roll{0%{transform:rotate(0) scale(1)}50%{transform:rotate(200deg) scale(1.35)}100%{transform:rotate(360deg) scale(1)}}
+.pf-head.bob{animation:pf-bob .5s cubic-bezier(.3,1.6,.5,1)}
+@keyframes pf-bob{0%{transform:translateY(0) rotate(0)}40%{transform:translateY(-8px) rotate(-6deg)}100%{transform:translateY(0) rotate(0)}}
+.pf-say.pop{animation:pf-pop .28s ease-out}
+@keyframes pf-pop{from{opacity:.2;transform:translateY(4px) scale(.97)}to{opacity:1;transform:none}}
+
+.pgrid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:22px}
+.pcard{all:unset;box-sizing:border-box;position:relative;display:flex;flex-direction:column;cursor:pointer;background:var(--paper-hi);border:1.5px solid var(--line);border-radius:var(--r);overflow:hidden;
+  box-shadow:0 4px 0 color-mix(in srgb,var(--bark) 22%,var(--line));
+  transform:perspective(900px) rotateX(var(--rx,0deg)) rotateY(var(--ry,0deg)) translateY(var(--lift,0px));
+  transition:transform .25s ease,box-shadow .25s ease,border-color .2s}
+.pcard[hidden]{display:none}
+.pcard::after{content:"";position:absolute;inset:0;pointer-events:none;border-radius:inherit;opacity:0;transition:opacity .25s;
+  background:radial-gradient(circle at var(--gx,50%) var(--gy,0%),rgba(255,255,255,.45),transparent 55%)}
+.pcard:hover{--lift:-4px;border-color:var(--moss);box-shadow:0 10px 0 color-mix(in srgb,var(--bark) 18%,var(--line)),0 18px 30px rgba(60,50,20,.10)}
+.pcard:hover::after{opacity:1}
+.pcard:focus-visible{outline:3px solid var(--amber);outline-offset:3px}
+.pcard.picked{animation:pf-picked .9s ease}
+@keyframes pf-picked{0%,100%{box-shadow:0 4px 0 color-mix(in srgb,var(--bark) 22%,var(--line))}30%,70%{box-shadow:0 0 0 5px color-mix(in srgb,var(--amber) 55%,transparent),0 4px 0 var(--bark)}}
+.pc-thumb{position:relative;display:block;aspect-ratio:16/10;background:var(--mist);overflow:hidden;border-bottom:1.5px solid var(--line)}
+.pc-thumb img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:top left;display:block;transition:transform .5s ease}
+.pcard:hover .pc-thumb img{transform:scale(1.04)}
+.pc-cover{position:absolute;inset:0;display:grid;place-items:center;width:100%;height:100%;font-size:64px;
+  background:repeating-linear-gradient(135deg,var(--mist) 0 14px,color-mix(in srgb,var(--mist) 70%,var(--paper-hi)) 14px 28px)}
+.pc-ic{position:absolute;left:12px;bottom:-1px;transform:translateY(50%);width:44px;height:44px;border-radius:14px;display:grid;place-items:center;font-size:24px;background:var(--paper-hi);border:1.5px solid var(--line);box-shadow:0 3px 0 color-mix(in srgb,var(--bark) 18%,var(--line));z-index:1}
+.pc-thumb{overflow:visible}
+.pc-thumb img,.pc-cover{border-radius:calc(var(--r) - 2px) calc(var(--r) - 2px) 0 0}
+.pc-body{display:flex;flex-direction:column;gap:6px;padding:30px 18px 18px;flex:1}
+.pc-tags{display:flex;flex-wrap:wrap;align-items:center;gap:6px}
+.pc-tags{font-size:13px;color:var(--ink-soft);gap:0}
+.pc-tags i{font-style:normal;white-space:pre}
+.pc-t{font-size:20px;font-weight:900;line-height:1.3;color:var(--ink);margin-top:2px}
+.pc-sub{font-size:13.5px;color:var(--bark);font-weight:500}
+.pc-hook{font-size:14.5px;line-height:1.6;color:var(--ink-soft);display:-webkit-box;-webkit-line-clamp:3;-webkit-box-orient:vertical;overflow:hidden}
+.pc-go{margin-top:auto;padding-top:6px;font-size:14px;font-weight:700;color:var(--moss)}
+.pc-go span[aria-hidden]{display:inline-block;transition:transform .2s}
+.pcard:hover .pc-go span[aria-hidden]{transform:translateX(4px)}
+::view-transition-group(*){animation-duration:.35s;animation-timing-function:cubic-bezier(.3,.9,.4,1)}
+
+/* modal */
+html.pm-lock{overflow:hidden}
+dialog.pmodal{border:0;padding:0;margin:auto;width:min(1120px,94vw);max-width:none;height:min(90vh,980px);max-height:none;border-radius:26px;background:var(--paper);color:var(--ink);overflow:hidden;box-shadow:0 30px 80px rgba(20,24,14,.4)}
+dialog.pmodal[open]{display:flex;flex-direction:column}
+dialog.pmodal::backdrop{background:rgba(30,36,24,.62);backdrop-filter:blur(3px)}
+dialog.pmodal[open]{animation:pm-in .28s cubic-bezier(.2,.9,.3,1.1)}
+dialog.pmodal[open]::backdrop{animation:pm-fade .28s ease}
+@keyframes pm-in{from{opacity:0;transform:translateY(18px) scale(.98)}to{opacity:1;transform:none}}
+@keyframes pm-fade{from{opacity:0}to{opacity:1}}
+.pm-bar{flex:none;display:flex;align-items:center;gap:10px;padding:12px 14px 12px 20px;border-bottom:1.5px solid var(--line);background:var(--paper-hi)}
+.pm-ic{font-size:22px}
+.pm-title{font-size:16px;font-weight:900;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;min-width:0}
+.pm-pos{margin-left:auto;font-size:13px;color:var(--ink-soft);white-space:nowrap}
+.pm-nav,.pm-close{font:600 14px var(--body);border:1.5px solid var(--line);background:var(--paper);color:var(--ink);border-radius:999px;height:36px;cursor:pointer}
+.pm-nav{width:36px}
+.pm-close{padding:0 14px;background:var(--moss);border-color:var(--moss);color:var(--paper-hi)}
+.pm-nav:hover{border-color:var(--moss)}
+.pm-nav:focus-visible,.pm-close:focus-visible{outline:3px solid var(--amber);outline-offset:2px}
+.pm-body{flex:1;overflow:auto;overscroll-behavior:contain;padding:clamp(12px,2vw,22px)}
+.pm-body .panel{border:0;background:transparent;padding:clamp(4px,1vw,10px)}
+@media (min-width:900px){
+  .pm-body .ptext{grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:0 40px}
+  .pm-body .col-b > .blk:first-child{margin-top:0}
+}
+.pm-body .p-what{font-size:13.5px;color:var(--ink-soft);border:1.5px dashed var(--line);border-radius:12px;padding:8px 12px;margin:0 0 16px;line-height:1.6}
+.pm-body .kn{grid-template-columns:repeat(2,minmax(0,1fr))}
+.pm-body .diff li{margin-bottom:10px}
+.pm-body .honest{border-left:4px solid var(--amber);background:color-mix(in srgb,var(--amber) 7%,var(--paper-hi));border-radius:0 12px 12px 0;padding:10px 14px}
+.pm-body ol.steps{counter-reset:st;list-style:none;padding:0;margin:0}
+.pm-body ol.steps li{counter-increment:st;position:relative;padding:0 0 12px 38px;line-height:1.6}
+.pm-body ol.steps li::before{content:counter(st);position:absolute;left:0;top:0;width:26px;height:26px;border-radius:50%;background:var(--moss);color:var(--paper-hi);font-size:13px;font-weight:700;display:grid;place-items:center}
+.pm-body ol.steps li:not(:last-child)::after{content:"";position:absolute;left:12px;top:28px;bottom:2px;width:2px;background:var(--leaf);opacity:.6}
+
+@media (max-width:1000px){.pgrid{grid-template-columns:repeat(2,minmax(0,1fr))}}
+@media (max-width:860px){
+  .projects .sec-head{flex-direction:column;align-items:stretch}
+  .pf-bar{gap:8px 6px}
+  .pf{font-size:14px;padding:5px 12px}
+  .projects .sec-head{position:relative}
+  .pf-guide{position:absolute;right:0;top:18px;gap:8px}
+  .pf-head{width:56px;height:56px}
+  .pf-dice{width:40px;height:40px;padding:0;display:grid;place-items:center;font-size:18px;border-radius:50%}
+  .pf-dice > .zh,.pf-dice > .en{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap}
+  .pf-say{max-width:none;border-radius:16px 16px 4px 16px}
+}
+@media (max-width:620px){
+  .pgrid{grid-template-columns:1fr;gap:16px}
+  dialog.pmodal{width:100vw;height:100dvh;border-radius:0;max-height:none}
+  .pm-pos{display:none}
+  .pm-close{padding:0 12px}
+}
+@media (prefers-reduced-motion: reduce){
+  .pcard,.pc-thumb img,.pf,.pc-go span{transition:none}
+  .pcard:hover{--lift:0px}
+  dialog.pmodal[open],dialog.pmodal[open]::backdrop{animation:none}
+  ::view-transition-group(*){animation:none}
+}
+.pm-body .chip{color:color-mix(in srgb,var(--moss) 80%,var(--ink))}
+@media (max-width:620px){
+  .pc-thumb{aspect-ratio:16/8}
+  .pc-hook{-webkit-line-clamp:2}
+  .pc-body{padding:28px 16px 16px}
+  .pf-say{font-size:13.5px;padding:7px 11px;min-height:0}
+}
+
+@media (min-width:861px){.kicker{font-size:16px;margin-bottom:8px}}
+
+</style>
 <style>img{max-width:100%}[hidden]{display:none!important}</style>
 </head>
 <body>
@@ -601,27 +725,24 @@ a.src:hover{background:var(--mist);color:var(--moss)}
 <div class="wrap">
 <div class="sec-head">
 <div>
-<div class="kicker"><span class="zh">项目</span><span class="en">PROJECTS</span></div>
-<h2><span class="zh">我做过的项目，解决过的问题</span><span class="en">Projects I&#39;ve built, problems I&#39;ve solved</span></h2>
-<div class="sec-chips" data-scope="proj"><button aria-pressed="false" class="fchip" data-f="oss" type="button">🌱 <span class="zh">3 个个人开源</span><span class="en">3 open-source</span><span aria-hidden="true" class="fx">✕</span></button><button aria-pressed="false" class="fchip" data-f="course" type="button">📚 <span class="zh">3 个课程项目</span><span class="en">3 coursework</span><span aria-hidden="true" class="fx">✕</span></button><button aria-pressed="false" class="fchip" data-f="team" type="button">🤝 <span class="zh">1 个团队项目 · 产品经理</span><span class="en">1 team project · PM</span><span aria-hidden="true" class="fx">✕</span></button><button aria-pressed="false" class="fchip" data-f="contest" type="button">🏆 <span class="zh">1 个国际竞赛</span><span class="en">1 global contest</span><span aria-hidden="true" class="fx">✕</span></button><button class="fclear" hidden="" type="button"><span class="zh">显示全部</span><span class="en">Show all</span></button></div>
+<div class="kicker"><span class="zh">8 个项目 · 4 个类别</span><span class="en">8 PROJECTS · 4 CATEGORIES</span></div>
+<h2><span class="zh">项目合集</span><span class="en">Projects</span></h2>
+<div aria-label="按类别筛选项目" class="pf-bar" role="group"><button aria-pressed="true" class="pf" data-cat="all" type="button"><span class="zh">全部</span><span class="en">All</span><span class="pf-n num">8</span></button><button aria-pressed="false" class="pf" data-cat="personal" type="button"><span class="zh">个人项目</span><span class="en">Personal</span><span class="pf-n num">3</span></button><button aria-pressed="false" class="pf" data-cat="skill" type="button"><span class="zh">自研自用 Skill 库</span><span class="en">My Skill library</span><span class="pf-n num">1</span></button><button aria-pressed="false" class="pf" data-cat="data" type="button"><span class="zh">数据分析项目</span><span class="en">Data analysis</span><span class="pf-n num">3</span></button><button aria-pressed="false" class="pf" data-cat="school" type="button"><span class="zh">学校项目</span><span class="en">Campus</span><span class="pf-n num">1</span></button></div>
 </div>
+<div class="pf-guide"><img alt="" aria-hidden="true" class="pf-head" height="120" id="pfHead" src="img/digua-head-calm.webp" width="120"/></div>
 </div>
-<div class="proj-layout">
-<div aria-label="项目" aria-orientation="vertical" class="tabs" role="tablist">
-<div aria-hidden="true" class="tab-grp"><span class="zh">个人项目</span><span class="en">PERSONAL</span></div>
-<button aria-controls="p-flowpilot" aria-selected="true" class="tab" id="t-flowpilot" role="tab" data-grp="oss"><span aria-hidden="true" class="t-ic">📦</span><span class="t-tx"><b>FlowPilot Lab</b><small><span class="zh">个人开源 · 供应链计划平台</span><span class="en">Open source · supply-chain planning</span></small></span></button>
-<button aria-controls="p-pawpath" aria-selected="false" class="tab" id="t-pawpath" role="tab" data-grp="oss"><span aria-hidden="true" class="t-ic">🐾</span><span class="t-tx"><b>PawPath</b><small><span class="zh">个人开源 · 领养管理平台</span><span class="en">Open source · adoption platform</span></small></span></button>
-<button aria-controls="p-pmba" aria-selected="false" class="tab" id="t-pmba" role="tab" data-grp="oss"><span aria-hidden="true" class="t-ic">🐼</span><span class="t-tx"><b>PM/BA Panda</b><small><span class="zh">个人开源 · Claude Skill</span><span class="en">Open source · Claude Skill</span></small></span></button>
-<button aria-controls="p-travel" aria-selected="false" class="tab" id="t-travel" role="tab" data-grp="team"><span aria-hidden="true" class="t-ic">🗺️</span><span class="t-tx"><b><span class="zh">AI 旅行规划</span><span class="en">AI Travel Planner</span></b><small><span class="zh">7 人团队 · 产品经理</span><span class="en">Team of 7 · product manager</span></small></span></button>
-<div aria-hidden="true" class="tab-grp"><span class="zh">校园项目</span><span class="en">ON CAMPUS</span></div>
-<button aria-controls="p-loan" aria-selected="false" class="tab" id="t-loan" role="tab" data-grp="course"><span aria-hidden="true" class="t-ic">📉</span><span class="t-tx"><b><span class="zh">贷款违约风险分析</span><span class="en">Loan default risk</span></b><small><span class="zh">课程项目 · 风控建模</span><span class="en">Course · credit risk model</span></small></span></button>
-<button aria-controls="p-goncharge" aria-selected="false" class="tab" id="t-goncharge" role="tab" data-grp="course"><span aria-hidden="true" class="t-ic">🔍</span><span class="t-tx"><b>GoNCharge</b><small><span class="zh">课程项目 · SQL 舞弊审计</span><span class="en">Course · SQL fraud audit</span></small></span></button>
-<button aria-controls="p-ecom" aria-selected="false" class="tab" id="t-ecom" role="tab" data-grp="course"><span aria-hidden="true" class="t-ic">🛒</span><span class="t-tx"><b><span class="zh">电商数据仓库</span><span class="en">E-commerce DW</span></b><small><span class="zh">课程项目 · 数仓与经营看板</span><span class="en">Course · warehouse &amp; dashboard</span></small></span></button>
-<button aria-controls="p-gee" aria-selected="false" class="tab" id="t-gee" role="tab" data-grp="contest"><span aria-hidden="true" class="t-ic">🏆</span><span class="t-tx"><b><span class="zh">GEE 国际竞赛</span><span class="en">GEE competition</span></b><small><span class="zh">7 国团队 · 总负责人</span><span class="en">7-country team · team lead</span></small></span></button>
+<div class="pgrid" id="pgrid">
+<button class="pcard" data-cat="personal" data-id="flowpilot" style="view-transition-name:pc-flowpilot" type="button"><span class="pc-thumb"><img alt="" loading="lazy" src="img/fp-home-cockpit.webp"/><span aria-hidden="true" class="pc-ic">📦</span></span><span class="pc-body"><span class="pc-tags"><span class="zh">个人项目</span><span class="en">Personal</span><i aria-hidden="true"> · </i><span class="num">2026</span></span><span class="pc-t"><span class="zh">FlowPilot Lab</span><span class="en">FlowPilot Lab</span></span><span class="pc-sub"><span class="zh">供应链计划平台 · 开源</span><span class="en">Supply-chain planning · open source</span></span><span class="pc-hook"><span class="zh">把靠表格计算的“月度补货 → 周度发货”做成平台，每个数字都能追溯来源。</span><span class="en">A spreadsheet-driven replenishment process, rebuilt as a platform where every number traces back to its source.</span></span><span class="pc-go"><span class="zh">查看详情</span><span class="en">View details</span> <span aria-hidden="true">→</span></span></span></button>
+<button class="pcard" data-cat="personal" data-id="pawpath" style="view-transition-name:pc-pawpath" type="button"><span class="pc-thumb"><img alt="" loading="lazy" src="img/pp-applicant-ranking.webp"/><span aria-hidden="true" class="pc-ic">🐾</span></span><span class="pc-body"><span class="pc-tags"><span class="zh">个人项目</span><span class="en">Personal</span><i aria-hidden="true"> · </i><span class="num">2026</span></span><span class="pc-t"><span class="zh">PawPath</span><span class="en">PawPath</span></span><span class="pc-sub"><span class="zh">领养管理平台 · 开源</span><span class="en">Adoption platform · open source</span></span><span class="pc-hook"><span class="zh">把 UML 设计做成真能用的系统：每次上架、每个领养决定都有规则可依、有记录可查。</span><span class="en">A UML design turned into a working system: every listing and adoption decision follows a rule and leaves a record.</span></span><span class="pc-go"><span class="zh">查看详情</span><span class="en">View details</span> <span aria-hidden="true">→</span></span></span></button>
+<button class="pcard" data-cat="personal" data-id="travel" style="view-transition-name:pc-travel" type="button"><span class="pc-thumb"><img alt="" loading="lazy" src="img/atp-result-3.webp"/><span aria-hidden="true" class="pc-ic">🗺️</span></span><span class="pc-body"><span class="pc-tags"><span class="zh">个人项目</span><span class="en">Personal</span><i aria-hidden="true"> · </i><span class="num">2026</span></span><span class="pc-t"><span class="zh">AI 旅行规划</span><span class="en">AI Travel Planner</span></span><span class="pc-sub"><span class="zh">7 人团队 · 产品经理</span><span class="en">Team of 7 · product manager</span></span><span class="pc-hook"><span class="zh">输入目的地和日期，生成按天可执行的行程，天气、景点、酒店和路线在地图上联动。</span><span class="en">Enter a destination and dates for a day-by-day plan, with weather, sights, hotels and routes on a linked map.</span></span><span class="pc-go"><span class="zh">查看详情</span><span class="en">View details</span> <span aria-hidden="true">→</span></span></span></button>
+<button class="pcard" data-cat="skill" data-id="pmba" style="view-transition-name:pc-pmba" type="button"><span class="pc-thumb"><img alt="" loading="lazy" src="img/pmba-state-machine.webp"/><span aria-hidden="true" class="pc-ic">🐼</span></span><span class="pc-body"><span class="pc-tags"><span class="zh">自研自用 Skill 库</span><span class="en">My Skill library</span><i aria-hidden="true"> · </i><span class="num">2026</span></span><span class="pc-t"><span class="zh">PM/BA Panda</span><span class="en">PM/BA Panda</span></span><span class="pc-sub"><span class="zh">Claude Skill · 开源</span><span class="en">Claude Skill · open source</span></span><span class="pc-hook"><span class="zh">不是让 AI 直接写系统，而是先像业务分析师一样把需求挖清楚，再按 UML 一步步搭出经过验证的原型。</span><span class="en">Instead of letting AI write the system straight away, it first digs out the requirements like a BA, then builds a verified prototype from UML.</span></span><span class="pc-go"><span class="zh">查看详情</span><span class="en">View details</span> <span aria-hidden="true">→</span></span></span></button>
+<button class="pcard" data-cat="data" data-id="loan" style="view-transition-name:pc-loan" type="button"><span class="pc-thumb"><img alt="" loading="lazy" src="img/ld-customer.webp"/><span aria-hidden="true" class="pc-ic">📉</span></span><span class="pc-body"><span class="pc-tags"><span class="zh">数据分析项目</span><span class="en">Data analysis</span><i aria-hidden="true"> · </i><span class="zh">课程项目</span><span class="en">Coursework</span><i aria-hidden="true"> · </i><span class="num">2026</span></span><span class="pc-t"><span class="zh">贷款违约风险分析</span><span class="en">Loan default risk</span></span><span class="pc-sub"><span class="zh">风控建模 · 成绩 95%</span><span class="en">Credit-risk model · 95%</span></span><span class="pc-hook"><span class="zh">从原始数据到上线建议，独立完成一次完整的风控分析。</span><span class="en">A full credit-risk analysis, from raw data to a go-live recommendation, done on my own.</span></span><span class="pc-go"><span class="zh">查看详情</span><span class="en">View details</span> <span aria-hidden="true">→</span></span></span></button>
+<button class="pcard" data-cat="data" data-id="goncharge" style="view-transition-name:pc-goncharge" type="button"><span class="pc-thumb"><img alt="" loading="lazy" src="img/gc-vendors.webp"/><span aria-hidden="true" class="pc-ic">🔍</span></span><span class="pc-body"><span class="pc-tags"><span class="zh">数据分析项目</span><span class="en">Data analysis</span><i aria-hidden="true"> · </i><span class="zh">课程项目</span><span class="en">Coursework</span><i aria-hidden="true"> · </i><span class="num">2026</span></span><span class="pc-t"><span class="zh">GoNCharge</span><span class="en">GoNCharge</span></span><span class="pc-sub"><span class="zh">SQL 舞弊审计</span><span class="en">SQL fraud audit</span></span><span class="pc-hook"><span class="zh">用 SQL 查出一套持续多年、约 98 万美元的内部舞弊，并给出止损和防范方案。</span><span class="en">SQL that uncovered a multi-year internal fraud worth about US$980K, plus a plan to stop it and prevent it.</span></span><span class="pc-go"><span class="zh">查看详情</span><span class="en">View details</span> <span aria-hidden="true">→</span></span></span></button>
+<button class="pcard" data-cat="data" data-id="ecom" style="view-transition-name:pc-ecom" type="button"><span class="pc-thumb"><span aria-hidden="true" class="pc-cover">🛒</span><span aria-hidden="true" class="pc-ic">🛒</span></span><span class="pc-body"><span class="pc-tags"><span class="zh">数据分析项目</span><span class="en">Data analysis</span><i aria-hidden="true"> · </i><span class="zh">课程项目</span><span class="en">Coursework</span><i aria-hidden="true"> · </i><span class="num">2026</span></span><span class="pc-t"><span class="zh">电商数据仓库</span><span class="en">E-commerce data warehouse</span></span><span class="pc-sub"><span class="zh">数仓与经营看板 · HD</span><span class="en">Warehouse & dashboard · HD</span></span><span class="pc-hook"><span class="zh">把多个系统的销售、客户、商品和供应商数据统一口径，做成随时可筛选的经营看板。</span><span class="en">Sales, customer, product and supplier data from several systems on one definition, in a dashboard anyone can filter.</span></span><span class="pc-go"><span class="zh">查看详情</span><span class="en">View details</span> <span aria-hidden="true">→</span></span></span></button>
+<button class="pcard" data-cat="school" data-id="gee" style="view-transition-name:pc-gee" type="button"><span class="pc-thumb"><img alt="" loading="lazy" src="img/gee-certificate.webp"/><span aria-hidden="true" class="pc-ic">🏆</span></span><span class="pc-body"><span class="pc-tags"><span class="zh">学校项目</span><span class="en">Campus</span><i aria-hidden="true"> · </i><span class="num">2024</span></span><span class="pc-t"><span class="zh">GEE 国际竞赛</span><span class="en">GEE competition</span></span><span class="pc-sub"><span class="zh">7 国团队 · 总负责人</span><span class="en">7-country team · team lead</span></span><span class="pc-hook"><span class="zh">3 周带 7 国线上团队从零做出商业方案，在 170 余支队伍中排名第 5。</span><span class="en">Led a 7-country online team to a full business proposal in 3 weeks, placing 5th of 170+ teams.</span></span><span class="pc-go"><span class="zh">查看详情</span><span class="en">View details</span> <span aria-hidden="true">→</span></span></span></button>
 </div>
-<div class="proj-panels">
-<!-- FlowPilot -->
-<article aria-labelledby="t-flowpilot" class="panel" id="p-flowpilot" role="tabpanel">
+<div class="pstore" hidden="">
+<article class="panel" id="p-flowpilot">
 <div class="ptext"><div class="col-a"><div class="p-meta"><span class="chip"><span class="zh">个人开源项目</span><span class="en">Open source</span></span><span class="chip num">2026.06–2026.09</span><span class="chip"><span class="zh">产品负责人 / 全栈</span><span class="en">Product owner / full stack</span></span></div><h3><span class="zh">FlowPilot Lab&nbsp;· 供应链计划与决策平台</span><span class="en">FlowPilot Lab&nbsp;· Supply-chain planning platform</span></h3><p class="oneline"><span class="zh">把"月度补货 → 周度发货"这套原本靠表格计算的流程，做成每个数字都能追溯来源的平台。</span><span class="en">I turned a spreadsheet-driven "monthly replenishment → weekly shipment" process into a platform where every number can be traced to its source.</span></p><div class="kn num">
 <div><b>2</b><span class="zh">条计算链路（月度 6 阶段、周度 8 阶段）</span><span class="en">calculation chains (6 monthly, 8 weekly stages)</span></div>
 <div><b>6</b><span class="zh">条异常规则，自动发现风险</span><span class="en">risk rules flag issues automatically</span></div>
@@ -654,8 +775,7 @@ a.src:hover{background:var(--mist);color:var(--moss)}
 </div>
 <div class="showcase" data-carousel=""><div aria-label="截图，可左右滑动" class="slides" tabindex="0"><figure class="slide"><button aria-label="放大查看 FlowPilot 供应链驾驶舱" class="shot" type="button"><img alt="FlowPilot 供应链驾驶舱" loading="eager" src="img/fp-home-cockpit.webp"/></button></figure><figure class="slide"><button aria-label="放大查看 FlowPilot 数据看板" class="shot" type="button"><img alt="FlowPilot 数据看板" loading="lazy" src="img/fp-bi-kpi-trends.webp"/></button></figure><figure class="slide"><button aria-label="放大查看 单 SKU 计算追溯" class="shot" type="button"><img alt="单 SKU 计算追溯" loading="lazy" src="img/fp-sku-calculation-trace.webp"/></button></figure></div><div class="sc-nav"><button aria-label="上一张" class="arr" data-dir="-1" type="button">←</button><div class="strip"><button aria-current="true" aria-label="第 1 张：FlowPilot 供应链驾驶舱" data-i="0" type="button"><img alt="" src="img/fp-home-cockpit.webp"/></button><button aria-label="第 2 张：FlowPilot 数据看板" data-i="1" type="button"><img alt="" src="img/fp-bi-kpi-trends.webp"/></button><button aria-label="第 3 张：单 SKU 计算追溯" data-i="2" type="button"><img alt="" src="img/fp-sku-calculation-trace.webp"/></button></div><div aria-hidden="true" class="dots"><i class="on"></i><i></i><i></i></div><button aria-label="下一张" class="arr" data-dir="1" type="button">→</button></div><p class="caption"><span class="swipe"><span class="zh">左右滑动 · 点击放大 · </span><span class="en">Swipe · tap to zoom · </span></span><span class="zh">驾驶舱 · 数据看板 · 单 SKU 计算追溯（演示数据）</span><span class="en">Cockpit · dashboard · per-SKU calculation trace (demo data)</span></p></div>
 </article>
-<!-- PawPath -->
-<article aria-labelledby="t-pawpath" class="panel" hidden="" id="p-pawpath" role="tabpanel">
+<article class="panel" id="p-pawpath">
 <div class="ptext"><div class="col-a"><div class="p-meta"><span class="chip"><span class="zh">个人开源项目</span><span class="en">Open source</span></span><span class="chip num"><span class="zh">2026.09 至今</span><span class="en">2026.09 – now</span></span><span class="chip"><span class="zh">产品负责人 / 全栈</span><span class="en">Product owner / full stack</span></span></div><h3><span class="zh">PawPath&nbsp;· 动物收容与领养管理平台</span><span class="en">PawPath&nbsp;· Animal shelter &amp; adoption platform</span></h3><p class="oneline"><span class="zh">把课程 UML 设计做成真正能用的系统，让每次上架、每个领养决定都有规则可依、有记录可查。</span><span class="en">I turned a course UML design into a working system where every listing and adoption decision follows a rule and leaves a record.</span></p><div class="kn num">
 <div><b>5</b><span class="zh">类角色：官员、员工、兽医、领养人、管理员</span><span class="en">roles: officer, staff, vet, adopter, admin</span></div>
 <div><b>5</b><span class="zh">种状态，每次流转都有前置条件</span><span class="en">statuses, each move gated by checks</span></div>
@@ -673,37 +793,74 @@ a.src:hover{background:var(--mist);color:var(--moss)}
 </ul></div></div></div>
 <div class="showcase" data-carousel=""><div aria-label="截图，可左右滑动" class="slides" tabindex="0"><figure class="slide"><button aria-label="放大查看 申请人适配度排名" class="shot" type="button"><img alt="申请人适配度排名" loading="eager" src="img/pp-applicant-ranking.webp"/></button></figure><figure class="slide"><button aria-label="放大查看 上架准备清单" class="shot" type="button"><img alt="上架准备清单" loading="lazy" src="img/pp-listing-readiness.webp"/></button></figure><figure class="slide"><button aria-label="放大查看 员工看板" class="shot" type="button"><img alt="员工看板" loading="lazy" src="img/pp-staff-dashboard.webp"/></button></figure></div><div class="sc-nav"><button aria-label="上一张" class="arr" data-dir="-1" type="button">←</button><div class="strip"><button aria-current="true" aria-label="第 1 张：申请人适配度排名" data-i="0" type="button"><img alt="" src="img/pp-applicant-ranking.webp"/></button><button aria-label="第 2 张：上架准备清单" data-i="1" type="button"><img alt="" src="img/pp-listing-readiness.webp"/></button><button aria-label="第 3 张：员工看板" data-i="2" type="button"><img alt="" src="img/pp-staff-dashboard.webp"/></button></div><div aria-hidden="true" class="dots"><i class="on"></i><i></i><i></i></div><button aria-label="下一张" class="arr" data-dir="1" type="button">→</button></div><p class="caption"><span class="swipe"><span class="zh">左右滑动 · 点击放大 · </span><span class="en">Swipe · tap to zoom · </span></span><span class="zh">申请人排名 · 上架准备清单 · 员工看板（虚构演示数据）</span><span class="en">Applicant ranking · listing readiness · staff dashboard (fictional demo data)</span></p></div>
 </article>
-<!-- PM/BA Panda -->
-<article aria-labelledby="t-pmba" class="panel" hidden="" id="p-pmba" role="tabpanel">
-<div class="ptext"><div class="col-a"><div class="p-meta"><span class="chip"><span class="zh">个人开源项目</span><span class="en">Open source</span></span><span class="chip">Claude Skill</span><span class="chip num">2026.10</span><span class="chip"><span class="zh">设计与开发</span><span class="en">Design &amp; build</span></span></div><h3><span class="zh">PM/BA Panda&nbsp;· 从需求到原型的 Claude Skill</span><span class="en">PM/BA Panda&nbsp;· A Claude Skill from requirements to prototype</span></h3><p class="oneline"><span class="zh">给产品经理和业务分析师用的 Claude Skill：交给它业务描述和手头的台账、表单、制度，它会像业务分析师一样挖出规则，画出 5 种 UML 图，再做成按规则运行、经过验证的原型。</span><span class="en">A Claude Skill for product managers and business analysts: give it a business description plus your ledgers, forms and policies, and it mines the rules like a BA, draws 5 UML models and builds a rule-driven, verified prototype.</span></p><div class="kn num">
-<div><b>7</b><span class="zh">个阶段，每段都有评审关卡</span><span class="en">stages, each with a review gate</span></div>
-<div><b>5</b><span class="zh">种 UML 图都写成代码</span><span class="en">UML models, each mapped to code</span></div>
-<div><b>4</b><span class="zh">个自动检查脚本</span><span class="en">automated check scripts</span></div>
-<div><b>21</b><span class="zh">个埋入的错误全被测试发现</span><span class="en">planted bugs, all caught</span></div>
-</div><div class="blk"><h4><span class="zh">什么是 Skill</span><span class="en">WHAT IS A SKILL</span></h4><p><span class="zh">Skill 是给 Claude 用的工作手册：一个文件夹，里面有工作流程、方法文档和脚本。加载后，Claude 会按里面规定的方法一步步做事，而不是凭感觉发挥。</span><span class="en">A Skill is a playbook for Claude: a folder of workflow instructions, method guides and scripts. Once loaded, Claude follows its method step by step instead of improvising.</span></p></div><div class="blk"><h4><span class="zh">Skill 的能力</span><span class="en">CAPABILITIES</span></h4><ul>
-<li><span class="zh"><b>需求挖掘</b>：逐行核对台账和表单，找出隐藏规则和"执行与规定不一致"，交给用户裁决；33 项业务例外逐项确认</span><span class="en"><b>Requirements discovery</b>: audits ledgers and forms row by row, surfaces hidden rules and practice–policy mismatches for the user to rule on, and checks 33 business exceptions</span></li>
-<li><span class="zh"><b>UML 建模</b>：用例图、活动图、序列图、状态机图、类图，每张配大白话说明卡，并自动检查跨图一致性</span><span class="en"><b>UML modelling</b>: use case, activity, sequence, state machine and class diagrams, each with a plain-language explainer, plus automatic cross-diagram consistency checks</span></li>
-<li><span class="zh"><b>原型搭建</b>：按映射规则把图变成代码：状态机控制状态流转，决策表变成查表逻辑，权限矩阵变成服务端权限</span><span class="en"><b>Prototype build</b>: turns diagrams into code by fixed rules: the state machine drives status changes, decision tables become lookups, the permission matrix becomes server-side access control</span></li>
-<li><span class="zh"><b>验证交付</b>：真实案例端到端测试、故意埋错的反向检查、演示脚本自动排练，附开发交接说明</span><span class="en"><b>Verification and handover</b>: end-to-end tests of real cases, mutation checks with planted bugs, an automatically rehearsed demo script, and developer handover notes</span></li>
-</ul></div><div class="p-links"><a class="btn solid" href="https://github.com/xiaoyixuan0308-cyber/pmba-panda" rel="noopener" target="_blank">GitHub ↗</a><a class="btn ghost zh" href="https://github.com/xiaoyixuan0308-cyber/pmba-panda/blob/main/docs/validation.md" rel="noopener" target="_blank">验证报告 ↗</a><a class="btn ghost en" href="https://github.com/xiaoyixuan0308-cyber/pmba-panda/blob/main/docs/validation.en.md" rel="noopener" target="_blank">Verification report ↗</a></div></div><div class="col-b"><div class="blk"><h4><span class="zh">怎么用</span><span class="en">HOW IT WORKS</span></h4><ul>
-<li><span class="zh">把 Skill 文件夹加到 Claude，描述需求，提供手头的材料（先脱敏）</span><span class="en">Add the Skill folder to Claude, describe the need, and share your material (de-identified)</span></li>
-<li><span class="zh">Claude 按 7 个阶段推进：启动、需求挖掘、用户故事、UML 建模、构建计划、分阶段构建、验证交付</span><span class="en">Claude works through 7 stages: kick-off, discovery, user stories, UML modelling, build plan, incremental build, verification</span></li>
-<li><span class="zh">每个阶段结束都停下来评审，只问 3–5 个关键问题，用业务语言，不需要读代码</span><span class="en">Each stage ends with a review of 3–5 key questions in business language, with no code to read</span></li>
-<li><span class="zh">最终交付规格文档、5 种 UML 图、可运行的原型、测试、演示脚本和交接说明</span><span class="en">You receive a specification, 5 UML models, a working prototype, tests, a demo script and handover notes</span></li>
-</ul></div><div class="blk"><h4><span class="zh">我做了什么</span><span class="en">WHAT I DID</span></h4><ul>
-<li><span class="zh"><b>方法设计</b>：设计 7 阶段流程、评审关卡和一页评审摘要；每条规则标明出处，推测的一律请用户确认；设计逐行核对台账的方法，在示例 9 行台账中找出 3 处"执行与规定不一致"。</span><span class="en"><b>Method design</b>: the 7-stage workflow, review gates and one-page summaries; source tags on every rule, with inferences confirmed by the user; a row-by-row ledger audit that found 3 practice–policy mismatches in a 9-row ledger.</span></li>
-<li><span class="zh"><b>验证体系</b>：制定 UML 到代码的映射规则，编写 4 个脚本：本地渲染 UML、跨图一致性检查、追溯矩阵、反向检查。</span><span class="en"><b>Verification</b>: UML-to-code mapping rules and 4 scripts: local UML rendering, cross-diagram consistency, traceability matrix, mutation check.</span></li>
-<li><span class="zh"><b>测试与迭代</b>：与直接生成做对比测试；用 Skill 把一个示例从 9 行台账做到验收原型（150 项单元和集成测试、8 项端到端测试全部通过），发现并修复 23 个问题，写成中英双语验证报告。</span><span class="en"><b>Testing and iteration</b>: compared against direct generation; took a worked example from a 9-row ledger to an accepted prototype (150 unit and integration tests, 8 end-to-end tests, all passing), found and fixed 23 problems, and wrote a bilingual verification report.</span></li>
+<article class="panel" id="p-travel">
+<div class="ptext"><div class="col-a"><div class="p-meta"><span class="chip"><span class="zh">团队项目&nbsp;· 7 人</span><span class="en">Team project&nbsp;· 7 people</span></span><span class="chip num">2026.06–2026.08</span><span class="chip"><span class="zh">产品经理</span><span class="en">Product manager</span></span><span class="chip"><span class="zh">代码为团队私有仓库</span><span class="en">Private team repo</span></span></div><h3><span class="zh">AI 旅行规划师</span><span class="en">AI Travel Planner</span></h3><p class="oneline"><span class="zh">输入目的地和日期，自动生成按天可执行的行程（天气、景点、酒店和最优游览路线），并在地图上联动展示。</span><span class="en">Enter a destination and dates to get a day-by-day plan with weather, sights, hotels and optimised routes, shown on a linked map.</span></p><div class="kn num">
+<div><b>7</b><span class="zh">人并行开发，接口先行</span><span class="en">people building in parallel</span></div>
+<div><b>1–14</b><span class="zh">天，支持的行程长度</span><span class="en">days per trip</span></div>
+<div><b>2</b><span class="zh">种算法：K-Means 分天 · TSP 排路线</span><span class="en">algorithms: K-Means days · TSP routes</span></div>
+<div><b><span class="zh">秒级</span><span class="en">Seconds</span></b><span class="zh">简单需求即刻生成，复杂行程约 5 分钟</span><span class="en">for simple trips; ~5 min for complex ones</span></div>
+</div><div class="blk"><h4><span class="zh">项目背景</span><span class="en">CONTEXT</span></h4><p><span class="zh">做攻略要在天气、地图、攻略和酒店平台之间来回切换；直接问大模型又常出现地点错误、路线绕路、信息过时。我们验证"大模型生成 + 真实数据 + 确定性算法"的做法。</span><span class="en">Planning a trip means hopping between weather, maps, guides and hotel sites, and asking a chatbot often gives wrong places and zig-zag routes. We tested combining an LLM with real data and deterministic algorithms.</span></p></div><div class="blk"><h4><span class="zh">项目成果</span><span class="en">OUTCOME</span></h4><ul>
+<li><span class="zh">跑通"输入需求 → 获取数据 → 算法规划 → 地图展示"完整 Demo</span><span class="en">A working demo from request to data, planning and map</span></li>
+<li><span class="zh">无需任何 API Key 即可完整体验</span><span class="en">Fully usable with no API keys</span></li>
+</ul></div></div><div class="col-b"><div class="blk"><h4><span class="zh">我负责的部分</span><span class="en">MY PART</span></h4><ul>
+<li><span class="zh"><b>立项与分工</b>：组织需求分析和技术选型，把产品拆成地图、路线、后端、规划等模块，完成 7 人分工。</span><span class="en"><b>Scoping</b>: ran requirements and tech selection, split the product into map, routing, backend and planner modules, and assigned 7 people.</span></li>
+<li><span class="zh"><b>让 7 个人并行开发</b>：搭建代码库和工程骨架，"先定接口、用模拟数据解耦"，持续协调地图、路线、后端模块的数据格式。</span><span class="en"><b>Parallel delivery</b>: set up the repo and skeleton, agreed interfaces first with mock data, and kept map, routing and backend formats aligned.</span></li>
+<li><span class="zh"><b>借助 AI 开发前端</b>：用 Next.js 串联天气、高德地图和规划算法，行程列表与地图联动，适配手机。</span><span class="en"><b>Front end with AI</b>: built the Next.js app linking weather, AMap and the planner, with list–map sync and mobile support.</span></li>
+<li><span class="zh"><b>为"出错"做设计</b>：外部数据不可用时切换演示数据，并在页面上明确标注，不把模拟信息当真实信息展示。</span><span class="en"><b>Designing for failure</b>: when a data source is down the app switches to clearly labelled demo data instead of passing it off as real.</span></li>
+</ul></div><div class="blk"><h4><span class="zh">团队共同实现</span><span class="en">BUILT BY THE TEAM</span></h4><p><span class="zh">高德地理编码与景点、酒店检索 · K-Means 分天与 TSP 路线优化 · Python 后端与实验性的大模型规划流程</span><span class="en">AMap geocoding and POI search · K-Means day clustering and TSP routing · Python backend and an experimental LLM planner</span></p></div></div></div>
+<div class="blk flow-blk"><h4><span class="zh">系统流程：AI 和算法各管什么</span><span class="en">HOW IT WORKS: WHAT AI DOES, WHAT ALGORITHMS DO</span></h4>
+<div class="flow" role="img" aria-label="用户输入目的地和日期，系统并行获取天气和高德地点数据，经 K-Means 按天聚类和 TSP 路线优化，最后在行程卡片和高德地图上联动展示；外部数据失败时切换到标注过的演示数据；大模型链路为实验版本">
+<div class="fl-col"><p class="fl-lab"><span class="zh">① 用户需求</span><span class="en">① Request</span></p>
+<div class="fl-node fl-user">🧳 <span class="zh">结构化表单<br/><small>目的地 + 1–14 天日期</small></span><span class="en">Structured form<br/><small>destination + 1–14 days</small></span></div></div>
+<i class="fl-arr" aria-hidden="true">→</i>
+<div class="fl-col"><p class="fl-lab"><span class="zh">② 数据获取（并行、解耦）</span><span class="en">② Data, in parallel</span></p>
+<div class="fl-node">🌦️ <span class="zh">天气</span><span class="en">Weather</span><small>Open-Meteo</small></div>
+<div class="fl-node">📍 <span class="zh">地理编码</span><span class="en">Geocoding</span><small><span class="zh">高德</span><span class="en">AMap</span></small></div>
+<div class="fl-node">🏯 <span class="zh">景点 / 酒店</span><span class="en">Sights / hotels</span><small><span class="zh">高德 POI</span><span class="en">AMap POI</span></small></div>
+<div class="fl-node fl-fb">🛟 <span class="zh">失败时切换演示数据，页面明确标注</span><span class="en">On failure: labelled demo data</span></div></div>
+<i class="fl-arr" aria-hidden="true">→</i>
+<div class="fl-col"><p class="fl-lab"><span class="zh">③ 确定性算法规划</span><span class="en">③ Deterministic planning</span></p>
+<div class="fl-node">🗂️ <span class="zh">K-Means 按天聚类</span><span class="en">K-Means: group by day</span></div>
+<div class="fl-node">🧭 <span class="zh">TSP 优化每日顺序</span><span class="en">TSP: order each day</span></div></div>
+<i class="fl-arr" aria-hidden="true">→</i>
+<div class="fl-col"><p class="fl-lab"><span class="zh">④ 聚合展示</span><span class="en">④ Aggregate &amp; show</span></p>
+<div class="fl-node fl-out">🗺️ <span class="zh">行程卡片 ⇄ 高德地图联动</span><span class="en">Itinerary ⇄ AMap, linked</span></div></div>
+</div>
+<div class="fl-llm"><span class="fl-tag"><span class="zh">实验链路</span><span class="en">Experimental</span></span>
+<span>💬 <span class="zh">自然语言输入</span><span class="en">Free-text request</span></span><i aria-hidden="true">→</i><span>🤖 <span class="zh">大模型理解意图<br/><small>提取目的地和日期</small></span><span class="en">LLM parses intent<br/><small>destination &amp; dates</small></span></span><i aria-hidden="true">→</i><span><span class="zh">复用 ②③ 的工具和算法</span><span class="en">Reuses steps ② ③</span></span><i aria-hidden="true">→</i><span>✍️ <span class="zh">大模型补充出行建议</span><span class="en">LLM adds travel tips</span></span></div>
+<p class="fl-note"><span class="zh"><b>设计取舍：</b>大模型只负责"理解需求"和"补充说明"，路线由算法计算，结果可验证、不会编造地点。实验链路已在 Python 中跑通，尚未接入线上默认流程。</span><span class="en"><b>Design choice:</b> the LLM only parses intent and adds explanations; routes come from algorithms, so results are verifiable and places aren't made up. The LLM pipeline runs in Python but isn't in the default flow yet.</span></p>
+</div>
+<div class="showcase" data-carousel=""><div aria-label="截图，可左右滑动" class="slides" tabindex="0"><figure class="slide"><button aria-label="放大查看 杭州 3 日路线全景" class="shot" type="button"><img alt="杭州 3 日路线全景" loading="eager" src="img/atp-result-3.webp"/></button></figure><figure class="slide"><button aria-label="放大查看 第 1 天路线" class="shot" type="button"><img alt="第 1 天路线" loading="lazy" src="img/atp-result-2.webp"/></button></figure><figure class="slide"><button aria-label="放大查看 首页" class="shot" type="button"><img alt="首页" loading="lazy" src="img/atp-home.webp"/></button></figure></div><div class="sc-nav"><button aria-label="上一张" class="arr" data-dir="-1" type="button">←</button><div class="strip"><button aria-current="true" aria-label="第 1 张：杭州 3 日路线全景" data-i="0" type="button"><img alt="" src="img/atp-result-3.webp"/></button><button aria-label="第 2 张：第 1 天路线" data-i="1" type="button"><img alt="" src="img/atp-result-2.webp"/></button><button aria-label="第 3 张：首页" data-i="2" type="button"><img alt="" src="img/atp-home.webp"/></button></div><div aria-hidden="true" class="dots"><i class="on"></i><i></i><i></i></div><button aria-label="下一张" class="arr" data-dir="1" type="button">→</button></div><p class="caption"><span class="swipe"><span class="zh">左右滑动 · 点击放大 · </span><span class="en">Swipe · tap to zoom · </span></span><span class="zh">三日路线全景 · 第 1 天路线 · 首页（页面会标注演示数据）</span><span class="en">Three-day routes · day 1 · home (demo data is labelled in the app)</span></p></div>
+</article>
+<article class="panel" id="p-pmba">
+<div class="ptext"><div class="col-a"><div class="p-meta"><span class="chip"><span class="zh">个人开源项目</span><span class="en">Open source</span></span><span class="chip">Claude Skill</span><span class="chip num">2026.10</span><span class="chip"><span class="zh">设计与开发</span><span class="en">Design &amp; build</span></span></div><h3><span class="zh">PM/BA Panda&nbsp;· 从需求到原型的 Claude Skill</span><span class="en">PM/BA Panda&nbsp;· A Claude Skill from requirements to prototype</span></h3><p class="oneline"><span class="zh">不是让 AI 直接写系统，而是让它先像业务分析师一样把需求挖清楚，再按 UML 一步步搭出经过验证的原型。</span><span class="en">Instead of letting AI write the system straight away, it first digs out the requirements like a business analyst, then builds a verified prototype from UML, step by step.</span></p><p class="p-what"><span class="zh">Skill 是给 Claude 的工作手册：一个包含流程、方法和脚本的文件夹。加载后，Claude 按规定的方法做事，而不是凭感觉发挥。</span><span class="en">A Skill is a playbook for Claude: a folder of workflow, methods and scripts. Once loaded, Claude follows the method instead of improvising.</span></p><div class="kn num">
+<div><b>21/21</b><span class="zh">个故意埋入的错误，测试全部抓到</span><span class="en">deliberately planted bugs, all caught</span></div>
+<div><b>61</b><span class="zh">条验收标准，每条都有通过的测试</span><span class="en">acceptance criteria, each with a passing test</span></div>
+<div><b>33</b><span class="zh">项业务例外，逐项确认</span><span class="en">business exceptions, checked one by one</span></div>
+<div><b>23</b><span class="zh">个问题在实战中发现，已修进 Skill</span><span class="en">problems found in a real run, fixed in the Skill</span></div>
+</div><div class="blk"><h4><span class="zh">和直接让 AI 写有什么不同</span><span class="en">WHY NOT JUST ASK AI TO BUILD IT</span></h4><ul class="diff">
+<li><span class="zh"><b>先画图，再照图写代码。</b>5 种 UML 图按固定规则变成代码：状态机管状态流转，权限矩阵变成服务端权限，测试也照着图检查。对比测试里，直接生成的版本有至少 5 个动作放错了泳道，序列图里还出现了类图中不存在的对象，照着写就是错的权限和数据结构。</span><span class="en"><b>Diagrams first, then code that follows them.</b> 5 UML models become code by fixed rules: the state machine drives status changes, the permission matrix becomes server-side access control, and the tests check against the diagrams. In a side-by-side test, direct generation put at least 5 actions in the wrong swimlane and used an object in its sequence diagram that its class diagram didn't have, which would have meant wrong permissions and a wrong data structure.</span></li>
+<li><span class="zh"><b>证明测试真的有用。</b>测试全绿不代表能抓错。我故意埋入 21 个典型错误（规则、权限、计算、通知、界面），确认每个都被抓到；演示脚本也逐字自动排练，避免现场演示翻车（实战中就差点遇到一次）。</span><span class="en"><b>Proof that the tests work.</b> All-green tests don't prove they catch anything. I planted 21 typical bugs (rules, permissions, calculations, notifications, UI) and confirmed every one was caught. The demo script is also rehearsed automatically, word for word, so the live demo doesn't fall over (it nearly did once in the real run).</span></li>
+<li><span class="zh"><b>不懂代码也能把关。</b>每个阶段停下来，只问 3–5 个业务问题；每条规则标明出处，推测的一律请你确认；材料和制度对不上时交给你裁决，不擅自改。</span><span class="en"><b>You can review it without reading code.</b> Each stage stops for 3–5 business questions. Every rule names its source, and anything inferred needs your sign-off. When the material and the policy disagree, you decide; it doesn't quietly pick one.</span></li>
+</ul></div><div class="blk honest"><h4><span class="zh">诚实的边界</span><span class="en">HONEST LIMITS</span></h4><p><span class="zh">对比测试中，没装 Skill 的 Claude 在逐行核对材料、找矛盾上反而做得更好，我据此给 Skill 补上了逐行核对。目前只在“物品借还 + 审批”一个领域完整跑通过，下一步是建业务模式库、换领域再测。</span><span class="en">In the side-by-side test, Claude without the Skill was better at checking the material row by row and spotting contradictions, so I added a row-by-row audit to the Skill. So far it has been run end to end in one domain (item lending with approvals); next come a business pattern library and tests in other domains.</span></p></div><div class="p-links"><a class="btn solid" href="https://github.com/xiaoyixuan0308-cyber/pmba-panda" rel="noopener" target="_blank">GitHub ↗</a><a class="btn ghost zh" href="https://github.com/xiaoyixuan0308-cyber/pmba-panda/blob/main/docs/validation.md" rel="noopener" target="_blank">验证报告 ↗</a><a class="btn ghost en" href="https://github.com/xiaoyixuan0308-cyber/pmba-panda/blob/main/docs/validation.en.md" rel="noopener" target="_blank">Verification report ↗</a></div></div><div class="col-b"><div class="blk"><h4><span class="zh">用起来是什么样</span><span class="en">WHAT USING IT LOOKS LIKE</span></h4><ol class="steps">
+<li><span class="zh">你描述需求，交出手头的台账、表单、制度（先脱敏）</span><span class="en">You describe the need and hand over your ledgers, forms and policies (de-identified)</span></li>
+<li><span class="zh">它逐行核对材料，把隐藏规则和矛盾列给你确认</span><span class="en">It audits the material row by row and lists hidden rules and contradictions for you to confirm</span></li>
+<li><span class="zh">写出用户故事和验收标准，画出 5 种 UML 图，每张配大白话说明</span><span class="en">It writes user stories and acceptance criteria and draws 5 UML models, each with a plain-language explainer</span></li>
+<li><span class="zh">分阶段搭原型，每段跑测试和反向检查</span><span class="en">It builds the prototype in stages, running tests and mutation checks at each one</span></li>
+<li><span class="zh">交付规格、原型、演示脚本和开发交接说明</span><span class="en">You get a specification, the prototype, a demo script and developer handover notes</span></li>
+</ol></div><div class="blk"><h4><span class="zh">我做了什么</span><span class="en">WHAT I DID</span></h4><ul>
+<li><span class="zh"><b>方法设计</b>：7 阶段流程、评审关卡和一页评审摘要；规则出处标注；逐行核对台账的方法。</span><span class="en"><b>Method design</b>: the 7-stage workflow, review gates and one-page summaries; source tags on rules; the row-by-row ledger audit.</span></li>
+<li><span class="zh"><b>验证工具</b>：UML 到代码的映射规则，以及 4 个脚本：本地渲染 UML、跨图一致性检查、追溯矩阵、反向检查。</span><span class="en"><b>Verification tools</b>: UML-to-code mapping rules and 4 scripts for local UML rendering, cross-diagram consistency, traceability and mutation checks.</span></li>
+<li><span class="zh"><b>实战迭代</b>：先和直接生成做对比，再用 Skill 把一个虚构的设备借用系统从 9 行台账做到验收（150 项单元和集成测试、8 项端到端测试全部通过），把暴露的 23 个问题修回 Skill，写成中英双语验证报告。</span><span class="en"><b>Real-run iteration</b>: compared it with direct generation, then used it to take a fictional equipment-loan system from a 9-row ledger to acceptance (150 unit and integration tests and 8 end-to-end tests, all passing), fixed the 23 problems it exposed back into the Skill, and wrote a bilingual verification report.</span></li>
 </ul></div></div></div>
 <div class="showcase" data-carousel=""><div aria-label="截图，可左右滑动" class="slides" tabindex="0"><figure class="slide"><button aria-label="放大查看 借用单状态机图" class="shot" type="button"><img alt="借用单状态机图" loading="lazy" src="img/pmba-state-machine.webp"/></button></figure><figure class="slide"><button aria-label="放大查看 按图生成的审核页" class="shot" type="button"><img alt="按图生成的审核页" loading="lazy" src="img/pmba-manager-review.webp"/></button></figure><figure class="slide"><button aria-label="放大查看 逾期归还收费" class="shot" type="button"><img alt="逾期归还收费" loading="lazy" src="img/pmba-return-fee.webp"/></button></figure></div><div class="sc-nav"><button aria-label="上一张" class="arr" data-dir="-1" type="button">←</button><div class="strip"><button aria-current="true" aria-label="第 1 张：借用单状态机图" data-i="0" type="button"><img alt="" src="img/pmba-state-machine.webp"/></button><button aria-label="第 2 张：按图生成的审核页" data-i="1" type="button"><img alt="" src="img/pmba-manager-review.webp"/></button><button aria-label="第 3 张：逾期归还收费" data-i="2" type="button"><img alt="" src="img/pmba-return-fee.webp"/></button></div><div aria-hidden="true" class="dots"><i class="on"></i><i></i><i></i></div><button aria-label="下一张" class="arr" data-dir="1" type="button">→</button></div><p class="caption"><span class="swipe"><span class="zh">左右滑动 · 点击放大 · </span><span class="en">Swipe · tap to zoom · </span></span><span class="zh">状态机图 · 按图生成的审核页 · 逾期归还收费（示例项目，虚构演示数据）</span><span class="en">State machine · the review page built from it · overdue return fee (worked example, fictional demo data)</span></p></div>
 </article>
-<!-- GoNCharge -->
-<article aria-labelledby="t-loan" class="panel" hidden="" id="p-loan" role="tabpanel">
+<article class="panel" id="p-loan">
 <div class="ld-top"><div class="p-meta"><span class="chip"><span class="zh">课程项目&nbsp;· 独立完成</span><span class="en">Course project&nbsp;· solo</span></span><span class="chip num"><span class="zh">作业成绩 38/40（95%）</span><span class="en">Grade 38/40 (95%)</span></span><span class="chip">Power BI · RapidMiner</span></div><h3><span class="zh">贷款违约风险分析</span><span class="en">Loan default risk analysis</span></h3><p class="oneline"><span class="zh">从原始数据到上线建议，独立完成一次完整的风控分析。</span><span class="en">A full credit-risk analysis, from raw data to a go-live recommendation, done on my own.</span></p><ul class="ab-list"><li><b class="ab-k"><span class="zh">数据</span><span class="en">Data</span></b><p><span class="zh">发现 5,000 条记录缺失违约标签，另有"?"占位和异常值。统一清洗规则，并设计"违约率"指标，让不同人群可以直接横向比较。</span><span class="en">Found 5,000 records missing the default label, plus "?" placeholders and a malformed row. Set one cleaning rule and built a default-rate measure so groups compare directly.</span></p></li><li><b class="ab-k"><span class="zh">看板</span><span class="en">Dashboards</span></b><p><span class="zh">两页 Power BI 看板，分别回答"哪类客户容易违约"和"哪些财务状况容易违约"，关键结论直接在图上标出。</span><span class="en">Two Power BI dashboards answering "which customers default" and "which finances default", with key findings marked on the charts.</span></p></li><li class="ab-wide"><b class="ab-k"><span class="zh">指标</span><span class="en">Metrics</span></b><div class="ab-body"><div class="ab-cmp"><div><h5><span class="zh">决策树</span><span class="en">Decision tree</span></h5><p><span class="zh">像一连串"是 / 否"问题，把客户一步步分组，规则直观。准确率 <b>89.3%</b>，但 1,061 个违约客户只认出 35 个（<b>3.3%</b>）：违约客户只占 11%，全判"不违约"也能拿高分。</span><span class="en">A chain of yes/no questions that splits customers step by step; easy to read. <b>89.3%</b> accuracy, yet it caught only 35 of 1,061 defaulters (<b>3.3%</b>): with 11% defaulting, calling everyone safe already scores well.</span></p></div><div><h5><span class="zh">逻辑回归</span><span class="en">Logistic regression</span></h5><p><span class="zh">给每个因素一个权重，算出违约概率；每个权重都能解释，也能检验是否显著。准确率 <b>85.7%</b>，但认出 315 个违约客户（<b>29.7%</b>），多 <b>9 倍</b>。</span><span class="en">Weights each factor to estimate the probability of default; every weight can be explained and tested for significance. <b>85.7%</b> accuracy, but it caught 315 defaulters (<b>29.7%</b>), <b>9×</b> more.</span></p></div></div><p class="ab-why"><span class="zh"><b>为什么选逻辑回归：</b>对银行来说，漏掉一个违约客户的损失远大于多审核一个正常客户，所以"认出违约客户"比整体准确率更重要；而且放贷决定要能向客户和监管说清理由，逻辑回归的系数正好能解释每个因素的影响。</span><span class="en"><b>Why logistic regression:</b> for a bank, missing a defaulter costs far more than reviewing a safe applicant twice, so catching defaulters matters more than overall accuracy. Lending decisions also have to be explained to customers and regulators, and its coefficients show how each factor counts.</span></p></div></li><li class="ab-wide"><b class="ab-k"><span class="zh">上线复盘</span><span class="en">Before go-live</span></b><p><span class="zh">识别率仍只有约 30%，需要调整阈值、处理样本不平衡后再评估。种族是显著变量之一，属于信贷中的受保护属性，上线前应剔除并做公平性检验。</span><span class="en">Recall is still ~30%, so the threshold and class imbalance need work first. Race came out significant; it is protected in lending and should be removed and the model tested for fairness before use.</span></p></li></ul></div>
 <div class="ld-hero"><figure class="ld-fig"><figcaption><span class="zh">看板 1 · 客户画像</span><span class="en">Dashboard 1 · Customer profile</span></figcaption><button class="ld-img shot" type="button" aria-label="放大查看 客户画像看板"><img alt="客户画像看板" loading="lazy" src="img/ld-customer.webp"/><span class="ld-box" style="left:0.5%;top:22%;width:45.5%;height:29.5%"><i>①</i></span></button><ol class="ld-notes"><li><i>①</i><span class="zh"><b>年轻客户风险更高</b>：18–30 岁违约率是 46–60 岁的 2 倍</span><span class="en"><b>Younger borrowers are riskier</b>: 18–30s default at twice the 46–60 rate</span></li></ol></figure><figure class="ld-fig"><figcaption><span class="zh">看板 2 · 财务与信用风险</span><span class="en">Dashboard 2 · Financial &amp; credit risk</span></figcaption><button class="ld-img shot" type="button" aria-label="放大查看 财务与信用风险看板"><img alt="财务与信用风险看板" loading="lazy" src="img/ld-financial.webp"/><span class="ld-box" style="left:0.5%;top:67%;width:49%;height:24%"><i>②</i></span></button><ol class="ld-notes"><li><i>②</i><span class="zh"><b>收入越高越稳</b>：25 万以上的违约率只有 5–25 万的一半</span><span class="en"><b>Higher income, lower risk</b>: over $250K defaults at half the $50–250K rate</span></li></ol></figure></div><p class="caption ld-cap"><span class="zh">真实 Power BI 看板截图（课程提供的数据集）· 高亮框为关键发现 · 点击放大</span><span class="en">Actual Power BI dashboards (course dataset) · boxes mark key findings · tap to zoom</span></p>
 <div class="showcase" data-carousel=""><div aria-label="截图，可左右滑动" class="slides" tabindex="0"><figure class="slide"><button aria-label="放大查看 两个模型的混淆矩阵对比" class="shot" type="button"><img alt="决策树与逻辑回归的混淆矩阵对比" loading="lazy" src="img/ld-models.webp"/></button></figure><figure class="slide"><button aria-label="放大查看 逻辑回归系数表" class="shot" type="button"><img alt="逻辑回归系数与显著性" loading="lazy" src="img/ld-coef.webp"/></button></figure></div><div class="sc-nav"><button aria-label="上一张" class="arr" data-dir="-1" type="button">←</button><div class="strip"><button aria-current="true" aria-label="第 1 张：模型对比" data-i="2" type="button"><img alt="" src="img/ld-models.webp" loading="lazy"/></button><button aria-label="第 2 张：系数表" data-i="3" type="button"><img alt="" src="img/ld-coef.webp" loading="lazy"/></button></div><div aria-hidden="true" class="dots"><i class="on"></i><i></i></div><button aria-label="下一张" class="arr" data-dir="1" type="button">→</button></div><p class="caption"><span class="swipe"><span class="zh">左右滑动 · 点击放大 · </span><span class="en">Swipe · tap to zoom · </span></span><span class="zh">两个模型的混淆矩阵 · 逻辑回归系数与显著性</span><span class="en">Confusion matrices for both models · logistic regression coefficients</span></p></div>
 </article>
-<article aria-labelledby="t-goncharge" class="panel" hidden="" id="p-goncharge" role="tabpanel">
+<article class="panel" id="p-goncharge">
 <div class="ptext"><div class="col-a"><div class="p-meta"><span class="chip"><span class="zh">课程项目&nbsp;· 昆士兰大学 BISM7221</span><span class="en">Course project&nbsp;· UQ BISM7221</span></span><span class="chip num">2026.05</span><span class="chip"><span class="zh">独立完成</span><span class="en">Solo</span></span><span class="chip warn"><span class="zh">公司与数据均为课程模拟</span><span class="en">Simulated company and data</span></span></div><h3><span class="zh">一个住址，串起约 98 万美元的舞弊链</span><span class="en">One address, a US$980K fraud scheme</span></h3><p class="oneline"><span class="zh">我用 SQL 检查一家公司的付款、工资和客户记录，查出一套持续多年、约 98 万美元的内部舞弊，并给出止损和长期防范方案。</span><span class="en">I used SQL to examine a company's payments, payroll and customer records, uncovered a multi-year internal fraud worth about US$980K, and proposed how to stop it and keep it from happening again.</span></p><div class="kn num">
 <div><b><span class="zh">约 98 万</span><span class="en">~$980K</span></b><span class="zh">美元舞弊资金</span><span class="en">in fraud</span></div>
 <div><b>10</b><span class="zh">家假供应商，收款约 79 万</span><span class="en">fake vendors, ~$790K paid</span></div>
@@ -738,8 +895,7 @@ a.src:hover{background:var(--mist);color:var(--moss)}
 <img alt="" class="digua-peek" height="180" src="img/digua-head-surprised.webp" width="202"/>
 </div></div></div><p class="caption"><span class="zh">根据报告数据绘制。公司与数据均为课程模拟。</span><span class="en">Drawn from the report's figures. Company and data are simulated for the course.</span></p></div></div>
 </article>
-<!-- E-commerce -->
-<article aria-labelledby="t-ecom" class="panel" hidden="" id="p-ecom" role="tabpanel">
+<article class="panel" id="p-ecom">
 <div class="ptext"><div class="col-a"><div class="p-meta"><span class="chip"><span class="zh">课程项目&nbsp;· 昆士兰大学</span><span class="en">Course project&nbsp;· UQ</span></span><span class="chip num">2026.04–2026.06</span><span class="chip"><span class="zh">数据运营</span><span class="en">Data operations</span></span><span class="chip num"><span class="zh">成绩 29/30（HD）</span><span class="en">Grade 29/30 (HD)</span></span></div><h3><span class="zh">电商数据仓库与经营分析看板</span><span class="en">E-commerce data warehouse &amp; dashboard</span></h3><p class="oneline"><span class="zh">把散落在多个系统里的销售、客户、商品和供应商数据统一口径、整合到一起，做成可以随时筛选的经营看板。</span><span class="en">I brought sales, customer, product and supplier data from several systems onto one consistent definition and built a dashboard anyone can filter.</span></p><div class="kn num">
 <div><b><span class="zh">2.5 万</span><span class="en">25K</span></b><span class="zh">条销售记录</span><span class="en">sales records</span></div>
 <div><b><span class="zh">2.1 万</span><span class="en">21K</span></b><span class="zh">名客户</span><span class="en">customers</span></div>
@@ -787,47 +943,7 @@ a.src:hover{background:var(--mist);color:var(--moss)}
 <p class="caption"><span class="zh">项目使用真实商户数据，出于数据保密要求，原始看板不便公开展示。以上为根据看板结构绘制的示意图。</span><span class="en">This project used real merchant data, so the original dashboards can't be shown publicly for confidentiality reasons. The sketches above follow the dashboards' structure.</span></p>
 </div>
 </article>
-<!-- Travel planner -->
-<article aria-labelledby="t-travel" class="panel" hidden="" id="p-travel" role="tabpanel">
-<div class="ptext"><div class="col-a"><div class="p-meta"><span class="chip"><span class="zh">团队项目&nbsp;· 7 人</span><span class="en">Team project&nbsp;· 7 people</span></span><span class="chip num">2026.06–2026.08</span><span class="chip"><span class="zh">产品经理</span><span class="en">Product manager</span></span><span class="chip"><span class="zh">代码为团队私有仓库</span><span class="en">Private team repo</span></span></div><h3><span class="zh">AI 旅行规划师</span><span class="en">AI Travel Planner</span></h3><p class="oneline"><span class="zh">输入目的地和日期，自动生成按天可执行的行程（天气、景点、酒店和最优游览路线），并在地图上联动展示。</span><span class="en">Enter a destination and dates to get a day-by-day plan with weather, sights, hotels and optimised routes, shown on a linked map.</span></p><div class="kn num">
-<div><b>7</b><span class="zh">人并行开发，接口先行</span><span class="en">people building in parallel</span></div>
-<div><b>1–14</b><span class="zh">天，支持的行程长度</span><span class="en">days per trip</span></div>
-<div><b>2</b><span class="zh">种算法：K-Means 分天 · TSP 排路线</span><span class="en">algorithms: K-Means days · TSP routes</span></div>
-<div><b><span class="zh">秒级</span><span class="en">Seconds</span></b><span class="zh">简单需求即刻生成，复杂行程约 5 分钟</span><span class="en">for simple trips; ~5 min for complex ones</span></div>
-</div><div class="blk"><h4><span class="zh">项目背景</span><span class="en">CONTEXT</span></h4><p><span class="zh">做攻略要在天气、地图、攻略和酒店平台之间来回切换；直接问大模型又常出现地点错误、路线绕路、信息过时。我们验证"大模型生成 + 真实数据 + 确定性算法"的做法。</span><span class="en">Planning a trip means hopping between weather, maps, guides and hotel sites, and asking a chatbot often gives wrong places and zig-zag routes. We tested combining an LLM with real data and deterministic algorithms.</span></p></div><div class="blk"><h4><span class="zh">项目成果</span><span class="en">OUTCOME</span></h4><ul>
-<li><span class="zh">跑通"输入需求 → 获取数据 → 算法规划 → 地图展示"完整 Demo</span><span class="en">A working demo from request to data, planning and map</span></li>
-<li><span class="zh">无需任何 API Key 即可完整体验</span><span class="en">Fully usable with no API keys</span></li>
-</ul></div></div><div class="col-b"><div class="blk"><h4><span class="zh">我负责的部分</span><span class="en">MY PART</span></h4><ul>
-<li><span class="zh"><b>立项与分工</b>：组织需求分析和技术选型，把产品拆成地图、路线、后端、规划等模块，完成 7 人分工。</span><span class="en"><b>Scoping</b>: ran requirements and tech selection, split the product into map, routing, backend and planner modules, and assigned 7 people.</span></li>
-<li><span class="zh"><b>让 7 个人并行开发</b>：搭建代码库和工程骨架，"先定接口、用模拟数据解耦"，持续协调地图、路线、后端模块的数据格式。</span><span class="en"><b>Parallel delivery</b>: set up the repo and skeleton, agreed interfaces first with mock data, and kept map, routing and backend formats aligned.</span></li>
-<li><span class="zh"><b>借助 AI 开发前端</b>：用 Next.js 串联天气、高德地图和规划算法，行程列表与地图联动，适配手机。</span><span class="en"><b>Front end with AI</b>: built the Next.js app linking weather, AMap and the planner, with list–map sync and mobile support.</span></li>
-<li><span class="zh"><b>为"出错"做设计</b>：外部数据不可用时切换演示数据，并在页面上明确标注，不把模拟信息当真实信息展示。</span><span class="en"><b>Designing for failure</b>: when a data source is down the app switches to clearly labelled demo data instead of passing it off as real.</span></li>
-</ul></div><div class="blk"><h4><span class="zh">团队共同实现</span><span class="en">BUILT BY THE TEAM</span></h4><p><span class="zh">高德地理编码与景点、酒店检索 · K-Means 分天与 TSP 路线优化 · Python 后端与实验性的大模型规划流程</span><span class="en">AMap geocoding and POI search · K-Means day clustering and TSP routing · Python backend and an experimental LLM planner</span></p></div></div></div>
-<div class="blk flow-blk"><h4><span class="zh">系统流程：AI 和算法各管什么</span><span class="en">HOW IT WORKS: WHAT AI DOES, WHAT ALGORITHMS DO</span></h4>
-<div class="flow" role="img" aria-label="用户输入目的地和日期，系统并行获取天气和高德地点数据，经 K-Means 按天聚类和 TSP 路线优化，最后在行程卡片和高德地图上联动展示；外部数据失败时切换到标注过的演示数据；大模型链路为实验版本">
-<div class="fl-col"><p class="fl-lab"><span class="zh">① 用户需求</span><span class="en">① Request</span></p>
-<div class="fl-node fl-user">🧳 <span class="zh">结构化表单<br/><small>目的地 + 1–14 天日期</small></span><span class="en">Structured form<br/><small>destination + 1–14 days</small></span></div></div>
-<i class="fl-arr" aria-hidden="true">→</i>
-<div class="fl-col"><p class="fl-lab"><span class="zh">② 数据获取（并行、解耦）</span><span class="en">② Data, in parallel</span></p>
-<div class="fl-node">🌦️ <span class="zh">天气</span><span class="en">Weather</span><small>Open-Meteo</small></div>
-<div class="fl-node">📍 <span class="zh">地理编码</span><span class="en">Geocoding</span><small><span class="zh">高德</span><span class="en">AMap</span></small></div>
-<div class="fl-node">🏯 <span class="zh">景点 / 酒店</span><span class="en">Sights / hotels</span><small><span class="zh">高德 POI</span><span class="en">AMap POI</span></small></div>
-<div class="fl-node fl-fb">🛟 <span class="zh">失败时切换演示数据，页面明确标注</span><span class="en">On failure: labelled demo data</span></div></div>
-<i class="fl-arr" aria-hidden="true">→</i>
-<div class="fl-col"><p class="fl-lab"><span class="zh">③ 确定性算法规划</span><span class="en">③ Deterministic planning</span></p>
-<div class="fl-node">🗂️ <span class="zh">K-Means 按天聚类</span><span class="en">K-Means: group by day</span></div>
-<div class="fl-node">🧭 <span class="zh">TSP 优化每日顺序</span><span class="en">TSP: order each day</span></div></div>
-<i class="fl-arr" aria-hidden="true">→</i>
-<div class="fl-col"><p class="fl-lab"><span class="zh">④ 聚合展示</span><span class="en">④ Aggregate &amp; show</span></p>
-<div class="fl-node fl-out">🗺️ <span class="zh">行程卡片 ⇄ 高德地图联动</span><span class="en">Itinerary ⇄ AMap, linked</span></div></div>
-</div>
-<div class="fl-llm"><span class="fl-tag"><span class="zh">实验链路</span><span class="en">Experimental</span></span>
-<span>💬 <span class="zh">自然语言输入</span><span class="en">Free-text request</span></span><i aria-hidden="true">→</i><span>🤖 <span class="zh">大模型理解意图<br/><small>提取目的地和日期</small></span><span class="en">LLM parses intent<br/><small>destination &amp; dates</small></span></span><i aria-hidden="true">→</i><span><span class="zh">复用 ②③ 的工具和算法</span><span class="en">Reuses steps ② ③</span></span><i aria-hidden="true">→</i><span>✍️ <span class="zh">大模型补充出行建议</span><span class="en">LLM adds travel tips</span></span></div>
-<p class="fl-note"><span class="zh"><b>设计取舍：</b>大模型只负责"理解需求"和"补充说明"，路线由算法计算，结果可验证、不会编造地点。实验链路已在 Python 中跑通，尚未接入线上默认流程。</span><span class="en"><b>Design choice:</b> the LLM only parses intent and adds explanations; routes come from algorithms, so results are verifiable and places aren't made up. The LLM pipeline runs in Python but isn't in the default flow yet.</span></p>
-</div>
-<div class="showcase" data-carousel=""><div aria-label="截图，可左右滑动" class="slides" tabindex="0"><figure class="slide"><button aria-label="放大查看 杭州 3 日路线全景" class="shot" type="button"><img alt="杭州 3 日路线全景" loading="eager" src="img/atp-result-3.webp"/></button></figure><figure class="slide"><button aria-label="放大查看 第 1 天路线" class="shot" type="button"><img alt="第 1 天路线" loading="lazy" src="img/atp-result-2.webp"/></button></figure><figure class="slide"><button aria-label="放大查看 首页" class="shot" type="button"><img alt="首页" loading="lazy" src="img/atp-home.webp"/></button></figure></div><div class="sc-nav"><button aria-label="上一张" class="arr" data-dir="-1" type="button">←</button><div class="strip"><button aria-current="true" aria-label="第 1 张：杭州 3 日路线全景" data-i="0" type="button"><img alt="" src="img/atp-result-3.webp"/></button><button aria-label="第 2 张：第 1 天路线" data-i="1" type="button"><img alt="" src="img/atp-result-2.webp"/></button><button aria-label="第 3 张：首页" data-i="2" type="button"><img alt="" src="img/atp-home.webp"/></button></div><div aria-hidden="true" class="dots"><i class="on"></i><i></i><i></i></div><button aria-label="下一张" class="arr" data-dir="1" type="button">→</button></div><p class="caption"><span class="swipe"><span class="zh">左右滑动 · 点击放大 · </span><span class="en">Swipe · tap to zoom · </span></span><span class="zh">三日路线全景 · 第 1 天路线 · 首页（页面会标注演示数据）</span><span class="en">Three-day routes · day 1 · home (demo data is labelled in the app)</span></p></div>
-</article>
-<article aria-labelledby="t-gee" class="panel" hidden="" id="p-gee" role="tabpanel">
+<article class="panel" id="p-gee">
 <div class="ptext"><div class="col-a"><div class="p-meta"><span class="chip"><span class="zh">国际竞赛&nbsp;· 线上</span><span class="en">Global contest&nbsp;· online</span></span><span class="chip num">2024.06</span><span class="chip"><span class="zh">团队总负责人</span><span class="en">Team lead</span></span><span class="chip"><span class="zh">7 国成员</span><span class="en">7 countries</span></span></div><h3><span class="zh">GEE 全球企业体验大赛&nbsp;· 植物保护无人机</span><span class="en">Global Enterprise Experience&nbsp;· Plant Protection Drone</span></h3><p class="oneline"><span class="zh">3 周内带领来自 7 个国家的线上团队，从零做出一份完整的商业方案，在 170 余支队伍中排名第 5。</span><span class="en">In three weeks I led an online team from seven countries to build a complete business proposal from scratch, placing 5th of 170+ teams.</span></p><div class="kn num">
 <div><b><span class="zh">第 5</span><span class="en">5th</span></b><span class="zh">170+ 支队伍中（前 3%）</span><span class="en">of 170+ teams (top 3%)</span></div>
 <div><b>7</b><span class="zh">个国家的团队成员</span><span class="en">countries on the team</span></div>
@@ -845,7 +961,8 @@ a.src:hover{background:var(--mist);color:var(--moss)}
 <div class="showcase" data-carousel=""><div aria-label="证书，可左右滑动" class="slides" tabindex="0"><figure class="slide"><button aria-label="放大查看 参赛证书" class="shot" type="button"><img alt="GEE 2024 参赛证书" src="img/gee-certificate.webp"/></button></figure><figure class="slide"><button aria-label="放大查看 官方推荐信" class="shot" type="button"><img alt="GEE 2024 官方推荐信" src="img/gee-letter.webp"/></button></figure></div><div class="sc-nav"><button aria-label="上一张" class="arr" data-dir="-1" type="button">←</button><div class="strip"><button aria-current="true" aria-label="第 1 张：参赛证书" data-i="0" type="button"><img alt="" src="img/gee-certificate.webp"/></button><button aria-label="第 2 张：官方推荐信" data-i="1" type="button"><img alt="" src="img/gee-letter.webp"/></button></div><div aria-hidden="true" class="dots"><i class="on"></i><i></i></div><button aria-label="下一张" class="arr" data-dir="1" type="button">→</button></div><p class="caption"><span class="swipe"><span class="zh">左右滑动 · 点击放大 · </span><span class="en">Swipe · tap to zoom · </span></span><span class="zh">参赛证书 · 官方推荐信（GEE 2024）</span><span class="en">Certificate · letter of commendation (GEE 2024)</span></p></div>
 </article>
 </div>
-</div>
+<dialog aria-labelledby="pmTitle" class="pmodal" id="pmodal"><div class="pm-bar"><span aria-hidden="true" class="pm-ic" id="pmIc"></span><b class="pm-title" id="pmTitle"></b><span class="pm-pos num" id="pmPos"></span><button aria-label="上一个项目" class="pm-nav" data-d="-1" type="button">←</button><button aria-label="下一个项目" class="pm-nav" data-d="1" type="button">→</button><button autofocus="" class="pm-close" id="pmClose" type="button"><span class="zh">关闭</span><span class="en">Close</span> <span aria-hidden="true">✕</span></button></div><div class="pm-body" id="pmBody"></div></dialog>
+
 </div>
 </section>
 <!-- ============ JOURNEY ============ -->
@@ -1007,18 +1124,98 @@ a.src:hover{background:var(--mist);color:var(--moss)}
     imgs.forEach(function(i){i.addEventListener('load',function(){if(Math.abs(el.getBoundingClientRect().top-((document.querySelector('.nav').offsetHeight||64)+8))>4&&Date.now()-t0<2500)go()},{once:true})});
     var t0=Date.now();
   }
-  // project tabs
-  var tabs=[].slice.call(document.querySelectorAll('.tab'));
-  function openTab(id,scroll){
-    tabs.forEach(function(t){var on=t.id==='t-'+id;t.setAttribute('aria-selected',on);t.tabIndex=on?0:-1;document.getElementById(t.getAttribute('aria-controls')).hidden=!on;if(on){var c=t.parentNode;if(c.scrollWidth>c.clientWidth+4){c.scrollTo({left:Math.max(0,t.offsetLeft-c.offsetLeft-16),behavior:'smooth'})}}});
-    if(scroll)jumpTo(document.getElementById('projects'));
-  }
-  tabs.forEach(function(t,i){
-    t.addEventListener('click',function(){openTab(t.id.slice(2))});
-    t.addEventListener('keydown',function(e){var d=(e.key==='ArrowRight'||e.key==='ArrowDown')?1:(e.key==='ArrowLeft'||e.key==='ArrowUp')?-1:0;if(d)e.preventDefault();if(!d)return;var n=tabs[(i+d+tabs.length)%tabs.length];n.focus();n.click()});
-  });
-  document.querySelectorAll('[data-open]').forEach(function(a){a.addEventListener('click',function(e){e.preventDefault();openTab(a.getAttribute('data-open'),true)})});
-  if(['flowpilot','pawpath','pmba','loan','goncharge','ecom','travel','gee'].indexOf(h)>-1){openTab(h,false);setTimeout(function(){jumpTo(document.getElementById('projects'))},50)}
+  // projects: category filter + cards + detail modal + 地瓜
+  (function(){
+    var grid=document.getElementById('pgrid');if(!grid)return;
+    var de=document.documentElement;
+    var cards=[].slice.call(grid.querySelectorAll('.pcard'));
+    var fbtns=[].slice.call(document.querySelectorAll('.pf-bar .pf'));
+    var store=document.querySelector('.pstore');
+    var pm=document.getElementById('pmodal'),pmBody=document.getElementById('pmBody'),pmTitle=document.getElementById('pmTitle'),pmIc=document.getElementById('pmIc'),pmPos=document.getElementById('pmPos');
+    var head=document.getElementById('pfHead'),say=document.getElementById('pfSay');
+    var reduce=matchMedia('(prefers-reduced-motion: reduce)').matches;
+    var LINES={
+      all:['8 个项目都在这儿，点卡片看细节～','All 8 projects are here. Tap a card for the details.'],
+      personal:['课余自己做的，都能跑起来！','Built in my own time, and they all run!'],
+      skill:['自己做、自己用的 Claude Skill，还会继续加。','Claude Skills I build and use myself. More on the way.'],
+      data:['用 SQL、建模和看板从数据里找答案。','Finding answers in data with SQL, models and dashboards.'],
+      school:['带 7 国队友拿了第 5 名！','Led a 7-country team to 5th place!']
+    };
+    var FACE={calm:'img/digua-head-calm.webp',happy:'img/digua-head-happy.webp',surprised:'img/digua-head-surprised.webp'};
+    var cur='all',openArt=null,openId=null,hoverT;
+    function talk(z,e){if(!say)return;say.innerHTML='<span class="zh">'+z+'</span><span class="en">'+e+'</span>';say.classList.remove('pop');void say.offsetWidth;if(!reduce)say.classList.add('pop')}
+    function mood(m){if(head.getAttribute('src')!==FACE[m])head.src=FACE[m];head.classList.remove('bob');void head.offsetWidth;if(!reduce)head.classList.add('bob')}
+    function titleOf(c){return [c.querySelector('.pc-t .zh').textContent,c.querySelector('.pc-t .en').textContent]}
+    function shown(){return cards.filter(function(c){return !c.hidden})}
+
+    function filter(k){
+      var run=function(){
+        cur=k;
+        fbtns.forEach(function(b){b.setAttribute('aria-pressed',b.getAttribute('data-cat')===k?'true':'false')});
+        cards.forEach(function(c){c.hidden=k!=='all'&&c.getAttribute('data-cat')!==k});
+      };
+      if(document.startViewTransition&&!reduce)document.startViewTransition(run);else run();
+      talk(LINES[k][0],LINES[k][1]);mood(k==='all'?'calm':'happy');
+    }
+    fbtns.forEach(function(b){b.addEventListener('click',function(){filter(b.getAttribute('data-cat'))})});
+
+    function openP(id){
+      var art=document.getElementById('p-'+id),card=grid.querySelector('.pcard[data-id="'+id+'"]');if(!art||!card)return;
+      if(openArt&&openArt!==art)store.appendChild(openArt);
+      pmBody.appendChild(art);openArt=art;openId=id;
+      pmIc.textContent=card.querySelector('.pc-ic').textContent;
+      pmTitle.innerHTML=card.querySelector('.pc-t').innerHTML;
+      var list=card.hidden?cards:shown(),i=list.indexOf(card);
+      pmPos.textContent=(i+1)+' / '+list.length;
+      art.querySelectorAll('.slides').forEach(function(sl){sl.scrollLeft=0});
+      if(!pm.open){de.classList.add('pm-lock');pm.showModal()}
+      pmBody.scrollTop=0;
+      try{history.replaceState(null,'','#'+id)}catch(e){}
+      var t=titleOf(card);talk('这个是「'+t[0]+'」，慢慢看～','This one is '+t[1]+'. Take your time!');mood('happy');
+    }
+    function step(d){
+      var list=shown(),c=grid.querySelector('.pcard[data-id="'+openId+'"]'),i=list.indexOf(c);
+      if(i<0){list=cards;i=cards.indexOf(c)}
+      openP(list[(i+d+list.length)%list.length].getAttribute('data-id'));
+    }
+    cards.forEach(function(c){
+      c.addEventListener('click',function(){openP(c.getAttribute('data-id'))});
+      c.addEventListener('mouseenter',function(){clearTimeout(hoverT);var t=titleOf(c);hoverT=setTimeout(function(){mood('surprised');talk('要看看「'+t[0]+'」吗？','Want a look at '+t[1]+'?')},120)});
+      c.addEventListener('mouseleave',function(){clearTimeout(hoverT);hoverT=setTimeout(function(){if(!pm.open){mood(cur==='all'?'calm':'happy');talk(LINES[cur][0],LINES[cur][1])}},250)});
+    });
+    pm.querySelectorAll('.pm-nav').forEach(function(b){b.addEventListener('click',function(){step(+b.getAttribute('data-d'))})});
+    document.getElementById('pmClose').addEventListener('click',function(){pm.close()});
+    pm.addEventListener('click',function(e){if(e.target===pm)pm.close()});
+    pm.addEventListener('keydown',function(e){
+      if(e.target.closest&&e.target.closest('.slides'))return;
+      if(e.key==='ArrowRight'){e.preventDefault();step(1)}
+      if(e.key==='ArrowLeft'){e.preventDefault();step(-1)}
+    });
+    pm.addEventListener('close',function(){
+      if(openArt){store.appendChild(openArt);openArt=null}
+      de.classList.remove('pm-lock');
+      try{history.replaceState(null,'','#projects')}catch(e){}
+      var back=grid.querySelector('.pcard[data-id="'+openId+'"]');
+      if(back&&!back.hidden)back.focus({preventScroll:true});
+      mood(cur==='all'?'calm':'happy');talk(LINES[cur][0],LINES[cur][1]);
+    });
+
+    // gentle 3D tilt on cards (fine pointers only)
+    if(!reduce&&matchMedia('(hover: hover) and (pointer: fine)').matches){
+      cards.forEach(function(c){
+        c.addEventListener('pointermove',function(e){var r=c.getBoundingClientRect(),x=(e.clientX-r.left)/r.width-.5,y=(e.clientY-r.top)/r.height-.5;
+          c.style.setProperty('--rx',(-y*7).toFixed(2)+'deg');c.style.setProperty('--ry',(x*9).toFixed(2)+'deg');
+          c.style.setProperty('--gx',((x+.5)*100).toFixed(1)+'%');c.style.setProperty('--gy',((y+.5)*100).toFixed(1)+'%')});
+        c.addEventListener('pointerleave',function(){c.style.removeProperty('--rx');c.style.removeProperty('--ry')});
+      });
+    }
+
+    talk(LINES.all[0],LINES.all[1]);
+    // deep links: #pmba etc. and [data-open] links elsewhere on the page
+    document.querySelectorAll('[data-open]').forEach(function(a){a.addEventListener('click',function(e){e.preventDefault();jumpTo(document.getElementById('projects'));openP(a.getAttribute('data-open'))})});
+    if(cards.some(function(c){return c.getAttribute('data-id')===h})){setTimeout(function(){jumpTo(document.getElementById('projects'));openP(h)},50)}
+  })();
+
 
   // carousels + lightbox
   var lb=document.getElementById('lb'),lbImg=document.getElementById('lbImg');
@@ -1101,8 +1298,7 @@ a.src:hover{background:var(--mist);color:var(--moss)}
       var clr=bar.querySelector('.fclear');if(clr)clr.addEventListener('click',function(){apply(null)});
       addEventListener('keydown',function(e){if(e.key==='Escape'&&cur)apply(null)});
     }
-    setup('proj',document.querySelector('.proj-layout'),function(){return [].slice.call(document.querySelectorAll('.proj-layout .tab[data-grp]'))},false);
-    setup('journey',document.querySelector('.trail-box'),function(){return [].slice.call(document.querySelectorAll('.trail .stop'))},true);
+        setup('journey',document.querySelector('.trail-box'),function(){return [].slice.call(document.querySelectorAll('.trail .stop'))},true);
   })();
   document.querySelectorAll('.ld-img').forEach(function(b){b.addEventListener('click',function(){var im=b.querySelector('img');lbImg.src=im.src;lbImg.alt=im.alt;if(lb.showModal)lb.showModal()})});
 })();
