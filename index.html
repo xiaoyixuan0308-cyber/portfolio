@@ -453,6 +453,31 @@ a.src:hover{background:var(--mist);color:var(--moss)}
 .hb p{margin:0;font-size:15px;color:var(--ink-soft);line-height:1.65}
 .hb p.hb-case{margin-top:6px;font-size:13px;color:color-mix(in srgb,var(--ink-soft) 80%,var(--paper))}
 @media (max-width:860px){.habit-list{grid-template-columns:1fr}}
+/* ---------- travel flow chart ---------- */
+.flow-blk{grid-column:1/-1}
+.flow{display:flex;align-items:stretch;gap:8px;padding:14px;border-radius:16px;background:color-mix(in srgb,var(--mist) 55%,var(--paper-hi));border:1px solid var(--line)}
+.fl-col{flex:1 1 0;min-width:0;display:flex;flex-direction:column;gap:7px}
+.fl-lab{margin:0 0 2px;font-size:12.5px;font-weight:700;color:var(--bark)}
+.fl-node{background:var(--paper-hi);border:1.5px solid var(--ink);border-radius:12px;padding:7px 10px;font-size:13.5px;line-height:1.45;font-weight:600}
+.fl-node small{display:block;font-weight:500;font-size:12px;color:var(--ink-soft)}
+.fl-user{background:#f3d27a}.fl-out{background:#cfe0b8;flex:1;display:flex;flex-direction:column;justify-content:center}
+.fl-fb{border-style:dashed;font-weight:500;font-size:12.5px;background:transparent}
+.fl-arr{align-self:center;font-style:normal;font-weight:800;color:var(--bark);font-size:18px}
+.fl-llm{display:flex;flex-wrap:wrap;align-items:center;gap:8px;margin-top:10px;padding:10px 12px;border:1.5px dashed var(--bark);border-radius:14px;font-size:13px}
+.fl-llm>span{background:var(--paper-hi);border:1px solid var(--line);border-radius:10px;padding:5px 9px;line-height:1.4}
+.fl-llm small{color:var(--ink-soft)}
+.fl-llm>span.fl-tag{background:var(--bark);color:var(--paper-hi);border:0;font-weight:700;font-size:12px}
+.fl-llm i{font-style:normal;color:var(--bark)}
+.fl-note{margin:10px 0 0;font-size:13.5px;line-height:1.7;color:var(--ink-soft)}
+@media (max-width:860px){.flow{flex-direction:column}.fl-arr{transform:rotate(90deg)}}
+/* ---------- target roles ---------- */
+.nx-main{display:flex;flex-wrap:wrap;gap:8px;align-items:center}
+.nx-big{font:800 15px var(--body);color:var(--paper-hi);background:var(--moss);border-radius:999px;padding:4px 14px}
+.nx-more{margin-top:2px}
+.nx-more summary{cursor:pointer;font-size:13px;color:var(--moss);font-weight:600;list-style:none}
+.nx-more summary::-webkit-details-marker{display:none}
+.nx-more summary::after{content:" ▾"}.nx-more[open] summary::after{content:" ▴"}
+.nx-more .nx-roles{margin-top:8px}
 </style>
 <style>img{max-width:100%}[hidden]{display:none!important}</style>
 </head>
@@ -711,6 +736,28 @@ a.src:hover{background:var(--mist);color:var(--moss)}
 <li><span class="zh"><b>借助 AI 开发前端</b>：用 Next.js 串联天气、高德地图和规划算法，行程列表与地图联动，适配手机。</span><span class="en"><b>Front end with AI</b>: built the Next.js app linking weather, AMap and the planner, with list–map sync and mobile support.</span></li>
 <li><span class="zh"><b>为"出错"做设计</b>：外部数据不可用时切换演示数据，并在页面上明确标注，不把模拟信息当真实信息展示。</span><span class="en"><b>Designing for failure</b>: when a data source is down the app switches to clearly labelled demo data instead of passing it off as real.</span></li>
 </ul></div><div class="blk"><h4><span class="zh">团队共同实现</span><span class="en">BUILT BY THE TEAM</span></h4><p><span class="zh">高德地理编码与景点、酒店检索 · K-Means 分天与 TSP 路线优化 · Python 后端与实验性的大模型规划流程</span><span class="en">AMap geocoding and POI search · K-Means day clustering and TSP routing · Python backend and an experimental LLM planner</span></p></div></div></div>
+<div class="blk flow-blk"><h4><span class="zh">系统流程：AI 和算法各管什么</span><span class="en">HOW IT WORKS: WHAT AI DOES, WHAT ALGORITHMS DO</span></h4>
+<div class="flow" role="img" aria-label="用户输入目的地和日期，系统并行获取天气和高德地点数据，经 K-Means 按天聚类和 TSP 路线优化，最后在行程卡片和高德地图上联动展示；外部数据失败时切换到标注过的演示数据；大模型链路为实验版本">
+<div class="fl-col"><p class="fl-lab"><span class="zh">① 用户需求</span><span class="en">① Request</span></p>
+<div class="fl-node fl-user">🧳 <span class="zh">结构化表单<br/><small>目的地 + 1–14 天日期</small></span><span class="en">Structured form<br/><small>destination + 1–14 days</small></span></div></div>
+<i class="fl-arr" aria-hidden="true">→</i>
+<div class="fl-col"><p class="fl-lab"><span class="zh">② 数据获取（并行、解耦）</span><span class="en">② Data, in parallel</span></p>
+<div class="fl-node">🌦️ <span class="zh">天气</span><span class="en">Weather</span><small>Open-Meteo</small></div>
+<div class="fl-node">📍 <span class="zh">地理编码</span><span class="en">Geocoding</span><small><span class="zh">高德</span><span class="en">AMap</span></small></div>
+<div class="fl-node">🏯 <span class="zh">景点 / 酒店</span><span class="en">Sights / hotels</span><small><span class="zh">高德 POI</span><span class="en">AMap POI</span></small></div>
+<div class="fl-node fl-fb">🛟 <span class="zh">失败时切换演示数据，页面明确标注</span><span class="en">On failure: labelled demo data</span></div></div>
+<i class="fl-arr" aria-hidden="true">→</i>
+<div class="fl-col"><p class="fl-lab"><span class="zh">③ 确定性算法规划</span><span class="en">③ Deterministic planning</span></p>
+<div class="fl-node">🗂️ <span class="zh">K-Means 按天聚类</span><span class="en">K-Means: group by day</span></div>
+<div class="fl-node">🧭 <span class="zh">TSP 优化每日顺序</span><span class="en">TSP: order each day</span></div></div>
+<i class="fl-arr" aria-hidden="true">→</i>
+<div class="fl-col"><p class="fl-lab"><span class="zh">④ 聚合展示</span><span class="en">④ Aggregate &amp; show</span></p>
+<div class="fl-node fl-out">🗺️ <span class="zh">行程卡片 ⇄ 高德地图联动</span><span class="en">Itinerary ⇄ AMap, linked</span></div></div>
+</div>
+<div class="fl-llm"><span class="fl-tag"><span class="zh">实验链路</span><span class="en">Experimental</span></span>
+<span>💬 <span class="zh">自然语言输入</span><span class="en">Free-text request</span></span><i aria-hidden="true">→</i><span>🤖 <span class="zh">大模型理解意图<br/><small>提取目的地和日期</small></span><span class="en">LLM parses intent<br/><small>destination &amp; dates</small></span></span><i aria-hidden="true">→</i><span><span class="zh">复用 ②③ 的工具和算法</span><span class="en">Reuses steps ② ③</span></span><i aria-hidden="true">→</i><span>✍️ <span class="zh">大模型补充出行建议</span><span class="en">LLM adds travel tips</span></span></div>
+<p class="fl-note"><span class="zh"><b>设计取舍：</b>大模型只负责"理解需求"和"补充说明"，路线由算法计算，结果可验证、不会编造地点。实验链路已在 Python 中跑通，尚未接入线上默认流程。</span><span class="en"><b>Design choice:</b> the LLM only parses intent and adds explanations; routes come from algorithms, so results are verifiable and places aren't made up. The LLM pipeline runs in Python but isn't in the default flow yet.</span></p>
+</div>
 <div class="showcase" data-carousel=""><div aria-label="截图，可左右滑动" class="slides" tabindex="0"><figure class="slide"><button aria-label="放大查看 杭州 3 日路线全景" class="shot" type="button"><img alt="杭州 3 日路线全景" loading="eager" src="img/atp-result-3.webp"/></button></figure><figure class="slide"><button aria-label="放大查看 第 1 天路线" class="shot" type="button"><img alt="第 1 天路线" loading="lazy" src="img/atp-result-2.webp"/></button></figure><figure class="slide"><button aria-label="放大查看 首页" class="shot" type="button"><img alt="首页" loading="lazy" src="img/atp-home.webp"/></button></figure></div><div class="sc-nav"><button aria-label="上一张" class="arr" data-dir="-1" type="button">←</button><div class="strip"><button aria-current="true" aria-label="第 1 张：杭州 3 日路线全景" data-i="0" type="button"><img alt="" src="img/atp-result-3.webp"/></button><button aria-label="第 2 张：第 1 天路线" data-i="1" type="button"><img alt="" src="img/atp-result-2.webp"/></button><button aria-label="第 3 张：首页" data-i="2" type="button"><img alt="" src="img/atp-home.webp"/></button></div><div aria-hidden="true" class="dots"><i class="on"></i><i></i><i></i></div><button aria-label="下一张" class="arr" data-dir="1" type="button">→</button></div><p class="caption"><span class="swipe"><span class="zh">左右滑动 · 点击放大 · </span><span class="en">Swipe · tap to zoom · </span></span><span class="zh">三日路线全景 · 第 1 天路线 · 首页（页面会标注演示数据）</span><span class="en">Three-day routes · day 1 · home (demo data is labelled in the app)</span></p></div>
 </article>
 <article aria-labelledby="t-gee" class="panel" hidden="" id="p-gee" role="tabpanel">
@@ -791,12 +838,11 @@ a.src:hover{background:var(--mist);color:var(--moss)}
 <span class="post" style="background:var(--moss)"><span class="zh">下一站</span><span class="en">Next stop</span></span>
 <div class="sign nx"><div class="sum">
 <h3><span class="zh">期待加入你的团队</span><span class="en">Hoping to join your team</span></h3>
-<div class="nx-row"><b>🎯 <span class="zh">目标岗位</span><span class="en">Target roles</span></b><div class="nx-roles">
-<p class="nx-intro"><span class="zh">校招阶段，我更看重能接触真实业务、快速成长的岗位。以下方向都欢迎聊：</span><span class="en">As a graduate, I care most about roles close to real business where I can grow fast. Happy to talk about any of these:</span></p>
+<div class="nx-row"><b>🎯 <span class="zh">求职方向</span><span class="en">Looking for</span></b><div class="nx-roles"><div class="nx-main"><span class="nx-big"><span class="zh">运营</span><span class="en">Operations</span></span><span class="nx-big"><span class="zh">产品</span><span class="en">Product</span></span><span class="nx-big"><span class="zh">商务</span><span class="en">Business</span></span></div><details class="nx-more"><summary><span class="zh">展开具体岗位</span><span class="en">See specific roles</span></summary><div class="nx-roles">
 <div class="nx-grp"><span class="nx-g"><span class="zh">产品</span><span class="en">Product</span></span><span class="nx-c"><span class="zh">产品经理</span><span class="en">Product manager</span></span><span class="nx-c"><span class="zh">产品助理</span><span class="en">Product assistant</span></span></div>
 <div class="nx-grp"><span class="nx-g"><span class="zh">运营</span><span class="en">Operations</span></span><span class="nx-c"><span class="zh">中台</span><span class="en">Middle-office</span></span><span class="nx-c"><span class="zh">平台</span><span class="en">Platform</span></span><span class="nx-c"><span class="zh">业务</span><span class="en">Business</span></span><span class="nx-c"><span class="zh">销售</span><span class="en">Sales</span></span><span class="nx-c"><span class="zh">策略</span><span class="en">Strategy</span></span><span class="nx-c"><span class="zh">产品</span><span class="en">Product</span></span><span class="nx-c"><span class="zh">体验服务</span><span class="en">Service experience</span></span><span class="nx-c"><span class="zh">电商</span><span class="en">E-commerce</span></span><span class="nx-c"><span class="zh">行业</span><span class="en">Industry</span></span><span class="nx-c"><span class="zh">用户</span><span class="en">User</span></span><span class="nx-c"><span class="zh">渠道</span><span class="en">Channel</span></span></div>
 <div class="nx-grp"><span class="nx-g"><span class="zh">商务</span><span class="en">Business</span></span><span class="nx-c"><span class="zh">商务</span><span class="en">Business development</span></span><span class="nx-c"><span class="zh">销售支持</span><span class="en">Sales support</span></span></div>
-</div></div>
+</div></details></div></div>
 <div class="nx-row"><b>🎓 <span class="zh">毕业时间</span><span class="en">Graduating</span></b><span><span class="zh">2026 年 12 月（2027 届）<br/><small class="nx-note">留服认证预计 2027 年 1 月</small></span><span class="en">December 2026 (class of 2027)<br/><small class="nx-note">CSCSE degree verification expected January 2027</small></span></span></div>
 <div class="nx-row"><b>📅 <span class="zh">可到岗</span><span class="en">Available</span></b><span><span class="zh">2027 年 1 月起可全职到岗</span><span class="en">Full-time from January 2027</span></span></div>
 <div class="nx-row"><b>📍 <span class="zh">工作城市</span><span class="en">Location</span></b><span><span class="zh">全国均可</span><span class="en">Open to any city in China</span></span></div>
@@ -885,18 +931,27 @@ a.src:hover{background:var(--mist);color:var(--moss)}
   setLang(h==='en'?'en':h==='zh'?'zh':(saved||'zh'));
   document.getElementById('langBtn').addEventListener('click',function(){setLang(root.getAttribute('data-lang')==='en'?'zh':'en')});
 
+  // jump without smooth scrolling, then re-correct after late images shift the layout
+  function jumpTo(el){
+    if(!el)return;
+    function go(){var off=(document.querySelector('.nav').offsetHeight||64)+8;window.scrollTo({top:el.getBoundingClientRect().top+window.scrollY-off,behavior:'instant'})}
+    go();requestAnimationFrame(go);setTimeout(go,300);setTimeout(go,900);
+    var imgs=[].slice.call(document.images).filter(function(i){return !i.complete});
+    imgs.forEach(function(i){i.addEventListener('load',function(){if(Math.abs(el.getBoundingClientRect().top-((document.querySelector('.nav').offsetHeight||64)+8))>4&&Date.now()-t0<2500)go()},{once:true})});
+    var t0=Date.now();
+  }
   // project tabs
   var tabs=[].slice.call(document.querySelectorAll('.tab'));
   function openTab(id,scroll){
     tabs.forEach(function(t){var on=t.id==='t-'+id;t.setAttribute('aria-selected',on);t.tabIndex=on?0:-1;document.getElementById(t.getAttribute('aria-controls')).hidden=!on;if(on){var c=t.parentNode;if(c.scrollWidth>c.clientWidth+4){c.scrollTo({left:Math.max(0,t.offsetLeft-c.offsetLeft-16),behavior:'smooth'})}}});
-    if(scroll)document.getElementById('projects').scrollIntoView();
+    if(scroll)jumpTo(document.getElementById('projects'));
   }
   tabs.forEach(function(t,i){
     t.addEventListener('click',function(){openTab(t.id.slice(2))});
     t.addEventListener('keydown',function(e){var d=(e.key==='ArrowRight'||e.key==='ArrowDown')?1:(e.key==='ArrowLeft'||e.key==='ArrowUp')?-1:0;if(d)e.preventDefault();if(!d)return;var n=tabs[(i+d+tabs.length)%tabs.length];n.focus();n.click()});
   });
   document.querySelectorAll('[data-open]').forEach(function(a){a.addEventListener('click',function(e){e.preventDefault();openTab(a.getAttribute('data-open'),true)})});
-  if(['flowpilot','pawpath','goncharge','ecom','travel','gee'].indexOf(h)>-1){openTab(h,false);setTimeout(function(){document.getElementById('projects').scrollIntoView()},50)}
+  if(['flowpilot','pawpath','goncharge','ecom','travel','gee'].indexOf(h)>-1){openTab(h,false);setTimeout(function(){jumpTo(document.getElementById('projects'))},50)}
 
   // carousels + lightbox
   var lb=document.getElementById('lb'),lbImg=document.getElementById('lbImg');
