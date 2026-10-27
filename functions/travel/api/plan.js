@@ -456,17 +456,17 @@ function mapBackendResponse(raw) {
     usingMockData: false
   };
 }
-async function buildFallbackPlan(destination, startDate, endDate, totalDays) {
+async function buildFallbackPlan(destination, startDate, endDate, totalDays, live) {
   const useServer = hasAmapKey();
   let usingMockData = false;
-  let center = useServer ? await geocode(destination) : null;
+  let center = live?.center ?? (useServer ? await geocode(destination) : null);
   if (!center) {
     center = mockGeocode(destination);
     usingMockData = true;
   }
   const [serverAttractions, serverHotels, weather] = await Promise.all([
-    useServer ? fetchAttractions(destination) : Promise.resolve([]),
-    useServer ? fetchHotels(destination) : Promise.resolve([]),
+    live?.attractions?.length ? Promise.resolve(live.attractions) : useServer ? fetchAttractions(destination) : Promise.resolve([]),
+    live?.hotels?.length ? Promise.resolve(live.hotels) : useServer ? fetchHotels(destination) : Promise.resolve([]),
     fetchWeather(center, startDate, endDate).catch(() => [])
   ]);
   let attractions;
@@ -567,13 +567,32 @@ async function POST(req) {
       destination,
       startDate,
       endDate,
-      totalDays
+      totalDays,
+      sanitizeLive(body)
     );
     return NextResponse.json(fallback);
   } catch (err) {
     console.log("[v0] plan api error:", err.message);
     return NextResponse.json({ error: "\u751F\u6210\u884C\u7A0B\u5931\u8D25\uFF0C\u8BF7\u7A0D\u540E\u91CD\u8BD5" }, { status: 500 });
   }
+}
+function sanitizeLive(body) {
+  const num = (v) => typeof v === "number" && isFinite(v) ? v : NaN;
+  const str = (v, n = 80) => typeof v === "string" ? v.slice(0, n) : "";
+  const pt = (o) => {
+    const lng = num(o?.lng), lat = num(o?.lat);
+    return lng >= -180 && lng <= 180 && lat >= -90 && lat <= 90 ? { lng, lat } : null;
+  };
+  const pois = (arr, category, max) => (Array.isArray(arr) ? arr : []).slice(0, max).map((p, i) => {
+    const c = pt(p);
+    if (!c || !str(p?.name)) return null;
+    return { id: str(p.id, 40) || `${category}-${i}`, name: str(p.name), address: str(p.address, 120), category, rating: str(p.rating, 8) || void 0, tel: str(p.tel, 40) || void 0, ...c };
+  }).filter((p) => p !== null);
+  const center = pt(body?.center) ?? void 0;
+  const attractions = pois(body?.attractions, "attraction", 40);
+  const hotels = pois(body?.hotels, "hotel", 20);
+  if (!center || attractions.length < 3) return void 0;
+  return { center, attractions, hotels };
 }
 
 // ../tr-api/entry.ts
