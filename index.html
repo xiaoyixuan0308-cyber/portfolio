@@ -883,6 +883,22 @@ dialog.pmodal[open],dialog.sdlg[open]{animation:fs-in .3s ease}
 .dm-th::before{content:"";display:block;padding-top:62.5%}
 .dm-th>img{position:absolute;inset:0}
 .dm-more{align-items:start}
+
+/* internships page */
+.it-list{display:grid;gap:18px}
+.it{border:1.5px solid var(--line);border-radius:18px;background:var(--paper-hi);padding:18px 20px 16px;box-shadow:0 5px 0 color-mix(in srgb,var(--line) 60%,transparent)}
+.it-h{display:flex;align-items:center;gap:12px;flex-wrap:wrap}
+.it-logo{font-size:26px;width:44px;height:44px;display:grid;place-items:center;border-radius:12px;background:var(--mist);flex:none}
+.it-h>div{flex:1;min-width:200px;display:flex;flex-direction:column}
+.it-h b{font-size:17px}
+.it-role{font-size:13.5px;color:var(--ink-soft)}
+.it-when{font-size:13px;color:var(--bark);font-weight:600}
+.it-head{margin:12px 0 10px;font-size:15.5px;font-weight:600;color:var(--ink);padding:8px 12px;border-radius:10px;background:color-mix(in srgb,var(--mist) 55%,var(--paper-hi))}
+.it-kn{display:grid;grid-template-columns:repeat(auto-fit,minmax(110px,1fr));gap:8px;margin:0 0 8px}
+.it-kn div{border:1px solid var(--line);border-radius:12px;padding:8px 10px;font-size:12.5px;color:var(--ink-soft);display:flex;flex-direction:column;background:var(--paper)}
+.it-kn b{font-size:19px;color:var(--moss)}
+.it-links{display:flex;flex-wrap:wrap;gap:10px;margin-top:8px}
+.it-links .btn{padding:8px 16px;font-size:14px}
 </style>
 <style>img{max-width:100%}[hidden]{display:none!important}</style>
 </head>
@@ -1403,6 +1419,33 @@ dialog.pmodal[open],dialog.sdlg[open]{animation:fs-in .3s ease}
 </div>
 </template>
 
+<template id="tpl-intern">
+<div class="it-list">
+<article class="it">
+<header class="it-h"><span class="it-logo" aria-hidden="true">🏭</span><div><b><span class="zh">微创网络（Wicresoft）</span><span class="en">Wicresoft</span></b><span class="it-role"><span class="zh">中台（产品）运营实习生 · 供应链平台 POC</span><span class="en">Platform (product) operations intern · supply-chain platform POC</span></span></div><span class="it-when num"><span class="zh">2026.06 – 2026.08 · 上海</span><span class="en">Jun–Aug 2026 · Shanghai</span></span></header>
+<p class="it-head"><span class="zh">为一家跨国医疗器械企业，推动供应链平台 POC 通过客户验证，进入正式开发。</span><span class="en">For a multinational medical-device client, helped a supply-chain platform POC pass validation and move into full development.</span></p>
+<div class="it-kn num"><div><b>14</b><span class="zh">张业务表</span><span class="en">business tables</span></div><div><b>~3,000</b><span class="zh">条测试数据</span><span class="en">test records</span></div><div><b>5</b><span class="zh">类异常场景</span><span class="en">exception scenarios</span></div><div><b>8% → 5%</b><span class="zh">预测偏差</span><span class="en">forecast gap</span></div></div>
+<ul class="cv-ul">
+<li><b><span class="zh">梳理需求：</span><span class="en">Requirements: </span></b><span class="zh">多次对接客户，把采购计划月拆周、库存与补货分配等规则整理成需求文档、测试方案和演示材料，同步给产品经理推动改进。</span><span class="en">Worked with the client repeatedly to turn monthly-to-weekly plan splitting, inventory and replenishment rules into requirement docs, test plans and demos, and passed them to the product manager to drive changes.</span></li>
+<li><b><span class="zh">验证系统：</span><span class="en">Validation: </span></b><span class="zh">构造测试数据，模拟供应延迟、需求波动、库存积压等场景，检查系统算得准不准、能不能识别异常。</span><span class="en">Built test data simulating supply delays, demand swings and overstock to check accuracy and exception detection.</span></li>
+<li><b><span class="zh">抓 badcase：</span><span class="en">Bad case: </span></b><span class="zh">发现预测公式把未来预测和历史实际等权处理，推动调整基准后，预测与实际供货周期的偏差从 8% 降到 5%。</span><span class="en">Found the forecast weighted future forecasts and past actuals equally; after the baseline changed, the lead-time gap fell from 8% to 5%.</span></li>
+<li><b><span class="zh">客户演示：</span><span class="en">Client demo: </span></b><span class="zh">用 AI 辅助编程优化 Demo 的页面交互，并作为汇报人向客户演示。</span><span class="en">Refined the demo front end with AI-assisted coding and presented it to the client.</span></li>
+</ul>
+<div class="it-links"><a class="btn solid" href="/flowpilot" target="_blank" rel="noopener"><span class="zh">试用延伸项目 FlowPilot ↗</span><span class="en">Try the follow-on project, FlowPilot ↗</span></a><button class="btn ghost" data-proj="flowpilot" type="button"><span class="zh">FlowPilot 项目详情</span><span class="en">FlowPilot details</span></button></div>
+</article>
+<article class="it">
+<header class="it-h"><span class="it-logo" aria-hidden="true">📊</span><div><b><span class="zh">安永华明会计师事务所（EY）</span><span class="en">EY (Ernst &amp; Young Hua Ming)</span></b><span class="it-role"><span class="zh">审计实习生</span><span class="en">Audit intern</span></span></div><span class="it-when num"><span class="zh">2024.06 – 2024.09 · 上海</span><span class="en">Jun–Sep 2024 · Shanghai</span></span></header>
+<p class="it-head"><span class="zh">核对 1,200+ 条财务数据，把常见异常原因沉淀成排查知识库，被其他客户项目复用。</span><span class="en">Reconciled 1,200+ financial records and turned recurring issues into a troubleshooting guide reused on other clients.</span></p>
+<div class="it-kn num"><div><b>1,200+</b><span class="zh">条交易数据</span><span class="en">transactions</span></div><div><b>−4%</b><span class="zh">数据核准时长</span><span class="en">reconciliation time</span></div><div><b>1</b><span class="zh">份排查知识库</span><span class="en">troubleshooting guide</span></div></div>
+<ul class="cv-ul">
+<li><b><span class="zh">差异分析：</span><span class="en">Variance analysis: </span></b><span class="zh">逐条比对交易记录和科目资料，追查数据来源和匹配条件，找出对不上的原因并反馈给项目负责人。</span><span class="en">Compared transactions with account records line by line, traced sources and matching rules, and reported the causes to the engagement lead.</span></li>
+<li><b><span class="zh">经验沉淀：</span><span class="en">Knowledge capture: </span></b><span class="zh">归纳常见异常原因，更新排查知识库，让其他客户的问题能更早被发现，核准时长降低 4%。</span><span class="en">Grouped recurring causes into the team's troubleshooting guide so issues were caught sooner on other clients, cutting reconciliation time by 4%.</span></li>
+<li><b><span class="zh">流程规范：</span><span class="en">Documentation: </span></b><span class="zh">按模板整理凭证、统一字段，保证原始数据、账务记录和底稿之间可追溯。</span><span class="en">Organised evidence to the template and standardised fields so source data, ledgers and working papers stay traceable.</span></li>
+</ul>
+</article>
+</div>
+<p class="cv-link"><a href="#" data-sheet="resume"><span class="zh">查看完整简历 →</span><span class="en">See the full résumé →</span></a></p>
+</template>
 <template id="tpl-demo">
 <div class="dm-list">
 <div class="dm"><span class="dm-th"><img alt="" decoding="async" src="img/fp-home-cockpit.webp"/></span><div><b>FlowPilot Lab</b><p><span class="zh">供应链计划平台：月度补货 → 周度发货，每个数字都能追溯来源。</span><span class="en">Supply-chain planning: monthly replenishment to weekly shipping, every number traceable.</span></p></div><div class="dm-act"><a class="btn solid" href="/flowpilot" target="_blank" rel="noopener"><span class="zh">在线试用</span><span class="en">Try it</span> ↗</a><button class="btn ghost" data-proj="flowpilot" type="button"><span class="zh">项目详情</span><span class="en">Details</span></button></div></div>
@@ -1675,7 +1718,7 @@ dialog.pmodal[open],dialog.sdlg[open]{animation:fs-in .3s ease}
   function h(zh,en){var e=document.createElement('h3');e.className='cv-h sk-h';e.innerHTML=T(zh,en);return e}
   var sheets={
     resume:{ic:'📄',t:T('简历','Résumé'),build:function(){return document.getElementById('tpl-resume').content.cloneNode(true)}},
-    intern:{ic:'💼',t:T('实习经历','Internships'),build:function(){return document.getElementById('tpl-resume').content.cloneNode(true)},scroll:'cv-intern'},
+    intern:{ic:'💼',t:T('实习经历','Internships'),build:function(){return document.getElementById('tpl-intern').content.cloneNode(true)}},
     demo:{ic:'🖥️',t:T('Demo / 项目','Demos / Projects'),build:function(){return document.getElementById('tpl-demo').content.cloneNode(true)}},
     skill:{ic:'🧰',t:T('技能与工作习惯','Skills & working habits'),build:function(){
       var f=document.createDocumentFragment(),cv=document.getElementById('tpl-resume').content;
@@ -1702,7 +1745,7 @@ dialog.pmodal[open],dialog.sdlg[open]{animation:fs-in .3s ease}
   dlg.addEventListener('close',function(){var pm=document.getElementById('pmodal');if(!(pm&&pm.open))document.documentElement.classList.remove('pm-lock')});
   dlg.addEventListener('click',function(e){
     if(e.target===dlg){dlg.close();return}
-    var sh=e.target.closest('[data-sheet]'); if(sh){open(sh.getAttribute('data-sheet'));return}
+    var sh=e.target.closest('[data-sheet]'); if(sh){e.preventDefault();open(sh.getAttribute('data-sheet'));return}
     var p=e.target.closest('[data-proj]'); if(p){dlg.close();var c=document.querySelector('.pcard[data-id="'+p.getAttribute('data-proj')+'"]'); if(c){c.scrollIntoView({block:'center'});c.click()} return}
     var j=e.target.closest('[data-jump]'); if(j){e.preventDefault();dlg.close();var t=document.getElementById(j.getAttribute('data-jump')); if(t) t.scrollIntoView({behavior:'smooth'})}
   });
