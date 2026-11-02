@@ -960,6 +960,10 @@ html.mode-click .sc-hint{color:var(--ink)}
 .dcard{user-select:none}
 .dm-more{align-items:stretch!important}
 .dc-b{flex:1}.dc-go{margin-top:auto!important;padding-top:4px}
+
+/* justify long Chinese paragraphs (English stays left-aligned) */
+html:not([data-lang="en"]) .me-text p,html:not([data-lang="en"]) .me-case p,html:not([data-lang="en"]) .cv-ul li,html:not([data-lang="en"]) .it-head,html:not([data-lang="en"]) .blk p,html:not([data-lang="en"]) .blk li,html:not([data-lang="en"]) .rf-card li,html:not([data-lang="en"]) .p-what,html:not([data-lang="en"]) .oneline,html:not([data-lang="en"]) .hb-tx p,html:not([data-lang="en"]) .sign p,html:not([data-lang="en"]) .sign li,html:not([data-lang="en"]) .honest,html:not([data-lang="en"]) .fl-note,html:not([data-lang="en"]) .ptext li,html:not([data-lang="en"]) .ptext p,html:not([data-lang="en"]) .dm p{text-align:justify;text-justify:inter-ideograph}
+html:not([data-lang="en"]) .ab-list p,html:not([data-lang="en"]) .ab-list li,html:not([data-lang="en"]) .ab-why,html:not([data-lang="en"]) .ab-cmp p,html:not([data-lang="en"]) .ab-list .ab-wide>div,html:not([data-lang="en"]) .ld-notes li,html:not([data-lang="en"]) .ld-notes p{text-align:justify;text-justify:inter-ideograph}
 </style>
 <style>img{max-width:100%}[hidden]{display:none!important}</style>
 <script>(function(){var m=null;try{m=new URLSearchParams(location.search).get('mode')}catch(e){}
