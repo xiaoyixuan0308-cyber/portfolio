@@ -747,6 +747,18 @@ dialog.pmodal[open]::backdrop{animation:pm-fade .28s ease}
 .dm-more button:hover{border-color:var(--moss);color:var(--moss)}
 .dm-more small{color:var(--ink-soft);margin-left:4px}
 .sk-h{margin-top:22px}
+
+/* ---------- full-screen pages for projects and scene sheets ---------- */
+dialog.pmodal,dialog.sdlg{width:100vw;height:100vh;height:100dvh;max-width:none;max-height:none;margin:0;inset:0;border:0;border-radius:0;box-shadow:none;background:var(--paper)}
+dialog.pmodal::backdrop,dialog.sdlg::backdrop{background:var(--paper);backdrop-filter:none}
+dialog.pmodal[open],dialog.sdlg[open]{animation:fs-in .3s ease}
+@keyframes fs-in{from{opacity:0;transform:translateY(14px)}to{opacity:1;transform:none}}
+.pm-bar{padding-inline:max(16px,calc((100vw - 1180px)/2))}
+.sd-bar{padding-inline:max(16px,calc((100vw - 900px)/2))}
+.pm-body>.panel{max-width:1180px;margin-inline:auto}
+.sd-bar{padding-block:14px}
+.sd-body{flex:1;padding-inline:max(16px,calc((100vw - 900px)/2));padding-block:26px 48px}
+@media (prefers-reduced-motion: reduce){dialog.pmodal[open],dialog.sdlg[open]{animation:none}}
 </style>
 <style>img{max-width:100%}[hidden]{display:none!important}</style>
 </head>
@@ -1564,11 +1576,12 @@ dialog.pmodal[open]::backdrop{animation:pm-fade .28s ease}
   function open(k){
     var s=sheets[k]; if(!s) return;
     ic.textContent=s.ic; ttl.innerHTML=s.t; body.innerHTML=''; body.appendChild(s.build()); body.scrollTop=0;
-    dlg.showModal();
+    document.documentElement.classList.add('pm-lock');dlg.showModal();
     if(s.scroll){var t=document.getElementById(s.scroll); if(t) body.scrollTop=t.offsetTop-body.offsetTop-6;}
   }
   document.querySelectorAll('[data-sheet]').forEach(function(b){b.addEventListener('click',function(){open(b.getAttribute('data-sheet'))})});
   document.getElementById('sdClose').addEventListener('click',function(){dlg.close()});
+  dlg.addEventListener('close',function(){var pm=document.getElementById('pmodal');if(!(pm&&pm.open))document.documentElement.classList.remove('pm-lock')});
   dlg.addEventListener('click',function(e){
     if(e.target===dlg){dlg.close();return}
     var p=e.target.closest('[data-proj]'); if(p){dlg.close();var c=document.querySelector('.pcard[data-id="'+p.getAttribute('data-proj')+'"]'); if(c){c.scrollIntoView({block:'center'});c.click()} return}
