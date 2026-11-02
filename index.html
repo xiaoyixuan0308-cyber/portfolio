@@ -786,7 +786,12 @@ dialog.pmodal[open],dialog.sdlg[open]{animation:fs-in .3s ease}
 .me .facts div:last-child{border-right:0;padding-bottom:14px}
 @media (max-width:860px){.me .facts{grid-template-columns:1fr 1fr}.me .facts div{border-right:0;border-bottom:1px dashed var(--line)}.me .facts div:nth-child(odd){border-right:1px dashed var(--line)}.me .facts div:last-child{grid-column:1/-1;border-bottom:0;border-right:0}}
 .sd-body .me-cases{grid-template-columns:1fr}
-.sd-body .facts{grid-template-columns:repeat(auto-fit,minmax(150px,1fr))}
+.sd-body .facts{grid-template-columns:repeat(3,minmax(0,1fr));gap:0;margin:20px 0 0;padding:0;background:var(--paper-hi);border:1.5px solid var(--line);border-radius:16px;overflow:hidden}
+.sd-body .facts div{display:flex;flex-direction:column;gap:4px;padding:12px 16px;border-bottom:1px dashed var(--line);border-right:1px dashed var(--line)}
+.sd-body .facts div:nth-child(3n){border-right:0}
+.sd-body .facts div:nth-child(n+4){border-bottom:0}
+.sd-body .facts div:last-child{grid-column:span 2;border-right:0}
+@media (max-width:640px){.sd-body .facts{grid-template-columns:1fr 1fr}.sd-body .facts div{border-right:0;border-bottom:1px dashed var(--line)}.sd-body .facts div:nth-child(odd){border-right:1px dashed var(--line)}.sd-body .facts div:last-child{grid-column:1/-1;border-right:0;border-bottom:0}}
 
 /* hero v3: 地瓜 left, menu right */
 .sc-stage{display:grid;grid-template-columns:minmax(0,1.15fr) minmax(300px,.85fr);gap:clamp(20px,4vw,56px);align-items:end;min-height:0;flex:1}
