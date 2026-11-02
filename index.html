@@ -854,6 +854,25 @@ dialog.pmodal[open],dialog.sdlg[open]{animation:fs-in .3s ease}
 .tb-home:hover{background:var(--moss);color:var(--paper-hi)}
 .tb-hint{align-self:center;margin:0 0 6px 4px;font-size:12px;color:var(--ink-soft);white-space:nowrap}
 @media (max-width:640px){.tb{max-width:150px;font-size:12.5px}.tb-hint{display:none}}
+
+/* demo sheet: thumbnails */
+.dm{grid-template-columns:150px minmax(0,1fr) auto;gap:16px}
+.dm-th{display:block;width:150px;aspect-ratio:16/10;border-radius:10px;overflow:hidden;border:1px solid var(--line);background:var(--mist)}
+.dm-th img{width:100%;height:100%;object-fit:cover;object-position:top left;display:block}
+@media (max-width:640px){.dm{grid-template-columns:96px minmax(0,1fr)}.dm-th{width:96px}}
+.dm-more{display:grid;grid-template-columns:repeat(auto-fill,minmax(160px,1fr));gap:12px}
+.dm-more .dcard{border-radius:14px;padding:0;font-size:inherit}
+.dcard{display:flex;flex-direction:column;text-align:left;padding:0;cursor:pointer;font-family:var(--body);color:var(--ink);background:var(--paper);border:1.5px solid var(--line);border-radius:14px;overflow:hidden;transition:transform .2s ease,border-color .2s ease,box-shadow .2s ease}
+.dcard:hover,.dcard:focus-visible{transform:translateY(-4px);border-color:var(--moss);box-shadow:0 10px 20px rgba(60,50,20,.12);outline:none}
+.dc-th{display:block;aspect-ratio:16/9;background:var(--mist);overflow:hidden;border-bottom:1px solid var(--line)}
+.dc-th img{width:100%;height:100%;object-fit:cover;object-position:top left;display:block;transition:transform .35s ease}
+.dcard:hover .dc-th img{transform:scale(1.05)}
+.dc-cover{display:grid;place-items:center;height:100%;font-size:44px;background:linear-gradient(135deg,color-mix(in srgb,var(--leaf) 30%,var(--paper-hi)),color-mix(in srgb,var(--amber) 18%,var(--paper-hi)))}
+.dc-b{display:flex;flex-direction:column;gap:3px;padding:10px 12px 12px}
+.dc-b b{font-size:15px}
+.dc-b small{font-size:12.5px;color:var(--ink-soft);line-height:1.5}
+.dc-go{font-size:12.5px;font-weight:700;color:var(--moss);margin-top:4px}
+@media (max-width:640px){.dm-more{grid-template-columns:1fr 1fr;gap:10px}}
 </style>
 <style>img{max-width:100%}[hidden]{display:none!important}</style>
 </head>
@@ -1376,18 +1395,12 @@ dialog.pmodal[open],dialog.sdlg[open]{animation:fs-in .3s ease}
 
 <template id="tpl-demo">
 <div class="dm-list">
-<div class="dm"><span class="dm-ic" aria-hidden="true">📦</span><div><b>FlowPilot Lab</b><p><span class="zh">供应链计划平台：月度补货 → 周度发货，每个数字都能追溯来源。</span><span class="en">Supply-chain planning: monthly replenishment to weekly shipping, every number traceable.</span></p></div><div class="dm-act"><a class="btn solid" href="/flowpilot" target="_blank" rel="noopener"><span class="zh">在线试用</span><span class="en">Try it</span> ↗</a><button class="btn ghost" data-proj="flowpilot" type="button"><span class="zh">项目详情</span><span class="en">Details</span></button></div></div>
-<div class="dm"><span class="dm-ic" aria-hidden="true">🐾</span><div><b>PawPath</b><p><span class="zh">领养管理平台：可切换 6 种角色，体验不同权限下的系统。</span><span class="en">Adoption platform: switch between 6 roles to see each one's view.</span></p></div><div class="dm-act"><a class="btn solid" href="/pawpath" target="_blank" rel="noopener"><span class="zh">在线试用</span><span class="en">Try it</span> ↗</a><button class="btn ghost" data-proj="pawpath" type="button"><span class="zh">项目详情</span><span class="en">Details</span></button></div></div>
-<div class="dm"><span class="dm-ic" aria-hidden="true">🗺️</span><div><b><span class="zh">AI 旅行规划</span><span class="en">AI Travel Planner</span></b><p><span class="zh">输入目的地和日期，生成按天的行程和地图路线。</span><span class="en">Enter a destination and dates for a day-by-day plan on a map.</span></p></div><div class="dm-act"><a class="btn solid" href="/travel/" target="_blank" rel="noopener"><span class="zh">在线试用</span><span class="en">Try it</span> ↗</a><button class="btn ghost" data-proj="travel" type="button"><span class="zh">项目详情</span><span class="en">Details</span></button></div></div>
+<div class="dm"><span class="dm-th"><img alt="" loading="lazy" src="img/fp-home-cockpit.webp"/></span><div><b>FlowPilot Lab</b><p><span class="zh">供应链计划平台：月度补货 → 周度发货，每个数字都能追溯来源。</span><span class="en">Supply-chain planning: monthly replenishment to weekly shipping, every number traceable.</span></p></div><div class="dm-act"><a class="btn solid" href="/flowpilot" target="_blank" rel="noopener"><span class="zh">在线试用</span><span class="en">Try it</span> ↗</a><button class="btn ghost" data-proj="flowpilot" type="button"><span class="zh">项目详情</span><span class="en">Details</span></button></div></div>
+<div class="dm"><span class="dm-th"><img alt="" loading="lazy" src="img/pp-applicant-ranking.webp"/></span><div><b>PawPath</b><p><span class="zh">领养管理平台：可切换 6 种角色，体验不同权限下的系统。</span><span class="en">Adoption platform: switch between 6 roles to see each one's view.</span></p></div><div class="dm-act"><a class="btn solid" href="/pawpath" target="_blank" rel="noopener"><span class="zh">在线试用</span><span class="en">Try it</span> ↗</a><button class="btn ghost" data-proj="pawpath" type="button"><span class="zh">项目详情</span><span class="en">Details</span></button></div></div>
+<div class="dm"><span class="dm-th"><img alt="" loading="lazy" src="img/atp-result-3.webp"/></span><div><b><span class="zh">AI 旅行规划</span><span class="en">AI Travel Planner</span></b><p><span class="zh">输入目的地和日期，生成按天的行程和地图路线。</span><span class="en">Enter a destination and dates for a day-by-day plan on a map.</span></p></div><div class="dm-act"><a class="btn solid" href="/travel/" target="_blank" rel="noopener"><span class="zh">在线试用</span><span class="en">Try it</span> ↗</a><button class="btn ghost" data-proj="travel" type="button"><span class="zh">项目详情</span><span class="en">Details</span></button></div></div>
 </div>
 <h3 class="cv-h"><span class="zh">更多项目</span><span class="en">More projects</span></h3>
-<div class="dm-more">
-<button data-proj="pmba" type="button">🐼 PM/BA Panda <small>Claude Skill</small></button>
-<button data-proj="loan" type="button">📉 <span class="zh">贷款违约风险分析</span><span class="en">Loan default risk</span></button>
-<button data-proj="goncharge" type="button">🔍 GoNCharge <small><span class="zh">SQL 舞弊审计</span><span class="en">SQL fraud audit</span></small></button>
-<button data-proj="ecom" type="button">🛒 <span class="zh">电商数据仓库</span><span class="en">E-commerce warehouse</span></button>
-<button data-proj="gee" type="button">🏆 <span class="zh">GEE 国际竞赛</span><span class="en">GEE competition</span></button>
-</div>
+<div class="dm-more"><button class="dcard" data-proj="pmba" type="button"><span class="dc-th"><img alt="" loading="lazy" src="img/pmba-state-machine.webp"/></span><span class="dc-b"><b>🐼 <span class="zh">PM/BA Panda</span><span class="en">PM/BA Panda</span></b><small><span class="zh">Claude Skill：需求 → UML → 原型</span><span class="en">Claude Skill: requirements → UML → prototype</span></small><span class="dc-go"><span class="zh">查看详情 →</span><span class="en">View details →</span></span></span></button><button class="dcard" data-proj="loan" type="button"><span class="dc-th"><img alt="" loading="lazy" src="img/ld-customer.webp"/></span><span class="dc-b"><b>📉 <span class="zh">贷款违约风险分析</span><span class="en">Loan default risk</span></b><small><span class="zh">用户分层 + 可解释模型</span><span class="en">Segmentation + an explainable model</span></small><span class="dc-go"><span class="zh">查看详情 →</span><span class="en">View details →</span></span></span></button><button class="dcard" data-proj="goncharge" type="button"><span class="dc-th"><img alt="" loading="lazy" src="img/gc-vendors.webp"/></span><span class="dc-b"><b>🔍 <span class="zh">GoNCharge</span><span class="en">GoNCharge</span></b><small><span class="zh">用 SQL 查出约 98 万美元舞弊</span><span class="en">SQL that uncovered ~US$980K of fraud</span></small><span class="dc-go"><span class="zh">查看详情 →</span><span class="en">View details →</span></span></span></button><button class="dcard" data-proj="ecom" type="button"><span class="dc-th"><span class="dc-cover" aria-hidden="true">🛒</span></span><span class="dc-b"><b>🛒 <span class="zh">电商数据仓库</span><span class="en">E-commerce warehouse</span></b><small><span class="zh">2.5 万订单 → 经营看板</span><span class="en">25K orders → a business dashboard</span></small><span class="dc-go"><span class="zh">查看详情 →</span><span class="en">View details →</span></span></span></button><button class="dcard" data-proj="gee" type="button"><span class="dc-th"><img alt="" loading="lazy" src="img/gee-certificate.webp"/></span><span class="dc-b"><b>🏆 <span class="zh">GEE 国际竞赛</span><span class="en">GEE competition</span></b><small><span class="zh">170+ 队中排名第 5</span><span class="en">5th of 170+ teams</span></small><span class="dc-go"><span class="zh">查看详情 →</span><span class="en">View details →</span></span></span></button></div>
 <p class="cv-link"><a href="#projects" data-jump="projects"><span class="zh">查看全部项目 →</span><span class="en">See all projects →</span></a></p>
 </template>
 
