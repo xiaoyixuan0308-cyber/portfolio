@@ -759,6 +759,19 @@ dialog.pmodal[open],dialog.sdlg[open]{animation:fs-in .3s ease}
 .sd-bar{padding-block:14px}
 .sd-body{flex:1;padding-inline:max(16px,calc((100vw - 900px)/2));padding-block:26px 48px}
 @media (prefers-reduced-motion: reduce){dialog.pmodal[open],dialog.sdlg[open]{animation:none}}
+
+/* intro: case-style self introduction */
+@media (min-width:861px){.me{grid-template-columns:minmax(0,1.7fr) minmax(0,1fr)}}
+.me-ask-row .btn{max-width:100%;overflow-wrap:anywhere}
+.me-case{margin:18px 0 6px;padding:2px 0 2px 16px;border-left:3px solid color-mix(in srgb,var(--leaf) 70%,var(--line))}
+.me-case h4{margin:0 0 6px;font-size:16px;font-weight:800;color:var(--ink)}
+.me-text p{max-width:none}
+.me-text .me-case p{font-size:15.5px}
+.me-text .me-close{color:var(--ink);font-weight:600;margin-top:18px;max-width:none}
+.me-ask{margin-top:14px;padding:16px 18px;border:1.5px dashed color-mix(in srgb,var(--amber) 55%,var(--line));border-radius:16px;background:color-mix(in srgb,var(--amber) 6%,var(--paper-hi))}
+.me-text .me-ask p{margin:0 0 12px;color:var(--ink);max-width:none}
+.me-ask-row{display:flex;flex-wrap:wrap;gap:10px}
+.me-ask-row .btn{padding:9px 18px;font-size:15px}
 </style>
 <style>img{max-width:100%}[hidden]{display:none!important}</style>
 </head>
@@ -823,9 +836,20 @@ dialog.pmodal[open],dialog.sdlg[open]{animation:fs-in .3s ease}
 </div>
 <div class="me">
 <div class="me-text">
-<p class="me-lead"><span class="zh">我是肖艺宣，2027 届，求职运营 / 产品方向。我在意的不只是把事情做完，而是<b>把事情做成</b>：为什么要做，做到什么程度算成功，以及怎样让它<b>不依赖某个人也能持续运转</b>。</span><span class="en">I'm Xiao Yixuan, class of 2027, looking for operations and product roles. I care less about finishing tasks and more about <b>getting the outcome</b>: why something is worth doing, what success looks like, and how to make it <b>keep running without depending on any one person</b>.</span></p>
-<p><span class="zh">我习惯先定义目标和衡量标准，再拆开流程找到真正的原因；问题解决后，把方法沉淀成规则或工具，让同类问题不再出现。</span><span class="en">I start by defining the goal and how to measure it, then take the process apart to find the real cause. Once a problem is solved, I turn the fix into rules or tools so the same kind of problem doesn't recur.</span></p>
-<p><span class="zh">我也在钻研<b>如何让 AI 产品真正落地到实际业务中</b>。AI 能做的事很多，难的是找到值得解决的场景、说清楚效果怎么衡量，并让它稳定地融入原有流程，而不是停留在演示。日常工作中，我用 AI 快速验证想法、搭原型和处理数据；FlowPilot、PawPath 和 AI 旅行规划，都是我在这个方向上的实践。</span><span class="en">I'm also digging into <b>how AI products actually land in real business</b>. AI can do a lot; the hard part is finding the scenarios worth solving, defining how success is measured, and fitting it reliably into existing workflows instead of leaving it as a demo. Day to day I use AI to test ideas, prototype and handle data, and FlowPilot, PawPath and the AI Travel Planner are my hands-on work in this direction.</span></p>
+<p class="me-lead"><span class="zh">2027 届，昆士兰大学信息系统硕士，本科读会计，求职<b>产品运营</b>方向。</span><span class="en">Class of 2027: a Master's in Information Systems at the University of Queensland, with an accounting degree before that. I'm looking for <b>product operations</b> roles.</span></p>
+<p><span class="zh">我有两段实习：在微创做中台产品运营，在安永做财务审计。另外独立开发了三个可以在线试用的业务系统。其中两个开源后，我分享到 vibecoding 爱好者社群，邀请成员试用测试，合计获得近 300 个 Star、30 余次 Fork，并根据反馈完成了迭代。</span><span class="en">I've done two internships: platform product operations at Wicresoft, and audit at EY. I've also built three business systems on my own that you can try online. After open-sourcing two of them, I shared them with a vibe-coding community and invited members to test them: together they've earned nearly 300 stars and 30+ forks, and I iterated on the feedback.</span></p>
+<div class="me-case"><h4><span class="zh">代表经历一：微创实习，推动供应链平台从 POC 进入正式开发</span><span class="en">1 · Wicresoft: taking a supply-chain platform from POC to full development</span></h4>
+<p><span class="zh">客户希望用系统替代靠表格完成的补货计划。实习期间我多次直接对接客户梳理需求，把客户的想法整理后同步给产品经理推动改进，并配合做数据分析。我把业务规则抽象成功能点，写成需求文档和测试方案，再用 14 张业务表、约 3,000 条测试数据和 5 类异常场景验证系统。验证中我抓到多个 badcase，最典型的是系统预测的供货周期和实际对不上。追查发现，原公式把未来月份的预测值和历史实际值等权处理。推动调整预测基准后，差异从 <b>8% 降到 5%</b>。最终项目通过验证、<b>进入正式开发</b>，我作为汇报人向客户演示了 Demo。</span><span class="en">The client wanted a system to replace spreadsheet-driven replenishment planning. I met the client repeatedly to work through requirements, passed their ideas on to the product manager to drive changes, and supported the data analysis. I turned the business rules into features, requirement documents and test plans, then validated the system with 14 business tables, about 3,000 test records and 5 exception scenarios. Testing surfaced several bad cases; the clearest was forecast lead times that didn't match reality. I traced it to a formula that weighted future forecasts and past actuals equally, and after the forecast baseline was changed the gap fell <b>from 8% to 5%</b>. The project passed validation and <b>moved into full development</b>, and I presented the demo to the client.</span></p></div>
+<div class="me-case"><h4><span class="zh">代表经历二：用数据做用户分层，给出能执行的授信策略</span><span class="en">2 · Segmenting users with data to shape a lending strategy</span></h4>
+<p><span class="zh">这是我独立完成的一次风控分析。银行希望在放贷前识别高风险客户，数据是约 1 万名借款人，其中约 11% 违约。我先做分层：收入低于 5 万的客户违约率 25%，是 25 万以上客户的 <b>4 倍</b>；30 岁以下客户是 46–60 岁客户的 <b>2 倍</b>。建模时，准确率更高的决策树（89.3%）其实只识别出 3.3% 的违约客户，因为违约样本太少，把所有人都判成"正常"也能拿高分。我改用识别率作为主要指标，选了逻辑回归，识别出 29.7%，是前者的 <b>9 倍</b>。最后据此提出三条策略：用收入、年龄、学历做综合评分；对年轻、低收入人群设置差异化额度并做贷前辅导；把账户余额作为贷后预警信号。</span><span class="en">A credit-risk analysis I did on my own. A bank wanted to spot high-risk applicants before lending, using data on about 10,000 borrowers, roughly 11% of whom defaulted. I segmented first: customers earning under $50K defaulted at 25%, <b>4×</b> the rate of those over $250K, and under-30s defaulted at <b>2×</b> the rate of 46–60-year-olds. In modelling, the more accurate decision tree (89.3%) caught only 3.3% of defaulters, because with so few defaults, calling everyone "safe" still scores well. I made the catch rate the main metric and chose logistic regression, which caught 29.7%, <b>9×</b> as many. From this I proposed three strategies: a combined score on income, age and education; tiered limits and pre-loan counselling for young, low-income applicants; and account balance as a post-loan warning signal.</span></p></div>
+<div class="me-case"><h4><span class="zh">代表经历三：Badcase 复盘</span><span class="en">3 · Bad-case reviews</span></h4>
+<p><span class="zh"><b>数据侧：</b>实习结束后，我把这套供应链业务做成了开源的计划平台 FlowPilot。系统最初会把 18 个 SKU 标成异常，我没有直接接受这个结果，而是逐个抽查复算，发现很大一部分是误报，根源是两处隐藏的数据口径错误。修正口径后，误报降到 <b>8 个</b>。</span><span class="en"><b>Data:</b> after the internship I rebuilt this supply-chain work as an open-source planning platform, FlowPilot. It first flagged 18 SKUs as exceptions. Rather than accept that, I re-checked them one by one and found many were false alarms caused by two hidden definition errors in the data. After fixing them, false alarms fell to <b>8</b>.</span></p>
+<p><span class="zh"><b>用户侧：</b>PawPath 发到社群试用后，有测试者反馈"不知道自己测得对不对、什么算成功"。我判断问题不在功能，而在于用户看不清流程走到了哪一步、每一步的完成标准是什么。随后我补上了完整的流程图、每个状态的进入条件和判定标准，并写了一条 7 步的完整体验路径，让测试者能一步步对照验证。</span><span class="en"><b>Users:</b> after I shared PawPath with the community, a tester said they couldn't tell whether they were testing it right or what counted as success. I judged the problem wasn't the features but that users couldn't see where they were in the flow or what "done" meant at each step. I then added full workflow diagrams, the entry conditions and pass criteria for every status, and a 7-step walkthrough testers could check against.</span></p></div>
+<p class="me-close"><span class="zh">我擅长把业务问题拆清楚，用数据找到真正的原因，再推动方案落地。</span><span class="en">I'm good at breaking business problems down, finding the real cause in the data, and seeing the fix through.</span></p>
+<div class="me-ask">
+<p><span class="zh">项目 Demo 都已上线，欢迎试用。我也非常期待、并真心感谢每一条批评和建议，欢迎随时给我反馈；如果你正在招人，也很希望能和你聊聊。</span><span class="en">All the project demos are live; please give them a try. I'd be truly grateful for any criticism or suggestions, and if you're hiring, I'd love to talk.</span></p>
+<div class="me-ask-row"><a class="btn solid" href="mailto:xiaoyixuan0308@163.com?subject=%E5%85%B3%E4%BA%8E%E4%BD%A0%E7%9A%84%E4%BD%9C%E5%93%81%E9%9B%86">✉️ xiaoyixuan0308@163.com</a><button class="btn ghost" data-sheet="demo" type="button"><span class="zh">去试用 Demo →</span><span class="en">Try the demos →</span></button></div>
+</div>
 </div>
 <dl class="facts">
 <div><dt><span class="zh">学历</span><span class="en">Education</span></dt><dd><span class="zh">昆士兰大学 信息系统硕士<br/>奥塔哥大学 会计学士</span><span class="en">MS Information Systems, University of Queensland<br/>BCom Accounting, University of Otago</span></dd></div>
@@ -1584,6 +1608,7 @@ dialog.pmodal[open],dialog.sdlg[open]{animation:fs-in .3s ease}
   dlg.addEventListener('close',function(){var pm=document.getElementById('pmodal');if(!(pm&&pm.open))document.documentElement.classList.remove('pm-lock')});
   dlg.addEventListener('click',function(e){
     if(e.target===dlg){dlg.close();return}
+    var sh=e.target.closest('[data-sheet]'); if(sh){open(sh.getAttribute('data-sheet'));return}
     var p=e.target.closest('[data-proj]'); if(p){dlg.close();var c=document.querySelector('.pcard[data-id="'+p.getAttribute('data-proj')+'"]'); if(c){c.scrollIntoView({block:'center'});c.click()} return}
     var j=e.target.closest('[data-jump]'); if(j){e.preventDefault();dlg.close();var t=document.getElementById(j.getAttribute('data-jump')); if(t) t.scrollIntoView({behavior:'smooth'})}
   });
