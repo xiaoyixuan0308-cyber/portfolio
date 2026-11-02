@@ -924,6 +924,17 @@ dialog.pmodal[open],dialog.sdlg[open]{animation:fs-in .3s ease}
   .me .me-cases .me-case:nth-child(3) h4{grid-column:1/-1}
   .me .me-cases .me-case:nth-child(3) p{margin:0}
 }
+
+/* projects: 4 per row on wide screens */
+@media (min-width:1101px){
+  .pgrid{grid-template-columns:repeat(4,minmax(0,1fr));gap:18px}
+  .pgrid .pc-body{padding:28px 15px 15px;gap:5px}
+  .pgrid .pc-t{font-size:18px}
+  .pgrid .pc-sub{font-size:13px}
+  .pgrid .pc-hook{font-size:13.5px}
+  .pgrid .pc-tags{font-size:12.5px}
+}
+@media (min-width:1001px) and (max-width:1100px){.pgrid{grid-template-columns:repeat(3,minmax(0,1fr))}}
 </style>
 <style>img{max-width:100%}[hidden]{display:none!important}</style>
 </head>
