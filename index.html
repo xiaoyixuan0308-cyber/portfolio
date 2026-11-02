@@ -935,8 +935,26 @@ dialog.pmodal[open],dialog.sdlg[open]{animation:fs-in .3s ease}
   .pgrid .pc-tags{font-size:12.5px}
 }
 @media (min-width:1001px) and (max-width:1100px){.pgrid{grid-template-columns:repeat(3,minmax(0,1fr))}}
+
+/* ---------- view modes: click (desktop default) / scroll (mobile default) ---------- */
+html.mode-click,html.mode-click body{overflow:hidden;height:100%}
+html.mode-click .only-scroll,html.mode-scroll .only-click{display:none!important}
+.vmode{display:inline-flex;margin-left:8px;border:1.5px solid var(--line);border-radius:999px;padding:2px;background:var(--paper-hi)}
+.vmode button{font:600 13px var(--body);border:0;background:transparent;color:var(--ink-soft);padding:4px 11px;border-radius:999px;cursor:pointer}
+html.mode-click .vmode [data-mode=click],html.mode-scroll .vmode [data-mode=scroll]{background:var(--moss);color:var(--paper-hi)}
+.sc-switch{font:700 15px var(--body);color:var(--ink);background:color-mix(in srgb,var(--paper-hi) 92%,transparent);border:1.5px solid var(--amber);border-radius:999px;padding:8px 18px;cursor:pointer;box-shadow:0 4px 0 color-mix(in srgb,var(--amber) 30%,transparent);text-shadow:none}
+.sc-switch:hover{background:var(--amber);color:var(--paper-hi)}
+html.mode-click .sc-hint{color:var(--ink)}
+.vtoast{position:fixed;left:50%;bottom:22px;transform:translateX(-50%);z-index:80;display:flex;align-items:center;gap:10px;padding:10px 12px 10px 18px;border-radius:999px;background:var(--ink);color:var(--paper-hi);font-size:14.5px;box-shadow:0 12px 30px rgba(0,0,0,.25);animation:fs-in .25s ease}
+.vtoast button[data-mode]{font:700 14px var(--body);background:var(--amber);color:#fff;border:0;border-radius:999px;padding:6px 14px;cursor:pointer}
+.vtoast .vt-x{background:transparent;border:0;color:var(--paper-hi);cursor:pointer;font-size:14px;opacity:.7}
+@media (max-width:720px){.vmode{margin-left:4px}.vmode button{padding:4px 8px;font-size:12px}}
 </style>
 <style>img{max-width:100%}[hidden]{display:none!important}</style>
+<script>(function(){var m=null;try{m=new URLSearchParams(location.search).get('mode')}catch(e){}
+if(m!=='click'&&m!=='scroll'){try{m=localStorage.getItem('viewMode')}catch(e){}}
+if(m!=='click'&&m!=='scroll'){m=matchMedia('(max-width:820px)').matches?'scroll':'click'}
+document.documentElement.classList.add('mode-'+m);if(m==='click'&&location.hash&&!/^#(pmba|flowpilot|pawpath|travel|loan|goncharge|ecom|gee)$/.test(location.hash)){try{history.replaceState(null,'',location.pathname+location.search)}catch(e){}}})();</script>
 </head>
 <body>
 <nav aria-label="主导航" class="nav">
@@ -948,7 +966,7 @@ dialog.pmodal[open],dialog.sdlg[open]{animation:fs-in .3s ease}
 <a class="nl" href="#journey"><span class="zh">经历</span><span class="en">Journey</span></a>
 <a class="nl" href="#about"><span class="zh">工作之外</span><span class="en">Beyond work</span></a>
 <a class="nl-cta" href="#contact"><span class="zh">联系</span><span class="en">Contact</span></a>
-<button aria-label="切换语言 / Switch language" class="lang" id="langBtn" type="button"><span class="zh">EN</span><span class="en">中文</span></button>
+<div class="vmode" role="group" aria-label="浏览模式 / View mode"><button type="button" data-mode="click"><span class="zh">点击浏览</span><span class="en">Click</span></button><button type="button" data-mode="scroll"><span class="zh">长页面</span><span class="en">Scroll</span></button></div><button aria-label="切换语言 / Switch language" class="lang" id="langBtn" type="button"><span class="zh">EN</span><span class="en">中文</span></button>
 </div>
 </div>
 <div aria-label="板块导航" class="mnav"><a class="nl" href="#intro"><span class="zh">自我介绍</span><span class="en">Intro</span></a><a class="nl" href="#projects"><span class="zh">项目</span><span class="en">Projects</span></a><a class="nl" href="#journey"><span class="zh">经历</span><span class="en">Journey</span></a><a class="nl" href="#about"><span class="zh">工作之外</span><span class="en">Beyond work</span></a><a class="nl nl-c" href="#contact"><span class="zh">联系</span><span class="en">Contact</span></a></div>
@@ -986,7 +1004,7 @@ dialog.pmodal[open],dialog.sdlg[open]{animation:fs-in .3s ease}
 <button class="mi m-intern" data-sheet="intern" type="button"><span class="mi-ic" aria-hidden="true">💼</span><span class="mi-tx"><b><span class="zh">实习</span><span class="en">Internships</span></b><small><span class="zh">微创 · 安永</span><span class="en">Wicresoft · EY</span></small></span><span class="mi-go" aria-hidden="true">→</span></button>
 </nav>
 </div>
-<p class="sc-hint" aria-hidden="true"><span class="zh">或者下滑看完整内容 ↓</span><span class="en">Or scroll for everything ↓</span></p>
+<p class="sc-hint"><button class="sc-switch only-click" type="button" data-mode="scroll"><span class="zh">📜 想一次看完？切换到长页面</span><span class="en">📜 Prefer one long page? Switch to scroll view</span></button><span class="only-scroll"><span class="zh">下滑看完整内容 ↓</span><span class="en">Scroll for everything ↓</span></span></p>
 </div>
 </header>
 <!-- ============ SKILLS ============ -->
@@ -1845,6 +1863,40 @@ document.querySelectorAll('.sc-menu [data-proj]').forEach(function(b){b.addEvent
     show(tabs[i]);
   });
   bar.addEventListener('keydown',function(e){var el=e.target.closest('.tb');if(el&&(e.key==='Enter'||e.key===' ')){e.preventDefault();el.click()}});
+})();
+</script>
+<div class="vtoast" id="vtoast" role="status" hidden><span class="zh">想下滑浏览？</span><span class="en">Want to scroll?</span> <button type="button" data-mode="scroll"><span class="zh">切换到长页面</span><span class="en">Switch to scroll view</span></button><button type="button" class="vt-x" aria-label="关闭">✕</button></div>
+<script>
+(function(){
+  var de=document.documentElement,toast=document.getElementById('vtoast'),tt=0,shown=0;
+  function mode(){return de.classList.contains('mode-click')?'click':'scroll'}
+  function top(){try{window.scrollTo({top:0,left:0,behavior:'instant'})}catch(e){window.scrollTo(0,0)}}
+  function set(m,save){
+    de.classList.remove('mode-click','mode-scroll');de.classList.add('mode-'+m);
+    if(save){try{localStorage.setItem('viewMode',m)}catch(e){}}
+    if(m==='click')top();
+    if(toast)toast.hidden=true;
+  }
+  document.addEventListener('click',function(e){
+    var b=e.target.closest('[data-mode]');if(b){e.preventDefault();set(b.getAttribute('data-mode'),true);return}
+    if(e.target.closest('.vt-x')){toast.hidden=true;return}
+    if(toast&&!e.target.closest('#vtoast'))toast.hidden=true;
+    if(mode()!=='click')return;
+    var a=e.target.closest('a.nl,a.nl-cta,.mnav a');if(!a)return;
+    var h=(a.getAttribute('href')||'').slice(1),map={intro:'about',projects:'demo',journey:'intern',about:'about',contact:'about'};
+    if(!map[h])return;
+    e.preventDefault();e.stopPropagation();
+    window.__openSheet(map[h]);
+    if(h==='contact'||h==='about'){setTimeout(function(){var b=document.getElementById('sdBody'),t=b&&b.querySelector(h==='contact'?'.me-ask':'.hobby-grid');if(t)b.scrollTop=t.offsetTop-b.offsetTop-20},60)}
+  },true);
+  // trying to scroll in click mode → offer the long page
+  function nudge(){ if(mode()!=='click'||de.classList.contains('pm-lock')||!toast)return;
+    var now=Date.now();if(now-shown<6000)return;shown=now;toast.hidden=false;clearTimeout(tt);tt=setTimeout(function(){toast.hidden=true},5000)}
+  addEventListener('wheel',function(e){if(e.deltaY>8)nudge()},{passive:true});
+  addEventListener('keydown',function(e){if(['PageDown','ArrowDown',' ','End'].indexOf(e.key)>=0&&e.target===document.body)nudge()});
+  var ty=0;addEventListener('touchstart',function(e){ty=e.touches[0].clientY},{passive:true});
+  addEventListener('touchmove',function(e){if(ty-e.touches[0].clientY>30)nudge()},{passive:true});
+  if(mode()==='click')top();
 })();
 </script>
 </body>
