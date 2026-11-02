@@ -12,7 +12,7 @@ function mount(){if(document.getElementById("pp-demo-bar"))return;var c=cur();va
 d.setAttribute("style","position:fixed;left:50%;bottom:14px;transform:translateX(-50%);z-index:99999;display:flex;flex-wrap:wrap;gap:6px 8px;align-items:center;justify-content:center;max-width:calc(100vw - 24px);padding:8px 14px;border-radius:22px;background:rgba(43,58,39,.95);color:#fcf9f0;font:500 13px/1.5 system-ui,-apple-system,PingFang SC,Microsoft YaHei,sans-serif;box-shadow:0 8px 24px rgba(0,0,0,.25)");
 var h='<b style="color:#f3d27a">在线演示 · 只读</b><span style="opacity:.8">角色</span>';
 ROLES.forEach(function(r){h+='<button data-r="'+r[0]+'" style="cursor:pointer;border:0;border-radius:999px;padding:3px 9px;font:600 12px system-ui,sans-serif;'+(r[0]===c?'background:#f3d27a;color:#2b3a27':'background:rgba(255,255,255,.12);color:#fcf9f0')+'">'+r[1]+'</button>'});
-h+='<a href="https://yixuanxiao2003.com/#projects" style="color:#cfe0b8;text-decoration:none">← 返回作品集</a>';
+h+='<a href="/#projects" style="color:#cfe0b8;text-decoration:none">← 返回作品集</a>';
 d.innerHTML=h;d.addEventListener("click",function(e){var b=e.target.closest("button[data-r]");if(b)go(b.getAttribute("data-r"))});document.body.appendChild(d);
 var t=document.createElement("div");t.setAttribute("style","position:fixed;left:50%;bottom:84px;transform:translateX(-50%);z-index:99999;display:none;max-width:90vw;padding:10px 16px;border-radius:12px;background:#bf7438;color:#fff;font:500 14px/1.5 system-ui,sans-serif");document.body.appendChild(t);
 var k;window.__fpSay=function(m){t.textContent=m;t.style.display="block";clearTimeout(k);k=setTimeout(function(){t.style.display="none"},3200)}}
