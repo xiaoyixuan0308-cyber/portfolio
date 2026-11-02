@@ -808,6 +808,22 @@ dialog.pmodal[open],dialog.sdlg[open]{animation:fs-in .3s ease}
   .sc-menu{padding-bottom:0;gap:10px}
   .mi{padding:12px 14px}
 }
+
+/* hero v3: always fit the first screen */
+@media (min-width:821px){
+  .hero .sc{height:calc(100svh - 64px);min-height:500px;padding-top:clamp(12px,2.5vh,28px)}
+  .sc-stage{min-height:0;align-items:end}
+  .sc-stage .hero-desk{width:min(100%,600px,calc((100svh - 64px - 150px) * 1.217))}
+  .sc-menu{align-self:center;padding-bottom:clamp(16px,4vh,40px);gap:clamp(6px,1.4vh,12px)}
+  .mi{padding:clamp(8px,1.5vh,14px) 18px}
+  .sc-hint{padding:4px 0 10px}
+}
+@media (min-width:821px) and (max-height:720px){
+  .sc-name{padding:6px 16px 8px}
+  .sc-name h1{font-size:clamp(24px,3vw,34px)}
+  .sc-eyebrow{font-size:12px}
+  .mi-tx b{font-size:16px}.mi-tx small{font-size:12px}.mi-ic{font-size:22px}
+}
 </style>
 <style>img{max-width:100%}[hidden]{display:none!important}</style>
 </head>
