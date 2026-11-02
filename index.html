@@ -1741,7 +1741,14 @@ document.querySelectorAll('.sc-menu [data-proj]').forEach(function(b){b.addEvent
   new MutationObserver(fromPm).observe(pm,{attributes:true,attributeFilter:['open']});
   new MutationObserver(fromPm).observe(document.getElementById('pmTitle'),{childList:true});
   // keep page scroll locked while either page is open (runs after the original close handlers)
-  function relock(){setTimeout(function(){ if(pm.open||sd.open)de.classList.add('pm-lock'); mount(); },0)}
+  function relock(){setTimeout(function(){
+    if(pm.open||sd.open){de.classList.add('pm-lock');mount();return}
+    // fully closed: go back to the home screen
+    de.classList.remove('pm-lock');
+    try{history.replaceState(null,'',location.pathname)}catch(e){}
+    function top(){try{window.scrollTo({top:0,left:0,behavior:'instant'})}catch(e){window.scrollTo(0,0)}}
+    top();requestAnimationFrame(function(){top();var f=document.querySelector('.sc-menu .mi');if(f)f.focus({preventScroll:true});setTimeout(top,60)});
+  },0)}
   pm.addEventListener('close',relock);sd.addEventListener('close',relock);
   bar.addEventListener('click',function(e){
     if(e.target.closest('.tb-home')){ if(pm.open)pm.close(); if(sd.open)sd.close(); return }
