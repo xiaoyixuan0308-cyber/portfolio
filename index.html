@@ -787,6 +787,27 @@ dialog.pmodal[open],dialog.sdlg[open]{animation:fs-in .3s ease}
 @media (max-width:860px){.me .facts{grid-template-columns:1fr 1fr}.me .facts div{border-right:0;border-bottom:1px dashed var(--line)}.me .facts div:nth-child(odd){border-right:1px dashed var(--line)}.me .facts div:last-child{grid-column:1/-1;border-bottom:0;border-right:0}}
 .sd-body .me-cases{grid-template-columns:1fr}
 .sd-body .facts{grid-template-columns:repeat(auto-fit,minmax(150px,1fr))}
+
+/* hero v3: 地瓜 left, menu right */
+.sc-stage{display:grid;grid-template-columns:minmax(0,1.15fr) minmax(300px,.85fr);gap:clamp(20px,4vw,56px);align-items:end;min-height:0;flex:1}
+.sc-stage .hero-desk{position:relative;left:auto;bottom:auto;transform:none;width:100%;max-width:600px;justify-self:center;align-self:end}
+.sc-menu{display:flex;flex-direction:column;gap:12px;align-self:center;padding-bottom:40px}
+.mi{display:flex;align-items:center;gap:14px;width:100%;text-align:left;cursor:pointer;font-family:var(--body);color:var(--ink);background:color-mix(in srgb,var(--paper-hi) 94%,transparent);border:1.5px solid var(--line);border-radius:16px;padding:14px 18px;box-shadow:0 5px 0 color-mix(in srgb,var(--line) 70%,transparent);transition:transform .2s ease,box-shadow .2s ease,border-color .2s ease}
+.mi:hover,.mi:focus-visible{transform:translateX(6px);border-color:var(--moss);outline:none;box-shadow:0 5px 0 color-mix(in srgb,var(--moss) 35%,transparent)}
+.mi-ic{font-size:26px;line-height:1;flex:none;width:34px;text-align:center}
+.mi-tx{flex:1;display:flex;flex-direction:column;min-width:0}
+.mi-tx b{font-size:17.5px;font-weight:800}
+.mi-tx small{font-size:13px;color:var(--ink-soft);line-height:1.45}
+.mi-go{flex:none;font-weight:800;color:var(--moss);font-size:18px;transition:transform .2s}
+.mi:hover .mi-go{transform:translateX(4px)}
+.m-demo{border-color:color-mix(in srgb,var(--amber) 50%,var(--line))}
+.m-demo .mi-go{color:var(--amber)}
+@media (max-width:820px){
+  .sc-stage{grid-template-columns:1fr;gap:10px;padding-bottom:16px}
+  .sc-stage .hero-desk{width:min(330px,88%)}
+  .sc-menu{padding-bottom:0;gap:10px}
+  .mi{padding:12px 14px}
+}
 </style>
 <style>img{max-width:100%}[hidden]{display:none!important}</style>
 </head>
@@ -830,13 +851,15 @@ dialog.pmodal[open],dialog.sdlg[open]{animation:fs-in .3s ease}
 </div>
 <div class="sc-stage">
 <div class="hero-desk" id="heroDesk" role="img" aria-label="地瓜坐在电脑前，转头看向你的鼠标"><div class="hd-frame" style="background-image:url(img/digua-desk.webp)"></div></div>
-<button class="note n-skill" data-sheet="skill" type="button"><span class="n-ic" aria-hidden="true">🧰</span><b>Skill</b><small><span class="zh">技能与工作习惯</span><span class="en">Skills &amp; habits</span></small></button>
-<button class="note n-resume" data-sheet="resume" type="button"><span class="n-ic" aria-hidden="true">📄</span><b><span class="zh">简历</span><span class="en">Résumé</span></b><small><span class="zh">教育 · 经历 · 技能</span><span class="en">Education · experience</span></small></button>
-<button class="note n-demo" data-sheet="demo" type="button"><span class="n-ic" aria-hidden="true">🖥️</span><b><span class="zh">Demo / 项目</span><span class="en">Demos / Projects</span></b><small><span class="zh">3 个可在线试用</span><span class="en">3 you can try live</span></small></button>
-<button class="note n-about" data-sheet="about" type="button"><span class="n-ic" aria-hidden="true">🍠</span><b>About Me</b><small><span class="zh">我是谁 · 工作之外</span><span class="en">Who I am · outside work</span></small></button>
-<button class="note n-intern" data-sheet="intern" type="button"><span class="n-ic" aria-hidden="true">💼</span><b><span class="zh">实习</span><span class="en">Internships</span></b><small><span class="zh">微创 · 安永</span><span class="en">Wicresoft · EY</span></small></button>
+<nav class="sc-menu" aria-label="主菜单 / Main menu">
+<button class="mi m-demo" data-sheet="demo" type="button"><span class="mi-ic" aria-hidden="true">🖥️</span><span class="mi-tx"><b><span class="zh">Demo / 项目</span><span class="en">Demos / Projects</span></b><small><span class="zh">3 个可在线试用，另有 5 个项目</span><span class="en">3 live demos, plus 5 more projects</span></small></span><span class="mi-go" aria-hidden="true">→</span></button>
+<button class="mi m-skill" data-proj="pmba" type="button"><span class="mi-ic" aria-hidden="true">🐼</span><span class="mi-tx"><b><span class="zh">Skill · PM/BA Panda</span><span class="en">Skill · PM/BA Panda</span></b><small><span class="zh">我的 Claude Skill：从需求到 UML 再到原型</span><span class="en">My Claude Skill: requirements → UML → prototype</span></small></span><span class="mi-go" aria-hidden="true">→</span></button>
+<button class="mi m-resume" data-sheet="resume" type="button"><span class="mi-ic" aria-hidden="true">📄</span><span class="mi-tx"><b><span class="zh">简历</span><span class="en">Résumé</span></b><small><span class="zh">教育 · 经历 · 技能</span><span class="en">Education · experience · skills</span></small></span><span class="mi-go" aria-hidden="true">→</span></button>
+<button class="mi m-intern" data-sheet="intern" type="button"><span class="mi-ic" aria-hidden="true">💼</span><span class="mi-tx"><b><span class="zh">实习</span><span class="en">Internships</span></b><small><span class="zh">微创 · 安永</span><span class="en">Wicresoft · EY</span></small></span><span class="mi-go" aria-hidden="true">→</span></button>
+<button class="mi m-about" data-sheet="about" type="button"><span class="mi-ic" aria-hidden="true">🍠</span><span class="mi-tx"><b><span class="zh">About Me</span><span class="en">About Me</span></b><small><span class="zh">我是谁 · 工作之外</span><span class="en">Who I am · outside work</span></small></span><span class="mi-go" aria-hidden="true">→</span></button>
+</nav>
 </div>
-<p class="sc-hint" aria-hidden="true"><span class="zh">点一点桌边的纸片 · 或者下滑看完整内容 ↓</span><span class="en">Tap a note around the desk · or scroll for everything ↓</span></p>
+<p class="sc-hint" aria-hidden="true"><span class="zh">或者下滑看完整内容 ↓</span><span class="en">Or scroll for everything ↓</span></p>
 </div>
 </header>
 <!-- ============ SKILLS ============ -->
@@ -1630,6 +1653,9 @@ dialog.pmodal[open],dialog.sdlg[open]{animation:fs-in .3s ease}
     var j=e.target.closest('[data-jump]'); if(j){e.preventDefault();dlg.close();var t=document.getElementById(j.getAttribute('data-jump')); if(t) t.scrollIntoView({behavior:'smooth'})}
   });
 })();
+</script>
+<script>
+document.querySelectorAll('.sc-menu [data-proj]').forEach(function(b){b.addEventListener('click',function(){var c=document.querySelector('.pcard[data-id="'+b.getAttribute('data-proj')+'"]');if(c)c.click()})});
 </script>
 </body>
 </html>
